@@ -1,0 +1,55 @@
+import {
+  c as _,
+  u as p,
+  a as m,
+  b as f,
+  D as d,
+  j as u,
+  W as h,
+  _ as E,
+} from "./index-BnRAGF7J.js";
+const S = await w(),
+  y = 4,
+  I = 100;
+function v(a) {
+  const e = _.c(7),
+    { children: o } = a,
+    l = p(),
+    c = m(f);
+  if (l !== "electron") return o;
+  let i;
+  e[0] === Symbol.for("react.memo_cache_sentinel")
+    ? ((i = { workerFactory: S, poolSize: y, totalASTLRUCacheSize: I }),
+      (e[0] = i))
+    : (i = e[0]);
+  const n = c ? "word-alt" : "none";
+  let r;
+  e[1] === Symbol.for("react.memo_cache_sentinel")
+    ? ((r = ["typescript", "javascript", "css", "html", "python"]), (e[1] = r))
+    : (r = e[1]);
+  let t;
+  e[2] !== n
+    ? ((t = { theme: d, lineDiffType: n, langs: r }), (e[2] = n), (e[3] = t))
+    : (t = e[3]);
+  let s;
+  return (
+    e[4] !== o || e[5] !== t
+      ? ((s = u.jsx(h, { poolOptions: i, highlighterOptions: t, children: o })),
+        (e[4] = o),
+        (e[5] = t),
+        (e[6] = s))
+      : (s = e[6]),
+    s
+  );
+}
+async function w() {
+  return (
+    await E(
+      () => import("./shiki-worker-factory-vite-ByDGcbwB.js"),
+      [],
+      import.meta.url,
+    )
+  ).shikiWorkerFactoryVite;
+}
+export { v as ShikiHighlightProvider };
+//# sourceMappingURL=shiki-highlight-provider-BwvW0IpZ.js.map

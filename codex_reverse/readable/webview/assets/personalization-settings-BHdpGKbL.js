@@ -1,0 +1,448 @@
+import {
+  c as se,
+  q as te,
+  r as ae,
+  A as ne,
+  H as ie,
+  I as oe,
+  s as le,
+  l as re,
+  m as ce,
+  j as s,
+  d as S,
+  e as de,
+  f as ge,
+  J as pe,
+  K as me,
+  L as fe,
+  B as $,
+  M as o,
+  N as ue,
+  g as xe,
+  O as he,
+  P as ye,
+  p as be,
+  S as je,
+} from "./index-BnRAGF7J.js";
+function Me() {
+  const e = se.c(69),
+    t = te(),
+    r = ae(),
+    T = ne(),
+    V = ie.useGateValue("codex_rollout_personality"),
+    { personality: c, setPersonality: A } = oe(),
+    [G, Y] = le.useState(null);
+  let C;
+  e[0] === Symbol.for("react.memo_cache_sentinel")
+    ? ((C = { queryConfig: void 0 }), (e[0] = C))
+    : (C = e[0]);
+  const {
+    data: H,
+    error: Z,
+    isFetching: ee,
+    refetch: U,
+  } = re("codex-agents-md", C);
+  let d;
+  e[1] !== t || e[2] !== T || e[3] !== r
+    ? ((d = (n, B) => {
+        (T.setQueryData(ye("codex-agents-md"), {
+          path: n.path,
+          contents: B.contents,
+        }),
+          Y(null),
+          r.success(
+            t.formatMessage({
+              id: "settings.personalization.agents.save.success",
+              defaultMessage: "Saved agents.md",
+              description: "Toast shown when agents.md is saved",
+            }),
+          ));
+      }),
+      (e[1] = t),
+      (e[2] = T),
+      (e[3] = r),
+      (e[4] = d))
+    : (d = e[4]);
+  let g;
+  e[5] !== t || e[6] !== r
+    ? ((g = () => {
+        r.danger(
+          t.formatMessage({
+            id: "settings.personalization.agents.save.error",
+            defaultMessage: "Unable to save agents.md",
+            description: "Toast shown when agents.md save fails",
+          }),
+        );
+      }),
+      (e[5] = t),
+      (e[6] = r),
+      (e[7] = g))
+    : (g = e[7]);
+  let z;
+  e[8] !== d || e[9] !== g
+    ? ((z = { onSuccess: d, onError: g }), (e[8] = d), (e[9] = g), (e[10] = z))
+    : (z = e[10]);
+  const N = ce("codex-agents-md-save", z),
+    M = H?.contents ?? "",
+    p = G ?? M,
+    m = G != null && G !== M,
+    a = H != null,
+    q = !a && ee,
+    i = N.isPending,
+    O = Z != null && H == null;
+  let k;
+  e[11] !== p || e[12] !== m || e[13] !== a || e[14] !== i || e[15] !== N
+    ? ((k = () => {
+        !a || !m || i || N.mutate({ contents: p });
+      }),
+      (e[11] = p),
+      (e[12] = m),
+      (e[13] = a),
+      (e[14] = i),
+      (e[15] = N),
+      (e[16] = k))
+    : (k = e[16]);
+  const Q = k;
+  let w;
+  e[17] !== U
+    ? ((w = () => {
+        U();
+      }),
+      (e[17] = U),
+      (e[18] = w))
+    : (w = e[18]);
+  const K = w;
+  let E;
+  e[19] !== t
+    ? ((E = t.formatMessage({
+        id: "settings.personalization.agents.placeholder",
+        defaultMessage: "Add your custom instructions…",
+        description: "Placeholder text for personal agents editor",
+      })),
+      (e[19] = t),
+      (e[20] = E))
+    : (E = e[20]);
+  const J = E;
+  let L;
+  e[21] !== t
+    ? ((L = t.formatMessage({
+        id: "settings.personalization.agents.title",
+        defaultMessage: "Custom instructions",
+        description: "Heading for personal agents settings section",
+      })),
+      (e[21] = t),
+      (e[22] = L))
+    : (L = e[22]);
+  const W = L;
+  let f;
+  e[23] !== t
+    ? ((f = t.formatMessage({
+        id: "composer.personalitySlashCommand.label.friendly",
+        defaultMessage: "Friendly",
+        description: "Label for the friendly personality",
+      })),
+      (e[23] = t),
+      (e[24] = f))
+    : (f = e[24]);
+  let u;
+  e[25] !== t
+    ? ((u = t.formatMessage({
+        id: "composer.personalitySlashCommand.description.friendly",
+        defaultMessage: "Warm, collaborative, and helpful",
+        description: "Description for the friendly personality option",
+      })),
+      (e[25] = t),
+      (e[26] = u))
+    : (u = e[26]);
+  let x;
+  e[27] !== f || e[28] !== u
+    ? ((x = { value: "friendly", label: f, description: u }),
+      (e[27] = f),
+      (e[28] = u),
+      (e[29] = x))
+    : (x = e[29]);
+  let h;
+  e[30] !== t
+    ? ((h = t.formatMessage({
+        id: "composer.personalitySlashCommand.label.pragmatic",
+        defaultMessage: "Pragmatic",
+        description: "Label for the pragmatic personality",
+      })),
+      (e[30] = t),
+      (e[31] = h))
+    : (h = e[31]);
+  let y;
+  e[32] !== t
+    ? ((y = t.formatMessage({
+        id: "composer.personalitySlashCommand.description.pragmatic",
+        defaultMessage: "Concise, task-focused, and direct",
+        description: "Description for the pragmatic personality option",
+      })),
+      (e[32] = t),
+      (e[33] = y))
+    : (y = e[33]);
+  let b;
+  e[34] !== h || e[35] !== y
+    ? ((b = { value: "pragmatic", label: h, description: y }),
+      (e[34] = h),
+      (e[35] = y),
+      (e[36] = b))
+    : (b = e[36]);
+  let D;
+  e[37] !== x || e[38] !== b
+    ? ((D = [x, b]), (e[37] = x), (e[38] = b), (e[39] = D))
+    : (D = e[39]);
+  const l = D;
+  let _;
+  e[40] !== c || e[41] !== l
+    ? ((_ = l.find((n) => n.value === c) ?? l[0]),
+      (e[40] = c),
+      (e[41] = l),
+      (e[42] = _))
+    : (_ = e[42]);
+  const X = _;
+  let P;
+  e[43] === Symbol.for("react.memo_cache_sentinel")
+    ? ((P = s.jsx(be, { slug: "personalization" })), (e[43] = P))
+    : (P = e[43]);
+  let j;
+  e[44] !== V ||
+  e[45] !== a ||
+  e[46] !== i ||
+  e[47] !== c ||
+  e[48] !== l ||
+  e[49] !== X ||
+  e[50] !== A
+    ? ((j = V
+        ? s.jsx(S, {
+            className: "gap-2",
+            children: s.jsx(S.Content, {
+              children: s.jsx(de, {
+                children: s.jsx(ge, {
+                  label: s.jsx(o, {
+                    id: "settings.personalization.personality.label",
+                    defaultMessage: "Personality",
+                    description:
+                      "Label for personality selection in personalization settings",
+                  }),
+                  description: s.jsx(o, {
+                    id: "settings.personalization.personality.description",
+                    defaultMessage: "Choose a default tone for Codex responses",
+                    description:
+                      "Description for personality selection in personalization settings",
+                  }),
+                  control: s.jsx(pe, {
+                    triggerButton: s.jsx($, {
+                      color: "secondary",
+                      size: "toolbar",
+                      className: "min-w-[240px] justify-between",
+                      disabled: !a || i,
+                      children: s.jsx("span", {
+                        className: "flex items-center gap-1.5",
+                        children: X.label,
+                      }),
+                    }),
+                    align: "end",
+                    children: s.jsx("div", {
+                      className: "w-[260px] max-w-xs space-y-1",
+                      children: l.map((n) =>
+                        s.jsx(
+                          me.Item,
+                          {
+                            onSelect: () => {
+                              A(n.value);
+                            },
+                            RightIcon: c === n.value ? fe : void 0,
+                            children: s.jsxs("div", {
+                              className: "flex flex-col items-start gap-0.5",
+                              children: [
+                                s.jsx("span", {
+                                  className: "text-sm",
+                                  children: n.label,
+                                }),
+                                s.jsx("span", {
+                                  className:
+                                    "text-token-text-secondary text-xs",
+                                  children: n.description,
+                                }),
+                              ],
+                            }),
+                          },
+                          n.value,
+                        ),
+                      ),
+                    }),
+                  }),
+                }),
+              }),
+            }),
+          })
+        : null),
+      (e[44] = V),
+      (e[45] = a),
+      (e[46] = i),
+      (e[47] = c),
+      (e[48] = l),
+      (e[49] = X),
+      (e[50] = A),
+      (e[51] = j))
+    : (j = e[51]);
+  let R;
+  e[52] === Symbol.for("react.memo_cache_sentinel")
+    ? ((R = s.jsx(o, {
+        id: "settings.personalization.agents.title",
+        defaultMessage: "Custom instructions",
+        description: "Heading for personal agents settings section",
+      })),
+      (e[52] = R))
+    : (R = e[52]);
+  let F;
+  e[53] === Symbol.for("react.memo_cache_sentinel")
+    ? ((F = s.jsx(S.Header, {
+        title: R,
+        subtitle: s.jsx(o, {
+          id: "settings.personalization.agents.description",
+          defaultMessage:
+            "Edit instructions that tailor Codex to you. {learnMore}",
+          description: "Description for personal agents settings",
+          values: {
+            learnMore: s.jsxs("a", {
+              className:
+                "text-token-text-secondary hover:text-token-text-primary inline-flex items-center gap-1",
+              href: ue,
+              target: "_blank",
+              rel: "noreferrer",
+              children: [
+                s.jsx(o, {
+                  id: "settings.personalization.agents.learnMore",
+                  defaultMessage: "Learn more",
+                  description: "Link label for agents.md docs",
+                }),
+                s.jsx(xe, { className: "icon-xxs" }),
+              ],
+            }),
+          },
+        }),
+      })),
+      (e[53] = F))
+    : (F = e[53]);
+  let v;
+  e[54] !== M ||
+  e[55] !== W ||
+  e[56] !== p ||
+  e[57] !== K ||
+  e[58] !== Q ||
+  e[59] !== m ||
+  e[60] !== q ||
+  e[61] !== a ||
+  e[62] !== i ||
+  e[63] !== J ||
+  e[64] !== O
+    ? ((v = s.jsxs(S, {
+        className: "gap-2",
+        children: [
+          F,
+          s.jsx(S.Content, {
+            children: O
+              ? s.jsxs("div", {
+                  className: "flex items-center justify-between gap-3",
+                  children: [
+                    s.jsx("div", {
+                      className: "text-token-text-secondary text-sm",
+                      children: s.jsx(o, {
+                        id: "settings.personalization.agents.loadError",
+                        defaultMessage: "Unable to load agents.md.",
+                        description:
+                          "Error message shown when agents.md fails to load",
+                      }),
+                    }),
+                    s.jsx($, {
+                      className: "shrink-0",
+                      color: "secondary",
+                      onClick: K,
+                      size: "toolbar",
+                      children: s.jsx(o, {
+                        id: "settings.personalization.agents.retry",
+                        defaultMessage: "Retry",
+                        description: "Button label to retry loading agents.md",
+                      }),
+                    }),
+                  ],
+                })
+              : s.jsxs("div", {
+                  className: "flex flex-col gap-3",
+                  children: [
+                    q
+                      ? s.jsxs("div", {
+                          className:
+                            "text-token-text-secondary flex items-center gap-2 text-sm",
+                          children: [
+                            s.jsx(he, { className: "icon-xs" }),
+                            s.jsx(o, {
+                              id: "settings.personalization.agents.loading",
+                              defaultMessage: "Loading agents.md…",
+                              description: "Loading label for agents.md editor",
+                            }),
+                          ],
+                        })
+                      : s.jsx("textarea", {
+                          "aria-label": W,
+                          id: "personal-agents-editor",
+                          className:
+                            "bg-token-input-background text-token-text-primary font-mono w-full rounded-md border border-token-border px-2.5 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-token-focus",
+                          disabled: !a || i,
+                          placeholder: J,
+                          rows: 12,
+                          value: p,
+                          onChange: (n) => {
+                            const B = n.target.value;
+                            Y(B === M ? null : B);
+                          },
+                        }),
+                    s.jsx("div", {
+                      className: "flex items-center justify-end gap-2",
+                      children: s.jsx($, {
+                        color: "primary",
+                        disabled: !m || !a,
+                        loading: i,
+                        onClick: Q,
+                        size: "toolbar",
+                        children: s.jsx(o, {
+                          id: "settings.personalization.agents.save",
+                          defaultMessage: "Save",
+                          description:
+                            "Save button label for personal agents editor",
+                        }),
+                      }),
+                    }),
+                  ],
+                }),
+          }),
+        ],
+      })),
+      (e[54] = M),
+      (e[55] = W),
+      (e[56] = p),
+      (e[57] = K),
+      (e[58] = Q),
+      (e[59] = m),
+      (e[60] = q),
+      (e[61] = a),
+      (e[62] = i),
+      (e[63] = J),
+      (e[64] = O),
+      (e[65] = v))
+    : (v = e[65]);
+  let I;
+  return (
+    e[66] !== j || e[67] !== v
+      ? ((I = s.jsxs(je, { title: P, children: [j, v] })),
+        (e[66] = j),
+        (e[67] = v),
+        (e[68] = I))
+      : (I = e[68]),
+    I
+  );
+}
+export { Me as PersonalizationSettings };
+//# sourceMappingURL=personalization-settings-BHdpGKbL.js.map

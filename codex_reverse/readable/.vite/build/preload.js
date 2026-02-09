@@ -1,0 +1,75 @@
+"use strict";
+
+const electron = require("electron"),
+  g = "codex_desktop:show-context-menu",
+  u = "codex_desktop:get-sentry-init-options",
+  S = "codex_desktop:get-build-flavor",
+  w = "codex_desktop:trigger-sentry-test";
+function M(e) {
+  return `codex_desktop:worker:${e}:from-view`;
+}
+function p(e) {
+  return `codex_desktop:worker:${e}:for-view`;
+}
+const l = "electron",
+  f = "codex_desktop:message-from-view",
+  v = "codex_desktop:message-for-view",
+  _ = electron.ipcRenderer.sendSync(u),
+  x = electron.ipcRenderer.sendSync(S),
+  r = new Map(),
+  d = new Map(),
+  R = {
+    windowType: l,
+    sendMessageFromView: async (e) => {
+      await electron.ipcRenderer.invoke(f, e);
+    },
+    getPathForFile: (e) => {
+      const t = electron.webUtils.getPathForFile(e);
+      return t || null;
+    },
+    sendWorkerMessageFromView: async (e, t) => {
+      await electron.ipcRenderer.invoke(M(e), t);
+    },
+    subscribeToWorkerMessages: (e, t) => {
+      let s = r.get(e);
+      s || ((s = new Set()), r.set(e, s));
+      let o = d.get(e);
+      return (
+        o ||
+          ((o = (i, c) => {
+            const a = r.get(e);
+            a &&
+              a.forEach((E) => {
+                E(c);
+              });
+          }),
+          d.set(e, o),
+          electron.ipcRenderer.on(p(e), o)),
+        s.add(t),
+        () => {
+          const i = r.get(e);
+          if (!i || (i.delete(t), i.size > 0)) return;
+          r.delete(e);
+          const c = d.get(e);
+          (c && electron.ipcRenderer.removeListener(p(e), c), d.delete(e));
+        }
+      );
+    },
+    showContextMenu: async (e) => electron.ipcRenderer.invoke(g, e),
+    triggerSentryTestError: async () => {
+      await electron.ipcRenderer.invoke(w);
+    },
+    getSentryInitOptions: () => _,
+    getAppSessionId: () => _.codexAppSessionId,
+    getBuildFlavor: () => x,
+  };
+electron.ipcRenderer.on(v, (e, t) => {
+  window.dispatchEvent(
+    new MessageEvent("message", {
+      data: t,
+    }),
+  );
+});
+electron.contextBridge.exposeInMainWorld("codexWindowType", l);
+electron.contextBridge.exposeInMainWorld("electronBridge", R);
+//# sourceMappingURL=preload.js.map

@@ -1,0 +1,2207 @@
+const e = {
+  "CopyButton.copyTooltip": "Αντιγραφή",
+  "app.sidebar.hide": "Απόκρυψη πλαϊνής γραμμής",
+  "app.sidebar.show": "Προβολή πλαϊνής γραμμής",
+  "app.sidebar.tooltip": "Εναλλαγή πλαϊνής γραμμής",
+  "appHeader.installUpdate": "Ενημέρωση",
+  "appSunset.body":
+    "Αυτή η έκδοση της εφαρμογής δεν υποστηρίζεται πλέον. Κάνε λήψη της τελευταίας έκδοσης <here>εδώ</here>.",
+  "appSunset.title": "Απαιτείται αναβάθμιση",
+  "automation.updateDirective.create": "Δημιουργία",
+  "automation.updateDirective.open": "Άνοιγμα",
+  "automation.updateDirective.untitled": "Αυτοματισμός χωρίς τίτλο",
+  "automation.updateDirective.update": "Ενημέρωση",
+  "bestOfNIcon.attemptsTooltip":
+    "{attempts, plural, one {# προσπάθεια} other {# προσπάθειες}}",
+  "cloudTaskRow.archiveError": "Αποτυχία αρχειοθέτησης εργασίας",
+  "code.diff.requestChange": "Αίτημα αλλαγής",
+  "code.diffComment.cancel": "Ακύρωση",
+  "code.diffComment.comment": "Σχόλιο",
+  "code.diffComment.delete": "Διαγραφή",
+  "code.diffComment.save": "Αποθήκευση",
+  "codeReviewAssistant.location": "{file}:{start}-{end}",
+  "codeReviewAssistant.noFindings": "Δεν αναφέρθηκαν ευρήματα.",
+  "codex.alert.closeAriaLabel": "Κλείσιμο",
+  "codex.appUpsellBanner.cbpApi.message":
+    "Δημιούργησε γρηγορότερα με την εφαρμογή Codex. Κάνε λήψη τώρα ή {learnMoreLink}.",
+  "codex.appUpsellBanner.download": "Λήψη",
+  "codex.appUpsellBanner.freeGo.message":
+    "Το Codex περιλαμβάνεται στο πρόγραμμά σου μέχρι τις 2 Μαρτίου. Δοκίμασε την εφαρμογή Codex για να δημιουργήσεις γρηγορότερα.",
+  "codex.appUpsellBanner.later": "Αργότερα",
+  "codex.appUpsellBanner.learnMoreLowercase": "μάθε περισσότερα",
+  "codex.appUpsellBanner.new": "Νέο",
+  "codex.appUpsellBanner.proPlusBusiness.message":
+    "Δοκίμασε την εφαρμογή Codex με διπλάσια όρια χρέωσης μέχρι τις 2 Απριλίου. Κάνε λήψη τώρα ή {learnMoreLink}.",
+  "codex.appUpsellBanner.title": "Εφαρμογή Codex",
+  "codex.applyDropdown.header.changes": "αλλαγές",
+  "codex.applyDropdown.header.fileCount":
+    "{count, plural, one {# αρχείου} other {# αρχείων}}",
+  "codex.applyDropdown.header.rows": "σειρές",
+  "codex.applyDropdown.header.title": "Εφαρμογή αλλαγών",
+  "codex.applyDropdown.header.workspace": "Έργο",
+  "codex.applyDropdown.results.conflicted":
+    "{count, plural, one {1 αρχείο σε σύγκρουση:} other {{count} αρχεία σε σύγκρουση:}}",
+  "codex.applyDropdown.results.empty": "Δεν αντιγράφηκαν αρχεία",
+  "codex.applyDropdown.results.skipped":
+    "{count, plural, one {Έγινε παράλειψη ενός αρχείου:} other {Έγινε παράλειψη {count} αρχείων:}}",
+  "codex.applyOrRevertBanner.apply": "Εφαρμογή",
+  "codex.applyOrRevertBanner.applyMessage":
+    "Εφαρμογή αλλαγών και συνέχεια τοπικά;",
+  "codex.applyOrRevertBanner.applyMessageDifferentEnvironment":
+    "Αυτή η εργασία δημιουργήθηκε στο {environment}, για αυτό ενδέχεται να μην εφαρμόζεται σωστά.",
+  "codex.applyOrRevertBanner.applyMessageDifferentEnvironment.tooltip":
+    "Οι αλλαγές πραγματοποιήθηκαν στο {environment}, για αυτό ενδέχεται να μην εφαρμόζονται σωστά.",
+  "codex.applyOrRevertBanner.reapply": "Εκ νέου εφαρμογή",
+  "codex.applyOrRevertBanner.revert": "Επαναφορά",
+  "codex.applyOrRevertBanner.revertMessage": "Επαναφορά εφαρμοσμένων αλλαγών;",
+  "codex.applyResultsDialog.applied": "Εφαρμόστηκαν σωστά ({count})",
+  "codex.applyResultsDialog.close": "Κλείσιμο",
+  "codex.applyResultsDialog.conflicted": "Σε σύγκρουση ({count})",
+  "codex.applyResultsDialog.noDetails":
+    "Δεν υπάρχουν διαθέσιμες λεπτομέρειες για το αρχείο",
+  "codex.applyResultsDialog.skipped": "Έγινε παράλειψη ({count})",
+  "codex.applyResultsDialog.title": "Εφαρμογή αποτελεσμάτων",
+  "codex.archiveInfo":
+    "Προβολή αρχειοθετημένων συνομιλιών στο {dataControlsLink}.",
+  "codex.archiveInfo.dataControlsLink": "Έλεγχοι δεδομένων",
+  "codex.archiveInfo.electron":
+    "Προβολή αρχειοθετημένων συνομιλιών στο {settingsLink}",
+  "codex.archiveInfo.extension":
+    "Προβολή των αρχειοθετημένων συνομιλιών στον φάκελό σου .codex.",
+  "codex.archiveInfo.settingsLink": "Ρυθμίσεις",
+  "codex.banner.content.description":
+    "Εκτέλεσε εργασίες παράλληλα, παρακολούθησε την πρόοδο οπουδήποτε και κάνε έλεγχο των PR με τεχνητή νοημοσύνη.",
+  "codex.banner.content.headline": "Το Codex τα κάνει όλα.",
+  "codex.cloudTaskRow.archiveTask": "Αρχειοθέτηση εργασίας",
+  "codex.cloudTaskRow.confirmArchiveTask": "Επιβεβαίωση",
+  "codex.command.feedback": "Σχόλια",
+  "codex.command.findInThread": "Εύρεση",
+  "codex.command.forceReloadSkills": "Εξαναγκασμένη επαναφόρτωση δεξιοτήτων",
+  "codex.command.logOut": "Αποσύνδεση",
+  "codex.command.manageTasks": "Διαχείριση εργασιών",
+  "codex.command.navigateBack": "Πίσω",
+  "codex.command.navigateForward": "Συνέχεια",
+  "codex.command.newThread": "Νέο νήμα",
+  "codex.command.nextThread": "Επόμενο νήμα",
+  "codex.command.openFolder": "Άνοιγμα φακέλου",
+  "codex.command.openSkills": "Μετάβαση στις δεξιότητες",
+  "codex.command.openThreadOverlay": "Αναδυόμενο νήμα",
+  "codex.command.previousThread": "Προηγούμενο νήμα",
+  "codex.command.settings": "Ρυθμίσεις",
+  "codex.command.toggleDiffPanel": "Εναλλαγή πίνακα diff",
+  "codex.command.toggleSidebar": "Εναλλαγή πλαϊνής γραμμής",
+  "codex.command.toggleTerminal": "Εναλλαγή τερματικού",
+  "codex.commandGroup.app": "Εφαρμογή",
+  "codex.commandGroup.navigation": "Πλοήγηση",
+  "codex.commandGroup.panels": "Πίνακες",
+  "codex.commandGroup.skills": "Δεξιότητες",
+  "codex.commandGroup.thread": "Νήμα",
+  "codex.commandGroup.workspace": "Έργο",
+  "codex.commandMenu.noResults": "Δεν βρέθηκαν αντιστοιχίες",
+  "codex.commandMenu.searchPlaceholder": "Εντολές αναζήτησης",
+  "codex.commandMenu.suggestedGroup": "Προτείνεται",
+  "codex.commandMenu.switchWorkspace": "Εναλλαγή έργου",
+  "codex.commandMenu.title": "Μενού εντολών",
+  "codex.common.retry": "Επανάληψη",
+  "codex.composer.searchBranches": "Αναζήτηση κλάδων",
+  "codex.dialog.basic.body":
+    "Αυτός είναι ένας απλός διάλογος αποκλειστικού παραθύρου που χρησιμοποιεί το wrapper μας γύρω από το Radix Dialog.",
+  "codex.dialog.basic.cancel": "Ακύρωση",
+  "codex.dialog.basic.confirm": "Επιβεβαίωση",
+  "codex.dialog.basic.open": "Άνοιγμα Dialog",
+  "codex.dialog.basic.title": "Δείγμα Dialog",
+  "codex.dialog.long.close": "Κλείσιμο",
+  "codex.dialog.long.line":
+    "Γραμμή με δυνατότητα κύλισης {index} για προβολή μεγάλου περιεχομένου μέσα στον διάλογο.",
+  "codex.dialog.long.open": "Άνοιγμα μεγάλου περιεχομένου στο Dialog",
+  "codex.dialog.long.title": "Dialog με μεγάλο περιεχόμενο",
+  "codex.dialog.unstyled.body":
+    "Αυτή η ιστορία δείχνει πώς μπορούν οι καλούντες να ελέγχουν πλήρως το στιλ του περιεχομένου του διαλόγου.",
+  "codex.dialog.unstyled.open": "Άνοιγμα διαλόγου χωρίς στιλ",
+  "codex.dialog.unstyled.title": "Περιεχόμενο χωρίς στιλ",
+  "codex.diff.openInEditorPrompt.openButton": "Άνοιγμα στην επεξεργασία",
+  "codex.diff.openInEditorPrompt.singleLine":
+    "Αυτό το αρχείο είναι πολύ μεγάλο για προβολή εδώ",
+  "codex.diffView.failedToDecodeBase64Diff":
+    "Αποτυχία αποκωδικοποίησης base64 diff",
+  "codex.diffView.filesChanged":
+    "{fileCount, plural, one {# αρχείο άλλαξε} other {# αρχεία άλλαξαν}}",
+  "codex.diffView.imagePreviewAlt": "Προεπισκόπηση εικόνας",
+  "codex.diffView.imagePreviewEmpty": "Δεν υπάρχει εικόνα",
+  "codex.diffView.linesAdded": "+{linesAdded}",
+  "codex.diffView.linesDeleted": "-{linesDeleted}",
+  "codex.diffView.noDiffData": "Δεν υπάρχουν δεδομένα diff",
+  "codex.diffView.richPreviewDisable": "Απενεργοποίηση πλούσιας προεπισκόπησης",
+  "codex.diffView.richPreviewEnable": "Ενεργοποίηση πλούσιας προεπισκόπησης",
+  "codex.diffView.richPreviewLoading": "Φόρτωση προεπισκόπησης…",
+  "codex.diffView.richPreviewToggle": "Εναλλαγή πλούσιας προεπισκόπησης",
+  "codex.diffView.switchToUnified": "Εναλλαγή σε ενοποιημένο diff",
+  "codex.environmentSelector.noEnvironment": "Δεν υπάρχει περιβάλλον",
+  "codex.environments.environmentSettings": "Ρυθμίσεις περιβάλλοντος",
+  "codex.environments.learnMore": "Μάθε περισσότερα",
+  "codex.environments.listError": "Αποτυχία φόρτωσης περιβαλλόντων.",
+  "codex.environments.noEnvironmentsFound": "Δεν βρέθηκαν περιβάλλοντα",
+  "codex.environments.searchError": "Αποτυχία αναζήτησης περιβαλλόντων.",
+  "codex.errorBoundary.genericError": "Ουπς, προέκυψε σφάλμα",
+  "codex.errorBoundary.goHome": "Προσπάθησε ξανά",
+  "codex.file.patch.missing":
+    "Αδυναμία δημιουργίας λογισμικού ενημέρωσης για αυτό το αρχείο.",
+  "codex.gallery.automations.cwdLabel": "Έργα",
+  "codex.gallery.automations.nameLabel": "Όνομα",
+  "codex.gallery.automations.namePlaceholder": "Κάνε τη σύνοψη μιας εργασίας",
+  "codex.gallery.automations.promptLabel": "Προτροπή",
+  "codex.gallery.automations.promptPlaceholder":
+    "Περίγραψε τι θα έπρεπε να κάνει το Codex",
+  "codex.gallery.dialogs.automation.label": "Διάλογος αυτοματισμού",
+  "codex.gallery.dialogs.basic.body":
+    "Χρησιμοποίησε αυτή τη διάταξη για απλές επιβεβαιώσεις ή σύντομες φόρμες.",
+  "codex.gallery.dialogs.basic.cancel": "Ακύρωση",
+  "codex.gallery.dialogs.basic.confirm": "Επιβεβαίωση",
+  "codex.gallery.dialogs.basic.label": "Βασικός διάλογος",
+  "codex.gallery.dialogs.basic.title": "Δείγμα διαλόγου",
+  "codex.gallery.dialogs.feedbackSubmission.ariaLabel": "Περίγραψε το πρόβλημα",
+  "codex.gallery.dialogs.feedbackSubmission.bad": "Κακό αποτέλεσμα",
+  "codex.gallery.dialogs.feedbackSubmission.bug": "Σφάλμα",
+  "codex.gallery.dialogs.feedbackSubmission.good": "Καλό αποτέλεσμα",
+  "codex.gallery.dialogs.feedbackSubmission.includeLogs":
+    "Συμπερίλαβε τα αρχεία καταγραφής της τρέχουσας περιόδου λειτουργίας του Codex",
+  "codex.gallery.dialogs.feedbackSubmission.label": "Υποβολή σχολίου",
+  "codex.gallery.dialogs.feedbackSubmission.other": "Άλλο",
+  "codex.gallery.dialogs.feedbackSubmission.placeholder":
+    "Περίγραψε το πρόβλημα εδώ",
+  "codex.gallery.dialogs.feedbackSubmission.submit": "Υποβολή",
+  "codex.gallery.dialogs.feedbackSubmission.title": "Σχόλια",
+  "codex.gallery.dialogs.feedbackSuccess.body":
+    "Έγινε αποστολή του σχολίου. Εάν το πρόβλημα επιμένει, άνοιξε ένα νέο πρόβλημα στο GitHub ή ανάφερε το αναγνωριστικό του νήματος σε ένα υπάρχον ανοιχτό πρόβλημα:",
+  "codex.gallery.dialogs.feedbackSuccess.dismiss": "Κλείσιμο",
+  "codex.gallery.dialogs.feedbackSuccess.label": "Επιτυχία αποστολής σχολίου",
+  "codex.gallery.dialogs.feedbackSuccess.title": "Έγινε αποστολή του σχολίου",
+  "codex.gallery.dialogs.gitApplyResults.applied": "Εφαρμόστηκαν σωστά (2)",
+  "codex.gallery.dialogs.gitApplyResults.close": "Κλείσιμο",
+  "codex.gallery.dialogs.gitApplyResults.conflicted": "Σε σύγκρουση (1)",
+  "codex.gallery.dialogs.gitApplyResults.label": "Εφαρμογή αποτελεσμάτων",
+  "codex.gallery.dialogs.gitApplyResults.title": "Εφαρμογή αποτελεσμάτων",
+  "codex.gallery.dialogs.gitPushError.body":
+    "Κάνε pull στις τελευταίες αλλαγές ή κάνε εξαναγκασμένο push εάν γνωρίζεις ότι η αντικατάσταση του απομακρυσμένου ιστορικού είναι ασφαλής.",
+  "codex.gallery.dialogs.gitPushError.cancel": "Ακύρωση",
+  "codex.gallery.dialogs.gitPushError.force": "Εξαναγκασμός push",
+  "codex.gallery.dialogs.gitPushError.label": "Σφάλμα push",
+  "codex.gallery.dialogs.gitPushError.subtitle":
+    "Ο κλάδος βρίσκεται πίσω από τον αρχικό/κύριο.",
+  "codex.gallery.dialogs.gitPushError.title":
+    "Αδυναμία υλοποίησης push αλλαγών",
+  "codex.gallery.dialogs.gitRevert.cancel": "Ακύρωση",
+  "codex.gallery.dialogs.gitRevert.confirm": "Επαναφορά",
+  "codex.gallery.dialogs.gitRevert.label": "Επαναφορά αλλαγών",
+  "codex.gallery.dialogs.gitRevert.skip": "Να μην ξαναγίνει ερώτηση",
+  "codex.gallery.dialogs.gitRevert.subtitle":
+    "Αυτή η ενέργεια καταργεί όλες αυτές τις ενέργειες.",
+  "codex.gallery.dialogs.gitRevert.title": "Επαναφορά αλλαγών;",
+  "codex.gallery.dialogs.longForm.label": "Διάλογος μακράς μορφής",
+  "codex.gallery.dialogs.proseModal.body":
+    "Το στιλ αυτού του αποκλειστικού παραθύρου δεν χρησιμοποιείται για εκτενέστερες οδηγίες, ενσωμάτωση ή αποκλεισμούς πλούσιου περιεχομένου.",
+  "codex.gallery.dialogs.proseModal.close": "Κλείσιμο",
+  "codex.gallery.dialogs.proseModal.subtitle":
+    "Κοινή χρήση καθοδήγησης μακρότερης μορφής ή τεκμηρίωση εδώ.",
+  "codex.gallery.dialogs.proseModal.title": "Αποκλειστικό παράθυρο πεζού λόγου",
+  "codex.gallery.dialogs.submitBlocked.label": "Η υποβολή έχει αποκλειστεί",
+  "codex.gallery.dialogs.submitBlocked.message":
+    "Δεν ήταν δυνατή η αποστολή του μηνύματός σου επειδή το έργο δεν είναι διαθέσιμο.",
+  "codex.gallery.dialogs.submitBlocked.ok": "Εντάξει",
+  "codex.gallery.dialogs.submitBlocked.title": "Αδυναμία αποστολής μηνύματος.",
+  "codex.gallery.dialogs.title": "Διάλογοι",
+  "codex.gallery.dropdown.filterPlaceholder": "Φιλτράρισμα στοιχείων",
+  "codex.gallery.dropdowns.actionRow": "Γραμμές ενεργειών",
+  "codex.gallery.dropdowns.actionRow.disabled": "Απενεργοποιημένη ενέργεια",
+  "codex.gallery.dropdowns.actionRow.primary": "Πρωτεύουσα ενέργεια",
+  "codex.gallery.dropdowns.actionRow.secondary": "Δευτερεύουσα ενέργεια",
+  "codex.gallery.dropdowns.actionRow.trigger": "Εμφάνιση ενεργειών",
+  "codex.gallery.dropdowns.basic": "Βασικό αναπτυσσόμενο",
+  "codex.gallery.dropdowns.basic.newFile": "Νέο αρχείο",
+  "codex.gallery.dropdowns.basic.newFolder": "Νέος φάκελος",
+  "codex.gallery.dropdowns.basic.openSettings": "Άνοιγμα ρυθμίσεων",
+  "codex.gallery.dropdowns.basic.title": "Γρήγορες ενέργειες",
+  "codex.gallery.dropdowns.basic.trigger": "Άνοιγμα μενού",
+  "codex.gallery.dropdowns.basic.upload": "Αποστολή",
+  "codex.gallery.dropdowns.panel": "Επιφάνεια πίνακα",
+  "codex.gallery.dropdowns.panel.apply": "Εφαρμογή",
+  "codex.gallery.dropdowns.panel.body":
+    "Κάνε έλεγχο των diff και εφάρμοσέ τα στο έργο σου.",
+  "codex.gallery.dropdowns.panel.preview": "Προεπισκόπηση",
+  "codex.gallery.dropdowns.panel.title": "Εφαρμογή αλλαγών",
+  "codex.gallery.dropdowns.panel.trigger": "Άνοιγμα πίνακα",
+  "codex.gallery.dropdowns.search": "Αναπτυσσόμενο με δυνατότητα αναζήτησης",
+  "codex.gallery.dropdowns.search.first": "Κανάλι Alpha",
+  "codex.gallery.dropdowns.search.second": "Κλάδος Beta",
+  "codex.gallery.dropdowns.search.third": "Απελευθέρωση υποψηφίου",
+  "codex.gallery.dropdowns.search.trigger": "Φιλτράρισμα στοιχείων",
+  "codex.gallery.dropdowns.submenu": "Αναπτυσσόμενο με υπομενού",
+  "codex.gallery.dropdowns.submenu.optionA": "Έργο alpha",
+  "codex.gallery.dropdowns.submenu.optionB": "Έργο beta",
+  "codex.gallery.dropdowns.submenu.optionC": "Έργο gamma",
+  "codex.gallery.dropdowns.submenu.primary": "Ανάθεση κατόχου",
+  "codex.gallery.dropdowns.submenu.secondary": "Μετάβαση σε",
+  "codex.gallery.dropdowns.submenu.tertiary": "Αρχειοθέτηση",
+  "codex.gallery.dropdowns.submenu.trigger": "Επιλογή ενέργειας",
+  "codex.gallery.dropdowns.title": "Αναπτυσσόμενα",
+  "codex.gallery.inbox.automations.close": "Κλείσιμο",
+  "codex.gallery.inbox.automations.popover.cardTitle":
+    "Διαχείριση αυτοματισμών",
+  "codex.gallery.inbox.automations.popover.dialogTitle":
+    "Διαχείριση αυτοματισμών",
+  "codex.header.settingsTooltip": "Ρυθμίσεις",
+  "codex.hunk.patch.error": "Αποτυχία σταδιοποίησης",
+  "codex.hunk.patch.missing":
+    "Αδυναμία δημιουργίας λογισμικού ενημέρωσης για αυτό το hunk.",
+  "codex.hunk.patch.partialSuccess": "Μερική επιτυχία",
+  "codex.hunk.patch.revertError": "Αποτυχία αποσταδιοποίησης",
+  "codex.hunk.patch.revertSuccess": "Επιτυχής αποσταδιοποίηση",
+  "codex.hunk.patch.success": "Επιτυχής σταδιοποίηση",
+  "codex.legal.autonomy.details":
+    "Για περισσότερες λεπτομέρειες, δες το {link}",
+  "codex.legal.autonomy.details.link": "Έγγραφα Codex",
+  "codex.legal.autonomy.title": "Αποφάσισε πόση αυτονομία θέλεις να χορηγήσεις",
+  "codex.legal.backButton": "Πίσω",
+  "codex.legal.cloud.taskOne.meta": "openai/agi · 12 Οκτωβρίου",
+  "codex.legal.cloud.taskOne.title":
+    "Εξήγησε το αποθετήριο σε έναν νέο σχεδιαστή",
+  "codex.legal.cloud.taskThree.meta": "openai/codex · 8 Οκτωβρίου",
+  "codex.legal.cloud.taskThree.stats.negative": "-123",
+  "codex.legal.cloud.taskThree.stats.positive": "+249",
+  "codex.legal.cloud.taskThree.title":
+    "Δημιούργησε ένα θέμα σκοτεινής λειτουργίας",
+  "codex.legal.cloud.taskTwo.meta": "openai/agi · 9 Οκτωβρίου",
+  "codex.legal.cloud.taskTwo.stats.negative": "-20",
+  "codex.legal.cloud.taskTwo.stats.positive": "+2",
+  "codex.legal.cloud.taskTwo.title": "Επιδιόρθωση ενός σφάλματος ενσωμάτωσης",
+  "codex.legal.continue.apikey": "Συνέχεια",
+  "codex.legal.continueButton": "Επόμενο",
+  "codex.legal.copilot.details":
+    "Χρησιμοποιεί το πρόγραμμά σου στο Copilot για όλες τις κλήσεις μοντέλων, τις χρεώσεις και τα όρια χρεώσεων. Η επέκταση της χρήσης του Codex υπόκειται σε {oaiTos} και {gitHubTos}.",
+  "codex.legal.copilot.gitHubTosLink": "Όροι υπηρεσίας του GitHub",
+  "codex.legal.copilot.oaiTosLink": "Όροι υπηρεσίας του OpenAI Codex",
+  "codex.legal.copilot.title": "Με την υποστήριξη του GitHub Copilot",
+  "codex.legal.mistakes.review":
+    "Έλεγξε τον κώδικα που γράφει και τις εντολές που εκτελεί",
+  "codex.legal.mistakes.title": "Το Codex μπορεί να κάνει λάθη",
+  "codex.legal.powered.details":
+    "Χρησιμοποιεί τα όρια χρέωσης του προγράμματός σου και {link}",
+  "codex.legal.powered.details.link": "προτιμήσεις δεδομένων εκπαίδευσης",
+  "codex.legal.powered.title":
+    "Με την υποστήριξη του λογαριασμού σου στο ChatGPT",
+  "codex.legal.step.cloud.subtitle":
+    "Στείλε εργασίες στο Codex για εκτέλεση στο παρασκήνιο ώστε να διατηρήσεις τη συγκέντρωσή σου και να κινηθείς γρηγορότερα.",
+  "codex.legal.step.cloud.title": "Παράδοση στο Codex στο cloud",
+  "codex.legal.step.intro.subtitle":
+    "Το Codex περιηγείται, επεξεργάζεται, εκτελεί εντολές και διεξάγει δοκιμές απευθείας στο αποθετήριό σου. Με την υποστήριξη του λογαριασμού σου στο ChatGPT.",
+  "codex.legal.step.intro.title": "Codex στο IDE σου",
+  "codex.legal.step.todo.subtitle":
+    "Γράψε ένα σχόλιο TODO και μετάτρεψε το σε εργασία Codex με ένα απλό κλικ.",
+  "codex.legal.step.todo.title": "Μετατροπή TODO σε εργασίες του Codex",
+  "codex.legal.todo.heading": "// TODO: υλοποίηση σχήματος",
+  "codex.localConversation.closeImagePreview":
+    "Κλείσιμο προεπισκόπησης εικόνας",
+  "codex.localConversation.userImageAttachment": "Επισύναψη χρήστη",
+  "codex.localTaskRow.archiveTask": "Αρχειοθέτηση νήματος",
+  "codex.localTaskRow.awaitingApproval": "Αναμονή για έγκριση",
+  "codex.localTaskRow.awaitingResponse": "Αναμονή για απάντηση",
+  "codex.localTaskRow.confirmArchiveTask": "Επιβεβαίωση",
+  "codex.loggedOut.apiKeyPrompt.cancel": "Ακύρωση",
+  "codex.loggedOut.apiKeyPrompt.confirm": "Εντάξει",
+  "codex.loggedOut.apiKeyPrompt.getKey": "Λήψη κλειδιού API",
+  "codex.loggedOut.apiKeyPrompt.inputLabel":
+    "Πληκτρολόγησε το κλειδί σου OpenAI API",
+  "codex.loggedOut.apiKeyPrompt.placeholder": "sk-...",
+  "codex.loggedOut.cloudTasksDisabledWithApiKey":
+    "Οι εργασίες cloud απενεργοποιήθηκαν με το κλειδί API",
+  "codex.loggedOut.cloudTasksDisabledWithCopilotAndApiKey":
+    "Οι εργασίες cloud απενεργοποιήθηκαν με το Copilot και το κλειδί API",
+  "codex.loggedOut.signIn": "Σύνδεση με το ChatGPT",
+  "codex.loggedOut.signIn.cancel": "Ακύρωση σύνδεσης",
+  "codex.loggedOut.signInWithCopilot": "Σύνδεση με GitHub Copilot",
+  "codex.loggedOut.title": "Codex",
+  "codex.loggedOut.useApiKey": "Χρήση κλειδιού API",
+  "codex.mcpTool.collapsedLabel": "{label} {details}",
+  "codex.mcpTool.collapsedLabel.details": "{server} MCP {tool} εργαλείο",
+  "codex.mcpTool.collapsedLabel.verb.called": "Έγινε κλήση",
+  "codex.mcpTool.collapsedLabel.verb.calling": "Γίνεται κλήση",
+  "codex.mcpTool.embeddedResource.contentLabel": "Περιεχόμενο",
+  "codex.mcpTool.embeddedResource.mimeTypeLabel": "Τύπος MIME",
+  "codex.mcpTool.embeddedResource.uriLabel": "URI",
+  "codex.mcpTool.noResult": "Το εργαλείο δεν επέστρεψε περιεχόμενο",
+  "codex.mcpTool.rawPayloadHeading":
+    "Ακατέργαστο payload κλήσης {server}.{tool} εργαλείου",
+  "codex.menu.recent": "Πρόσφατα",
+  "codex.menu.seeAllHistory": "Προβολή όλου του ιστορικού",
+  "codex.patch.change.contentsDeleted": "Διαγράφηκαν περιεχόμενα",
+  "codex.patch.change.created": "Δημιουργήθηκε",
+  "codex.patch.change.creating": "Δημιουργία σε εξέλιξη",
+  "codex.patch.change.deleted": "Διαγράφηκε",
+  "codex.patch.change.deleting": "Γίνεται διαγραφή…",
+  "codex.patch.change.edited": "Έγινε επεξεργασία",
+  "codex.patch.change.edited-file": "Επεξεργασμένο αρχείο",
+  "codex.patch.change.editing": "Γίνεται επεξεργασία",
+  "codex.patch.change.noChanges": "Δεν υπάρχουν αλλαγές",
+  "codex.patch.change.rejected-add": "Απορρίφθηκε",
+  "codex.patch.change.rejected-delete": "Απορρίφθηκε",
+  "codex.patch.change.rejected-edit": "Απορρίφθηκε",
+  "codex.plan.stepIndexPrefix": "{index}.",
+  "codex.plan.tasksCompletedSummary":
+    "{completed} από {total} εργασίες ολοκληρώθηκαν",
+  "codex.plan.todoListCreated":
+    "Λίστα εργασιών που πρέπει να γίνουν που δημιουργήθηκε με {total} εργασίες",
+  "codex.profileDropdown.apiKeyAuth": "Συνδέθηκε με κλειδί API",
+  "codex.profileDropdown.codexSettings": "Ρυθμίσεις Codex",
+  "codex.profileDropdown.copilotAuth": "Συνδέθηκε με Copilot",
+  "codex.profileDropdown.defaultAccountTitle": "Προεπιλεγμένος λογαριασμός",
+  "codex.profileDropdown.enterBehavior":
+    "{modifierSymbol} + enter για αποστολή μεγάλων προτροπών",
+  "codex.profileDropdown.enterBehaviorError":
+    "Η ενημέρωση της ρύθμισης απέτυχε",
+  "codex.profileDropdown.getPlus": "Κάνε αναβάθμιση για υψηλότερα όρια",
+  "codex.profileDropdown.keyboardShortcuts": "Συντομεύσεις πληκτρολογίου",
+  "codex.profileDropdown.language": "Γλώσσα",
+  "codex.profileDropdown.languageDefault": "Αυτόματος εντοπισμός",
+  "codex.profileDropdown.languageSearchPlaceholder": "Αναζήτηση γλωσσών",
+  "codex.profileDropdown.languageUpdateError": "Αποτυχία ενημέρωσης γλώσσας",
+  "codex.profileDropdown.logOut": "Αποσύνδεση",
+  "codex.profileDropdown.mcp": "Ρυθμίσεις MCP",
+  "codex.profileDropdown.openConfigToml": "Άνοιγμα config.toml",
+  "codex.profileDropdown.openConfigToml.wsl":
+    "Άνοιγμα config.toml σε περιβάλλον WSL",
+  "codex.profileDropdown.openExtensionSettings": "Άνοιγμα ρυθμίσεων",
+  "codex.profileDropdown.openMcpSettings": "Άνοιγμα ρυθμίσεων MCP",
+  "codex.profileDropdown.openOnStartup": "Άνοιγμα στην έναρξη",
+  "codex.profileDropdown.openOnStartupError":
+    "Η ενημέρωση της ρύθμισης απέτυχε",
+  "codex.profileDropdown.openSkillsSettings": "Άνοιγμα ρυθμίσεων δεξιοτήτων",
+  "codex.profileDropdown.personalAccountTitle": "Προσωπικός λογαριασμός",
+  "codex.profileDropdown.queueFollowUps": "Συνέχειες ουράς",
+  "codex.profileDropdown.queueFollowUpsError":
+    "Η ενημέρωση της ρύθμισης απέτυχε",
+  "codex.profileDropdown.readDocs": "Ανάγνωση εγγράφων",
+  "codex.profileDropdown.readSkillsDocs": "Ανάγνωση εγγράφων",
+  "codex.profileDropdown.runInWsl": "Εκτέλεση σε WSL",
+  "codex.profileDropdown.runInWslError": "Η ενημέρωση της ρύθμισης απέτυχε",
+  "codex.profileDropdown.runInWslTooltip":
+    "Εκτελεί το Codex στο WSL. Συστήνεται για βελτιωμένη ασφάλεια στο sandbox και καλύτερη απόδοση.",
+  "codex.profileDropdown.settings": "Ρυθμίσεις IDE",
+  "codex.profileDropdown.settingsPage": "Ρυθμίσεις",
+  "codex.profileDropdown.signInWithOpenAI": "Σύνδεση με το ChatGPT",
+  "codex.profileDropdown.skills": "Ρυθμίσεις δεξιοτήτων",
+  "codex.profileDropdown.switchToCopilotAccount": "Χρήση λογαριασμού Copilot",
+  "codex.profileDropdown.switchToOpenAIAccount": "Χρήση λογαριασμού OpenAI",
+  "codex.profileDropdown.todoCodelens": "Διόρθωση σχολίων TODO",
+  "codex.profileDropdown.todoCodelensError": "Η ενημέρωση της ρύθμισης απέτυχε",
+  "codex.profileDropdown.windowsDocumentation": "Τεκμηρίωση Windows",
+  "codex.profileFooter.signedInFallback": "Έγινε σύνδεση",
+  "codex.profileFooter.upgrade": "Αναβάθμιση",
+  "codex.recentTasksMenu.clearSearch": "Εκκαθάριση αναζήτησης",
+  "codex.recentTasksMenu.cloud": "Εργασίες cloud",
+  "codex.recentTasksMenu.count":
+    "{count, plural, =0 {Δεν υπάρχουν εργασίες σε εξέλιξη} one {# εργασία σε εξέλιξη} other {# εργασίες σε εξέλιξη}}",
+  "codex.recentTasksMenu.empty": "Δεν υπάρχουν ακόμη νήματα",
+  "codex.recentTasksMenu.errorCloud": "Αποτυχία φόρτωσης εργασιών.",
+  "codex.recentTasksMenu.errorCloud.inline":
+    "Αποτυχία φόρτωσης εργασιών cloud.",
+  "codex.recentTasksMenu.filterAll": "Όλα",
+  "codex.recentTasksMenu.filterCloudTasks": "Φιλτράρισμα εργασιών cloud",
+  "codex.recentTasksMenu.filterTooltip": "Φιλτράρισμα εργασιών ανά περιβάλλον",
+  "codex.recentTasksMenu.local": "Τοπικές εργασίες",
+  "codex.recentTasksMenu.recent": "Όλες οι εργασίες",
+  "codex.recentTasksMenu.search": "Αναζήτηση πρόσφατων εργασιών",
+  "codex.recentTasksMenu.searchEmpty": "Κανένα αποτέλεσμα",
+  "codex.recentTasksMenu.tooltip": "Ιστορικό εργασιών",
+  "codex.recentTasksMenu.trigger":
+    "Πρόσφατες εργασίες. {count, plural, one {# σε εξέλιξη} other {# σε εξέλιξη}}",
+  "codex.remoteConversation.applyDiff.applyCta": "Εφαρμογή αλλαγών",
+  "codex.remoteConversation.applyDiff.dropdownTitle":
+    "Εφαρμογή αλλαγών σε τοπικό κλάδο",
+  "codex.remoteConversation.applyDiff.revertCta": "Επαναφορά αλλαγών",
+  "codex.remoteConversation.closeImagePreview":
+    "Κλείσιμο προεπισκόπησης εικόνας",
+  "codex.remoteConversation.codexCloudTask":
+    "Βλέπεις μια εργασία <u>Codex cloud</u>",
+  "codex.remoteConversation.errorWithMessage": "Σφάλμα: {message}",
+  "codex.remoteConversation.loadingImage": "Φόρτωση εικόνας",
+  "codex.remoteConversation.openInWeb": "Άνοιγμα στον ιστό",
+  "codex.remoteConversation.streaming": "Έναρξη δημιουργίας",
+  "codex.remoteConversation.turnFailed":
+    "Παρουσιάστηκε σφάλμα κατά τη διάρκεια αυτής της εργασίας",
+  "codex.remoteConversation.turnTab.loading": "Προσπάθεια {number}",
+  "codex.remoteConversation.turnTab.title": "Προσπάθεια {number}",
+  "codex.remoteConversation.userImageAttachment": "Επισύναψη χρήστη",
+  "codex.remoteConversation.viewPreviousTurns": "Άνοιγμα στον ιστό",
+  "codex.remoteConversation.viewPreviousTurns.buttonText": "Άνοιγμα",
+  "codex.remoteConversation.viewPreviousTurns.buttonTooltip":
+    "Άνοιγμα στον ιστό",
+  "codex.review.copyGitApplyCommand": "Αντιγραφή εντολής εφαρμογής git",
+  "codex.review.copyGitApplyCommand.toast":
+    "Έγινε αντιγραφή της εντολής εφαρμογής git στο πρόχειρο",
+  "codex.review.diffTooLarge.description":
+    "Αυτό το diff είναι πολύ μεγάλο για προβολή στον έλεγχο.",
+  "codex.review.diffTooLarge.title": "Το diff είναι πολύ μεγάλο για προβολή",
+  "codex.review.expandOrCollapseDiffButton.collapse": "Σύμπτυξη όλων των diffs",
+  "codex.review.expandOrCollapseDiffButton.expand": "Επέκταση όλων των diffs",
+  "codex.review.expandOrCollapseDiffMenu.collapse": "Σύμπτυξη όλων των diffs",
+  "codex.review.expandOrCollapseDiffMenu.expand": "Επέκταση όλων των diffs",
+  "codex.review.fileSearch.clear": "Εκκαθάριση φίλτρου αρχείων",
+  "codex.review.fileSearch.empty":
+    "Δεν υπάρχουν αρχεία που να ταιριάζουν με το τρέχον φίλτρο.",
+  "codex.review.fileSearch.label": "Φιλτράρισμα αρχείων",
+  "codex.review.fileSearch.placeholder": "Φιλτράρισμα αρχείων…",
+  "codex.review.filesChanged":
+    "{num, plural, =0 {Δεν άλλαξε κανένα αρχείο} one {# αρχείο άλλαξε} other {# αρχεία άλλαξαν}}",
+  "codex.review.find.loadMore": "Φόρτωση περισσότερων αντιστοιχιών",
+  "codex.review.fullReview.hideFileTree": "Απόκρυψη δέντρου αρχείων",
+  "codex.review.fullReview.showFileTree": "Εμφάνιση δέντρου αρχείων",
+  "codex.review.header.moreOptions": "Έλεγχος επιλογών",
+  "codex.review.largeDiff.banner":
+    "Εντοπίστηκε μεγάλο diff —εμφανίζεται μόνο ένα αρχείο τη φορά.",
+  "codex.review.loadFullFiles.disable": "Να μην φορτωθούν τα πλήρη αρχεία",
+  "codex.review.loadFullFiles.enable": "Να φορτωθούν τα πλήρη αρχεία",
+  "codex.review.noDiff": "Οι αλλαγές στο αρχείο θα εμφανίζονται εδώ",
+  "codex.review.noDiff.gitInit.createRepository": "Δημιουργία αποθετηρίου git",
+  "codex.review.noDiff.gitInit.creating": "Δημιουργία σε εξέλιξη…",
+  "codex.review.noDiff.gitInit.error": "Αποτυχία αρχικοποίησης git: {message}",
+  "codex.review.noDiff.gitInit.success": "Δημιουργήθηκε αποθετήριο git",
+  "codex.review.noDiff.gitRepoRequired.description":
+    "Παρακολούθησε και αναίρεσε τις αλλαγές σε αυτό το έργο",
+  "codex.review.noDiff.gitRepoRequired.title": "Δημιούργησε ένα αποθετήριο git",
+  "codex.review.noDiff.orNoLongerAvailable":
+    "ή τα τελευταία diff δεν είναι πλέον διαθέσιμα",
+  "codex.review.noDiff.reverted": "Έγινε επαναφορά του τελευταίου κύκλου",
+  "codex.review.noDiff.revertedOrCommitted":
+    "Ο τελευταίος κύκλος επαναφέρθηκε ή δεσμεύτηκε",
+  "codex.review.refreshGitQueries": "Ανανέωση",
+  "codex.review.revert.file.error": "Αποτυχία επαναφοράς της διαδρομής {path}",
+  "codex.review.revert.file.partialSuccess":
+    "Έγινε μερική επαναφορά της διαδρομής {path}",
+  "codex.review.revert.file.success": "Έγινε επαναφορά της διαδρομής {path}",
+  "codex.review.revert.hunk.error":
+    "Αποτυχία επαναφοράς του hunk {hunkNumber} στη διαδρομή {path}",
+  "codex.review.revert.hunk.partialSuccess":
+    "Έγινε μερική επαναφορά του hunk {hunkNumber} στη διαδρομή {path}",
+  "codex.review.revert.hunk.success":
+    "Έγινε επαναφορά του hunk {hunkNumber} στη διαδρομή {path}",
+  "codex.review.revert.section.error": "Αποτυχία επαναφοράς ενότητας",
+  "codex.review.revert.section.partialSuccess":
+    "Έγινε μερική επαναφορά της ενότητας",
+  "codex.review.revert.section.success": "Έγινε επαναφορά της ενότητας",
+  "codex.review.revertDialog.cancel": "Ακύρωση",
+  "codex.review.revertDialog.confirm": "Επιβεβαίωση",
+  "codex.review.revertDialog.message":
+    "Αυτή η ενέργεια καταργεί όλες αυτές τις ενέργειες.",
+  "codex.review.revertDialog.skip": "Να μην ξαναγίνει ερώτηση",
+  "codex.review.revertDialog.title": "Επαναφορά αλλαγών;",
+  "codex.review.richPreview.disable": "Απενεργοποίηση πλούσιας προεπισκόπησης",
+  "codex.review.richPreview.enable": "Ενεργοποίηση πλούσιας προεπισκόπησης",
+  "codex.review.source.cloud": "Αλλαγές στο cloud",
+  "codex.review.source.local.all": "Όλες οι αλλαγές στους κλάδους",
+  "codex.review.source.local.lastTurn": "Αλλαγές στον τελευταίο κύκλο",
+  "codex.review.source.local.uncommitted": "Αλλαγές χωρίς commit",
+  "codex.review.source.worktree":
+    "Αλλαγές στο δέντρο εργασιών για τις οποίες δεν έγινε commit",
+  "codex.review.stageFilter.empty.staged.description":
+    "Αποδοχή ενεργειών επεξεργασίας για σταδιοποίησή τους",
+  "codex.review.stageFilter.empty.staged.title":
+    "Δεν υπάρχουν σταδιοποιημένες αλλαγές",
+  "codex.review.stageFilter.empty.unstaged.description":
+    "Οι αλλαγές στον κώδικα θα εμφανίζονται εδώ",
+  "codex.review.stageFilter.empty.unstaged.title":
+    "Δεν υπάρχουν μη σταδιοποιημένες αλλαγές",
+  "codex.review.stageFilter.staged": "Σταδιοποιημένες",
+  "codex.review.stageFilter.staged.count": "Σταδιοποιημένες · {count}",
+  "codex.review.stageFilter.unstaged": "Μη σταδιοποιημένες",
+  "codex.review.stageFilter.unstaged.count": "Μη σταδιοποιημένες · {count}",
+  "codex.review.switchToSplit": "Εναλλαγή σε διαχωρισμένο diff",
+  "codex.review.switchToUnified": "Εναλλαγή σε ενοποιημένο diff",
+  "codex.review.toggleDiffView": "Εναλλαγή προβολής diff",
+  "codex.review.wordDiffs.disable": "Απενεργοποίηση diff λέξεων",
+  "codex.review.wordDiffs.enable": "Ενεργοποίηση diff λέξεων",
+  "codex.review.wrap.disable": "Απενεργοποίηση αυτόματης αναδίπλωσης λέξεων",
+  "codex.review.wrap.enable": "Ενεργοποίηση αυτόματης αναδίπλωσης λέξεων",
+  "codex.section.patch.missing":
+    "Αδυναμία δημιουργίας λογισμικού ενημέρωσης για αυτή την ενότητα.",
+  "codex.shell.collapse": "Σύμπτυξη κελύφους",
+  "codex.shell.commandLine": "$ {command}",
+  "codex.shell.copy.copiedTooltip":
+    "Έγινε αντιγραφή των περιεχομένων του κελύφους",
+  "codex.shell.copy.copyTooltip": "Αντιγραφή περιεχομένων κελύφους",
+  "codex.shell.copyCommand": "Αντιγραφή εντολής",
+  "codex.shell.copyOutput": "Αντιγραφή αποτελέσματος",
+  "codex.shell.cwdLabel": "cwd",
+  "codex.shell.embeddedHeader.bash": "bash",
+  "codex.shell.expand": "Επέκταση κελύφους",
+  "codex.shell.name": "Shell",
+  "codex.shell.noOutput": "Χωρίς αποτέλεσμα",
+  "codex.signInFailed.message": "Αποτυχία σύνδεσης: {rawMessage}",
+  "codex.stories.toast.show": "Εμφάνιση πρόποσης",
+  "codex.stories.tooltip.basic": "Αυτή είναι μία συμβουλή",
+  "codex.stories.tooltip.hoverMe": "Πέρνα από πάνω μου",
+  "codex.stories.tooltip.largerOffset":
+    "Αυτή η συμβουλή έχει μεγαλύτερο περιθώριο",
+  "codex.stories.tooltip.offsetButton": "Μεγαλύτερο περιθώριο",
+  "codex.stories.tooltip.shortcutButton": "Με συντόμευση",
+  "codex.stories.tooltip.withShortcut": "Εναλλαγή τερματικού",
+  "codex.taskRow.title": "Νέο νήμα",
+  "codex.taskRowLayout.confirm": "Επιβεβαίωση",
+  "codex.threadFindBar.chatFilter": "Αναζήτηση συνομιλίας",
+  "codex.threadFindBar.close": "Κλείσιμο εύρεσης",
+  "codex.threadFindBar.diffFilter": "Αναζήτηση diff",
+  "codex.threadFindBar.label": "Εύρεση στο νήμα",
+  "codex.threadFindBar.nextResult": "Επόμενο αποτέλεσμα",
+  "codex.threadFindBar.noResults": "0 αποτελέσματα",
+  "codex.threadFindBar.placeholder": "Αναζήτηση νήματος…",
+  "codex.threadFindBar.placeholder.extension": "Αναζήτηση νήματος…",
+  "codex.threadFindBar.placeholder.review": "Αναζήτηση diff…",
+  "codex.threadFindBar.placeholder.review.extension": "Αναζήτηση diff…",
+  "codex.threadFindBar.previousResult": "Προηγούμενο αποτέλεσμα",
+  "codex.todoPlan.stepIndexPrefix": "{index}.",
+  "codex.ui.bulletSeparator": "·",
+  "codex.unifiedDiff.filesChanged":
+    "{fileCount, plural, one {# αρχείο άλλαξε} other {# αρχεία άλλαξαν}}",
+  "codex.unifiedDiff.inlineLargeFile": "Πολύ μεγάλο για απόδοση inline",
+  "codex.unifiedDiff.linesAdded": "+{linesAdded}",
+  "codex.unifiedDiff.linesDeleted": "-{linesDeleted}",
+  "codex.unifiedDiff.revertChangesTooltip": "Αναίρεση",
+  "codex.unifiedDiff.revertPatchError": "Αποτυχία επαναφοράς αλλαγών",
+  "codex.unifiedDiff.revertPatchSuccess": "Έγινε επαναφορά των αλλαγών",
+  "codex.unifiedDiff.reviewChangesSuffix": "αλλαγές",
+  "codex.unifiedDiff.reviewShort": "Έλεγχος",
+  "codex.unifiedDiff.viewDiffTooltip": "Έλεγχος",
+  "codex.upsellBanner.business.headline":
+    "Για να αποκτήσεις περισσότερη πρόσβαση τώρα, στείλε ένα αίτημα στον διαχειριστή σου ή περίμενε μέχρι τις {resetDate}",
+  "codex.upsellBanner.cbp.headline":
+    "Για να αποκτήσεις περισσότερη πρόσβαση τώρα, στείλε ένα αίτημα στον διαχειριστή σου.",
+  "codex.upsellBanner.cta.addCredits": "Προσθήκη πιστωτικών μονάδων",
+  "codex.upsellBanner.cta.upgradeAccount": "Αναβάθμιση",
+  "codex.upsellBanner.cta.viewUsage": "Προβολή χρήσης",
+  "codex.upsellBanner.freeOrGo.headline":
+    "Η ανανέωση του ορίου χρέωσής σου θα γίνει στις {resetDate}. Για να συνεχίσεις να χρησιμοποιείς το Codex, κάνε αναβάθμιση σε Plus σήμερα.",
+  "codex.upsellBanner.general.headline":
+    "Το όριο χρέωσής σου θα ανανεωθεί στις {resetDate}.",
+  "codex.upsellBanner.general.title": "Δεν δικαιούσαι άλλα μηνύματα Codex",
+  "codex.upsellBanner.plus.headline":
+    "Η ανανέωση του ορίου χρέωσής σου θα γίνει στις {resetDate}. Για να συνεχίσεις να χρησιμοποιείς το Codex, πρόσθεσε πιστωτικές μονάδες ή κάνες αναβάθμιση σε Pro σήμερα.",
+  "codex.upsellBanner.pro.headline":
+    "Η ανανέωση του ορίου χρέωσής σου θα γίνει στις {resetDate}. Πρόσθεσε πιστωτικές μονάδες για να συνεχίσεις να χρησιμοποιείς το Codex τώρα.",
+  "codex.userMessage.autoResolveSync": "Αυτόματη επίλυση συγκρούσεων",
+  "codex.userMessage.commentCount":
+    "{count, plural, one {# σχόλιο} other {# σχόλια}}",
+  "codex.userMessage.copiedAriaLabel": "Αντιγράφηκε",
+  "codex.userMessage.copiedTooltip": "Αντιγράφηκε",
+  "codex.userMessage.copyAriaLabel": "Αντιγραφή μηνύματος",
+  "codex.userMessage.copyTooltip": "Αντιγραφή",
+  "codex.userMessage.implementPlan": "Πρόγραμμα υλοποίησης",
+  "codex.userMessage.noContent": "(Δεν υπάρχει περιεχόμενο)",
+  "codex.userMessage.priorConversation":
+    "Κάνει αναφορά σε προηγούμενη συζήτηση",
+  "codex.userMessage.reviewMode": "Λειτουργία ελέγχου",
+  "codex.webSearch.summary": "{label}{details}",
+  "codex.webSearch.summary.details": "για {query}",
+  "codex.webSearch.summary.verb.completed": "Έγινε αναζήτηση στον ιστό",
+  "codex.webSearch.summary.verb.inProgress": "Γίνεται αναζήτηση στον ιστό",
+  "codex.windowsInstallWslBanner.dismiss": "Κλείσιμο",
+  "codex.windowsInstallWslBanner.installWslCta": "Ενεργοποίηση sandbox",
+  "codex.windowsInstallWslBanner.learnMore": "Μάθε περισσότερα",
+  "codex.windowsSandboxBanner.content":
+    "Η λειτουργία πράκτορα χρησιμοποιεί ένα πειραματικό sandbox στα Windows για να περιορίσει την πρόσβαση στο σύστημα αρχείων και στο δίκτυο. {sandboxLink}",
+  "codex.windowsSandboxBanner.title":
+    "Ενεργοποίηση sandbox για λειτουργία πράκτορα",
+  "codex.windowsSubDropdown.windowsSandbox": "Windows Sandbox",
+  "codex.windowsSubDropdown.windowsSettings": "Ρυθμίσεις Windows",
+  "codexUpgradeModal.body":
+    "Το Codex υποστηρίζεται πλέον από το GPT-5.2-Codex, το τελευταίο μας μοντέλο κωδικοποίησης με λειτουργία πράκτορα. Στην κωδικοποίηση είναι {link}; βελτιώνοντας περαιτέρω το GPT-5.2.",
+  "codexUpgradeModal.close": "Κλείσιμο",
+  "codexUpgradeModal.image.altText": "GPT-5.2-Codex",
+  "codexUpgradeModal.smarterAndFaster": "εξυπνότερο και πιο γρήγορο",
+  "codexUpgradeModal.title": "Το Codex μόλις αναβαθμίστηκε",
+  "codexUpgradeModal.tryNewModel": "Δοκίμασε το GPT-5.2-Codex τώρα",
+  "codexUpgradeModal.useExistingModel": "Συνέχεια με το τρέχον μοντέλο",
+  "commentAttachments.numComments":
+    "{count, plural, one {# σχόλιο} other {# σχόλια}}",
+  "commentAttachments.removeAriaLabel": "Κατάργηση επισύναψης σχολίων",
+  "common.close": "Κλείσιμο",
+  "composer.addContextDropdown.ariaLabel": "Προσθήκη αρχείων και άλλα",
+  "composer.addContextDropdown.tooltipSlash": "/",
+  "composer.addContextDropdown.tooltipText": "Προσθήκη αρχείων και άλλα",
+  "composer.addPhotosAndFiles": "Προσθήκη φωτογραφιών & αρχείων",
+  "composer.atMentionList.emptyQuery":
+    "Πληκτρολόγησε για να αναζητήσεις αρχεία",
+  "composer.atMentionList.noResults": "Κανένα αποτέλεσμα",
+  "composer.attemptsSelector.option":
+    "{count, plural, one {# έκδοση} other {# εκδόσεις}}",
+  "composer.attemptsSelector.tooltip":
+    "Αριθμός παράλληλων προσπαθειών που πρέπει να κάνει το Codex",
+  "composer.attemptsSelector.trigger": "{count}x",
+  "composer.cloudFollowUp.cloud": "Cloud",
+  "composer.cloudFollowUp.local": "Τοπικά",
+  "composer.cloudFollowUp.whereRun":
+    "Πού πρέπει να εκτελεστεί αυτή η συνέχεια;",
+  "composer.cloudTaskCreationError": "Σφάλμα κατά τη δημιουργία εργασίας cloud",
+  "composer.cloudTaskError": "Σφάλμα κατά τη δημιουργία εργασίας",
+  "composer.collaborationMode.code": "Κωδικός",
+  "composer.collaborationMode.modelReasoning.editLabel":
+    "Επεξεργασία μοντέλου και συλλογισμού",
+  "composer.collaborationMode.modelReasoning.title":
+    "Μοντέλο και συλλογισμός για {mode}",
+  "composer.collaborationMode.plan": "Πρόγραμμα",
+  "composer.collaborationMode.reasoning.default": "Προεπιλογή",
+  "composer.collaborationMode.tooltip.line1":
+    "Το {mode} χρησιμοποιεί το {model}",
+  "composer.collaborationMode.tooltip.line2": "με {reasoningEffort}",
+  "composer.contextWindow.autoCompactionTooltipLine1":
+    "Το Codex συμπιέζει αυτόματα το περιβάλλον του",
+  "composer.contextWindow.usagePercent": "{usage}%",
+  "composer.contextWindowUsageLabel": "Παράθυρο περιβάλλοντος:",
+  "composer.contextWindowUsageStatusFull": "{usage}% πλήρης",
+  "composer.contextWindowUsageStatusLeft":
+    "{usage}% χρησιμοποιήθηκε ({remaining}% απομένει)",
+  "composer.contextWindowUsageTooltip":
+    "{usedTokens}k / {contextWindow}k πιστωτικές μονάδες χρησιμοποιήθηκαν",
+  "composer.customCliTooltip":
+    "Χρησιμοποιείται ένα προσαρμοσμένο εκτελέσιμο CLI",
+  "composer.dictation.aria": "Υπαγόρευσε",
+  "composer.dictation.cancel.aria": "Διακοπή υπαγόρευσης",
+  "composer.dictation.cancel.tooltip": "Διακοπή υπαγόρευσης",
+  "composer.dictation.startError": "Αδυναμία έναρξης υπαγόρευσης",
+  "composer.dictation.submit.aria": "Μεταγραφή και αποστολή",
+  "composer.dictation.submit.tooltip": "Μεταγραφή και αποστολή",
+  "composer.dictation.tooltip": "Κράτα πατημένο για υπαγόρευση",
+  "composer.dictation.transcribeError": "Αδυναμία μεταγραφής ήχου",
+  "composer.dictation.unsupported":
+    "Η υπαγόρευση δεν είναι διαθέσιμη σε αυτή τη συσκευή",
+  "composer.dropOverlay.holdShift": "Κράτα το {key} για να αφήσεις",
+  "composer.dropOverlay.shiftKey": "Shift",
+  "composer.environmentSelector.createNew": "Δημιουργία νέου",
+  "composer.environmentSelector.error": "Σφάλμα φόρτωσης περιβαλλόντων",
+  "composer.environmentSelector.goBack": "Επιστροφή στο composer",
+  "composer.environmentSelector.title": "Επιλογή περιβάλλοντος",
+  "composer.environmentSelector.tooltip": "Επίλεξε ένα περιβάλλον cloud",
+  "composer.feedbackSlashCommand.title": "Σχόλια",
+  "composer.followerTooltip":
+    "Για συνεχίσεις, επίστρεψε στο παράθυρο όπου ξεκίνησε αυτή η συζήτηση.",
+  "composer.footer.branchSwitch.createDialog.ariaLabel": "Όνομα κλάδου",
+  "composer.footer.branchSwitch.createDialog.branchName": "Όνομα κλάδου",
+  "composer.footer.branchSwitch.createDialog.close": "Κλείσιμο",
+  "composer.footer.branchSwitch.uncommittedDialog.cancel": "Ακύρωση",
+  "composer.footer.branchSwitch.uncommittedDialog.separator": "·",
+  "composer.footer.branchSwitch.uncommittedDialog.title":
+    "Αλλαγές χωρίς commit",
+  "composer.ideContextIndicator.tooltipToggle": "για εναλλαγή",
+  "composer.imageUploadFailed": "Αποτυχία αποστολής εικόνας",
+  "composer.includeIdeContextDropdown": "Συμπεριλήψη περιβάλλοντος IDE",
+  "composer.includeIdeContextDropdown.ariaLabel":
+    "Συμπεριλήψη περιβάλλοντος IDE",
+  "composer.localCwdDropdown.addWorkspaceRoot": "Προσθήκη νέου έργου",
+  "composer.localCwdDropdown.noActiveRoot": "Επίλεξε το έργο σου",
+  "composer.localCwdDropdown.noResults": "Δεν βρέθηκαν φάκελοι",
+  "composer.localCwdDropdown.title": "Επίλεξε το έργο σου",
+  "composer.localTaskError": "Σφάλμα κατά την έναρξη της συζήτησης",
+  "composer.mcpSlashCommand.description": "Εμφάνιση κατάστασης διακομιστή MCP",
+  "composer.mcpSlashCommand.title": "MCP",
+  "composer.mcpStatus.authLoggedOut": "Δεν έχει ελεγχθεί η ταυτότητα",
+  "composer.mcpStatus.authOauth": "Η ταυτότητα έχει ελεγχθεί (OAuth)",
+  "composer.mcpStatus.authToken": "Η ταυτότητα έχει ελεγχθεί (κλειδί API)",
+  "composer.mcpStatus.authUnsupported": "STDIO",
+  "composer.mcpStatus.close": "Κλείσιμο",
+  "composer.mcpStatus.disabled": "Απενεργοποιημένο",
+  "composer.mcpStatus.emptyLabel": "Διακομιστές:",
+  "composer.mcpStatus.emptyValue": "Δεν διαμορφώθηκαν διακομιστές MCP",
+  "composer.mcpStatus.enabled": "Ενεργοποιημένη",
+  "composer.mcpStatus.errorLabel": "Κατάσταση:",
+  "composer.mcpStatus.errorValue": "Αδυναμία φόρτωσης κατάστασης MCP",
+  "composer.mcpStatus.heading": "MCP",
+  "composer.mode.agentMode.auto": "Πράκτορας",
+  "composer.mode.agentMode.auto.dropdownLabel": "Πράκτορας",
+  "composer.mode.agentMode.auto.optionLabel": "Πράκτορας",
+  "composer.mode.agentMode.changePermission": "Αλλαγή λειτουργίας",
+  "composer.mode.agentMode.custom": "Προσαρμογή",
+  "composer.mode.agentMode.custom.dropdownLabel": "Προσαρμογή",
+  "composer.mode.agentMode.custom.option": "Προσαρμοσμένο (config.toml)",
+  "composer.mode.agentMode.custom.optionLabel": "Προσαρμοσμένο (config.toml)",
+  "composer.mode.agentMode.customInfo.cancel": "Ακύρωση",
+  "composer.mode.agentMode.customInfo.cli":
+    "Μπορείς να προσαρμόσεις αυτές τις ρυθμίσεις από το CLI ή κάνοντας απευθείας επεξεργασία στο αρχείο.",
+  "composer.mode.agentMode.customInfo.confirm":
+    "Χρήση προσαρμοσμένης λειτουργίας",
+  "composer.mode.agentMode.customInfo.description":
+    "Η προσαρμοσμένη λειτουργία εφαρμόζει την έγκριση και τις πολιτικές sandbox που ορίζονται στο δικό σου<link>config.toml</link> αρχείο.",
+  "composer.mode.agentMode.customInfo.docs":
+    "Μάθε περισσότερα σχετικά με τη διαμόρφωση της έγκριση και τις πολιτικές sandbox στα<link>έγγραφα περιβάλλοντος εκτέλεσης</link>.",
+  "composer.mode.agentMode.customInfo.refresh":
+    "Οποιεσδήποτε αλλαγές θα ισχύσουν την επόμενη φορά που θα εκτελεστεί ο πράκτορας.",
+  "composer.mode.agentMode.customInfo.title":
+    "Πώς λειτουργεί η προσαρμοσμένη λειτουργία",
+  "composer.mode.agentMode.fullAccess": "Πράκτορας (πλήρης πρόσβαση)",
+  "composer.mode.agentMode.fullAccess.dropdownLabel":
+    "Πράκτορας (πλήρης πρόσβαση)",
+  "composer.mode.agentMode.fullAccess.optionLabel":
+    "Πράκτορας (πλήρης πρόσβαση)",
+  "composer.mode.agentMode.fullAccessConfirm.caution":
+    "Να χρησιμοποιείται με προσοχή όταν ενεργοποιείται η πλήρης πρόσβαση. Η τελευταία αυξάνει σημαντικά τον κίνδυνο απώλειας δεδομένων, διαρροών ή μη αναμενόμενης συμπεριφοράς.",
+  "composer.mode.agentMode.fullAccessConfirm.confirm":
+    "Ναι, συνέχεια ούτως ή άλλως",
+  "composer.mode.agentMode.fullAccessConfirm.description":
+    "Όταν το Codex εκτελείται με πλήρη πρόσβαση, μπορεί να επεξεργαστεί οποιοδήποτε αρχείο στον υπολογιστή σου και να εκτελέσει εντολές με δίκτυο, χωρίς την έγκρισή σου.",
+  "composer.mode.agentMode.fullAccessConfirm.goBack": "Ακύρωση",
+  "composer.mode.agentMode.fullAccessConfirm.title":
+    "Να επιτρέπεται η πλήρης πρόσβαση;",
+  "composer.mode.agentMode.readOnly": "Συνομιλία",
+  "composer.mode.agentMode.readOnly.dropdownLabel": "Συνομιλία",
+  "composer.mode.agentMode.readOnly.optionLabel": "Συνομιλία",
+  "composer.mode.agentMode.tooltip": "Αλλαγή λειτουργίας",
+  "composer.mode.agentMode.tooltip.auto":
+    "Ανάγνωση και επεξεργασία αρχείων και εκτέλεση εντολών.",
+  "composer.mode.agentMode.tooltip.custom":
+    "Χρησιμοποίησε τις τελευταίες πολιτικές έγκρισης και sandbox που καθορίζονται στο config.toml.",
+  "composer.mode.agentMode.tooltip.fullAccess":
+    "Το Codex μπορεί να κάνει επεξεργασία αρχείων εκτός του έργου και να εκτελέσει εντολές με πρόσβαση στο διαδίκτυο. Χρησιμοποίησέ το με προσοχή.",
+  "composer.mode.agentMode.tooltip.readOnly":
+    "Απαιτείται έγκριση για την επεξεργασία αρχείων και την εκτέλεση εντολών.",
+  "composer.mode.cloud.tooltip": "Εργασία σε περιβάλλον cloud",
+  "composer.mode.contactAdmin":
+    "Για να αποκτήσεις περισσότερη πρόσβαση, επικοινώνησε με τον διαχειριστή σου",
+  "composer.mode.local": "Τοπικά",
+  "composer.mode.local.gpt5_1_codex_max_reasoning.model": "GPT-5.1-Codex-Max",
+  "composer.mode.local.gpt5_1_codex_mini_reasoning.model": "GPT-5.1-Codex-Mini",
+  "composer.mode.local.gpt5_1_codex_reasoning.model": "GPT-5.1-Codex",
+  "composer.mode.local.gpt5_2_codex_reasoning.model": "GPT-5.2-Codex",
+  "composer.mode.local.gpt5_2_reasoning.model": "GPT-5",
+  "composer.mode.local.gpt5_codex_mini_reasoning.model": "GPT-5-Codex-Mini",
+  "composer.mode.local.learnMore": "Μάθε περισσότερα",
+  "composer.mode.local.model.custom": "Προσαρμογή",
+  "composer.mode.local.model.loadingModel": "Γίνεται φόρτωση του μοντέλου",
+  "composer.mode.local.model.selecrReasoningEffort": "Επιλογή συλλογισμού",
+  "composer.mode.local.model.selectModel": "Επιλογή μοντέλου",
+  "composer.mode.local.model.tooltip": "Επιλογή μοντέλου",
+  "composer.mode.local.ratePercent": "{usage}%",
+  "composer.mode.local.reasoning.high.label": "Υψηλό",
+  "composer.mode.local.reasoning.low.label": "Χαμηλό",
+  "composer.mode.local.reasoning.medium.label": "Μεσαίο",
+  "composer.mode.local.reasoning.minimal.label": "Ελάχιστος",
+  "composer.mode.local.reasoning.none.label": "Κανένας",
+  "composer.mode.local.reasoning.xhigh.label": "Πολύ υψηλή",
+  "composer.mode.localRemoteWhereRun": "Επίλεξε που θα εκτελεστεί η εργασία",
+  "composer.mode.newTask.header": "Συνέχεια σε",
+  "composer.mode.rateLimit.day": "{days}ημ",
+  "composer.mode.rateLimit.heading": "Όρια χρέωσης που απομένουν",
+  "composer.mode.rateLimit.hour": "{hours} ώρ",
+  "composer.mode.rateLimit.minute": "{minutes} λεπ",
+  "composer.mode.rateLimit.weeklyDynamicSentence":
+    "{weeks, plural, one {εβδομαδιαίο όριο} other {{weeks} εβδομαδιαίο όριο}}",
+  "composer.mode.rateLimit.weeklyDynamicTitle":
+    "{weeks, plural, one {Εβδομαδιαία} other {{weeks} εβδομάδα}}",
+  "composer.mode.remote.connectToCloud": "Σύνδεση Codex web",
+  "composer.mode.remote.connectToCloudDisabledTooltip":
+    "Ρύθμισε ένα περιβάλλον μέσω του Codex web για να ενεργοποιήσεις την αποστολή εργασιών στο cloud",
+  "composer.mode.remote.selectEnvironment": "Επιλογή περιβάλλοντος",
+  "composer.mode.remote.sendToCloud": "Αποστολή στο cloud",
+  "composer.mode.remote.setupViaWeb": "Ρύθμιση περιβάλλοντος μέσω Codex web",
+  "composer.mode.runInCloud": "Cloud",
+  "composer.mode.runInCloudWithEnvironment": "Cloud · {environment}",
+  "composer.mode.segmentedToggle.cloud.tooltip": "Εργασία σε περιβάλλον cloud",
+  "composer.mode.segmentedToggle.local.tooltip": "Εργασία στο τοπικό έργο σου",
+  "composer.mode.segmentedToggle.worktree.tooltip":
+    "Εργασία σε παράλληλο δέντρο εργασιών",
+  "composer.mode.upgradeToPlus": "Αναβάθμιση σε Plus",
+  "composer.mode.upgradeToPro": "Αναβάθμιση σε Pro",
+  "composer.mode.workLocally": "Τοπικό έργο",
+  "composer.mode.workLocally.currentBranchFallback": "του κλάδου σου",
+  "composer.mode.workLocally.tooltip": "Εργασία στον κάδο {branchName}",
+  "composer.mode.worktree": "Νέο δέντρο εργασιών",
+  "composer.mode.worktree.submoduleWarning":
+    "Αυτό το αποθετήριο έχει υπομονάδες git. Η δημιουργία δέντρου εργασιών ενδέχεται να αποτύχει.",
+  "composer.mode.worktree.tooltip":
+    "Δημιούργησε ένα αντίγραφο του τοπικού έργου σου για να εργαστείς παράλληλα",
+  "composer.mode.worktreeSegment": "Δέντρο εργασιών",
+  "composer.newChat.heading.browser":
+    "Τι πρέπει να κωδικοποιήσουμε στη συνέχεια;",
+  "composer.permissionsDropdown.custom.label": "Προσαρμοσμένο (config.toml)",
+  "composer.permissionsDropdown.custom.optionLabel":
+    "Προσαρμοσμένο (config.toml)",
+  "composer.permissionsDropdown.fullAccess.disabled":
+    "Η πλήρης πρόσβαση είναι απενεργοποιημένη από το requirements.toml",
+  "composer.personalitySlashCommand.description.friendly":
+    "Ζεστό, συνεργατικό και πρόθυμο να βοηθήσει",
+  "composer.personalitySlashCommand.description.pragmatic":
+    "Ακριβές, συγκεντρωμένο στην εργασία και άμεσο",
+  "composer.personalitySlashCommand.label.friendly": "Φιλικό",
+  "composer.personalitySlashCommand.label.pragmatic": "Πρακτικότητα",
+  "composer.personalitySlashCommand.notApplicableSuffix":
+    "(Δεν εφαρμόζεται στο τρέχον μοντέλο)",
+  "composer.personalitySlashCommand.title": "Προσωπικότητα",
+  "composer.placeholder.cloudFollowUp.directFollowUp":
+    "Συνέχεια σε αυτή την εργασία cloud",
+  "composer.placeholder.cloudFollowUp.local":
+    "Δημιούργησε μια νέα τοπική εργασία που κάνει αναφορά σε αυτή την εργασία cloud",
+  "composer.placeholder.cloudFollowUp.workingTree":
+    "Δημιούργησε μια νέα εργασία cloud που περιλαμβάνει τον τρέχοντα κώδικά σου και θα κάνει αναφορά σε αυτή την εργασία",
+  "composer.placeholder.localFollowUp.cloud":
+    "Συνέχεια σε μια νέα εργασία cloud",
+  "composer.placeholder.localFollowUp.locally": "Ζήτα αλλαγές στη συνέχεια",
+  "composer.placeholder.newTask.cloud":
+    "Ζήτα από το Codex να κάνει οτιδήποτε στο cloud",
+  "composer.placeholder.newTask.doAnything":
+    "Ζήτα από το Codex να κάνει οτιδήποτε",
+  "composer.placeholder.newTask.locally":
+    "Ζήτα από το Codex οτιδήποτε, @ για προσθήκη αρχείων, / για εντολές",
+  "composer.planModeDropdown": "Λειτουργία προγράμματος",
+  "composer.planModeDropdown.ariaLabel": "Λειτουργία προγράμματος",
+  "composer.planModeIndicator": "Πρόγραμμα",
+  "composer.planModeIndicator.tooltipShortcut": "Shift+Tab",
+  "composer.planModeIndicator.tooltipText": "για εναλλαγή",
+  "composer.planModeIndicator.tooltipToggle": "για εναλλαγή",
+  "composer.planSlashCommand.disableDescription":
+    "Απενεργοποίηση λειτουργίας προγράμματος",
+  "composer.planSlashCommand.enableDescription":
+    "Ενεργοποίηση λειτουργίας προγράμματος",
+  "composer.planSlashCommand.title": "Λειτουργία προγράμματος",
+  "composer.priorContext.label": "Προηγούμενο περιβάλλον",
+  "composer.priorContext.removeAriaLabel":
+    "Κατάργηση προηγούμενου περιβάλλοντος",
+  "composer.queuedMessage.delete": "Διαγραφή του μηνύματος στην ουρά",
+  "composer.queuedMessage.edit": "Επεξεργασία μηνύματος",
+  "composer.queuedMessage.more": "Ενέργειες για μήνυμα στην ουρά",
+  "composer.queuedMessage.sendNow": "Αποστολή τώρα",
+  "composer.queuedMessage.turnOff": "Απενεργοποίηση ουράς",
+  "composer.reasoningEffort.local.reasoning.tooltip":
+    "Επιλογή προσπάθειας συλλογισμού",
+  "composer.remote.branchStartingPoint":
+    "Από ποιον κλάδο θα πρέπει να ξεκινά αυτή η εργασία;",
+  "composer.remote.branchesSectionHeading": "Κλάδοι",
+  "composer.remote.currentEditsSuffix.followUp":
+    "Δημιούργησε μια νέα εργασία που κάνει αναφορά σε αυτή την εργασία cloud.",
+  "composer.remote.currentEditsSuffix.useLocal": "με τοπικές αλλαγές κώδικα",
+  "composer.remote.directFollowUp":
+    "Μην χρησιμοποιείς τις τοπικές αλλαγές κώδικα",
+  "composer.remote.errorLoadingBranches": "Σφάλμα κατά τη φόρτωση κλάδων",
+  "composer.remote.fromBranch": "Από {branch}",
+  "composer.remote.fromCurrentBranch": "Από κλάδο {branch} (τρέχοντα)",
+  "composer.remote.loadingMoreBranches": "Φόρτωση…",
+  "composer.remote.localFileStateHeading": "Κατάσταση τοπικού αρχείου",
+  "composer.remote.localWorkingTree": "Χρησιμοποίησε τις τοπικές αλλαγές",
+  "composer.remote.startingPoint":
+    "Από ποιον κώδικα θα πρέπει να ξεκινά αυτή η εργασία;",
+  "composer.reviewMode.branches.error": "Αδυναμία φόρτωσης κλάδων",
+  "composer.reviewMode.branches.retry": "Επανάληψη",
+  "composer.reviewMode.gitRoot.error": "Η ρίζα Git δεν βρέθηκε",
+  "composer.reviewMode.option.baseBranch.simple":
+    "Έλεγχος σε σχέση με έναν βασικό κλάδο",
+  "composer.reviewMode.option.unstaged.simple":
+    "Έλεγχος αλλαγών χωρίς δέσμευση",
+  "composer.reviewMode.option.unsynced.simple":
+    "Έλεγχος μη συγχρονισμένων αλλαγών",
+  "composer.reviewMode.quickReviewError": "Αποτυχία έναρξης ελέγχου κώδικα.",
+  "composer.reviewMode.title": "Έλεγχος κώδικα",
+  "composer.sandboxButton.unlock.disabled.tooltip":
+    "Η πλήρης πρόσβαση είναι απενεργοποιημένη από το requirements.toml",
+  "composer.sandboxButton.windowsSandboxDialog.content":
+    "Το Codex μπορεί να χρησιμοποιήσει ένα πειραματικό sandbox στα Windows για να περιορίσει την πρόσβαση στο σύστημα αρχείων και στο δίκτυο. {sandboxLink}",
+  "composer.sandboxButton.windowsSandboxDialog.title":
+    "Ενεργοποίηση Windows sandbox;",
+  "composer.sandboxButton.windowsSandboxDialog.useReadOnly":
+    "Χρήση μόνο για ανάγνωση",
+  "composer.searchEnvironments": "Αναζήτηση περιβαλλόντων",
+  "composer.skillMentionList.app": "Εφαρμογή",
+  "composer.skillMentionList.loading": "Φόρτωση δεξιοτήτων…",
+  "composer.skillMentionList.noResults": "Δεν βρέθηκαν δεξιότητες",
+  "composer.slashCommands.cloudEnvironment.title": "Περιβάλλον cloud",
+  "composer.slashCommands.dialogLabel": "Μενού εντολών slash",
+  "composer.slashCommands.dialogTitle": "Εντολές slash",
+  "composer.slashCommands.disabledTooltip":
+    "Ξεκίνα μια νέα συζήτηση για να χρησιμοποιήσεις εντολές slash",
+  "composer.slashCommands.inputPlaceholder": "Αναζήτηση",
+  "composer.slashCommands.noResults": "Δεν υπάρχουν εντολές",
+  "composer.slashCommands.skillsGroup": "Δεξιότητες",
+  "composer.slashCommands.tooltip": "Περιήγηση σε εντολές slash",
+  "composer.status.close": "Κλείσιμο",
+  "composer.statusPlain.alertLabel": "Ειδοποίηση:",
+  "composer.statusPlain.alertValue": "{remaining}% απομένουν στο {window}",
+  "composer.statusPlain.contextLabel": "Περιβάλλον:",
+  "composer.statusPlain.contextTotal": "{count}χιλιάδες",
+  "composer.statusPlain.contextValueMetadata":
+    "({used} χρησιμοποιήθηκαν / {total})",
+  "composer.statusPlain.contextValueRemaining": "Απομένουν {remaining}%",
+  "composer.statusPlain.heading": "Κατάσταση",
+  "composer.statusPlain.rateLimitDays": "Όριο {count}ημ",
+  "composer.statusPlain.rateLimitFallbackLabel": "Όριο χρέωσης:",
+  "composer.statusPlain.rateLimitHours": "Όριο {count}ωρ",
+  "composer.statusPlain.rateLimitLabelBase": "Όριο χρέωσης",
+  "composer.statusPlain.rateLimitMinutes": "Όριο {count}λεπ",
+  "composer.statusPlain.rateLimitPercent": "Απομένουν {remaining}%",
+  "composer.statusPlain.rateLimitReset": "επαναφορά στις {time}",
+  "composer.statusPlain.rateLimitResetMetadata": "({phrase})",
+  "composer.statusPlain.rateLimitResetUnknown": "ώρα επαναφοράς μη διαθέσιμη",
+  "composer.statusPlain.rateLimitUnavailable": "Μη διαθέσιμο",
+  "composer.statusPlain.sessionCopiedAriaLabel":
+    "Το αναγνωριστικό της περιόδου λειτουργίας αντιγράφηκε",
+  "composer.statusPlain.sessionCopiedTooltip":
+    "Έγινε αντιγραφή του αναγνωριστικού",
+  "composer.statusPlain.sessionCopyAriaLabel":
+    "Αντιγραφή αναγνωριστικού περιόδου λειτουργίας",
+  "composer.statusPlain.sessionCopyTooltip": "Αντιγραφή αναγνωριστικού",
+  "composer.statusPlain.sessionLabel": "Περίοδος λειτουργίας:",
+  "composer.statusSlashCommand.description":
+    "Εμφάνιση αναγνωριστικού νήματος, χρήσης περιβάλλοντος και ορίων χρέωσης",
+  "composer.statusSlashCommand.title": "Κατάσταση",
+  "composer.submit.blockedDialogOk": "Εντάξει",
+  "composer.submit.blockedDialogTitle": "Αδυναμία αποστολής μηνύματος.",
+  "composer.submit.emptyMessage": "Πληκτρολόγησε ένα μήνυμα για να ξεκινήσεις",
+  "composer.submit.loadingLocalConfig": "Φόρτωση…",
+  "composer.submit.missingCloudConfig":
+    "Πρέπει να επιλέξεις ένα περιβάλλον cloud",
+  "composer.submit.missingCloudTurn":
+    "Δεν είναι δυνατή η συνέχεια σε αυτήν την εργασία",
+  "composer.submit.noWorkspace":
+    "Πρόσθεσε ένα έργο για να χρησιμοποιήσεις το Codex",
+  "composer.submit.unsavedComments":
+    "Αποθήκευση ή ακύρωση {count, plural, one {η επεξεργασία σου στο σχόλιο} other {οι επεξεργασίες σου στα σχόλια}} πριν από την αποστολή.",
+  "composer.submit.waitForImageUploads": "Γίνεται φόρτωση εικόνων…",
+  "composer.worktreeEnvironment.create": "Δημιουργία τοπικού περιβάλλοντος",
+  "composer.worktreeEnvironment.default": "Προεπιλεγμένο περιβάλλον",
+  "composer.worktreeEnvironment.error": "Σφάλμα φόρτωσης περιβαλλόντων",
+  "composer.worktreeEnvironment.loading": "Φόρτωση περιβαλλόντων…",
+  "composer.worktreeEnvironment.title": "Τοπικό περιβάλλον",
+  "composer.worktreeEnvironment.tooltip": "Επίλεξε ένα τοπικό περιβάλλον",
+  "composer.worktreeSetupFailed":
+    "Η δημιουργία του δέντρου εργασιών απέτυχε. Έλεγξε το .codex/environments για ένα σενάριο εγκατάστασης.",
+  "compoundButton.secondaryAction": "Δευτερεύουσα ενέργεια",
+  "copyButton.copied": "Αντιγράφηκε",
+  "copyButton.copiedAriaLabel": "Αντιγράφηκε",
+  "copyButton.copy": "Αντιγραφή",
+  "copyButton.copyAriaLabel": "Αντιγραφή",
+  "copyButton.copyCode": "Αντιγραφή κωδικού",
+  "debug.childProcesses.age": "Ηλικία {age}",
+  "debug.childProcesses.empty": "Δεν βρέθηκαν επεξεργασίες θυγατρικού git",
+  "debug.childProcesses.loading": "Φόρτωση επεξεργασιών θυγατρικού git…",
+  "debug.childProcesses.meta": "PID {pid} | Γονέας {parentPid}",
+  "debug.childProcesses.missingCommand": "(εντολή μη διαθέσιμη)",
+  "debug.childProcesses.title": "Επεξεργασίες θυγατρικού git ({count})",
+  "debug.childProcesses.titleClosed": "Επεξεργασίες θυγατρικού git",
+  "debug.entries.fallbackTitle": "Καταχώριση εντοπισμού σφαλμάτων",
+  "debug.onboarding.override.app": "Εφαρμογή",
+  "debug.onboarding.override.auto": "Αυτόματα",
+  "debug.onboarding.override.login": "Σύνδεση",
+  "debug.onboarding.override.welcome": "Καλώς όρισες",
+  "debug.onboarding.override.workspace": "Έργο",
+  "debug.onboarding.state": "Έλεγχος ταυτότητας: {auth} · Έργα: {workspaces}",
+  "debug.onboarding.title": "Ενσωμάτωση",
+  "debug.roots.empty": "Χωρίς ρίζες του έργου",
+  "debug.roots.title": "Ρίζες του έργου",
+  "debug.sentry.appSessionId": "Αναγνωριστικό συνεδρίας εφαρμογής",
+  "debug.sentry.logs.export": "Εξαγωγή",
+  "debug.sentry.logs.export.scope.last7days": "Τις τελευταίες 7 μέρες",
+  "debug.sentry.logs.export.scope.session": "Αυτή η περίοδος λειτουργίας",
+  "debug.sentry.logs.export.scope.today": "Τα σημερινά αρχεία καταγραφής",
+  "debug.sentry.logs.section.title": "Καταγραφές",
+  "debug.sentry.section.title": "Διαγνωστικά στοιχεία",
+  "debug.sentry.testing.section.title": "Αναφορά κατάρρευσης",
+  "debug.triggerSentryTestError": "Αποστολή δοκιμαστικού σφάλματος",
+  "debug.user.accountId": "Αναγνωριστικό λογαριασμού",
+  "debug.user.authMethod": "Μέθοδος επαλήθευσης",
+  "debug.user.email": "Email",
+  "debug.user.section.title": "Χρήστης",
+  "debug.user.userId": "Αναγνωριστικό χρήστη",
+  "debug.window.title": "Εντοπισμός σφαλμάτων",
+  "diff.actionButton.revertFile": "Επαναφορά αρχείου",
+  "diff.actionButton.revertHunk": "Επαναφορά",
+  "diff.actionButton.revertSection": "Επαναφορά όλων",
+  "diff.actionButton.revertSectionLabel": "Επαναφορά όλων",
+  "diff.actionButton.stageFile": "Σταδιοποίηση αρχείου",
+  "diff.actionButton.stageHunk": "Σταδιοποίηση",
+  "diff.actionButton.stageSection": "Σταδιοποίηση όλων",
+  "diff.actionButton.stageSectionLabel": "Σταδιοποίηση όλων",
+  "diff.actionButton.unstageFile": "Αποσταδιοποίηση αρχείου",
+  "diff.actionButton.unstageHunk": "Αποσταδιοποίηση",
+  "diff.actionButton.unstageSection": "Αποσταδιοποίηση όλων",
+  "diff.actionButton.unstageSectionLabel": "Αποσταδιοποίηση όλων",
+  "diff.fileHeader.toggle": "Εναλλαγή diff αρχείου",
+  "electron.onboarding.login.apikey.cancel": "Ακύρωση",
+  "electron.onboarding.login.apikey.continue": "Συνέχεια",
+  "electron.onboarding.login.apikey.label": "Κλειδί API OpenAI",
+  "electron.onboarding.login.apikey.open": "Πληκτρολόγησε το κλειδί API",
+  "electron.onboarding.login.apikey.placeholder": "sk-...",
+  "electron.onboarding.login.chatgpt.cancel": "Ακύρωση σύνδεσης",
+  "electron.onboarding.login.chatgpt.continue": "Συνέχεια με ChatGPT",
+  "electron.onboarding.login.devbox": "Σύνδεση σε απομακρυσμένο SSH",
+  "electron.onboarding.login.error": "Αποτυχία σύνδεσης: {rawMessage}",
+  "electron.onboarding.login.snake.start": "Παίξε φιδάκι",
+  "electron.onboarding.login.sshConfig.cancel": "Ακύρωση",
+  "electron.onboarding.login.sshConfig.continue": "Συνέχεια",
+  "electron.onboarding.login.sshConfig.hostnameLabel": "Όνομα εξυπηρέτη SSH",
+  "electron.onboarding.login.sshConfig.hostnamePlaceholder":
+    "devbox.openai.com",
+  "electron.onboarding.login.subtitle":
+    "Ο καλύτερος τρόπος δημιουργίας με πράκτορες",
+  "electron.onboarding.login.title": "Καλώς ήρθες στο Codex",
+  "electron.onboarding.shell.title": "Codex",
+  "electron.onboarding.welcome.continue": "Συνέχεια",
+  "electron.onboarding.welcome.doubleLimits.description":
+    "Για να γιορτάσουμε την έναρξη της εφαρμογής Codex, σου παρέχουμε διπλάσια όρια χρέωσης μέχρι τις 2 Απριλίου.",
+  "electron.onboarding.welcome.freego.description":
+    "Το Codex περιλαμβάνεται στο πρόγραμμά σου δωρεάν μέχρι τις 2 Μαρτίου – ας αρχίσουμε να δημιουργούμε μαζί.",
+  "electron.onboarding.welcome.new.title.anon": "Καλώς όρισες!",
+  "electron.onboarding.workspace.continue": "Συνέχεια",
+  "electron.onboarding.workspace.empty": "Πρόσθεσε ένα έργο για να συνεχίσεις.",
+  "electron.onboarding.workspace.listLabel": "Διαθέσιμα έργα",
+  "electron.onboarding.workspace.loading": "Φόρτωση έργων…",
+  "electron.onboarding.workspace.openFolder": "Προσθήκη έργου",
+  "electron.onboarding.workspace.selectAll": "Επιλογή όλων",
+  "electron.onboarding.workspace.skip": "Παράλειψη",
+  "electron.onboarding.workspace.skip.error":
+    "Δεν ήταν δυνατή η δημιουργία νέου έργου: {message}",
+  "electron.onboarding.workspace.skip.error.unknown": "Άγνωστο σφάλμα",
+  "electron.onboarding.workspace.skipping": "Δημιουργία νέου έργου…",
+  "electron.onboarding.workspace.subtitle":
+    "Το Codex θα έχει τη δυνατότητα να επεξεργάζεται αρχεία και θα εκτελεί εντολές σε επιλεγμένους φακέλους.",
+  "electron.onboarding.workspace.title": "Επίλεξε ένα έργο",
+  "errorPage.list.checkSettings":
+    "Προσπάθησε να ενημερώσεις τις ρυθμίσεις του IDE σου",
+  "errorPage.list.configToml":
+    "Έλεγξε το δικό σου config.toml για μη έγκυρες ρυθμίσεις",
+  "errorPage.list.downloadExtension":
+    "Προσπάθησε να κάνεις λήψη διαφορετική έκδοση της επέκτασης",
+  "errorPage.list.runInWsl":
+    "Έλεγξε τις ρυθμίσεις σου για να απενεργοποιήσεις την εκτέλεση στο WSL εάν παρατηρείς ζητήματα συμβατότητας.",
+  "execApprovalRequest.menu.runAlways":
+    "Ναι και μην κάνεις ξανά ερώτηση σε αυτή την περίοδο λειτουργίας",
+  "execApprovalRequest.menu.runAlwaysWithAmendment":
+    "Ναι, και μην ξαναρωτήσεις για εντολές που ξεκινούν με {command}",
+  "execApprovalRequest.menu.runAlwaysWithAmendment.prefix":
+    "Ναι, και μην ξαναρωτήσεις για εντολές που ξεκινούν με",
+  "execApprovalRequest.menu.runOnce": "Ναι",
+  "execApprovalRequest.prompt": "Θέλεις να εκτελέσεις αυτή την εντολή;",
+  "execApprovalRequest.reject": "Όχι",
+  "execFooter.exitCode": "Κώδικας εξόδου {code}",
+  "execFooter.exitCode.unknown": "άγνωστο",
+  "execFooter.success": "Επιτυχία",
+  "feedback.dialog.category.badResult": "Κακό αποτέλεσμα",
+  "feedback.dialog.category.bug": "Σφάλμα",
+  "feedback.dialog.category.goodResult": "Καλό αποτέλεσμα",
+  "feedback.dialog.category.other": "Άλλο",
+  "feedback.dialog.descriptionPlaceholder": "Περίγραψε το πρόβλημα εδώ",
+  "feedback.dialog.dismiss": "Κλείσιμο",
+  "feedback.dialog.includeLogsLabel":
+    "Συμπερίλαβε τα αρχεία καταγραφής της τρέχουσας περιόδου λειτουργίας του Codex",
+  "feedback.dialog.submit": "Υποβολή",
+  "feedback.dialog.submitError":
+    "Δεν καταφέραμε να υποβάλουμε το σχόλιό σου. Προσπάθησε ξανά σε λίγο.",
+  "feedback.dialog.title": "Σχόλια",
+  "feedback.dialog.uploadedMessage.existingIssue":
+    "υφιστάμενο ανοιχτό πρόβλημα",
+  "feedback.dialog.uploadedMessage.noThread":
+    "Έγινε αποστολή του σχολίου. Εάν το πρόβλημα επιμένει, {openIssueLink} ή κάνε σχόλιο σε ένα {existingIssueLink}.",
+  "feedback.dialog.uploadedMessage.openIssue": "άνοιγμα προβλήματος του GitHub",
+  "feedback.dialog.uploadedMessage.withThread":
+    "Έγινε αποστολή του σχολίου. Εάν το πρόβλημα επιμένει, {openIssueLink} ή ανάφερε το αναγνωριστικό του νήματος σε ένα {existingIssueLink}:",
+  "feedback.dialog.uploadedTitle": "Έγινε αποστολή του σχολίου",
+  "fileAttachment.lineInfo": "{lineInfo}",
+  "fileAttachment.removeAriaLabel": "Κατάργηση {filename}",
+  "header.back": "Πίσω",
+  "header.recentChats": "Εργασίες",
+  "header.recentTasks.seeAll": "Προβολή όλων ({total})",
+  "home.header.getPlus": "Απόκτησε το Plus",
+  "home.hero.letsBuild": "Ας δημιουργήσουμε",
+  "homePage.mainContent": "Κύριο περιεχόμενο",
+  "imageAttachment.defaultName": "επιλεγμένη εικόνα",
+  "imageAttachment.preview.close": "Κλείσιμο προεπισκόπησης εικόνας",
+  "imageAttachment.removeAriaLabel": "Κατάργηση {filename}",
+  "implementPlanRequest.option.implement": "Ναι, υλοποίησε αυτό το πρόγραμμα",
+  "implementPlanRequest.prompt": "Υλοποίηση αυτού του προγράμματος;",
+  "inbox.archived.deleteError": "Αδυναμία διαγραφής αρχειοθετημένης εκτέλεσης",
+  "inbox.archived.deleteRun": "Διαγραφή αρχειοθετημένης εκτέλεσης",
+  "inbox.archived.inlineLabel.auto":
+    "Αυτό το νήμα αρχειοθετήθηκε αυτόματα. <learnMoreLink>Μάθε περισσότερα</learnMoreLink>",
+  "inbox.archived.inlineLabel.manual": "Αυτό το νήμα αρχειοθετήθηκε.",
+  "inbox.archived.noMessageFound": "Δεν βρέθηκε μήνυμα",
+  "inbox.automations.createError": "Δεν ήταν δυνατή η δημιουργία αυτοματισμού",
+  "inbox.automations.deleteConfirm.cancel": "Ακύρωση",
+  "inbox.automations.deleteConfirm.confirm": "Διαγραφή αυτοματισμού",
+  "inbox.automations.deleteConfirm.description":
+    "Αυτό θα διαγράψει οριστικά τον αυτοματισμό και θα διακόψει τυχόν μελλοντικές εκτελέσεις.",
+  "inbox.automations.deleteConfirm.title": "Διαγραφή {name};",
+  "inbox.automations.deleteError": "Αδυναμία διαγραφής αυτοματισμού",
+  "inbox.automations.editTooltip": "Επεξεργασία αυτοματισμού",
+  "inbox.automations.inProgress": "Σε εξέλιξη",
+  "inbox.automations.new": "Νέο",
+  "inbox.automations.newToolbar": "Νέος αυτοματισμός",
+  "inbox.automations.pauseTooltip": "Παύση αυτοματισμού",
+  "inbox.automations.resumeTooltip": "Συνέχιση αυτοματισμού",
+  "inbox.automations.startingNow": "Ξεκινά τώρα",
+  "inbox.automations.startsIn": "Ξεκινά σε {startTime}",
+  "inbox.automations.status.active": "Ενεργό",
+  "inbox.automations.status.paused": "Σε παύση",
+  "inbox.automations.status.runs": "{count} εκτελέσεις",
+  "inbox.automations.status.started": "Ξεκίνησε {date}",
+  "inbox.automations.updateError":
+    "Δεν ήταν δυνατή η ενημέρωση του αυτοματισμού",
+  "inbox.automations.workspaceFallback": "-",
+  "inbox.filter.all": "Όλα",
+  "inbox.filter.ariaLabel": "Φιλτράρισμα στοιχείων εισερχομένων",
+  "inbox.filter.unread": "Μη αναγνωσμένα",
+  "inbox.list.archived": "Αρχειοθετημένες",
+  "inbox.list.inProgress": "Σε εξέλιξη",
+  "inbox.list.recent": "Πρόσφατα",
+  "inbox.list.upNext": "Επόμενο",
+  "inbox.mode.automations": "Αυτοματισμοί",
+  "inbox.mode.automations.beta": "Beta",
+  "inbox.noDescription": "Δεν παρέχεται περιγραφή",
+  "inbox.openThread": "Άνοιγμα νήματος",
+  "inbox.rightPanel.emptySubtitle":
+    "Αυτοματοποίηση εργασίας ρυθμίζοντας προγραμματισμένες εργασίες",
+  "inbox.rightPanel.emptyTasksTitle.activeCount":
+    "{count, plural, one {# ενεργός αυτοματισμός} other {# ενεργοί αυτοματισμοί}}",
+  "inbox.rightPanel.emptyTasksTitle.noneUnread":
+    "Δεν υπάρχουν μη αναγνωσμένοι αυτοματισμοί",
+  "inbox.rightPanel.emptyTasksTitle.unreadCount":
+    "{count, plural, one {# μη αναγνωσμένος αυτοματισμός} other {# μη αναγνωσμένοι αυτοματισμοί}}",
+  "inbox.rightPanel.emptyTitle": "Δεν επιλέχτηκε στοιχείο",
+  "inbox.rightPanel.noThread": "Δεν υπάρχει νήμα για αυτό το στοιχείο",
+  "inbox.untitled": "Στοιχείο εισερχομένων χωρίς τίτλο",
+  "loadingPage.documentationLink": "Τεκμηρίωση",
+  "loadingPage.errorDescription": "Το Codex κατέρρευσε με το ακόλουθο σφάλμα:",
+  "loadingPage.errorDescription.documentation":
+    "Κάνε κλικ στην εκ νέου φόρτωση για να επανεκκινήσεις την επέκταση του Codex ή επισκέψου το {documentationLink} μας για πρόσθετη βοήθεια.",
+  "loadingPage.errorSignal": "Κάποια πράγματα για να δοκιμάσεις:",
+  "loadingPage.errorTitle": "Προέκυψε σφάλμα",
+  "loadingPage.openConfigToml": "Άνοιγμα Config.toml",
+  "loadingPage.reload": "Επαναφόρτωση",
+  "localConversation.contextCompacted": "Το περιβάλλον συμπιέστηκε αυτόματα",
+  "localConversation.contextCompacting":
+    "Γίνεται αυτόματη συμπίεση περιβάλλοντος",
+  "localConversation.merge.autoResolve.failed":
+    "Αποτυχία υποβολής αιτήματος αυτόματης επίλυσης: {error}",
+  "localConversation.merge.autoResolve.sent":
+    "Το αίτημα αυτόματης επίλυσης εστάλη",
+  "localConversation.merge.autoResolveMerge.missingConversation":
+    "Αδυναμία αυτόματης επίλυσης χωρίς ενεργή συζήτηση.",
+  "localConversation.merge.autoResolveMerge.request":
+    "Αυτόματη επίλυση των συγκρούσεων συγχώνευσης",
+  "localConversation.personalityChanged":
+    "Έγινε εναλλαγή σε {personality} προσωπικότητα",
+  "localConversation.planSummary.collapse": "Σύμπτυξη σύνοψης προγράμματος",
+  "localConversation.planSummary.collapseTooltip": "Σύμπτυξη",
+  "localConversation.planSummary.expand": "Επέκταση σύνοψης προγράμματος",
+  "localConversation.planSummary.expandTooltip": "Επέκταση",
+  "localConversation.planSummary.openInNewWindow": "Άνοιγμα",
+  "localConversation.planSummary.openInNewWindow.tooltip":
+    "Άνοιγμα σε νέο παράθυρο",
+  "localConversation.planSummary.title": "Πρόγραμμα",
+  "localConversation.planSummary.viewPlan": "Επέκταση προγράμματος",
+  "localConversation.remoteTaskCreated":
+    "Δημιούργησε το {taskLink} σε Codex Cloud",
+  "localConversation.remoteTaskCreated.task": "εργασία",
+  "localConversation.scrollToBottomButton": "Κύλιση προς τα κάτω",
+  "localConversation.sync.buttonLabel": "Μεταβίβαση σε τοπικό",
+  "localConversation.sync.modal.loading.title": "Μεταβίβαση αλλαγών…",
+  "localConversation.sync.modal.noChanges": "Δεν υπάρχουν αλλαγές",
+  "localConversation.syncSetup.branchAriaLabel": "Όνομα κλάδου",
+  "localConversation.syncSetup.branchName": "Όνομα κλάδου",
+  "localConversation.syncSetup.branchPlaceholder.existing":
+    "Επιλογή υπάρχοντος κλάδου",
+  "localConversation.syncSetup.branchPlaceholder.new": "codex/new-feature",
+  "localConversation.syncSetup.branchesLoading": "Φόρτωση κλάδων…",
+  "localConversation.syncSetup.checkoutAlreadyCheckedOut":
+    "Έχει γίνει ήδη check out",
+  "localConversation.syncSetup.checkoutClean":
+    "Επί του παρόντος στον κλάδο {branchName}",
+  "localConversation.syncSetup.checkoutDirty":
+    "Επί του παρόντος στον κλάδο {branchName} με αλλαγές χωρίς commit",
+  "localConversation.syncSetup.checkoutError":
+    "Αποτυχία check out κλάδου: {message}",
+  "localConversation.syncSetup.checkoutLabel": "Check out τοπικά τώρα",
+  "localConversation.syncSetup.checkoutOnLocal": "Μεταβίβαση σε τοπικό",
+  "localConversation.syncSetup.checkoutPending": "Έλεγχος τοπικής κατάστασης…",
+  "localConversation.syncSetup.checkoutUnavailable":
+    "Τοπικός χώρος εργασίας μη διαθέσιμος",
+  "localConversation.syncSetup.checkoutUnknown": "Τοπικός κλάδος μη διαθέσιμος",
+  "localConversation.syncSetup.continue": "Συνέχεια",
+  "localConversation.syncSetup.createBranchError":
+    "Αποτυχία ρύθμισης κλάδου μεταβίβασης: {message}",
+  "localConversation.syncSetup.error": "Κάτι πήγε στραβά: {message}",
+  "localConversation.syncSetup.error.workingTreeMissing":
+    "Αποτυχία δημιουργίας στιγμιότυπου του δέντρου εργασιών. Προσπάθησε να κάνεις εκ νέου τη μεταβίβαση.",
+  "localConversation.syncSetup.mode.ariaLabel": "Επιλογή λειτουργίας κλάδου",
+  "localConversation.syncSetup.mode.existing": "Υπάρχων κλάδος",
+  "localConversation.syncSetup.mode.new": "Νέος κλάδος",
+  "localConversation.syncSetup.noBranches": "Δεν βρέθηκαν κλάδοι",
+  "localConversation.syncSetup.overwriteError":
+    "Ο κλάδος δημιουργήθηκε αλλά δεν έχει μεταβιβαστεί πλήρως. Μεταβίβασέ τον χειροκίνητα προτού κάνεις check out τοπικά.",
+  "localConversation.syncSetup.setPrefix": "Ρύθμιση προθήματος",
+  "localConversation.syncSetup.success.checkedOut":
+    "Ο κλάδος δημιουργείται και το check out σε αυτόν γίνεται τοπικά",
+  "localConversation.syncSetup.success.notCheckedOut": "Ο κλάδος δημιουργήθηκε",
+  "localConversation.syncSetup.title": "Μεταβίβαση σε τοπικό κλάδο",
+  "localConversation.syncWorktreeError.branchAriaLabel": "Όνομα κλάδου",
+  "localConversation.syncWorktreeError.branchPlaceholder.new":
+    "codex/new-feature",
+  "localConversation.syncWorktreeError.branchSetup.subtitle":
+    "Επίλεξε έναν κλάδο για μεταβίβαση, στη συνέχεια προσπάθησε να φορτώσεις τις αλλαγές.",
+  "localConversation.syncWorktreeError.branchSetup.title": "Ενημέρωση κλάδου",
+  "localConversation.syncWorktreeError.branchUpdate.cta":
+    "Ενημέρωση και εκ νέου προσπάθεια",
+  "localConversation.syncWorktreeError.branchUpdate.error":
+    "Αποτυχία ενημέρωσης κλάδου: {message}",
+  "localConversation.syncWorktreeError.branchUpdate.unknown":
+    "Κάτι πήγε στραβά: {message}",
+  "localConversation.syncWorktreeV2.apply.disabled.noCheckout":
+    "Δεν γίνεται check out σε κανέναν κλάδο σε οποιοδήποτε δέντρο εργασιών.",
+  "localConversation.syncWorktreeV2.applyUncommitted": "Εφαρμογή",
+  "localConversation.syncWorktreeV2.applyUncommitted.disabled":
+    "Πρέπει να κάνεις check out του κλάδου τοπικά για να εφαρμοστούν οι αλλαγές χωρίς commit",
+  "localConversation.syncWorktreeV2.branches.empty": "Δεν βρέθηκαν κλάδοι",
+  "localConversation.syncWorktreeV2.branches.loading": "Φόρτωση κλάδων…",
+  "localConversation.syncWorktreeV2.changeBranch.ariaLabel":
+    "Αλλαγή κλάδου μεταβίβασης",
+  "localConversation.syncWorktreeV2.changeBranch.error":
+    "Αποτυχία αλλαγής κλάδου μεταβίβασης: {message}",
+  "localConversation.syncWorktreeV2.commandError.action.apply":
+    "Αποτυχία εφαρμογής",
+  "localConversation.syncWorktreeV2.commandError.action.overwrite-local-to-worktree":
+    "Αποτυχία αντικατάστασης δέντρου εργασιών",
+  "localConversation.syncWorktreeV2.commandError.action.overwrite-worktree-to-local":
+    "Αποτυχία αντικατάστασης τοπικά",
+  "localConversation.syncWorktreeV2.commandError.back": "Πίσω",
+  "localConversation.syncWorktreeV2.commandError.body":
+    "Μια εντολή git απέτυχε κατά τη μεταβίβαση. Κάνε έλεγχο του αποτελέσματος και προσπάθησε ξανά.",
+  "localConversation.syncWorktreeV2.commandError.retry": "Επανάληψη",
+  "localConversation.syncWorktreeV2.description":
+    "Μεταβίβαση αλλαγών μεταξύ του τοπικού και αυτού του δέντρου εργασιών <a>Μάθε περισσότερα</a>.",
+  "localConversation.syncWorktreeV2.direction.ariaLabel":
+    "Επιλογή κατεύθυνσης μεταβίβασης",
+  "localConversation.syncWorktreeV2.error.generic":
+    "Κάτι πήγε στραβά κατά τη μεταβίβαση. Προσπάθησε ξανά.",
+  "localConversation.syncWorktreeV2.localBranchLabel": "Τοπικά",
+  "localConversation.syncWorktreeV2.noChanges":
+    "Γίνεται υπολογισμός των αλλαγών",
+  "localConversation.syncWorktreeV2.noChanges.summary": "Δεν υπάρχουν αλλαγές",
+  "localConversation.syncWorktreeV2.overwrite.local": "Αντικατάσταση τοπικά",
+  "localConversation.syncWorktreeV2.overwrite.worktree":
+    "Αντικατάσταση δέντρου εργασιών",
+  "localConversation.syncWorktreeV2.partial.action.applyFailed":
+    "Δεν ήταν δυνατή εφαρμογή των αλλαγών",
+  "localConversation.syncWorktreeV2.partial.action.overwriteLocalFailed":
+    "Δεν ήταν δυνατή η αντικατάσταση των τοπικών αλλαγών",
+  "localConversation.syncWorktreeV2.partial.action.overwriteWorktreeFailed":
+    "Δεν ήταν δυνατή η αντικατάσταση των αλλαγών στα δέντρα εργασιών",
+  "localConversation.syncWorktreeV2.partial.appliedLabel": "Εφαρμόστηκε",
+  "localConversation.syncWorktreeV2.partial.back": "Πίσω",
+  "localConversation.syncWorktreeV2.partial.body.resolveConflicts":
+    "Επίλυσε τις συγκρούσει και προσπάθησε ξανά.",
+  "localConversation.syncWorktreeV2.partial.conflictsLabel": "Συγκρούσεις",
+  "localConversation.syncWorktreeV2.partial.fileCount":
+    "{count, plural, one {# αρχείο} other {# αρχεία}}",
+  "localConversation.syncWorktreeV2.partial.retry": "Επανάληψη",
+  "localConversation.syncWorktreeV2.partial.skippedLabel": "Έγινε παράλειψη",
+  "localConversation.syncWorktreeV2.stateFailed.generic":
+    "Κάτι πήγε στραβά κατά την ανάκτηση των αλλαγών στο δέντρο εργασιών για μεταβίβαση. Προσπάθησε ξανά.",
+  "localConversation.syncWorktreeV2.stateFailed.title":
+    "Αποτυχία φόρτωσης αλλαγών στο δέντρο εργασιών",
+  "localConversation.syncWorktreeV2.statusError.diffUnknown":
+    "Αποτυχία φόρτωσης αλλαγών στο δέντρο εργασιών.",
+  "localConversation.syncWorktreeV2.statusError.retry": "Επανάληψη",
+  "localConversation.syncWorktreeV2.statusError.title":
+    "Αδυναμία φόρτωσης τοπικών αλλαγών κλάδου",
+  "localConversation.syncWorktreeV2.statusError.unknown":
+    "Η κατάσταση του κλάδου δεν είναι διαθέσιμη αυτή τη στιγμή. Προσπάθησε ξανά.",
+  "localConversation.syncWorktreeV2.success.apply": "Επιτυχής εφαρμογή αλλαγών",
+  "localConversation.syncWorktreeV2.success.overwrite": "Επιτυχής μεταβίβαση",
+  "localConversation.syncWorktreeV2.title": "Μεταβίβαση αλλαγών",
+  "localConversation.syncWorktreeV2.worktreeLabel": "Δέντρο εργασιών",
+  "localConversation.userInputRequest.inProgress":
+    "Γίνεται/γίνονται {count, plural, one {ερώτηση} other {ερωτήσεις}}",
+  "localConversation.userInputRequest.noAnswer": "Δεν δόθηκε απάντηση",
+  "localConversation.userInputRequest.summary": "{label} {counts}",
+  "localConversation.userInputRequest.summary.asked": "Έγινε/έγιναν",
+  "localConversation.userInputRequest.summary.count":
+    "{count, plural, one {# ερώτηση} other {# ερωτήσεις}}",
+  "localConversation.worktreeBranchSetup.action.create": "Δημιουργία",
+  "localConversation.worktreeBranchSetup.branchAriaLabel": "Όνομα κλάδου",
+  "localConversation.worktreeBranchSetup.branchPlaceholder.new":
+    "Δημιουργία νέου κλάδου",
+  "localConversation.worktreeBranchSetup.checkoutDisabled":
+    "Έχει γίνει ήδη check out σε αυτόν τον κλάδο στην τοποθεσία {location}",
+  "localConversation.worktreeBranchSetup.checkoutError":
+    "Αποτυχία check out κλάδου: {message}",
+  "localConversation.worktreeBranchSetup.createBranchError":
+    "Αποτυχία ρύθμισης κλάδου: {message}",
+  "localConversation.worktreeBranchSetup.error": "Κάτι πήγε στραβά: {message}",
+  "localConversation.worktreeBranchSetup.title": "Δημιουργία κλάδου",
+  "localConversationPage.addWorktreeToSidebar.tooltip":
+    "Αποθήκευση ως έργου για να είναι δυνατή η έναρξη νέων νημάτων από αυτό το δέντρο εργασιών",
+  "localConversationPage.addWorktreeToSidebarError": "Αποτυχία προσθήκης έργου",
+  "localConversationPage.commitAndCreatePrModal.errorTitle":
+    "Αποτυχία commit και δημιουργία PR",
+  "localConversationPage.commitAndCreatePrModal.successTitle":
+    "Επιτυχές commit και δημιουργία PR",
+  "localConversationPage.commitAndPushModal.errorTitle":
+    "Αποτυχία commit και push",
+  "localConversationPage.commitAndPushModal.successTitle":
+    "Έγινε commit και push των αλλαγών",
+  "localConversationPage.commitCreatePr.open": "Άνοιγμα αιτήματος pull",
+  "localConversationPage.commitCreatePr.successTitle":
+    "Δημιουργήθηκε PR με τις τελευταίες σου αλλαγές",
+  "localConversationPage.createBranchButtonLabel": "Δημιουργία κλάδου",
+  "localConversationPage.createPrModal.baseBranch": "Βάση",
+  "localConversationPage.createPrModal.baseBranchUnknown": "-",
+  "localConversationPage.createPrModal.confirm": "Δημιουργία PR",
+  "localConversationPage.createPrModal.createDescription":
+    "Άνοιξε ένα αίτημα pull για τις τελευταίες σου αλλαγές.",
+  "localConversationPage.createPrModal.errorTitle": "Αποτυχία αιτήματος pull",
+  "localConversationPage.createPrModal.headBranch": "Κεφαλίδα",
+  "localConversationPage.createPrModal.headBranchUnknown": "-",
+  "localConversationPage.createPrModal.open": "Άνοιγμα PR",
+  "localConversationPage.createPrModal.successTitle":
+    "Δημιουργήθηκε αίτημα pull",
+  "localConversationPage.createPrModal.title": "Δημιουργία αιτήματος pull",
+  "localConversationPage.createPrModal.viewDescription":
+    "Υπάρχει ήδη ένα αίτημα pull για αυτόν τον κλάδο.",
+  "localConversationPage.createPrModal.viewTitle": "Αίτημα pull έτοιμο",
+  "localConversationPage.createPullRequestAuthGh":
+    "Επαλήθευση ταυτότητας GitHub CLI: εκτέλεση `gh auth login`",
+  "localConversationPage.createPullRequestBranchMissing":
+    "Πληροφορίες κλάδου μη διαθέσιμες",
+  "localConversationPage.createPullRequestButtonLabel": "Δημιουργία PR",
+  "localConversationPage.createPullRequestButtonLabel.loading":
+    "Δημιουργία PR σε εξέλιξη…",
+  "localConversationPage.createPullRequestDefaultBranchMissing":
+    "Πληροφορίες προεπιλεγμένου κλάδου μη διαθέσιμες",
+  "localConversationPage.createPullRequestError":
+    "Αποτυχία δημιουργίας αιτήματος pull",
+  "localConversationPage.createPullRequestExistingPullRequest":
+    "Υπάρχει ήδη ένα αίτημα pull για αυτόν τον κλάδο",
+  "localConversationPage.createPullRequestGhStatusMissing":
+    "Φόρτωση κατάστασης GitHub CLI…",
+  "localConversationPage.createPullRequestInstallGh":
+    "Εγκατάστησε το GitHub CLI (gh) για δημιουργία PR",
+  "localConversationPage.createPullRequestNoRepo": "Δεν βρέθηκε αποθετήριο git",
+  "localConversationPage.createPullRequestPushStatusMissing":
+    "Φόρτωση κατάστασης push…",
+  "localConversationPage.createPullRequestSetUpstream":
+    "Κάνε push σε αυτόν τον κλάδο πριν από τη δημιουργία PR",
+  "localConversationPage.createPullRequestSuccessToast":
+    "Δημιουργήθηκε αίτημα pull",
+  "localConversationPage.createPullRequestSwitchBranch":
+    "Έλεγξε έναν κλάδο λειτουργιών πριν από τη δημιουργία PR",
+  "localConversationPage.error.render": "Σφάλμα απόδοσης τοπικής συζήτησης",
+  "localConversationPage.error.toast": "Η συζήτηση δεν βρέθηκε",
+  "localConversationPage.forcePushError": "Αποτυχία εξαναγκασμού push",
+  "localConversationPage.generatePullRequestMessageError":
+    "Αποτυχία δημιουργίας τίτλου και κυρίως σώματος αιτήματος pull",
+  "localConversationPage.generatePullRequestMessageFailed":
+    "Αποτυχία δημιουργίας τίτλου και κυρίως σώματος αιτήματος pull.",
+  "localConversationPage.gitActionResult.branch": "Κλάδος",
+  "localConversationPage.gitActionResult.cancel": "Ακύρωση",
+  "localConversationPage.gitActionResult.close": "Κλείσιμο",
+  "localConversationPage.gitActionResult.tryAgain": "Προσπάθησε ξανά",
+  "localConversationPage.gitActions": "Ενέργειες git",
+  "localConversationPage.newChat": "Νέα συνομιλία",
+  "localConversationPage.openInTarget": "Άνοιγμα σε",
+  "localConversationPage.openPrimaryTarget": "Άνοιγμα",
+  "localConversationPage.planItemsCompleted":
+    "{completedItems} από {totalItems, plural, one {# εργασία ολοκληρώθηκαν} other {# εργασίες ολοκληρώθηκαν}}",
+  "localConversationPage.pushAuthError":
+    "Αποτυχία push: απαιτείται έλεγχος ταυτότητας",
+  "localConversationPage.pushBranchMissing": "Πληροφορίες κλάδου μη διαθέσιμες",
+  "localConversationPage.pushButtonLabel": "Ειδοποιήσεις push",
+  "localConversationPage.pushButtonLabel.loading": "Push σε εξέλιξη…",
+  "localConversationPage.pushError": "Αδυναμία υλοποίησης push αλλαγών",
+  "localConversationPage.pushModal.branchLabel": "Κλάδος",
+  "localConversationPage.pushModal.branchUnknown": "-",
+  "localConversationPage.pushModal.cancel": "Ακύρωση",
+  "localConversationPage.pushModal.confirm": "Ειδοποιήσεις push",
+  "localConversationPage.pushModal.description":
+    "Κάνε push στα τελευταία σου commit στο απομακρυσμένο αποθετήριο.",
+  "localConversationPage.pushModal.errorTitle": "Αποτυχία push",
+  "localConversationPage.pushModal.forcePush": "Εξαναγκασμός push",
+  "localConversationPage.pushModal.successTitle": "Το push ολοκληρώθηκε",
+  "localConversationPage.pushModal.title": "Push αλλαγών",
+  "localConversationPage.pushModal.tryAgain": "Προσπάθησε ξανά",
+  "localConversationPage.pushNoUpstream":
+    "Ρύθμιση ροής προς τα πάνω πριν γίνει push αυτού του κλάδου",
+  "localConversationPage.pushNoUpstreamError":
+    "Αποτυχία push: δεν έχει διαμορφωθεί προώθηση προς τα πάνω",
+  "localConversationPage.pushNothingToPush":
+    "Δεν υπάρχουν νέες δεσμεύσεις για push",
+  "localConversationPage.pushRemoteChangedError":
+    "Αποτυχία push: η απομακρυσμένη μονάδα έχει νέες δεσμεύσεις",
+  "localConversationPage.pushRemoteRejectedError":
+    "Το push απορρίφτηκε από την απομακρυσμένη μονάδα",
+  "localConversationPage.pushStatusMissing": "Φόρτωση κατάστασης push…",
+  "localConversationPage.pushSuccessToast": "Αλλαγές χωρίς push",
+  "localConversationPage.viewPullRequestButtonLabel": "Προβολή PR",
+  "localConversationPage.viewPullRequestButtonLabel.loading":
+    "Φόρτωση αιτήματος pull σε εξέλιξη…",
+  "localConversationTurn.exploration.accordion.count.files":
+    "<countText>{count, plural, one {# αρχείο} other {# αρχεία}}</countText>",
+  "localConversationTurn.exploration.accordion.count.lists":
+    "<countText>{count, plural, one {# λίστα} other {# λίστες}}</countText>",
+  "localConversationTurn.exploration.accordion.count.searches":
+    "<countText>{count, plural, one {# αναζήτηση} other {# αναζητήσεις}}</countText>",
+  "localConversationTurn.exploration.accordion.count.separator": ",",
+  "localConversationTurn.exploration.accordion.header.active":
+    "Γίνεται εξερεύνηση",
+  "localConversationTurn.exploration.accordion.header.active.withCounts":
+    "{counts}",
+  "localConversationTurn.exploration.accordion.header.complete":
+    "Έγινε εξερεύνηση",
+  "localConversationTurn.exploration.accordion.header.complete.withCounts":
+    "Έγινε εξερεύνηση {counts}",
+  "localConversationTurnStory.showContent": "Εμφάνιση περιεχομένου",
+  "localConversationTurnStory.streamContent": "Ροή περιεχομένου",
+  "localConversationTurnStory.toggleReasoning": "Εμφάνιση συλλογισμού",
+  "localTaskRow.archiveError": "Αποτυχία αρχειοθέτησης της συζήτησης",
+  "localTaskRow.resumeError": "Αποτυχία συνέχισης εργασίας",
+  "mermaidDiagram.ariaLabel": "Διάγραμμα mermaid",
+  "mermaidDiagram.copySource": "Αντιγραφή mermaid",
+  "mermaidDiagram.originalCode": "Πηγαίος κώδικας mermaid",
+  "notifications.permissions.description":
+    "Εμφάνιση ειδοποιήσεων όταν απαιτούνται άδειες ειδοποιήσεων",
+  "notifications.permissions.label": "Ενεργοποίηση ειδοποιήσεων άδειας",
+  "notifications.turnMode.always": "Πάντα",
+  "notifications.turnMode.description":
+    "Ρύθμισε πότε θα σε ειδοποιεί το Codex όταν τελειώνει",
+  "notifications.turnMode.label": "Ειδοποιήσεις ολοκλήρωσης κύκλου",
+  "notifications.turnMode.off": "Ποτέ",
+  "notifications.turnMode.unfocused": "Μόνο όταν δεν υπάρχει εστίαση",
+  "patchApprovalRequest.approve": "Έγκριση",
+  "patchApprovalRequest.menu.allowAlways":
+    "Ναι και μην κάνεις ξανά ερώτηση σε αυτή την περίοδο λειτουργίας",
+  "patchApprovalRequest.menu.allowOnce": "Ναι",
+  "patchApprovalRequest.prompt":
+    "Θέλεις να πραγματοποιήσεις αυτές τις αλλαγές;",
+  "patchApprovalRequest.reject": "Όχι",
+  "patchApprovalRequest.waitingForApproval":
+    "Αναμονή έγκρισης για επεξεργασία αρχείων",
+  "pendingRequest.approvalExec.collapse": "Σύμπτυξη",
+  "pendingRequest.approvalExec.expand": "Επέκταση",
+  "pendingRequestStory.toastAnswer": "Απάντηση: {answer}",
+  "pendingRequestStory.toastApprovalTitle": "Απάντηση έγκρισης",
+  "pendingRequestStory.toastNoAnswers": "Δεν δόθηκαν απαντήσεις",
+  "pendingRequestStory.toastQuestion": "Ερώτηση: {question}",
+  "pendingRequestStory.toastUnknownDecision": "Άγνωστο",
+  "pendingRequestStory.toastUserInputTitle": "Υποβληθείσες απαντήσεις",
+  "quickAction.request.codeReview.branches.new":
+    "Έλεγε τις αλλαγές στο {from} σε σχέση με το {to}",
+  "quickAction.request.codeReview.uncommitted.new":
+    "Έλεγξε τις αλλαγές μου χωρίς commit",
+  "reasoningItem.thinking": "Σκέφτεται",
+  "reasoningItem.thought": "Σκέφτηκε",
+  "reasoningItem.thoughtWithElapsed": "Σκέφτηκε για {elapsed}",
+  "recentConversations.title": "Πρόσφατες συζητήσεις",
+  "recentTasks.worktreeInitFailedTitle":
+    "Αποτυχία αρχικοποίησης δέντρου εργασιών",
+  "recentTasks.worktreeSettingUpTitle": "Ρύθμιση δέντρου εργασιών",
+  "requestInputPanel.continue": "Συνέχεια",
+  "requestInputPanel.dismiss": "Κλείσιμο",
+  "requestInputPanel.escapeKey": "ESC",
+  "requestInputPanel.freeFormPlaceholder": "Πληκτρολόγησε εδώ",
+  "requestInputPanel.optionIndex": "{index}.",
+  "requestInputPanel.otherPlaceholder":
+    "Όχι, και πες στο Codex τι να κάνει διαφορετικά.",
+  "requestInputPanel.selectedBadge": "Επιλέχθηκε",
+  "requestInputPanel.submit": "Υποβολή",
+  "review.commit.ariaLabel.includeUnstaged":
+    "Να συμπεριλαμβάνονται οι μη σταδιοποιημένες",
+  "review.commit.buttonLabel": "Commit",
+  "review.commit.disabled.committing": "Commit σε εξέλιξη…",
+  "review.commit.disabled.loadingDiff": "Φόρτωση diff σε εξέλιξη…",
+  "review.commit.disabled.missingContext":
+    "Πρόσθεσε κάποιο πλαίσιο για να δημιουργήσεις ένα μήνυμα commit",
+  "review.commit.disabled.noChanges": "Δεν υπάρχουν αλλαγές για commit",
+  "review.commit.disabled.noSelection": "Επίλεξε αλλαγές για commit",
+  "review.commit.disabled.unavailable":
+    "Το commit δεν είναι διαθέσιμο επί του παρόντος",
+  "review.commit.error": "Αποτυχία δέσμευσης αλλαγών",
+  "review.commit.form.changesToBeCommitted": "Αλλαγές",
+  "review.commit.form.commitTo": "Κλάδος",
+  "review.commit.form.commitTo.none": "-",
+  "review.commit.form.continue": "Συνέχεια",
+  "review.commit.form.title": "Κάνε commit στις αλλαγές σου",
+  "review.commit.generate.emptyResponse":
+    "Δεν ήταν δυνατή η δημιουργία μηνύματος commit.",
+  "review.commit.generate.failed":
+    "Αποτυχία δημιουργίας μηνύματος commit: {error}",
+  "review.commit.generate.missingPrompt":
+    "Πρόσθεσε κάποιο πλαίσιο για να δημιουργήσεις ένα μήνυμα commit.",
+  "review.commit.includeUnstaged":
+    "Να συμπεριλαμβάνονται οι μη σταδιοποιημένες",
+  "review.commit.loading.description":
+    "Κρατήσου καλά, αυτό μπορεί να πάρει λίγη ώρα…",
+  "review.commit.loading.step.commit.done": "Αλλαγές με commit",
+  "review.commit.loading.step.commit.pending": "Commit αλλαγών σε εξέλιξη",
+  "review.commit.loading.step.createPr.done": "Δημιουργήθηκε αίτημα pull",
+  "review.commit.loading.step.createPr.pending":
+    "Δημιουργία αιτήματος pull σε εξέλιξη",
+  "review.commit.loading.step.push.done": "Έγινε push προς κλάδο {branch}",
+  "review.commit.loading.step.push.pending": "Γίνεται push προς κλάδο {branch}",
+  "review.commit.loading.title.commit": "Commit αλλαγών σε εξέλιξη",
+  "review.commit.loading.title.createPr": "Δημιουργία PR σε εξέλιξη",
+  "review.commit.loading.title.push": "Push αλλαγών σε εξέλιξη",
+  "review.commit.messageLabel": "Μήνυμα Commit",
+  "review.commit.messagePlaceholder":
+    "Άφησε κενό για να δημιουργηθεί αυτόματα ένα μήνυμα commit",
+  "review.commit.nextSteps": "Επόμενα βήματα",
+  "review.commit.nextSteps.commit": "Commit",
+  "review.commit.nextSteps.commitAndCreate": "Commit και δημιουργία PR",
+  "review.commit.nextSteps.commitAndPush": "Commit και push",
+  "review.commit.nextSteps.prRequiresGh": "Απαιτεί GitHub CLI: {command}",
+  "review.commit.rows.changes": "Αλλαγές",
+  "review.commit.rows.commitCount":
+    "{count, plural, one {# commit} other {# commit}}",
+  "review.commit.rows.commitCount.withUncommitted":
+    "{count, plural, one {# commit} other {# commit}} και {stats}",
+  "review.commit.rows.fileCount":
+    "{count, plural, one {# αρχείου} other {# αρχεία}}",
+  "review.commit.state.error.body":
+    "Κάτι πήγε στραβά κατά την εκτέλεση του commit. Έλεγξε την κατάστασή σου στο git και προσπάθησε ξανά.",
+  "review.commit.state.error.title": "Το commit απέτυχε",
+  "review.commit.state.success.title": "Έγινε commit στις αλλαγές",
+  "review.commit.untracked.loadingStats":
+    "Φόρτωση στατιστικών για diff που δεν παρακολουθούνται…",
+  "reviewFindingAttachments.count":
+    "{count, plural, one {# εύρημα} other {# ευρήματα}}",
+  "settings.agent.configuration.configToml": "config.toml",
+  "settings.agent.configuration.configToml.description":
+    "Επεξεργάσου τη διαμόρφωσή σου για να προσαρμόσεις τη συμπεριφορά του πράκτορα",
+  "settings.agent.configuration.configToml.docs": "Έγγραφα",
+  "settings.agent.configuration.subtitle":
+    "Αυτές οι ρυθμίσεις εφαρμόζονται οπουδήποτε χρησιμοποιείται το Codex",
+  "settings.automations.banner.danger":
+    "Οι αυτοματισμοί εκτελούνται με τις προεπιλεγμένες ρυθμίσεις σου για το sandbox, οι οποίες επί του παρόντος έχουν οριστεί σε Πλήρη πρόσβαση. Η εκτέλεση αυτοματισμών στο παρασκήνιο με Πλήρη πρόσβαση ενέχει αυξημένο κίνδυνο, καθώς το Codex μπορεί να τροποποιήσει αρχεία, να εκτελέσει εντολές και να έχει πρόσβαση στο δίκτυο χωρίς να ρωτήσει. Εξέτασε το ενδεχόμενο ενημέρωσης των ρυθμίσεων του sandbox σε εγγραφή στον χώρο εργασίας και στη χρήση <rulesDocsLink>κανόνων</rulesDocsLink> για επιλεκτικό καθορισμό των εντολών τις οποίες μπορεί να εκτελέσει ο πράκτορας με πλήρη πρόσβαση.",
+  "settings.automations.banner.defaultHowTo.default":
+    "Οι αυτοματισμοί εκτελούνται με τις προεπιλεγμένες ρυθμίσεις σου για το sandbox. Οι κλήσεις εργαλείων θα αποτύχουν εάν απαιτούν τροποποίηση αρχείων εκτός του χώρου εργασίας, πρόσβαση στο δίκτυο ή εργασία με εφαρμογές στον υπολογιστή σου. Μπορείς να επιτρέψεις να εκτελούνται επιλεκτικά εντολές εκτός του sandbox χρησιμοποιώντας <rulesDocsLink>κανόνες</rulesDocsLink>.",
+  "settings.automations.banner.defaultHowTo.readOnly":
+    "Οι αυτοματισμοί εκτελούνται με τις προεπιλεγμένες ρυθμίσεις σου για το sandbox, οι οποίες έχουν οριστεί σε μόνο για ανάγνωση. Οι κλήσεις εργαλείων θα αποτύχουν εάν απαιτούν τροποποίηση αρχείων, πρόσβαση στο δίκτυο ή εργασία με εφαρμογές στον υπολογιστή σου. Εξέτασε το ενδεχόμενο ενημέρωσης των ρυθμίσεων του sandbox σε εγγραφή στον χώρο εργασίας.",
+  "settings.automations.cancel": "Ακύρωση",
+  "settings.automations.create": "Δημιουργία",
+  "settings.automations.cwdEmpty": "Δεν υπάρχουν διαθέσιμοι φάκελοι έργων",
+  "settings.automations.cwdLabel": "Έργα",
+  "settings.automations.cwdPlaceholder": "Επίλεξε έναν φάκελο",
+  "settings.automations.cwdSubtitle":
+    "Εάν θέλεις ένας αυτοματισμός να εκτελείται σε συγκεκριμένο κλάδο, μπορείς να το αναφέρεις στην προτροπή σου.",
+  "settings.automations.delete": "Διαγραφή",
+  "settings.automations.dialog.editTitle": "Επεξεργασία αυτοματισμού",
+  "settings.automations.dialog.newTitle": "Νέος αυτοματισμός",
+  "settings.automations.dialog.subtitle":
+    "Αυτοματοποίησε επαναλαμβανόμενες εργασίες στο παρασκήνιο. Το Codex προσθέτει ευρήματα στα εισερχόμενα ή αρχειοθετεί αυτόματα την εργασία εάν δεν υπάρχει κάτι να αναφέρει. <learnMoreLink>Μάθε περισσότερα</learnMoreLink>",
+  "settings.automations.dialog.title": "Δημιουργία αυτοματισμού",
+  "settings.automations.executionCopy.git":
+    "Οι αυτοματισμοί εκτελούνται στο παρασκήνιο σε ειδικά δέντρα εργασιών.",
+  "settings.automations.executionCopy.nonGit":
+    "Οι αυτοματισμοί σε έργα που δεν ελέγχονται από την έκδοση εκτελούνται απευθείας στον κατάλογο του έργου. Εξέτασε το ενδεχόμενο χρήσης του Git για ενεργοποίηση της εκτέλεσης σε δέντρα εργασιών παρασκηνίου.",
+  "settings.automations.loading": "Φόρτωση…",
+  "settings.automations.nameLabel": "Όνομα",
+  "settings.automations.namePlaceholder": "Έλεγχος για προβλήματα sentry",
+  "settings.automations.pause": "Παύση",
+  "settings.automations.promptLabel": "Προτροπή",
+  "settings.automations.promptPlaceholder":
+    "αναζήτηση για καταρρεύσεις του συστήματος στο $Sentry",
+  "settings.automations.resume": "Συνέχιση",
+  "settings.automations.rruleSummaryFallback": "Προσαρμοσμένο πρόγραμμα",
+  "settings.automations.runNow": "Δοκιμή",
+  "settings.automations.save": "Αποθήκευση",
+  "settings.automations.scheduleBadge.dayCount": "{count}ημ",
+  "settings.automations.scheduleBadge.interval": "{count} ώρ",
+  "settings.automations.scheduleBadge.weekdays": "Καθημερινές",
+  "settings.automations.scheduleBadge.weekends": "Σαββατοκύριακα",
+  "settings.automations.scheduleHeader": "Πρόγραμμα",
+  "settings.automations.scheduleHours": "ώρες",
+  "settings.automations.scheduleLabel": "Εκτέλεση κάθε",
+  "settings.automations.scheduleMode.daily": "Καθημερινά",
+  "settings.automations.scheduleMode.interval": "Διάστημα",
+  "settings.automations.scheduleModeLabel": "Τύπος προγράμματος",
+  "settings.automations.scheduleSummary.daily": "Καθημερινά στις {time}",
+  "settings.automations.scheduleSummary.interval": "Κάθε {count}ώρ",
+  "settings.automations.scheduleSummary.intervalDayCount":
+    "{count, plural, one {# ημέρα} other {# ημέρες}}",
+  "settings.automations.scheduleSummary.intervalDays": "{interval} την {days}",
+  "settings.automations.scheduleSummary.intervalHourly": "Ωριαία",
+  "settings.automations.scheduleSummary.singleDay": "{day} στις {time}",
+  "settings.automations.scheduleSummary.weekdays": "Καθημερινές στις {time}",
+  "settings.automations.scheduleSummary.weekdaysLabel": "καθημερινές",
+  "settings.automations.scheduleSummary.weekends": "Σαββατοκύριακα στις {time}",
+  "settings.automations.scheduleSummary.weekendsLabel": "σαββατοκύριακα",
+  "settings.automations.scheduleSummary.weekly": "{days} στις {time}",
+  "settings.automations.scheduleWeekdays": "Ενεργοποιημένο",
+  "settings.automations.weekdayState.excluded": "Εξαιρείται",
+  "settings.automations.weekdayState.included": "Συμπεριλαμβάνεται",
+  "settings.conversationDetail.steps": "Βήματα",
+  "settings.conversationDetail.steps.description":
+    "Απόκρυψη εντολών και αποτελεσμάτων",
+  "settings.conversationDetail.stepsWithCommands": "Βήματα με εντολές κώδικα",
+  "settings.conversationDetail.stepsWithCommands.description":
+    "Εμφάνιση εντολών, σύμπτυξη αποτελέσματος",
+  "settings.conversationDetail.stepsWithOutput": "Βήματα με αποτέλεσμα κώδικα",
+  "settings.conversationDetail.stepsWithOutput.description":
+    "Εμφάνιση εντολών και επέκταση αποτελέσματος",
+  "settings.dataControls.archivedChats.dateTime": "{date}, {time}",
+  "settings.dataControls.archivedChats.dateTimeWithRepo":
+    "{date}, {time} • {repo}",
+  "settings.dataControls.archivedChats.empty":
+    "Δεν υπάρχουν αρχειοθετημένες συνομιλίες.",
+  "settings.dataControls.archivedChats.error":
+    "Δεν ήταν δυνατή η φόρτωση των αρχειοθετημένων συνομιλιών.",
+  "settings.dataControls.archivedChats.loading":
+    "Φόρτωση αρχειοθετημένων συνομιλιών…",
+  "settings.dataControls.archivedChats.unarchive": "Αναίρεση αρχειοθέτησης",
+  "settings.dataControls.archivedChats.unarchiveError":
+    "Αποτυχία αναίρεσης αρχειοθέτησης της συνομιλίας",
+  "settings.dataControls.archivedChats.unarchiveSuccess":
+    "Νήμα με αναίρεση αρχειοθέτησης. <viewNowLink>Προβολή τώρα</viewNowLink>",
+  "settings.dataControls.archivedChats.untitled": "Συνομιλία χωρίς τίτλο",
+  "settings.editRow.headerPlaceholder": "Κλειδί",
+  "settings.editRow.removeEntry": "Κατάργηση καταχώρισης",
+  "settings.editRow.valuePlaceholder": "Τιμή",
+  "settings.general.appearance": "Εμφάνιση",
+  "settings.general.appearance.codeFont": "Γραμματοσειρά κώδικα",
+  "settings.general.appearance.codeFont.description":
+    "Προσαρμογή γραμματοσειράς και μεγέθους που χρησιμοποιούνται για τον κώδικα σε συνομιλίες και diff",
+  "settings.general.appearance.codeFontFamily":
+    "Οικογένεια γραμματοσειρών κώδικα",
+  "settings.general.appearance.codeFontSize": "Μέγεθος γραμματοσειράς κώδικα",
+  "settings.general.appearance.codeFontSize.units": "px",
+  "settings.general.appearance.opaqueWindows.description":
+    "Ρύθμισε τα παράθυρα ώστε να χρησιμοποιούν ένα συμπαγές φόντο αντί για ημιδιαφάνεια συστήματος",
+  "settings.general.appearance.opaqueWindows.label":
+    "Χρησιμοποίησε αδιαφανές φόντο παραθύρου",
+  "settings.general.appearance.sansFontFamily":
+    "Οικογένεια γραμματοσειρών Sans",
+  "settings.general.appearance.sansFontFamily.description":
+    "Προσαρμογή της γραμματοσειράς που χρησιμοποιείται για το UI του Codex",
+  "settings.general.appearance.sansFontSize": "Μέγεθος γραμματοσειράς Sans",
+  "settings.general.appearance.sansFontSize.units": "px",
+  "settings.general.appearance.theme": "Θέμα",
+  "settings.general.appearance.theme.dark": "Σκουρόχρωμο",
+  "settings.general.appearance.theme.description":
+    "Χρήση ανοιχτόχρωμου, σκουρόχρωμου ή αντίστοιχου με το σύστημά σου",
+  "settings.general.appearance.theme.light": "Ελαφρύ",
+  "settings.general.appearance.theme.system": "Σύστημα",
+  "settings.general.appearance.usePointerCursors.description":
+    "Αλλαγή του δρομέα σε δείκτη κατά το πέρασμα πάνω από διαδραστικά στοιχεία",
+  "settings.general.appearance.usePointerCursors.label":
+    "Χρήση δρομέων με δείκτη",
+  "settings.general.enterBehavior.description":
+    "Όταν είναι ενεργοποιημένες, οι προτροπές πολλαπλών γραμμών απαιτούν {modifierSymbol} + enter για αποστολή.",
+  "settings.general.enterBehavior.label":
+    "Απαίτηση για {modifierSymbol} + enter για αποστολή μεγάλων προτροπών",
+  "settings.general.followUpQueueMode.description":
+    "Συνέχειες ουράς ενώ το Codex εκτελεί ή διακόπτει την τρέχουσα εκτέλεση",
+  "settings.general.followUpQueueMode.interrupt": "Διακοπή",
+  "settings.general.followUpQueueMode.label": "Συμπεριφορά συνέχειας",
+  "settings.general.followUpQueueMode.queue": "Ουρά",
+  "settings.general.notifications": "Ειδοποιήσεις",
+  "settings.general.power.preventSleepWhileRunning.description":
+    "Κράτα τον υπολογιστή σου σε λειτουργία ενόσω το Codex εκτελεί κάποιο νήμα.",
+  "settings.general.power.preventSleepWhileRunning.label":
+    "Αποτροπή μετάβασης σε αναστολή λειτουργίας κατά την εκτέλεση",
+  "settings.git.branchPrefix.ariaLabel": "Πρόθημα κλάδου",
+  "settings.git.branchPrefix.description":
+    "Πρόθημα που χρησιμοποιείται κατά τη δημιουργία νέων κλάδων στο Codex",
+  "settings.git.branchPrefix.label": "Πρόθημα κλάδου",
+  "settings.git.branchPrefix.placeholder": "codex/",
+  "settings.git.branchPrefix.save.error":
+    "Αποτυχία αποθήκευσης προθήματος κλάδου",
+  "settings.git.branchPrefix.save.success": "Αποθηκευμένο πρόθημα κλάδου",
+  "settings.git.commitInstructions.ariaLabel": "Οδηγίες commit",
+  "settings.git.commitInstructions.description":
+    "Προστέθηκε στις προτροπές δημιουργίας μηνύματος commit",
+  "settings.git.commitInstructions.label": "Οδηγίες commit",
+  "settings.git.commitInstructions.placeholder":
+    "Προσθήκη καθοδήγησης μηνύματος commit…",
+  "settings.git.commitInstructions.save": "Αποθήκευση",
+  "settings.git.commitInstructions.save.error":
+    "Αποτυχία αποθήκευσης οδηγιών commit",
+  "settings.git.commitInstructions.save.success":
+    "Οι οδηγίες commit αποθηκεύτηκαν",
+  "settings.git.forcePush.ariaLabel": "Εξαναγκασμός push σε κάθε περίπτωση",
+  "settings.git.forcePush.description":
+    "Χρήση --force-with-lease όταν γίνεται push από το Codex",
+  "settings.git.forcePush.label": "Εξαναγκασμός push σε κάθε περίπτωση",
+  "settings.git.forcePush.save.disabled":
+    "Εξαναγκασμός push σε κάθε περίπτωση απενεργοποιημένος",
+  "settings.git.forcePush.save.enabled":
+    "Εξαναγκασμός push σε κάθε περίπτωση ενεργοποιημένος",
+  "settings.git.forcePush.save.error":
+    "Αποτυχία αποθήκευσης ρύθμισης εξαναγκασμού push",
+  "settings.git.prInstructions.ariaLabel": "Οδηγίες αιτήματος pull",
+  "settings.git.prInstructions.description":
+    "Προστέθηκε στα κυρίως σώματα των αιτημάτων pull που δημιουργήθηκαν από το Codex",
+  "settings.git.prInstructions.label": "Οδηγίες αιτήματος pull",
+  "settings.git.prInstructions.placeholder":
+    "Προσθήκη καθοδήγησης αιτήματος pull…",
+  "settings.git.prInstructions.save": "Αποθήκευση",
+  "settings.git.prInstructions.save.error":
+    "Αποτυχία αποθήκευσης οδηγιών αιτήματος pull",
+  "settings.git.prInstructions.save.success":
+    "Έγινε αποθήκευση των οδηγιών αιτήματος pull",
+  "settings.ide.defaultOpenTarget.description":
+    "Όπου τα αρχεία και οι φάκελοι ανοίγουν από προεπιλογή",
+  "settings.ide.defaultOpenTarget.label": "Προεπιλεγμένο άνοιγμα προορισμού",
+  "settings.ide.defaultOpenTarget.placeholder": "Δεν βρέθηκαν στόχοι",
+  "settings.ide.language.auto": "Αυτόματος εντοπισμός",
+  "settings.ide.language.autoOption": "Αυτόματος εντοπισμός",
+  "settings.ide.language.description": "Γλώσσα για το UI της εφαρμογής",
+  "settings.ide.language.label": "Γλώσσα",
+  "settings.ide.language.search": "Αναζήτηση γλωσσών",
+  "settings.layout.actionButton": "Επανέναρξη επέκτασης",
+  "settings.layout.actionTitle": "Ρυθμίσεις με ενέργεια",
+  "settings.layout.fullWidthTitle": "Ρυθμίσεις (πλήρες πλάτος)",
+  "settings.layout.title": "Ρυθμίσεις",
+  "settings.localEnvironments.actions.add": "Προσθήκη ενέργειας",
+  "settings.localEnvironments.actions.add.description":
+    "Δημιούργησε μια νέα εντολή για εκτέλεση από τη γραμμή εργαλείων.",
+  "settings.localEnvironments.actions.add.save": "Αποθήκευση",
+  "settings.localEnvironments.actions.empty":
+    "Πρόσθεσε μια ενέργεια για να εκτελεί εντολές από την τοπική γραμμή εργαλείων.",
+  "settings.localEnvironments.actions.icon.debug": "Εντοπισμός σφαλμάτων",
+  "settings.localEnvironments.actions.icon.run": "Εκτελέστηκε",
+  "settings.localEnvironments.actions.icon.test": "Δοκιμή",
+  "settings.localEnvironments.actions.icon.tool": "Εργαλείο",
+  "settings.localEnvironments.actions.item.button.delete": "Διαγραφή",
+  "settings.localEnvironments.actions.item.command": "Σενάριο ενέργειας",
+  "settings.localEnvironments.actions.item.name": "Όνομα",
+  "settings.localEnvironments.actions.item.platforms": "Πλατφόρμες",
+  "settings.localEnvironments.actions.item.platforms.help":
+    "Εκτέλεση μόνο σε συγκεκριμένο λειτουργικό σύστημα.",
+  "settings.localEnvironments.actions.item.platforms.linux": "Linux",
+  "settings.localEnvironments.actions.item.platforms.macos": "macOS",
+  "settings.localEnvironments.actions.item.platforms.selector":
+    "Επιλογή πλατφόρμας",
+  "settings.localEnvironments.actions.item.platforms.specific":
+    "Για συγκεκριμένη πλατφόρμα",
+  "settings.localEnvironments.actions.item.platforms.windows": "Windows",
+  "settings.localEnvironments.actions.item.tooltip.delete": "Διαγραφή",
+  "settings.localEnvironments.actions.title": "Ενέργειες",
+  "settings.localEnvironments.breadcrumb.back": "Πίσω",
+  "settings.localEnvironments.breadcrumb.edit": "επεξεργασία",
+  "settings.localEnvironments.breadcrumb.root": "Περιβάλλοντα",
+  "settings.localEnvironments.environment.actions.description":
+    "Αυτές οι ενέργειες μπορούν να εκτελέσουν οποιαδήποτε εντολή και θα εμφανίζονται στην κεφαλίδα.",
+  "settings.localEnvironments.environment.actionsLabel": "Ενέργειες",
+  "settings.localEnvironments.environment.create":
+    "Δημιουργία τοπικού περιβάλλοντος",
+  "settings.localEnvironments.environment.defaultName": "τοπικά",
+  "settings.localEnvironments.environment.edit":
+    "Επεξεργασία τοπικού περιβάλλοντος",
+  "settings.localEnvironments.environment.empty":
+    "Δεν έχει διαμορφωθεί ακόμη τοπικό περιβάλλον για αυτό το έργο.",
+  "settings.localEnvironments.environment.name": "Όνομα",
+  "settings.localEnvironments.environment.setup": "Σενάριο ρύθμισης",
+  "settings.localEnvironments.environment.setup.description":
+    "Αυτό το σενάριο θα εκτελεστεί κατά τη δημιουργία δέντρου εργασιών.",
+  "settings.localEnvironments.environment.setup.hint":
+    "Εκτελείται στη ρίζα του έργου",
+  "settings.localEnvironments.environment.setup.platformOverrides":
+    "Παρακάμψεις πλατφόρμας",
+  "settings.localEnvironments.environment.setup.platformOverrides.add":
+    "Προσθήκη σεναρίου ρύθμισης {platform}",
+  "settings.localEnvironments.environment.setup.platformOverrides.description":
+    "Παρακάμπτει το προεπιλεγμένο σενάριο για συγκεκριμένα λειτουργικά συστήματα.",
+  "settings.localEnvironments.environment.setup.platformOverrides.remove":
+    "Κατάργηση",
+  "settings.localEnvironments.environment.setup.script": "Σενάριο",
+  "settings.localEnvironments.environment.title": "Λεπτομέρειες περιβάλλοντος",
+  "settings.localEnvironments.file.missing":
+    "Κάνε αποθήκευση για να δημιουργήσεις αυτό το αρχείο για πρώτη φορά.",
+  "settings.localEnvironments.file.parseError":
+    "Η ανάλυση του υπάρχοντος αρχείου απέτυχε. Η αποθήκευση θα το αντικαταστήσει. ({error})",
+  "settings.localEnvironments.file.path": "Αρχείο: {path}",
+  "settings.localEnvironments.file.readError":
+    "Αποτυχία φόρτωσης δεδομένων τοπικού περιβάλλοντος. ({error})",
+  "settings.localEnvironments.file.title": "Αρχείο τοπικού περιβάλλοντος",
+  "settings.localEnvironments.loading.body":
+    "Γίνεται ανάκτηση της διαμόρφωσης του έργου σου.",
+  "settings.localEnvironments.loading.title": "Φόρτωση τοπικών περιβαλλόντων",
+  "settings.localEnvironments.preview.devOnly": "(Μόνο DEV)",
+  "settings.localEnvironments.preview.save": "Αποθήκευση",
+  "settings.localEnvironments.preview.saveError":
+    "Αποτυχία αποθήκευσης αρχείου. ({error})",
+  "settings.localEnvironments.preview.title": "Προεπισκόπηση",
+  "settings.localEnvironments.save.disabled.name":
+    "Πρόσθεσε ένα όνομα περιβάλλοντος για αποθήκευση.",
+  "settings.localEnvironments.save.disabled.noChanges":
+    "Δεν υπάρχουν αλλαγές για αποθήκευση.",
+  "settings.localEnvironments.save.disabled.saving": "Γίνεται αποθήκευση…",
+  "settings.localEnvironments.save.success": "Αποθηκευμένο τοπικό περιβάλλον",
+  "settings.localEnvironments.unavailable.body":
+    "Δεν καταφέραμε να φορτώσουμε τις ρυθμίσεις τοπικού περιβάλλοντος για αυτό το έργο.",
+  "settings.localEnvironments.unavailable.title":
+    "Τοπικά περιβάλλοντα μη διαθέσιμα",
+  "settings.localEnvironments.workspace.add": "Προσθήκη έργου",
+  "settings.localEnvironments.workspace.title": "Έργο",
+  "settings.localEnvironments.workspaceSelect.addLabel":
+    "Προσθήκη περιβάλλοντος",
+  "settings.localEnvironments.workspaceSelect.description":
+    "Τα τοπικά περιβάλλοντα υπαγορεύουν στο Codex πώς να ρυθμίζουν τα δέντρα εργασιών για ένα έργο. {learnMore}",
+  "settings.localEnvironments.workspaceSelect.empty":
+    "Δεν υπάρχουν ακόμη έργα. Πρόσθεσε έναν για να διαμορφώσεις τοπικά περιβάλλοντα.",
+  "settings.localEnvironments.workspaceSelect.errorLabel":
+    "Το περιβάλλον χρειάζεται προσοχή",
+  "settings.localEnvironments.workspaceSelect.learnMore": "Μάθε περισσότερα",
+  "settings.localEnvironments.workspaceSelect.listLabel": "Διαθέσιμα έργα",
+  "settings.localEnvironments.workspaceSelect.loading": "Φόρτωση έργων.",
+  "settings.localEnvironments.workspaceSelect.loadingLabel":
+    "Φόρτωση περιβάλλοντος σε εξέλιξη",
+  "settings.localEnvironments.workspaceSelect.title": "Επίλεξε ένα έργο",
+  "settings.localEnvironments.workspaceSelect.viewAction": "Προβολή",
+  "settings.mcp.addServer": "Προσθήκη διακομιστή",
+  "settings.mcp.detail.addArgument": "Προσθήκη ορίσματος",
+  "settings.mcp.detail.addEnvVar": "Προσθήκη μεταβλητής περιβάλλοντος",
+  "settings.mcp.detail.addEnvVarPassthrough": "Προσθήκη μεταβλητής",
+  "settings.mcp.detail.args": "Ορίσματα",
+  "settings.mcp.detail.back": "Πίσω",
+  "settings.mcp.detail.command": "Εντολή προς εκτέλεση",
+  "settings.mcp.detail.cwd": "Κατάλογος εργασίας",
+  "settings.mcp.detail.docs": "Άνοιγμα τεκμηρίωσης MCP",
+  "settings.mcp.detail.docs.link": "Έγγραφα",
+  "settings.mcp.detail.envVarPassthrough": "Διαβίβαση μεταβλητής περιβάλλοντος",
+  "settings.mcp.detail.envVars": "Μεταβλητές περιβάλλοντος",
+  "settings.mcp.detail.http.addEnvHeader": "Προσθήκη μεταβλητής",
+  "settings.mcp.detail.http.addHeader": "Προσθήκη κεφαλίδας",
+  "settings.mcp.detail.http.bearerToken":
+    "Μεταβλητή περιβάλλοντος διακριτικού κομιστή",
+  "settings.mcp.detail.http.envHeaders":
+    "Κεφαλίδες από μεταβλητές περιβάλλοντος",
+  "settings.mcp.detail.http.headers": "Κεφαλίδες",
+  "settings.mcp.detail.http.url": "URL",
+  "settings.mcp.detail.name": "Όνομα",
+  "settings.mcp.detail.save": "Αποθήκευση",
+  "settings.mcp.detail.switchTransportNotice":
+    "Αν θέλεις να κάνεις εναλλαγή του τύπου διακομιστή MCP, κάνε πρώτα απεγκατάσταση.",
+  "settings.mcp.detail.titleExisting": "Ενημέρωση MCP {name}",
+  "settings.mcp.detail.titleNew": "Σύνδεση σε προσαρμοσμένο MCP",
+  "settings.mcp.detail.transport.http": "HTTP με δυνατότητα ροής",
+  "settings.mcp.detail.transport.stdio": "STDIO",
+  "settings.mcp.detail.uninstall": "Απεγκατάσταση",
+  "settings.mcp.empty": "Δεν υπάρχουν συνδεδεμένοι διακομιστές MCP",
+  "settings.mcp.myServers": "Προσαρμοσμένοι διακομιστές",
+  "settings.mcp.partnerServer.description.figma":
+    "Δημιούργησε καλύτερο κώδικα ενσωματώνοντας το πλήρες περιβάλλον Figma",
+  "settings.mcp.partnerServer.description.github":
+    "Ενσωμάτωση με API του GitHub για αυτοματοποίηση των ροών εργασιών και εξαγωγή δεδομένων",
+  "settings.mcp.partnerServer.description.linear":
+    "Ενσωμάτωση με παρακολούθηση προβλημάτων του Linear και διαχείριση έργων",
+  "settings.mcp.partnerServer.description.notion":
+    "Ανάγνωση εγγράφων, ενημέρωση σελίδων, διαχείριση εργασιών",
+  "settings.mcp.partnerServer.description.playwright":
+    "Ενσωμάτωση αυτοματοποίησης προγράμματος περιήγησης για υλοποίηση του σχεδιασμού και δοκιμή του UI.",
+  "settings.mcp.partnerServer.install": "Εγκατάσταση",
+  "settings.mcp.partnerServer.installAndAuthenticate":
+    "Εγκατάσταση και επαλήθευση ταυτότητας",
+  "settings.mcp.partnerServer.logoAlt": "Λογότυπο {label}",
+  "settings.mcp.partnerServer.vendor": "Δημιουργός: {vendor}",
+  "settings.mcp.recommendedServers": "Προτεινόμενοι διακομιστές",
+  "settings.mcp.restartApp": "Επανεκκίνηση",
+  "settings.mcp.restartExtension": "Επανέναρξη επέκτασης",
+  "settings.mcp.server.enable": "Ενεργοποίηση",
+  "settings.mcp.server.login": "Επαλήθευση ταυτότητας",
+  "settings.mcp.server.settings": "Ρυθμίσεις",
+  "settings.multiselect.createOption": "Δημιουργία «{value}»",
+  "settings.multiselect.removeOption": "Κατάργηση",
+  "settings.nav.account": "Λογαριασμός",
+  "settings.nav.agent": "Διαμόρφωση",
+  "settings.nav.ariaLabel": "Ρυθμίσεις",
+  "settings.nav.back": "Επιστροφή στην εφαρμογή",
+  "settings.nav.data-controls": "Αρχειοθετημένα νήματα",
+  "settings.nav.environments": "Περιβάλλοντα cloud",
+  "settings.nav.externalTooltip": "[alpha] Ανοίγει στο πρόγραμμα περιήγησης",
+  "settings.nav.general-settings": "Γενικά",
+  "settings.nav.git-settings": "Git",
+  "settings.nav.local-environments": "Περιβάλλοντα",
+  "settings.nav.mcp-settings": "Διακομιστές MCP",
+  "settings.nav.notImplemented": "[alpha] Μη διαθέσιμο στο Alpha",
+  "settings.nav.personalization": "Εξατομίκευση",
+  "settings.nav.skills-settings": "Δεξιότητες",
+  "settings.nav.usage-analytics": "Χρήση και ανάλυση",
+  "settings.nav.worktrees": "Δέντρα εργασιών",
+  "settings.openSourceLicenses.back": "Πίσω",
+  "settings.openSourceLicenses.loading": "Φόρτωση…",
+  "settings.openSourceLicenses.missing": "Δεν βρέθηκαν σημειώσεις τρίτου",
+  "settings.openSourceLicenses.notSupported":
+    "Δεν είναι ακόμη διαθέσιμο σε αυτόν τον εξυπηρετητή.",
+  "settings.openSourceLicenses.rowDescription":
+    "Σημειώσεις τρίτων για ομαδοποιημένες σχέσεις εξάρτησης",
+  "settings.openSourceLicenses.rowLabel": "Άδειες ανοιχτού πηγαίου κώδικα",
+  "settings.openSourceLicenses.subtitle":
+    "Σημειώσεις τρίτων για σχέσεις εξάρτησης που περιλαμβάνονται σε αυτή την εφαρμογή",
+  "settings.openSourceLicenses.title": "Άδειες ανοιχτού πηγαίου κώδικα",
+  "settings.openSourceLicenses.view": "Προβολή",
+  "settings.personalization.agents.description":
+    "Επεξεργάσου τις οδηγίες που προσαρμόζουν το Codex στις απαιτήσεις σου. {learnMore}",
+  "settings.personalization.agents.learnMore": "Μάθε περισσότερα",
+  "settings.personalization.agents.loadError":
+    "Αδυναμία φόρτωσης του agents.md.",
+  "settings.personalization.agents.loading": "Φόρτωση του agents.md…",
+  "settings.personalization.agents.placeholder":
+    "Πρόσθεσε τις προσαρμοσμένες οδηγίες σου…",
+  "settings.personalization.agents.retry": "Επανάληψη",
+  "settings.personalization.agents.save": "Αποθήκευση",
+  "settings.personalization.agents.save.error":
+    "Αδυναμία αποθήκευσης του agents.md.",
+  "settings.personalization.agents.save.success":
+    "Έγινε αποθήκευση του agents.md",
+  "settings.personalization.agents.title": "Προσαρμοσμένες οδηγίες",
+  "settings.personalization.personality.description":
+    "Επίλεξε έναν προεπιλεγμένο τόνο για τις απαντήσεις του Codex",
+  "settings.personalization.personality.label": "Προσωπικότητα",
+  "settings.sample.contentBody":
+    "Χρησιμοποίησε αυτή τη διάταξη για να συνθέσεις τους πίνακες ρυθμίσεων με ομοιόμορφα διαστήματα.",
+  "settings.sample.contentTitle": "Δείγμα μπλοκ περιεχομένου",
+  "settings.section.account": "Λογαριασμός",
+  "settings.section.agent": "Διαμόρφωση",
+  "settings.section.data-controls": "Αρχειοθετημένα νήματα",
+  "settings.section.environments": "Περιβάλλοντα cloud",
+  "settings.section.external":
+    "Ανοίγει στο πρόγραμμα περιήγησής σου κατά ενόσω χρησιμοποιείται το Alpha",
+  "settings.section.general-settings": "Γενικά",
+  "settings.section.git-settings": "Git",
+  "settings.section.local-environments": "Περιβάλλοντα",
+  "settings.section.mcp-settings": "Διακομιστές MCP",
+  "settings.section.mcp-settings.docs": "Έγγραφα",
+  "settings.section.mcp-settings.subtitle":
+    "Σύνδεση εξωτερικών εργαλείων και πηγών δεδομένων.",
+  "settings.section.personalization": "Εξατομίκευση",
+  "settings.section.skills-settings": "Δεξιότητες",
+  "settings.section.unavailable": "Δεν είναι ακόμη διαθέσιμο στο Alpha",
+  "settings.section.usage-analytics": "Χρήση και ανάλυση",
+  "settings.section.worktrees": "Δέντρα εργασιών",
+  "settings.threadDetail.description":
+    "Επίλεξε πόσο μέρος από το αποτέλεσμα των εντολών θα εμφανίζεται στα νήματα",
+  "settings.threadDetail.label": "Λεπτομέρεια νήματος",
+  "settings.worktrees.conversation.untitled": "Συζήτηση χωρίς τίτλο",
+  "settings.worktrees.delete.error": "Αποτυχία διαγραφής δέντρου εργασιών",
+  "settings.worktrees.empty.body":
+    "Τα δέντρα εργασιών που δημιουργούνται από το Codex θα εμφανίζονται εδώ.",
+  "settings.worktrees.empty.title":
+    "Δεν υπάρχουν δέντρα εργασιών επί του παρόντος",
+  "settings.worktrees.error.body":
+    "Κάτι πήγε στραβά κατά τη φόρτωση των δέντρων εργασιών.",
+  "settings.worktrees.error.retry": "Επανάληψη",
+  "settings.worktrees.error.title": "Αδυναμία φόρτωσης δέντρων εργασιών",
+  "settings.worktrees.loading.body":
+    "Γίνεται ανάκτηση των λεπτομερειών των δέντρων εργασιών.",
+  "settings.worktrees.loading.title": "Γίνεται φόρτωση των δέντρων εργασιών",
+  "settings.worktrees.repository.loading": "Φόρτωση μεταδεδομένων αποθετηρίου…",
+  "settings.worktrees.repository.unknown": "Άγνωστο αποθετήριο",
+  "settings.worktrees.row.conversations": "Συζητήσεις",
+  "settings.worktrees.row.conversations.empty":
+    "Δεν έχουν συνδεθεί συζητήσεις σε αυτό το δέντρο εργασιών.",
+  "settings.worktrees.row.conversations.loading": "Φόρτωση συζητήσεων…",
+  "settings.worktrees.row.delete": "Διαγραφή",
+  "settings.worktrees.row.title": "Δέντρο εργασιών",
+  "sidebarElectron.addWorkspaceRoot": "Προσθήκη νέου έργου",
+  "sidebarElectron.archiveThread": "Αρχειοθέτηση νήματος",
+  "sidebarElectron.archiveThreadError": "Αποτυχία αρχειοθέτησης νήματος",
+  "sidebarElectron.collapseFolder": "Σύμπτυξη φακέλου",
+  "sidebarElectron.debugNavLink": "Εντοπισμός σφαλμάτων",
+  "sidebarElectron.editWorkspaceRootOptionName": "Επεξεργασία ονόματος",
+  "sidebarElectron.expandFolder": "Επέκταση φακέλου",
+  "sidebarElectron.groupByMenu.recency": "Χρονολογικός κατάλογος",
+  "sidebarElectron.groupByMenu.title": "Οργάνωση",
+  "sidebarElectron.groupByMenu.workspace": "Με βάση το έργο",
+  "sidebarElectron.inboxRouteNavLink": "Αυτοματισμοί",
+  "sidebarElectron.missingWorkspaceRoot":
+    "Αυτός ο φάκελος έργου διαγράφηκε ή καταργήθηκε",
+  "sidebarElectron.newThread": "Νέο νήμα",
+  "sidebarElectron.newThreadInGroup":
+    "Έναρξη νέου νήματος στον φάκελο {folder}",
+  "sidebarElectron.noRecentThreads": "Δεν υπάρχουν πρόσφατα νήματα",
+  "sidebarElectron.noTasks": "Δεν υπάρχουν νήματα",
+  "sidebarElectron.noTasks.start": "Προσθήκη νέου έργου",
+  "sidebarElectron.noTasksWithFilter":
+    "Δεν υπάρχουν νήματα που να ταιριάζουν στα φίλτρα",
+  "sidebarElectron.pinnedThreads": "Καρφιτσωμένα νήματα",
+  "sidebarElectron.recentNavLink": "Νήματα",
+  "sidebarElectron.recentThreads": "Πρόσφατα νήματα",
+  "sidebarElectron.removeWorkspaceRootOption": "Κατάργηση",
+  "sidebarElectron.renameThread": "Μετονομασία νήματος",
+  "sidebarElectron.renameThreadDialogAriaLabel": "Τίτλος νήματος",
+  "sidebarElectron.renameThreadDialogCancel": "Ακύρωση",
+  "sidebarElectron.renameThreadDialogPlaceholder": "Προσθήκη τίτλου…",
+  "sidebarElectron.renameThreadDialogSave": "Αποθήκευση",
+  "sidebarElectron.renameThreadDialogSubtitle":
+    "Να διατηρηθεί σύντομο και αναγνωρίσιμο.",
+  "sidebarElectron.renameThreadDialogTitle": "Μετονομασία νήματος",
+  "sidebarElectron.renameThreadError": "Αποτυχία μετονομασίας νήματος",
+  "sidebarElectron.renameWorkspaceRootOptionLabel": "Εμφάνιση ονόματος",
+  "sidebarElectron.showLess": "Εμφάνιση λιγότερων",
+  "sidebarElectron.showMenu.all": "Όλα τα νήματα",
+  "sidebarElectron.showMenu.relevant": "Σχετικό",
+  "sidebarElectron.showMenu.relevantHint":
+    "Να εμφανίζονται μόνο τα πρόσφατα μηνύματα για τον τρέχοντα κλάδο, τα δέντρα εργασιών ή άλλα νήματα που χρειάζονται την προσοχή σου",
+  "sidebarElectron.showMenu.title": "Εμφάνιση",
+  "sidebarElectron.showMenu.trigger": "Φιλτράρισμα νημάτων πλαϊνής γραμμής",
+  "sidebarElectron.showMore": "Εμφάνιση περισσοτέρων",
+  "sidebarElectron.skillsRouteNavLink": "Δεξιότητες",
+  "sidebarElectron.sortMenu.created": "Δημιουργήθηκε",
+  "sidebarElectron.sortMenu.title": "Ταξινόμηση κατά",
+  "sidebarElectron.sortMenu.updated": "Ενημερώθηκε",
+  "sidebarElectron.taskNavigation": "Φάκελοι αυτοματισμών",
+  "sidebarElectron.tasksInFolder": "Αυτοματισμοί στον φάκελο {folder}",
+  "sidebarElectron.workspaceOptions": "Ενέργειες έργου για {folder}",
+  "sidebarElectron.worktreeGroupTooltip": "Αυτό είναι ένα δέντρο εργασιών git",
+  "skills.card.contentsError": "Η φόρτωση περιεχομένων δεξιότητας απέτυχε.",
+  "skills.card.disable": "Απενεργοποίηση",
+  "skills.card.disableSuccess": "Η δεξιότητα {skillName} απενεργοποιήθηκε",
+  "skills.card.disabledBadge": "Απενεργοποιημένο",
+  "skills.card.enable": "Ενεργοποίηση",
+  "skills.card.enableSuccess": "Η δεξιότητα {skillName} ενεργοποιήθηκε",
+  "skills.card.loadingContents": "Φόρτωση περιεχομένων δεξιότητας…",
+  "skills.card.more": "Περισσότερες ενέργειες",
+  "skills.card.open": "Άνοιγμα",
+  "skills.card.removeFailed": "Αποτυχία απεγκατάστασης δεξιότητας",
+  "skills.card.removeSuccess": "Η δεξιότητα {skillName} απεγκαταστάθηκε",
+  "skills.card.toggleEnabledError": "Αποτυχία ενημέρωσης δεξιότητας",
+  "skills.card.try": "Δοκίμασε",
+  "skills.card.trySkill": "Δοκιμή δεξιότητας",
+  "skills.card.uninstall": "Απεγκατάσταση",
+  "skills.hero.dotLabel": "Μετάβαση στη διαφάνεια {index}",
+  "skills.hero.next": "Επόμενη προβεβλημένη δεξιότητα",
+  "skills.hero.trySkill": "Δοκιμή δεξιότητας",
+  "skills.page.createSkill": "Νέα δεξιότητα",
+  "skills.page.empty": "Δεν βρέθηκαν δεξιότητες",
+  "skills.page.filteredEmpty":
+    "Δεν υπάρχουν δεξιότητες που να ταιριάζουν στα φίλτρα σου",
+  "skills.page.filteredEmptyDescription":
+    "Προσπάθησε να προσαρμόσεις την έρευνά σου ή τα φίλτρα του πεδίου εφαρμογής",
+  "skills.page.heading": "Δεξιότητες",
+  "skills.page.loading": "Φόρτωση δεξιοτήτων…",
+  "skills.page.refreshSkills": "Ανανέωση",
+  "skills.page.refreshSkillsToUseNew": "Ανανέωση για χρήση νέων δεξιοτήτων",
+  "skills.page.search": "Αναζήτηση δεξιοτήτων",
+  "skills.page.search.label": "Αναζήτηση δεξιοτήτων",
+  "skills.page.subheading":
+    "Δώσε στο Codex υπερδυνάμεις. <link>Μάθε περισσότερα</link>",
+  "skills.preview.copyPrompt": "Αντιγραφή προτροπής",
+  "skills.preview.examplePrompt": "Παράδειγμα προτροπής",
+  "skills.recommended.error": "Αδυναμία φόρτωσης συνιστώμενων δεξιοτήτων",
+  "skills.recommended.install": "Εγκατάσταση",
+  "skills.recommended.installSkill": "Εγκατάσταση δεξιότητας",
+  "skills.recommended.installSuccess": "Η δεξιότητα {skillName} εγκαταστάθηκε",
+  "skills.recommended.installed": "Εγκαταστάθηκε",
+  "skills.scope.admin": "Διαχειριστής",
+  "skills.scope.adminInstalled": "Έγινε εγκατάσταση του διαχειριστή",
+  "skills.scope.builtIn": "Σύστημα",
+  "skills.scope.personal": "Προσωπικό",
+  "skills.scope.repo": "Αποθετήριο",
+  "skills.scope.system": "Σύστημα",
+  "skills.scope.team": "Ομάδα",
+  "skills.scope.user": "Χρήστης",
+  "skills.section.installed": "Εγκαταστάθηκε",
+  "skills.section.recommended": "Συστήνεται",
+  "story.slidingToggle.existing": "Υπάρχει",
+  "story.slidingToggle.fromLocal": "Από τοπικό",
+  "story.slidingToggle.new": "Νέο",
+  "story.slidingToggle.toLocal": "Σε τοπικό",
+  "terminal.close": "Κλείσιμο τερματικού",
+  "terminal.title": "Τερματικό",
+  "thinkingShimmer.default": "Σκέφτεται",
+  "threadEnvIcon.cloudTooltip": "Αυτή η συζήτηση εκτελείται στο Codex Cloud.",
+  "threadEnvIcon.localTooltip": "Αυτή η συζήτηση εκτελείται τοπικά.",
+  "threadEnvIcon.worktreeTooltip":
+    "Αυτή η συζήτηση εκτελείται σε ένα τοπικό δέντρο εργασιών git.",
+  "threadHeader.archiveConfirmCancel": "Ακύρωση",
+  "threadHeader.archiveConfirmConfirm": "Αρχειοθέτηση",
+  "threadHeader.copyAppLink": "Αντιγραφή συνδέσμου εφαρμογής",
+  "threadHeader.copySessionId": "Αντιγραφή αναγνωριστικού περιόδου λειτουργίας",
+  "threadHeader.copyWorkingDirectory": "Αντιγραφή καταλόγου εργασίας",
+  "threadHeader.moreActions": "Ενέργειες νήματος",
+  "threadPage.newThread": "Νέο νήμα",
+  "threadPage.runAction.changeEnvironment": "Αλλαγή περιβάλλοντος",
+  "threadPage.runAction.dropdown.titleWithEnvironment":
+    "{environmentName} ενέργειες",
+  "threadPage.runAction.environmentSelector.label": "Επιλογή περιβάλλοντος",
+  "threadPage.runAction.label": "Εκτελέστηκε",
+  "threadPage.runAction.missing.label": "Ρύθμιση ενέργειας εκτέλεσης",
+  "threadPage.runAction.setup.commandLabel": "Εντολή προς εκτέλεση",
+  "threadPage.runAction.setup.description":
+    "Πες στο Codex πώς να εγκαταστήσει τις σχέσεις εξάρτησης και κάνε εκκίνηση της εφαρμογής σου.",
+  "threadPage.runAction.setup.editMore": "Ρυθμίσεις περιβάλλοντος",
+  "threadPage.runAction.setup.placeholder": "πχ: npm install npm run",
+  "threadPage.runAction.setup.submit": "Αποθήκευση και εκτέλεση",
+  "threadPage.runAction.setup.title": "Εκτελέστηκε",
+  "threadPage.runAction.tooltip.withEnvironment": "{environmentName} ενέργειες",
+  "threadPage.toggleDiffPanel": "Εναλλαγή πίνακα diff",
+  "threadPage.toggleTerminal": "Εναλλαγή τερματικού",
+  "threadTitle.branchName": "({branchName})",
+  "threadTitle.openFolderInFinder": "Άνοιγμα φακέλου",
+  "toolSummaryForCmd.exploredFiles": "<verb>Καταχωρισμένα</verb> αρχεία",
+  "toolSummaryForCmd.exploredFilesInPath":
+    "<verb>Καταχωρισμένα</verb> αρχεία στη διαδρομή {path}",
+  "toolSummaryForCmd.exploringFiles": "<verb>Γίνεται καταχώριση</verb> αρχείων",
+  "toolSummaryForCmd.exploringFilesInPath":
+    "<verb>Γίνεται καταχώριση</verb> αρχείων στη διαδρομή {path}",
+  "toolSummaryForCmd.ranGenericCommand":
+    "<status>Η εντολή εκτελέστηκε</status>{timer}",
+  "toolSummaryForCmd.ranSpecificCommand":
+    "<status>Εκτελέστηκε η εντολή</status> {command}{timer}",
+  "toolSummaryForCmd.read": "<verb>Ανάγνωση</verb> διαδρομής {path}",
+  "toolSummaryForCmd.runningGenericCommand":
+    "<status>Η εντολή εκτελείται</status>{timer}",
+  "toolSummaryForCmd.runningTimer": "για {elapsed}",
+  "toolSummaryForCmd.searchedFor": "<verb>Έγινε αναζήτηση</verb> για {query}",
+  "toolSummaryForCmd.searchedForFiles":
+    "<verb>Έγινε αναζήτηση</verb> για αρχεία",
+  "toolSummaryForCmd.searchedForInPath":
+    "<verb>Έγινε αναζήτηση</verb> για {query} στη διαδρομή {path}",
+  "toolSummaryForCmd.searchingFor":
+    "<verb>Γίνεται αναζήτηση</verb> για {query}",
+  "toolSummaryForCmd.searchingForFiles":
+    "<verb>Γίνεται αναζήτηση</verb> για αρχεία",
+  "toolSummaryForCmd.searchingForInPath":
+    "<verb>Γίνεται αναζήτηση</verb> για {query} στη διαδρομη {path}",
+  "traceRecording.startDetails.cancel": "Ακύρωση",
+  "wham.diff.addComment": "Προσθήκη σχολίου",
+  "wham.diff.binaryFile": "Το δυαδικό αρχείο δεν εμφανίζεται",
+  "wham.diff.noContent": "Δεν υπάρχει περιεχόμενο",
+  "wham.fileTag.deleted": "Διαγράφηκε",
+  "wham.fileTag.new": "Νέο",
+  "wham.formattedRelativeDateTime.compactDaysAgo": "{value}ημ",
+  "wham.formattedRelativeDateTime.compactHoursAgo": "{value} ώρ",
+  "wham.formattedRelativeDateTime.compactMinutesAgo": "{value} λεπ",
+  "wham.formattedRelativeDateTime.compactMonthsAgo": "{value}μήν",
+  "wham.formattedRelativeDateTime.compactWeeksAgo": "{value}εβδ",
+  "wham.formattedRelativeDateTime.compactYearsAgo": "{value}χρ",
+  "wham.message.modal.repoAndDiffStats.linesAdded": "+{linesAdded}",
+  "wham.message.modal.repoAndDiffStats.linesRemoved": "-{linesRemoved}",
+  "wham.streamTurnStatus.workingOnYourTask":
+    "Γίνεται προετοιμασία της εργασίας σου",
+  "wham.whamProposedTask.title": "Προτεινόμενη εργασία",
+  "wham.whamProposedTask.useSuggestion": "Χρήση πρότασης",
+  "workspaceRootDialog.addError": "Αποτυχία προσθήκης έργου",
+  "workspaceRootDialog.cancel": "Ακύρωση",
+  "workspaceRootDialog.confirmAdd": "Προσθήκη έργου",
+  "workspaceRootDialog.confirmPick": "Χρήση έργου",
+  "workspaceRootDialog.description":
+    "Πληκτρολόγησε μια διαδρομή στο {host} για να χρησιμοποιήσεις ως έργο.",
+  "workspaceRootDialog.pathLabel": "Διαδρομή έργου",
+  "workspaceRootDialog.pathPlaceholder": "/home/you/project",
+  "workspaceRootDialog.title.add": "Προσθήκη διαδρομής έργου",
+  "workspaceRootDialog.title.pick": "Επιλογή διαδρομής έργου",
+  "worktreeInitV2.cancel": "Ακύρωση",
+  "worktreeInitV2.notification.failedTitle":
+    "Αποτυχία εγκατάστασης δέντρου εργασιών.",
+  "worktreeInitV2.output.empty": "Αναμονή για αποτέλεσμα…",
+  "worktreeInitV2.status.error": "Αποτυχία εγκατάστασης δέντρου εργασιών.",
+  "worktreeInitV2.status.running":
+    "Δημιουργία του δέντρου εργασιών και εκτέλεση εγκατάστασης σε εξέλιξη.",
+  "worktreeInitV2.status.success": "Δέντρο εργασιών έτοιμο.",
+  "worktreeInitV2.title": "Δημιουργία δέντρου εργασιών σε εξέλιξη",
+  "worktreeInitV2.workLocallyInstead": "Εργασία τοπικά αντί αυτού",
+  "worktreeRestoreBanner.body":
+    "Το δέντρο εργασιών αυτού του νήματος καταργήθηκε για να εξοικονομηθεί χώρος στον δίσκο",
+  "worktreeRestoreBanner.missing.body":
+    "Ο κατάλογος εργασίας αυτού του νήματος δεν υπάρχει πλέον.",
+  "worktreeRestoreBanner.missing.title": "Ο τρέχων κατάλογος εργασίας λείπει",
+  "worktreeRestoreBanner.restore.error":
+    "Αποτυχία επαναφοράς δέντρου εργασιών: {message}",
+  "worktreeRestoreBanner.restore.success":
+    "Έγινε επαναφορά του δέντρου εργασιών",
+  "worktreeRestoreBanner.restoreCta": "Επαναφορά δέντρου εργασιών",
+  "worktreeRestoreBanner.title": "Έγινε εκκαθάριση του δέντρου εργασιών",
+};
+export { e as default };
+//# sourceMappingURL=el-GR-CBhmwxhA.js.map

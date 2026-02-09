@@ -1,0 +1,4921 @@
+import {
+  F as Ct,
+  c as me,
+  j as n,
+  B as oe,
+  bN as Jt,
+  M as b,
+  co as vt,
+  cp as Yt,
+  cq as Tt,
+  s as J,
+  cr as It,
+  cs as Dt,
+  q as ht,
+  A as Zt,
+  r as es,
+  h as ts,
+  l as je,
+  ct as ss,
+  X as is,
+  Z as ns,
+  cu as rs,
+  cv as os,
+  cw as as,
+  m as ls,
+  cx as cs,
+  cy as gt,
+  P as et,
+  cz as ds,
+  cA as Pt,
+  d as D,
+  e as ee,
+  f as _t,
+  cB as tt,
+  J as us,
+  K as fs,
+  cC as ms,
+  cD as hs,
+  cE as xt,
+  bH as ps,
+  cF as vs,
+  cG as gs,
+  cH as Ot,
+  cI as xs,
+  g as bs,
+  O as Rt,
+  cJ as $t,
+  cK as ys,
+  cL as Ss,
+  bJ as Ms,
+  cM as Es,
+  p as Ae,
+  S as Ce,
+  bU as ws,
+} from "./index-BnRAGF7J.js";
+function Bt(t, e) {
+  const s = Ct(t) ?? t;
+  return e?.label ?? s;
+}
+function js(t) {
+  const e = me.c(17),
+    { workspaceRoot: s, workspaceGroup: i, mode: o, onBack: r } = t;
+  let a;
+  e[0] !== i || e[1] !== s
+    ? ((a = Bt(s, i)), (e[0] = i), (e[1] = s), (e[2] = a))
+    : (a = e[2]);
+  const d = a;
+  let f;
+  e[3] !== r
+    ? ((f = r
+        ? n.jsxs(oe, {
+            color: "ghost",
+            size: "toolbar",
+            onClick: r,
+            children: [
+              n.jsx(Jt, { className: "icon-2xs" }),
+              n.jsx(b, {
+                id: "settings.localEnvironments.breadcrumb.back",
+                defaultMessage: "Back",
+                description:
+                  "Button label to go back to local environments list",
+              }),
+            ],
+          })
+        : null),
+      (e[3] = r),
+      (e[4] = f))
+    : (f = e[4]);
+  let m, c;
+  e[5] === Symbol.for("react.memo_cache_sentinel")
+    ? ((m = n.jsx("span", {
+        children: n.jsx(b, {
+          id: "settings.localEnvironments.breadcrumb.root",
+          defaultMessage: "Environments",
+          description: "Breadcrumb label for the local environments page",
+        }),
+      })),
+      (c = n.jsx(vt, { className: "icon-xs text-token-text-secondary" })),
+      (e[5] = m),
+      (e[6] = c))
+    : ((m = e[5]), (c = e[6]));
+  let l;
+  e[7] !== d
+    ? ((l = n.jsx("span", {
+        className: "text-token-text-primary",
+        children: d,
+      })),
+      (e[7] = d),
+      (e[8] = l))
+    : (l = e[8]);
+  let h;
+  e[9] !== o
+    ? ((h =
+        o === "edit"
+          ? n.jsxs(n.Fragment, {
+              children: [
+                n.jsx(vt, { className: "icon-xs text-token-text-secondary" }),
+                n.jsx("span", {
+                  children: n.jsx(b, {
+                    id: "settings.localEnvironments.breadcrumb.edit",
+                    defaultMessage: "edit",
+                    description:
+                      "Breadcrumb label for local environment edit mode",
+                  }),
+                }),
+              ],
+            })
+          : null),
+      (e[9] = o),
+      (e[10] = h))
+    : (h = e[10]);
+  let u;
+  e[11] !== l || e[12] !== h
+    ? ((u = n.jsxs("div", {
+        className: "flex items-center gap-1",
+        children: [m, c, l, h],
+      })),
+      (e[11] = l),
+      (e[12] = h),
+      (e[13] = u))
+    : (u = e[13]);
+  let p;
+  return (
+    e[14] !== f || e[15] !== u
+      ? ((p = n.jsxs("nav", {
+          className:
+            "flex items-center gap-2 text-sm text-token-text-secondary",
+          children: [f, u],
+        })),
+        (e[14] = f),
+        (e[15] = u),
+        (e[16] = p))
+      : (p = e[16]),
+    p
+  );
+}
+const ue = Yt({
+    darwin: {
+      id: "settings.localEnvironments.actions.item.platforms.macos",
+      defaultMessage: "macOS",
+      description: "Label for macOS platform toggle",
+    },
+    linux: {
+      id: "settings.localEnvironments.actions.item.platforms.linux",
+      defaultMessage: "Linux",
+      description: "Label for Linux platform toggle",
+    },
+    win32: {
+      id: "settings.localEnvironments.actions.item.platforms.windows",
+      defaultMessage: "Windows",
+      description: "Label for Windows platform toggle",
+    },
+  }),
+  Fe = new WeakMap(),
+  Ke = new WeakMap(),
+  Qe = { current: [] };
+let st = !1,
+  De = 0;
+const Ie = new Set(),
+  Re = new Map();
+function Wt(t) {
+  const e = Array.from(t).sort((s, i) =>
+    s instanceof fe && s.options.deps.includes(i)
+      ? 1
+      : i instanceof fe && i.options.deps.includes(s)
+        ? -1
+        : 0,
+  );
+  for (const s of e) {
+    if (Qe.current.includes(s)) continue;
+    (Qe.current.push(s), s.recompute());
+    const i = Ke.get(s);
+    if (i)
+      for (const o of i) {
+        const r = Fe.get(o);
+        r && Wt(r);
+      }
+  }
+}
+function ks(t) {
+  const e = { prevVal: t.prevState, currentVal: t.state };
+  for (const s of t.listeners) s(e);
+}
+function Vs(t) {
+  const e = { prevVal: t.prevState, currentVal: t.state };
+  for (const s of t.listeners) s(e);
+}
+function zt(t) {
+  if (
+    (De > 0 && !Re.has(t) && Re.set(t, t.prevState),
+    Ie.add(t),
+    !(De > 0) && !st)
+  )
+    try {
+      for (st = !0; Ie.size > 0; ) {
+        const e = Array.from(Ie);
+        Ie.clear();
+        for (const s of e) {
+          const i = Re.get(s) ?? s.prevState;
+          ((s.prevState = i), ks(s));
+        }
+        for (const s of e) {
+          const i = Fe.get(s);
+          i && (Qe.current.push(s), Wt(i));
+        }
+        for (const s of e) {
+          const i = Fe.get(s);
+          if (i) for (const o of i) Vs(o);
+        }
+      }
+    } finally {
+      ((st = !1), (Qe.current = []), Re.clear());
+    }
+}
+function le(t) {
+  De++;
+  try {
+    t();
+  } finally {
+    if ((De--, De === 0)) {
+      const e = Ie.values().next().value;
+      e && zt(e);
+    }
+  }
+}
+function Fs(t) {
+  return typeof t == "function";
+}
+class ct {
+  constructor(e, s) {
+    ((this.listeners = new Set()),
+      (this.subscribe = (i) => {
+        var o, r;
+        this.listeners.add(i);
+        const a =
+          (r = (o = this.options) == null ? void 0 : o.onSubscribe) == null
+            ? void 0
+            : r.call(o, i, this);
+        return () => {
+          (this.listeners.delete(i), a?.());
+        };
+      }),
+      (this.prevState = e),
+      (this.state = e),
+      (this.options = s));
+  }
+  setState(e) {
+    var s, i, o;
+    ((this.prevState = this.state),
+      (s = this.options) != null && s.updateFn
+        ? (this.state = this.options.updateFn(this.prevState)(e))
+        : Fs(e)
+          ? (this.state = e(this.prevState))
+          : (this.state = e),
+      (o = (i = this.options) == null ? void 0 : i.onUpdate) == null ||
+        o.call(i),
+      zt(this));
+  }
+}
+class fe {
+  constructor(e) {
+    ((this.listeners = new Set()),
+      (this._subscriptions = []),
+      (this.lastSeenDepValues = []),
+      (this.getDepVals = () => {
+        const s = this.options.deps.length,
+          i = new Array(s),
+          o = new Array(s);
+        for (let r = 0; r < s; r++) {
+          const a = this.options.deps[r];
+          ((i[r] = a.prevState), (o[r] = a.state));
+        }
+        return (
+          (this.lastSeenDepValues = o),
+          { prevDepVals: i, currDepVals: o, prevVal: this.prevState ?? void 0 }
+        );
+      }),
+      (this.recompute = () => {
+        var s, i;
+        this.prevState = this.state;
+        const o = this.getDepVals();
+        ((this.state = this.options.fn(o)),
+          (i = (s = this.options).onUpdate) == null || i.call(s));
+      }),
+      (this.checkIfRecalculationNeededDeeply = () => {
+        for (const r of this.options.deps)
+          r instanceof fe && r.checkIfRecalculationNeededDeeply();
+        let s = !1;
+        const i = this.lastSeenDepValues,
+          { currDepVals: o } = this.getDepVals();
+        for (let r = 0; r < o.length; r++)
+          if (o[r] !== i[r]) {
+            s = !0;
+            break;
+          }
+        s && this.recompute();
+      }),
+      (this.mount = () => (
+        this.registerOnGraph(),
+        this.checkIfRecalculationNeededDeeply(),
+        () => {
+          this.unregisterFromGraph();
+          for (const s of this._subscriptions) s();
+        }
+      )),
+      (this.subscribe = (s) => {
+        var i, o;
+        this.listeners.add(s);
+        const r =
+          (o = (i = this.options).onSubscribe) == null
+            ? void 0
+            : o.call(i, s, this);
+        return () => {
+          (this.listeners.delete(s), r?.());
+        };
+      }),
+      (this.options = e),
+      (this.state = e.fn({
+        prevDepVals: void 0,
+        prevVal: void 0,
+        currDepVals: this.getDepVals().currDepVals,
+      })));
+  }
+  registerOnGraph(e = this.options.deps) {
+    for (const s of e)
+      if (s instanceof fe)
+        (s.registerOnGraph(), this.registerOnGraph(s.options.deps));
+      else if (s instanceof ct) {
+        let i = Fe.get(s);
+        (i || ((i = new Set()), Fe.set(s, i)), i.add(this));
+        let o = Ke.get(this);
+        (o || ((o = new Set()), Ke.set(this, o)), o.add(s));
+      }
+  }
+  unregisterFromGraph(e = this.options.deps) {
+    for (const s of e)
+      if (s instanceof fe) this.unregisterFromGraph(s.options.deps);
+      else if (s instanceof ct) {
+        const i = Fe.get(s);
+        i && i.delete(this);
+        const o = Ke.get(this);
+        o && o.delete(s);
+      }
+  }
+}
+var Ls = class {
+  constructor(t, e) {
+    ((this.fn = t),
+      (this.options = e),
+      (this.lastExecutionTime = 0),
+      (this.isPending = !1),
+      (this.maybeExecute = (...s) => {
+        const i = Date.now() - this.lastExecutionTime;
+        if (this.options.leading && i >= this.options.wait) this.execute(...s);
+        else if (
+          ((this.lastArgs = s), !this.timeoutId && this.options.trailing)
+        ) {
+          const o = this.options.wait - i;
+          ((this.isPending = !0),
+            (this.timeoutId = setTimeout(() => {
+              this.lastArgs !== void 0 && this.execute(...this.lastArgs);
+            }, o)));
+        }
+      }),
+      (this.execute = (...s) => {
+        (this.fn(...s),
+          this.options.onExecute?.(s, this),
+          (this.lastExecutionTime = Date.now()),
+          this.clearTimeout(),
+          (this.lastArgs = void 0),
+          (this.isPending = !1));
+      }),
+      (this.flush = () => {
+        this.isPending && this.lastArgs && this.execute(...this.lastArgs);
+      }),
+      (this.cancel = () => {
+        (this.clearTimeout(), (this.lastArgs = void 0), (this.isPending = !1));
+      }),
+      (this.clearTimeout = () => {
+        this.timeoutId &&
+          (clearTimeout(this.timeoutId), (this.timeoutId = void 0));
+      }),
+      this.options.leading === void 0 &&
+        this.options.trailing === void 0 &&
+        ((this.options.leading = !0), (this.options.trailing = !0)));
+  }
+};
+function Ns(t, e) {
+  return new Ls(t, e).maybeExecute;
+}
+class As {
+  #r = !0;
+  #t;
+  #e;
+  #u;
+  #s;
+  #a;
+  #i;
+  #l;
+  #f = 0;
+  #h = 5;
+  #o = !1;
+  #c = !1;
+  #n = null;
+  #m = () => {
+    (this.debugLog("Connected to event bus"),
+      (this.#a = !0),
+      (this.#o = !1),
+      this.debugLog("Emitting queued events", this.#s),
+      this.#s.forEach((e) => this.emitEventToBus(e)),
+      (this.#s = []),
+      this.stopConnectLoop(),
+      this.#e().removeEventListener("tanstack-connect-success", this.#m));
+  };
+  #d = () => {
+    if (this.#f < this.#h) {
+      (this.#f++, this.dispatchCustomEvent("tanstack-connect", {}));
+      return;
+    }
+    (this.#e().removeEventListener("tanstack-connect", this.#d),
+      (this.#c = !0),
+      this.debugLog("Max retries reached, giving up on connection"),
+      this.stopConnectLoop());
+  };
+  #p = () => {
+    this.#o ||
+      ((this.#o = !0),
+      this.#e().addEventListener("tanstack-connect-success", this.#m),
+      this.#d());
+  };
+  constructor({
+    pluginId: e,
+    debug: s = !1,
+    enabled: i = !0,
+    reconnectEveryMs: o = 300,
+  }) {
+    ((this.#t = e),
+      (this.#r = i),
+      (this.#e = this.getGlobalTarget),
+      (this.#u = s),
+      this.debugLog(" Initializing event subscription for plugin", this.#t),
+      (this.#s = []),
+      (this.#a = !1),
+      (this.#c = !1),
+      (this.#i = null),
+      (this.#l = o));
+  }
+  startConnectLoop() {
+    this.#i !== null ||
+      this.#a ||
+      (this.debugLog(`Starting connect loop (every ${this.#l}ms)`),
+      (this.#i = setInterval(this.#d, this.#l)));
+  }
+  stopConnectLoop() {
+    ((this.#o = !1),
+      this.#i !== null &&
+        (clearInterval(this.#i),
+        (this.#i = null),
+        (this.#s = []),
+        this.debugLog("Stopped connect loop")));
+  }
+  debugLog(...e) {
+    this.#u && console.log(`🌴 [tanstack-devtools:${this.#t}-plugin]`, ...e);
+  }
+  getGlobalTarget() {
+    if (typeof globalThis < "u" && globalThis.__TANSTACK_EVENT_TARGET__)
+      return (
+        this.debugLog("Using global event target"),
+        globalThis.__TANSTACK_EVENT_TARGET__
+      );
+    if (typeof window < "u" && typeof window.addEventListener < "u")
+      return (this.debugLog("Using window as event target"), window);
+    const e = typeof EventTarget < "u" ? new EventTarget() : void 0;
+    return typeof e > "u" || typeof e.addEventListener > "u"
+      ? (this.debugLog(
+          "No event mechanism available, running in non-web environment",
+        ),
+        {
+          addEventListener: () => {},
+          removeEventListener: () => {},
+          dispatchEvent: () => !1,
+        })
+      : (this.debugLog("Using new EventTarget as fallback"), e);
+  }
+  getPluginId() {
+    return this.#t;
+  }
+  dispatchCustomEventShim(e, s) {
+    try {
+      const i = new Event(e, { detail: s });
+      this.#e().dispatchEvent(i);
+    } catch {
+      this.debugLog("Failed to dispatch shim event");
+    }
+  }
+  dispatchCustomEvent(e, s) {
+    try {
+      this.#e().dispatchEvent(new CustomEvent(e, { detail: s }));
+    } catch {
+      this.dispatchCustomEventShim(e, s);
+    }
+  }
+  emitEventToBus(e) {
+    (this.debugLog("Emitting event to client bus", e),
+      this.dispatchCustomEvent("tanstack-dispatch-event", e));
+  }
+  createEventPayload(e, s) {
+    return { type: `${this.#t}:${e}`, payload: s, pluginId: this.#t };
+  }
+  emit(e, s) {
+    if (!this.#r) {
+      this.debugLog("Event bus client is disabled, not emitting event", e, s);
+      return;
+    }
+    if (
+      (this.#n &&
+        (this.debugLog("Emitting event to internal event target", e, s),
+        this.#n.dispatchEvent(
+          new CustomEvent(`${this.#t}:${e}`, {
+            detail: this.createEventPayload(e, s),
+          }),
+        )),
+      this.#c)
+    ) {
+      this.debugLog("Previously failed to connect, not emitting to bus");
+      return;
+    }
+    if (!this.#a) {
+      (this.debugLog("Bus not available, will be pushed as soon as connected"),
+        this.#s.push(this.createEventPayload(e, s)),
+        typeof CustomEvent < "u" &&
+          !this.#o &&
+          (this.#p(), this.startConnectLoop()));
+      return;
+    }
+    return this.emitEventToBus(this.createEventPayload(e, s));
+  }
+  on(e, s, i) {
+    const o = i?.withEventTarget ?? !1,
+      r = `${this.#t}:${e}`;
+    if (
+      (o &&
+        (this.#n || (this.#n = new EventTarget()),
+        this.#n.addEventListener(r, (d) => {
+          s(d.detail);
+        })),
+      !this.#r)
+    )
+      return (
+        this.debugLog("Event bus client is disabled, not registering event", r),
+        () => {}
+      );
+    const a = (d) => {
+      (this.debugLog("Received event from bus", d.detail), s(d.detail));
+    };
+    return (
+      this.#e().addEventListener(r, a),
+      this.debugLog("Registered event to bus", r),
+      () => {
+        (o && this.#n?.removeEventListener(r, a),
+          this.#e().removeEventListener(r, a));
+      }
+    );
+  }
+  onAll(e) {
+    if (!this.#r)
+      return (
+        this.debugLog("Event bus client is disabled, not registering event"),
+        () => {}
+      );
+    const s = (i) => {
+      const o = i.detail;
+      e(o);
+    };
+    return (
+      this.#e().addEventListener("tanstack-devtools-global", s),
+      () => this.#e().removeEventListener("tanstack-devtools-global", s)
+    );
+  }
+  onAllPluginEvents(e) {
+    if (!this.#r)
+      return (
+        this.debugLog("Event bus client is disabled, not registering event"),
+        () => {}
+      );
+    const s = (i) => {
+      const o = i.detail;
+      (this.#t && o.pluginId !== this.#t) || e(o);
+    };
+    return (
+      this.#e().addEventListener("tanstack-devtools-global", s),
+      () => this.#e().removeEventListener("tanstack-devtools-global", s)
+    );
+  }
+}
+class Cs extends As {
+  constructor() {
+    super({ pluginId: "form-devtools", reconnectEveryMs: 1e3 });
+  }
+}
+const re = new Cs();
+function Ye(t, e) {
+  return typeof t == "function" ? t(e) : t;
+}
+function $e(t, e) {
+  return pt(e).reduce((i, o) => {
+    if (i === null) return null;
+    if (typeof i < "u") return i[o];
+  }, t);
+}
+function Be(t, e, s) {
+  const i = pt(e);
+  function o(r) {
+    if (!i.length) return Ye(s, r);
+    const a = i.shift();
+    if (typeof a == "string" || (typeof a == "number" && !Array.isArray(r)))
+      return typeof r == "object"
+        ? (r === null && (r = {}), { ...r, [a]: o(r[a]) })
+        : { [a]: o() };
+    if (Array.isArray(r) && typeof a == "number") {
+      const d = r.slice(0, a);
+      return [...(d.length ? d : new Array(a)), o(r[a]), ...r.slice(a + 1)];
+    }
+    return [...new Array(a), o()];
+  }
+  return o(t);
+}
+function Ts(t, e) {
+  const s = pt(e);
+  function i(o) {
+    if (!o) return;
+    if (s.length === 1) {
+      const a = s[0];
+      if (Array.isArray(o) && typeof a == "number")
+        return o.filter((m, c) => c !== a);
+      const { [a]: d, ...f } = o;
+      return f;
+    }
+    const r = s.shift();
+    if (
+      (typeof r == "string" || (typeof r == "number" && !Array.isArray(o))) &&
+      typeof o == "object"
+    )
+      return { ...o, [r]: i(o[r]) };
+    if (typeof r == "number" && Array.isArray(o)) {
+      if (r >= o.length) return o;
+      const a = o.slice(0, r);
+      return [...(a.length ? a : new Array(r)), i(o[r]), ...o.slice(r + 1)];
+    }
+    throw new Error("It seems we have created an infinite loop in deleteBy. ");
+  }
+  return i(t);
+}
+const Is = /^(\d+)$/gm,
+  Ds = /\.(\d+)(?=\.)/gm,
+  Ps = /^(\d+)\./gm,
+  _s = /\.(\d+$)/gm,
+  Os = /\.{2,}/gm,
+  dt = "__int__",
+  We = `${dt}$1`;
+function pt(t) {
+  if (Array.isArray(t)) return [...t];
+  if (typeof t != "string") throw new Error("Path must be a string.");
+  return t
+    .replace(/(^\[)|]/gm, "")
+    .replace(/\[/g, ".")
+    .replace(Is, We)
+    .replace(Ds, `.${We}.`)
+    .replace(Ps, `${We}.`)
+    .replace(_s, `.${We}`)
+    .replace(Os, ".")
+    .split(".")
+    .map((e) => {
+      if (e.startsWith(dt)) {
+        const s = e.substring(dt.length),
+          i = parseInt(s, 10);
+        return String(i) === s ? i : s;
+      }
+      return e;
+    });
+}
+function Rs(t) {
+  return !(Array.isArray(t) && t.length === 0);
+}
+function ut(t, e) {
+  const s = (i) =>
+    i.validators
+      .filter(Boolean)
+      .map((o) => ({ cause: o.cause, validate: o.fn }));
+  return e.validationLogic({
+    form: e.form,
+    validators: e.validators,
+    event: { type: t, async: !1 },
+    runValidation: s,
+  });
+}
+function ft(t, e) {
+  const { asyncDebounceMs: s } = e,
+    {
+      onBlurAsyncDebounceMs: i,
+      onChangeAsyncDebounceMs: o,
+      onDynamicAsyncDebounceMs: r,
+    } = e.validators || {},
+    a = s ?? 0,
+    d = (f) =>
+      f.validators.filter(Boolean).map((m) => {
+        const c = m?.cause || t;
+        let l = a;
+        switch (c) {
+          case "change":
+            l = o ?? a;
+            break;
+          case "blur":
+            l = i ?? a;
+            break;
+          case "dynamic":
+            l = r ?? a;
+            break;
+          case "submit":
+            l = 0;
+            break;
+        }
+        return (
+          t === "submit" && (l = 0),
+          { cause: c, validate: m.fn, debounceMs: l }
+        );
+      });
+  return e.validationLogic({
+    form: e.form,
+    validators: e.validators,
+    event: { type: t, async: !0 },
+    runValidation: d,
+  });
+}
+const mt = (t) => !!t && typeof t == "object" && "fields" in t;
+function ge(t, e) {
+  if (Object.is(t, e)) return !0;
+  if (typeof t != "object" || t === null || typeof e != "object" || e === null)
+    return !1;
+  if (t instanceof Date && e instanceof Date)
+    return t.getTime() === e.getTime();
+  if (t instanceof Map && e instanceof Map) {
+    if (t.size !== e.size) return !1;
+    for (const [o, r] of t) if (!e.has(o) || !Object.is(r, e.get(o))) return !1;
+    return !0;
+  }
+  if (t instanceof Set && e instanceof Set) {
+    if (t.size !== e.size) return !1;
+    for (const o of t) if (!e.has(o)) return !1;
+    return !0;
+  }
+  const s = Object.keys(t),
+    i = Object.keys(e);
+  if (s.length !== i.length) return !1;
+  for (const o of s) if (!i.includes(o) || !ge(t[o], e[o])) return !1;
+  return !0;
+}
+const bt = ({
+    newFormValidatorError: t,
+    isPreviousErrorFromFormValidator: e,
+    previousErrorValue: s,
+  }) =>
+    t
+      ? { newErrorValue: t, newSource: "form" }
+      : e
+        ? { newErrorValue: void 0, newSource: void 0 }
+        : s
+          ? { newErrorValue: s, newSource: "field" }
+          : { newErrorValue: void 0, newSource: void 0 },
+  yt = ({ formLevelError: t, fieldLevelError: e }) =>
+    e
+      ? { newErrorValue: e, newSource: "field" }
+      : t
+        ? { newErrorValue: t, newSource: "form" }
+        : { newErrorValue: void 0, newSource: void 0 };
+function Z(t, e) {
+  return t == null ? e : { ...t, ...e };
+}
+let ye = 256;
+const qe = [];
+let ze;
+for (; ye--; ) qe[ye] = (ye + 256).toString(16).substring(1);
+function Gt() {
+  let t = 0,
+    e,
+    s = "";
+  if (!ze || ye + 16 > 256) {
+    for (ze = new Array(256), t = 256; t--; ) ze[t] = (256 * Math.random()) | 0;
+    ((t = 0), (ye = 0));
+  }
+  for (; t < 16; t++)
+    ((e = ze[ye + t]),
+      t === 6
+        ? (s += qe[(e & 15) | 64])
+        : t === 8
+          ? (s += qe[(e & 63) | 128])
+          : (s += qe[e]),
+      t & 1 && t > 1 && t < 11 && (s += "-"));
+  return (ye++, s);
+}
+const $s = Ns(
+    (t) => re.emit("form-state", { id: t.formId, state: t.store.state }),
+    { wait: 300 },
+  ),
+  ke = (t) => {
+    if (!t.validators) return t.runValidation({ validators: [], form: t.form });
+    const e = t.event.async,
+      s = e ? void 0 : { fn: t.validators.onMount, cause: "mount" },
+      i = {
+        fn: e ? t.validators.onChangeAsync : t.validators.onChange,
+        cause: "change",
+      },
+      o = {
+        fn: e ? t.validators.onBlurAsync : t.validators.onBlur,
+        cause: "blur",
+      },
+      r = {
+        fn: e ? t.validators.onSubmitAsync : t.validators.onSubmit,
+        cause: "submit",
+      },
+      a = e ? void 0 : { fn: () => {}, cause: "server" };
+    switch (t.event.type) {
+      case "mount":
+        return t.runValidation({ validators: [s], form: t.form });
+      case "submit":
+        return t.runValidation({ validators: [i, o, r, a], form: t.form });
+      case "server":
+        return t.runValidation({ validators: [], form: t.form });
+      case "blur":
+        return t.runValidation({ validators: [o, a], form: t.form });
+      case "change":
+        return t.runValidation({ validators: [i, a], form: t.form });
+      default:
+        throw new Error(`Unknown validation event type: ${t.event.type}`);
+    }
+  };
+function Bs(t, e) {
+  const s = new Map();
+  for (const i of t) {
+    const o = i.path ?? [];
+    let r = e,
+      a = "";
+    for (let d = 0; d < o.length; d++) {
+      const f = o[d];
+      if (f === void 0) continue;
+      const m = typeof f == "object" ? f.key : f,
+        c = Number(m);
+      (Array.isArray(r) && !Number.isNaN(c)
+        ? (a += `[${c}]`)
+        : (a += (d > 0 ? "." : "") + String(m)),
+        typeof r == "object" && r !== null ? (r = r[m]) : (r = void 0));
+    }
+    s.set(a, (s.get(a) ?? []).concat(i));
+  }
+  return Object.fromEntries(s);
+}
+const St = (t, e) => {
+    const s = Bs(t, e);
+    return { form: s, fields: s };
+  },
+  Le = {
+    validate({ value: t, validationSource: e }, s) {
+      const i = s["~standard"].validate(t);
+      if (i instanceof Promise)
+        throw new Error("async function passed to sync validator");
+      if (i.issues) return e === "field" ? i.issues : St(i.issues, t);
+    },
+    async validateAsync({ value: t, validationSource: e }, s) {
+      const i = await s["~standard"].validate(t);
+      if (i.issues) return e === "field" ? i.issues : St(i.issues, t);
+    },
+  },
+  Ut = (t) => !!t && "~standard" in t,
+  Ve = {
+    isValidating: !1,
+    isTouched: !1,
+    isBlurred: !1,
+    isDirty: !1,
+    isPristine: !0,
+    isValid: !0,
+    isDefaultValue: !0,
+    errors: [],
+    errorMap: {},
+    errorSourceMap: {},
+  };
+function Ge(t) {
+  function e(c, l, h) {
+    const u = a(c, l, "move", h),
+      p = Math.min(l, h),
+      v = Math.max(l, h);
+    for (let g = p; g <= v; g++) u.push(r(c, g));
+    const x = Object.keys(t.fieldInfo).reduce(
+      (g, S) => (S.startsWith(r(c, l)) && g.set(S, t.getFieldMeta(S)), g),
+      new Map(),
+    );
+    (f(u, l < h ? "up" : "down"),
+      Object.keys(t.fieldInfo)
+        .filter((g) => g.startsWith(r(c, h)))
+        .forEach((g) => {
+          const S = g.replace(r(c, h), r(c, l)),
+            j = x.get(S);
+          j && t.setFieldMeta(g, j);
+        }));
+  }
+  function s(c, l) {
+    const h = a(c, l, "remove");
+    f(h, "up");
+  }
+  function i(c, l, h) {
+    a(c, l, "swap", h).forEach((p) => {
+      if (!p.toString().startsWith(r(c, l))) return;
+      const v = p.toString().replace(r(c, l), r(c, h)),
+        [x, g] = [t.getFieldMeta(p), t.getFieldMeta(v)];
+      (x && t.setFieldMeta(v, x), g && t.setFieldMeta(p, g));
+    });
+  }
+  function o(c, l) {
+    const h = a(c, l, "insert");
+    (f(h, "down"),
+      h.forEach((u) => {
+        u.toString().startsWith(r(c, l)) && t.setFieldMeta(u, m());
+      }));
+  }
+  function r(c, l) {
+    return `${c}[${l}]`;
+  }
+  function a(c, l, h, u) {
+    const p = [r(c, l)];
+    switch (h) {
+      case "swap":
+        p.push(r(c, u));
+        break;
+      case "move": {
+        const [v, x] = [Math.min(l, u), Math.max(l, u)];
+        for (let g = v; g <= x; g++) p.push(r(c, g));
+        break;
+      }
+      default: {
+        const v = t.getFieldValue(c),
+          x = Array.isArray(v) ? v.length : 0;
+        for (let g = l + 1; g < x; g++) p.push(r(c, g));
+        break;
+      }
+    }
+    return Object.keys(t.fieldInfo).filter((v) =>
+      p.some((x) => v.startsWith(x)),
+    );
+  }
+  function d(c, l) {
+    return c.replace(/\[(\d+)\]/, (h, u) => {
+      const p = parseInt(u, 10);
+      return `[${l === "up" ? p + 1 : Math.max(0, p - 1)}]`;
+    });
+  }
+  function f(c, l) {
+    (l === "up" ? c : [...c].reverse()).forEach((u) => {
+      const p = d(u.toString(), l),
+        v = t.getFieldMeta(p);
+      v ? t.setFieldMeta(u, v) : t.setFieldMeta(u, m());
+    });
+  }
+  const m = () => Ve;
+  return {
+    handleArrayMove: e,
+    handleArrayRemove: s,
+    handleArraySwap: i,
+    handleArrayInsert: o,
+  };
+}
+function it(t) {
+  return {
+    values: t.values ?? {},
+    errorMap: t.errorMap ?? {},
+    fieldMetaBase: t.fieldMetaBase ?? {},
+    isSubmitted: t.isSubmitted ?? !1,
+    isSubmitting: t.isSubmitting ?? !1,
+    isValidating: t.isValidating ?? !1,
+    submissionAttempts: t.submissionAttempts ?? 0,
+    isSubmitSuccessful: t.isSubmitSuccessful ?? !1,
+    validationMetaMap: t.validationMetaMap ?? {
+      onChange: void 0,
+      onBlur: void 0,
+      onSubmit: void 0,
+      onMount: void 0,
+      onServer: void 0,
+      onDynamic: void 0,
+    },
+  };
+}
+class Mt {
+  constructor(e) {
+    ((this.options = {}),
+      (this.fieldInfo = {}),
+      (this.prevTransformArray = []),
+      (this.mount = () => {
+        const s = this.fieldMetaDerived.mount(),
+          i = this.store.mount(),
+          o = this.store.subscribe(() => {
+            $s(this);
+          }),
+          r = re.on("request-form-state", (c) => {
+            c.payload.id === this._formId &&
+              re.emit("form-api", {
+                id: this._formId,
+                state: this.store.state,
+                options: this.options,
+              });
+          }),
+          a = re.on("request-form-reset", (c) => {
+            c.payload.id === this._formId && this.reset();
+          }),
+          d = re.on("request-form-force-submit", (c) => {
+            c.payload.id === this._formId &&
+              ((this._devtoolsSubmissionOverride = !0),
+              this.handleSubmit(),
+              (this._devtoolsSubmissionOverride = !1));
+          }),
+          f = () => {
+            (d(),
+              a(),
+              r(),
+              o(),
+              s(),
+              i(),
+              re.emit("form-unmounted", { id: this._formId }));
+          };
+        this.options.listeners?.onMount?.({ formApi: this });
+        const { onMount: m } = this.options.validators || {};
+        return (
+          re.emit("form-api", {
+            id: this._formId,
+            state: this.store.state,
+            options: this.options,
+          }),
+          m && this.validateSync("mount"),
+          f
+        );
+      }),
+      (this.update = (s) => {
+        if (!s) return;
+        const i = this.options;
+        this.options = s;
+        const o = !!s.transform?.deps?.some(
+            (d, f) => d !== this.prevTransformArray[f],
+          ),
+          r =
+            s.defaultValues &&
+            !ge(s.defaultValues, i.defaultValues) &&
+            !this.state.isTouched,
+          a = !ge(s.defaultState, i.defaultState) && !this.state.isTouched;
+        (!r && !a && !o) ||
+          (le(() => {
+            this.baseStore.setState(() =>
+              it(
+                Object.assign(
+                  {},
+                  this.state,
+                  a ? s.defaultState : {},
+                  r ? { values: s.defaultValues } : {},
+                  o ? { _force_re_eval: !this.state._force_re_eval } : {},
+                ),
+              ),
+            );
+          }),
+          re.emit("form-api", {
+            id: this._formId,
+            state: this.store.state,
+            options: this.options,
+          }));
+      }),
+      (this.reset = (s, i) => {
+        const { fieldMeta: o } = this.state,
+          r = this.resetFieldMeta(o);
+        (s &&
+          !i?.keepDefaultValues &&
+          (this.options = { ...this.options, defaultValues: s }),
+          this.baseStore.setState(() =>
+            it({
+              ...this.options.defaultState,
+              values:
+                s ??
+                this.options.defaultValues ??
+                this.options.defaultState?.values,
+              fieldMetaBase: r,
+            }),
+          ));
+      }),
+      (this.validateAllFields = async (s) => {
+        const i = [];
+        return (
+          le(() => {
+            Object.values(this.fieldInfo).forEach((r) => {
+              if (!r.instance) return;
+              const a = r.instance;
+              (i.push(
+                Promise.resolve().then(() =>
+                  a.validate(s, { skipFormValidation: !0 }),
+                ),
+              ),
+                r.instance.state.meta.isTouched ||
+                  r.instance.setMeta((d) => ({ ...d, isTouched: !0 })));
+            });
+          }),
+          (await Promise.all(i)).flat()
+        );
+      }),
+      (this.validateArrayFieldsStartingFrom = async (s, i, o) => {
+        const r = this.getFieldValue(s),
+          a = Array.isArray(r) ? Math.max(r.length - 1, 0) : null,
+          d = [`${s}[${i}]`];
+        for (let l = i + 1; l <= (a ?? 0); l++) d.push(`${s}[${l}]`);
+        const f = Object.keys(this.fieldInfo).filter((l) =>
+            d.some((h) => l.startsWith(h)),
+          ),
+          m = [];
+        return (
+          le(() => {
+            f.forEach((l) => {
+              m.push(Promise.resolve().then(() => this.validateField(l, o)));
+            });
+          }),
+          (await Promise.all(m)).flat()
+        );
+      }),
+      (this.validateField = (s, i) => {
+        const o = this.fieldInfo[s]?.instance;
+        return o
+          ? (o.state.meta.isTouched ||
+              o.setMeta((r) => ({ ...r, isTouched: !0 })),
+            o.validate(i))
+          : [];
+      }),
+      (this.validateSync = (s) => {
+        const i = ut(s, {
+          ...this.options,
+          form: this,
+          validationLogic: this.options.validationLogic || ke,
+        });
+        let o = !1;
+        const r = {};
+        return (
+          le(() => {
+            for (const f of i) {
+              if (!f.validate) continue;
+              const m = this.runValidator({
+                  validate: f.validate,
+                  value: {
+                    value: this.state.values,
+                    formApi: this,
+                    validationSource: "form",
+                  },
+                  type: "validate",
+                }),
+                { formError: c, fieldErrors: l } = He(m),
+                h = Te(f.cause),
+                u = new Set([
+                  ...Object.keys(this.state.fieldMeta),
+                  ...Object.keys(l || {}),
+                ]);
+              for (const p of u) {
+                if (this.baseStore.state.fieldMetaBase[p] === void 0 && !l?.[p])
+                  continue;
+                const v = this.getFieldMeta(p) ?? Ve,
+                  { errorMap: x, errorSourceMap: g } = v,
+                  S = l?.[p],
+                  { newErrorValue: j, newSource: M } = bt({
+                    newFormValidatorError: S,
+                    isPreviousErrorFromFormValidator: g?.[h] === "form",
+                    previousErrorValue: x?.[h],
+                  });
+                (M === "form" && (r[p] = { ...r[p], [h]: S }),
+                  x?.[h] !== j &&
+                    this.setFieldMeta(p, (L = Ve) => ({
+                      ...L,
+                      errorMap: { ...L.errorMap, [h]: j },
+                      errorSourceMap: { ...L.errorSourceMap, [h]: M },
+                    })));
+              }
+              (this.state.errorMap?.[h] !== c &&
+                this.baseStore.setState((p) => ({
+                  ...p,
+                  errorMap: { ...p.errorMap, [h]: c },
+                })),
+                (c || l) && (o = !0));
+            }
+            const a = Te("submit");
+            this.state.errorMap?.[a] &&
+              s !== "submit" &&
+              !o &&
+              this.baseStore.setState((f) => ({
+                ...f,
+                errorMap: { ...f.errorMap, [a]: void 0 },
+              }));
+            const d = Te("server");
+            this.state.errorMap?.[d] &&
+              s !== "server" &&
+              !o &&
+              this.baseStore.setState((f) => ({
+                ...f,
+                errorMap: { ...f.errorMap, [d]: void 0 },
+              }));
+          }),
+          { hasErrored: o, fieldsErrorMap: r }
+        );
+      }),
+      (this.validateAsync = async (s) => {
+        const i = ft(s, {
+          ...this.options,
+          form: this,
+          validationLogic: this.options.validationLogic || ke,
+        });
+        this.state.isFormValidating ||
+          this.baseStore.setState((f) => ({ ...f, isFormValidating: !0 }));
+        const o = [];
+        let r;
+        for (const f of i) {
+          if (!f.validate) continue;
+          const m = Te(f.cause);
+          this.state.validationMetaMap[m]?.lastAbortController.abort();
+          const l = new AbortController();
+          ((this.state.validationMetaMap[m] = { lastAbortController: l }),
+            o.push(
+              new Promise(async (h) => {
+                let u;
+                try {
+                  u = await new Promise((g, S) => {
+                    setTimeout(async () => {
+                      if (l.signal.aborted) return g(void 0);
+                      try {
+                        g(
+                          await this.runValidator({
+                            validate: f.validate,
+                            value: {
+                              value: this.state.values,
+                              formApi: this,
+                              validationSource: "form",
+                              signal: l.signal,
+                            },
+                            type: "validateAsync",
+                          }),
+                        );
+                      } catch (j) {
+                        S(j);
+                      }
+                    }, f.debounceMs);
+                  });
+                } catch (g) {
+                  u = g;
+                }
+                const { formError: p, fieldErrors: v } = He(u);
+                v && (r = r ? { ...r, ...v } : v);
+                const x = Te(f.cause);
+                for (const g of Object.keys(this.state.fieldMeta)) {
+                  if (this.baseStore.state.fieldMetaBase[g] === void 0)
+                    continue;
+                  const S = this.getFieldMeta(g);
+                  if (!S) continue;
+                  const { errorMap: j, errorSourceMap: M } = S,
+                    L = r?.[g],
+                    { newErrorValue: E, newSource: N } = bt({
+                      newFormValidatorError: L,
+                      isPreviousErrorFromFormValidator: M?.[x] === "form",
+                      previousErrorValue: j?.[x],
+                    });
+                  j?.[x] !== E &&
+                    this.setFieldMeta(g, (V) => ({
+                      ...V,
+                      errorMap: { ...V.errorMap, [x]: E },
+                      errorSourceMap: { ...V.errorSourceMap, [x]: N },
+                    }));
+                }
+                (this.baseStore.setState((g) => ({
+                  ...g,
+                  errorMap: { ...g.errorMap, [x]: p },
+                })),
+                  h(r ? { fieldErrors: r, errorMapKey: x } : void 0));
+              }),
+            ));
+        }
+        let a = [];
+        const d = {};
+        if (o.length) {
+          a = await Promise.all(o);
+          for (const f of a)
+            if (f?.fieldErrors) {
+              const { errorMapKey: m } = f;
+              for (const [c, l] of Object.entries(f.fieldErrors)) {
+                const u = { ...(d[c] || {}), [m]: l };
+                d[c] = u;
+              }
+            }
+        }
+        return (
+          this.baseStore.setState((f) => ({ ...f, isFormValidating: !1 })),
+          d
+        );
+      }),
+      (this.validate = (s) => {
+        const { hasErrored: i, fieldsErrorMap: o } = this.validateSync(s);
+        return i && !this.options.asyncAlways ? o : this.validateAsync(s);
+      }),
+      (this._handleSubmit = async (s) => {
+        (this.baseStore.setState((r) => ({
+          ...r,
+          isSubmitted: !1,
+          submissionAttempts: r.submissionAttempts + 1,
+          isSubmitSuccessful: !1,
+        })),
+          le(() => {
+            Object.values(this.fieldInfo).forEach((r) => {
+              r.instance &&
+                (r.instance.state.meta.isTouched ||
+                  r.instance.setMeta((a) => ({ ...a, isTouched: !0 })));
+            });
+          }));
+        const i = s ?? this.options.onSubmitMeta;
+        if (!this.state.canSubmit && !this._devtoolsSubmissionOverride) {
+          this.options.onSubmitInvalid?.({
+            value: this.state.values,
+            formApi: this,
+            meta: i,
+          });
+          return;
+        }
+        this.baseStore.setState((r) => ({ ...r, isSubmitting: !0 }));
+        const o = () => {
+          this.baseStore.setState((r) => ({ ...r, isSubmitting: !1 }));
+        };
+        if (
+          (await this.validateAllFields("submit"), !this.state.isFieldsValid)
+        ) {
+          (o(),
+            this.options.onSubmitInvalid?.({
+              value: this.state.values,
+              formApi: this,
+              meta: i,
+            }),
+            re.emit("form-submission", {
+              id: this._formId,
+              submissionAttempt: this.state.submissionAttempts,
+              successful: !1,
+              stage: "validateAllFields",
+              errors: Object.values(this.state.fieldMeta)
+                .map((r) => r.errors)
+                .flat(),
+            }));
+          return;
+        }
+        if ((await this.validate("submit"), !this.state.isValid)) {
+          (o(),
+            this.options.onSubmitInvalid?.({
+              value: this.state.values,
+              formApi: this,
+              meta: i,
+            }),
+            re.emit("form-submission", {
+              id: this._formId,
+              submissionAttempt: this.state.submissionAttempts,
+              successful: !1,
+              stage: "validate",
+              errors: this.state.errors,
+            }));
+          return;
+        }
+        (le(() => {
+          Object.values(this.fieldInfo).forEach((r) => {
+            r.instance?.options.listeners?.onSubmit?.({
+              value: r.instance.state.value,
+              fieldApi: r.instance,
+            });
+          });
+        }),
+          this.options.listeners?.onSubmit?.({ formApi: this, meta: i }));
+        try {
+          (await this.options.onSubmit?.({
+            value: this.state.values,
+            formApi: this,
+            meta: i,
+          }),
+            le(() => {
+              (this.baseStore.setState((r) => ({
+                ...r,
+                isSubmitted: !0,
+                isSubmitSuccessful: !0,
+              })),
+                re.emit("form-submission", {
+                  id: this._formId,
+                  submissionAttempt: this.state.submissionAttempts,
+                  successful: !0,
+                }),
+                o());
+            }));
+        } catch (r) {
+          throw (
+            this.baseStore.setState((a) => ({ ...a, isSubmitSuccessful: !1 })),
+            re.emit("form-submission", {
+              id: this._formId,
+              submissionAttempt: this.state.submissionAttempts,
+              successful: !1,
+              stage: "inflight",
+              onError: r,
+            }),
+            o(),
+            r
+          );
+        }
+      }),
+      (this.getFieldValue = (s) => $e(this.state.values, s)),
+      (this.getFieldMeta = (s) => this.state.fieldMeta[s]),
+      (this.getFieldInfo = (s) =>
+        (this.fieldInfo[s] ||= {
+          instance: null,
+          validationMetaMap: {
+            onChange: void 0,
+            onBlur: void 0,
+            onSubmit: void 0,
+            onMount: void 0,
+            onServer: void 0,
+            onDynamic: void 0,
+          },
+        })),
+      (this.setFieldMeta = (s, i) => {
+        this.baseStore.setState((o) => ({
+          ...o,
+          fieldMetaBase: { ...o.fieldMetaBase, [s]: Ye(i, o.fieldMetaBase[s]) },
+        }));
+      }),
+      (this.resetFieldMeta = (s) =>
+        Object.keys(s).reduce((i, o) => {
+          const r = o;
+          return ((i[r] = Ve), i);
+        }, {})),
+      (this.setFieldValue = (s, i, o) => {
+        const r = o?.dontUpdateMeta ?? !1,
+          a = o?.dontRunListeners ?? !1,
+          d = o?.dontValidate ?? !1;
+        (le(() => {
+          (r ||
+            this.setFieldMeta(s, (f) => ({
+              ...f,
+              isTouched: !0,
+              isDirty: !0,
+              errorMap: { ...f?.errorMap, onMount: void 0 },
+            })),
+            this.baseStore.setState((f) => ({
+              ...f,
+              values: Be(f.values, s, i),
+            })));
+        }),
+          a || this.getFieldInfo(s).instance?.triggerOnChangeListener(),
+          d || this.validateField(s, "change"));
+      }),
+      (this.deleteField = (s) => {
+        const o = [
+          ...Object.keys(this.fieldInfo).filter((r) => {
+            const a = s.toString();
+            return r !== a && r.startsWith(a);
+          }),
+          s,
+        ];
+        this.baseStore.setState((r) => {
+          const a = { ...r };
+          return (
+            o.forEach((d) => {
+              ((a.values = Ts(a.values, d)),
+                delete this.fieldInfo[d],
+                delete a.fieldMetaBase[d]);
+            }),
+            a
+          );
+        });
+      }),
+      (this.pushFieldValue = (s, i, o) => {
+        this.setFieldValue(s, (r) => [...(Array.isArray(r) ? r : []), i], o);
+      }),
+      (this.insertFieldValue = async (s, i, o, r) => {
+        this.setFieldValue(
+          s,
+          (d) => [...d.slice(0, i), o, ...d.slice(i)],
+          Z(r, { dontValidate: !0 }),
+        );
+        const a = r?.dontValidate ?? !1;
+        (a || (await this.validateField(s, "change")),
+          Ge(this).handleArrayInsert(s, i),
+          a || (await this.validateArrayFieldsStartingFrom(s, i, "change")));
+      }),
+      (this.replaceFieldValue = async (s, i, o, r) => {
+        (this.setFieldValue(
+          s,
+          (d) => d.map((f, m) => (m === i ? o : f)),
+          Z(r, { dontValidate: !0 }),
+        ),
+          (r?.dontValidate ?? !1) ||
+            (await this.validateField(s, "change"),
+            await this.validateArrayFieldsStartingFrom(s, i, "change")));
+      }),
+      (this.removeFieldValue = async (s, i, o) => {
+        const r = this.getFieldValue(s),
+          a = Array.isArray(r) ? Math.max(r.length - 1, 0) : null;
+        if (
+          (this.setFieldValue(
+            s,
+            (f) => f.filter((m, c) => c !== i),
+            Z(o, { dontValidate: !0 }),
+          ),
+          Ge(this).handleArrayRemove(s, i),
+          a !== null)
+        ) {
+          const f = `${s}[${a}]`;
+          this.deleteField(f);
+        }
+        (o?.dontValidate ?? !1) ||
+          (await this.validateField(s, "change"),
+          await this.validateArrayFieldsStartingFrom(s, i, "change"));
+      }),
+      (this.swapFieldValues = (s, i, o, r) => {
+        (this.setFieldValue(
+          s,
+          (d) => {
+            const f = d[i],
+              m = d[o];
+            return Be(Be(d, `${i}`, m), `${o}`, f);
+          },
+          Z(r, { dontValidate: !0 }),
+        ),
+          Ge(this).handleArraySwap(s, i, o),
+          (r?.dontValidate ?? !1) ||
+            (this.validateField(s, "change"),
+            this.validateField(`${s}[${i}]`, "change"),
+            this.validateField(`${s}[${o}]`, "change")));
+      }),
+      (this.moveFieldValues = (s, i, o, r) => {
+        (this.setFieldValue(
+          s,
+          (d) => {
+            const f = [...d];
+            return (f.splice(o, 0, f.splice(i, 1)[0]), f);
+          },
+          Z(r, { dontValidate: !0 }),
+        ),
+          Ge(this).handleArrayMove(s, i, o),
+          (r?.dontValidate ?? !1) ||
+            (this.validateField(s, "change"),
+            this.validateField(`${s}[${i}]`, "change"),
+            this.validateField(`${s}[${o}]`, "change")));
+      }),
+      (this.clearFieldValues = (s, i) => {
+        const o = this.getFieldValue(s),
+          r = Array.isArray(o) ? Math.max(o.length - 1, 0) : null;
+        if ((this.setFieldValue(s, [], Z(i, { dontValidate: !0 })), r !== null))
+          for (let d = 0; d <= r; d++) {
+            const f = `${s}[${d}]`;
+            this.deleteField(f);
+          }
+        (i?.dontValidate ?? !1) || this.validateField(s, "change");
+      }),
+      (this.resetField = (s) => {
+        this.baseStore.setState((i) => ({
+          ...i,
+          fieldMetaBase: { ...i.fieldMetaBase, [s]: Ve },
+          values: this.options.defaultValues
+            ? Be(i.values, s, $e(this.options.defaultValues, s))
+            : i.values,
+        }));
+      }),
+      (this.setErrorMap = (s) => {
+        le(() => {
+          Object.entries(s).forEach(([i, o]) => {
+            const r = i;
+            if (mt(o)) {
+              const { formError: a, fieldErrors: d } = He(o);
+              for (const f of Object.keys(this.fieldInfo))
+                this.getFieldMeta(f) &&
+                  this.setFieldMeta(f, (c) => ({
+                    ...c,
+                    errorMap: { ...c.errorMap, [r]: d?.[f] },
+                    errorSourceMap: { ...c.errorSourceMap, [r]: "form" },
+                  }));
+              this.baseStore.setState((f) => ({
+                ...f,
+                errorMap: { ...f.errorMap, [r]: a },
+              }));
+            } else
+              this.baseStore.setState((a) => ({
+                ...a,
+                errorMap: { ...a.errorMap, [r]: o },
+              }));
+          });
+        });
+      }),
+      (this.getAllErrors = () => ({
+        form: { errors: this.state.errors, errorMap: this.state.errorMap },
+        fields: Object.entries(this.state.fieldMeta).reduce(
+          (s, [i, o]) => (
+            Object.keys(o).length &&
+              o.errors.length &&
+              (s[i] = { errors: o.errors, errorMap: o.errorMap }),
+            s
+          ),
+          {},
+        ),
+      })),
+      (this.parseValuesWithSchema = (s) =>
+        Le.validate({ value: this.state.values, validationSource: "form" }, s)),
+      (this.parseValuesWithSchemaAsync = (s) =>
+        Le.validateAsync(
+          { value: this.state.values, validationSource: "form" },
+          s,
+        )),
+      (this.timeoutIds = { validations: {}, listeners: {}, formListeners: {} }),
+      (this._formId = e?.formId ?? Gt()),
+      (this._devtoolsSubmissionOverride = !1),
+      (this.baseStore = new ct(
+        it({
+          ...e?.defaultState,
+          values: e?.defaultValues ?? e?.defaultState?.values,
+        }),
+      )),
+      (this.fieldMetaDerived = new fe({
+        deps: [this.baseStore],
+        fn: ({ prevDepVals: s, currDepVals: i, prevVal: o }) => {
+          const r = o,
+            a = s?.[0],
+            d = i[0];
+          let f = 0;
+          const m = {};
+          for (const c of Object.keys(d.fieldMetaBase)) {
+            const l = d.fieldMetaBase[c],
+              h = a?.fieldMetaBase[c],
+              u = r?.[c],
+              p = $e(d.values, c);
+            let v = u?.errors;
+            if (!h || l.errorMap !== h.errorMap) {
+              v = Object.values(l.errorMap ?? {}).filter((M) => M !== void 0);
+              const j = this.getFieldInfo(c)?.instance;
+              j && !j.options.disableErrorFlat && (v = v.flat(1));
+            }
+            const x = !Rs(v),
+              g = !l.isDirty,
+              S =
+                ge(p, $e(this.options.defaultValues, c)) ||
+                ge(p, this.getFieldInfo(c)?.instance?.options.defaultValue);
+            if (
+              u &&
+              u.isPristine === g &&
+              u.isValid === x &&
+              u.isDefaultValue === S &&
+              u.errors === v &&
+              l === h
+            ) {
+              ((m[c] = u), f++);
+              continue;
+            }
+            m[c] = {
+              ...l,
+              errors: v ?? [],
+              isPristine: g,
+              isValid: x,
+              isDefaultValue: S,
+            };
+          }
+          return Object.keys(d.fieldMetaBase).length &&
+            r &&
+            f === Object.keys(d.fieldMetaBase).length
+            ? r
+            : m;
+        },
+      })),
+      (this.store = new fe({
+        deps: [this.baseStore, this.fieldMetaDerived],
+        fn: ({ prevDepVals: s, currDepVals: i, prevVal: o }) => {
+          const r = o,
+            a = s?.[0],
+            d = i[0],
+            f = i[1],
+            m = Object.values(f).filter(Boolean),
+            c = m.some((w) => w.isValidating),
+            l = m.every((w) => w.isValid),
+            h = m.some((w) => w.isTouched),
+            u = m.some((w) => w.isBlurred),
+            p = m.every((w) => w.isDefaultValue),
+            v = h && d.errorMap?.onMount,
+            x = m.some((w) => w.isDirty),
+            g = !x,
+            S = !!(d.errorMap?.onMount || m.some((w) => w?.errorMap?.onMount)),
+            j = !!c;
+          let M = r?.errors ?? [];
+          (!a || d.errorMap !== a.errorMap) &&
+            (M = Object.values(d.errorMap).reduce(
+              (w, P) =>
+                P === void 0
+                  ? w
+                  : P && mt(P)
+                    ? (w.push(P.form), w)
+                    : (w.push(P), w),
+              [],
+            ));
+          const L = M.length === 0,
+            E = l && L,
+            N = this.options.canSubmitWhenInvalid ?? !1,
+            V =
+              (d.submissionAttempts === 0 && !h && !S) ||
+              (!j && !d.isSubmitting && E) ||
+              N;
+          let k = d.errorMap;
+          if (
+            (v &&
+              ((M = M.filter((w) => w !== d.errorMap.onMount)),
+              (k = Object.assign(k, { onMount: void 0 }))),
+            r &&
+              a &&
+              r.errorMap === k &&
+              r.fieldMeta === this.fieldMetaDerived.state &&
+              r.errors === M &&
+              r.isFieldsValidating === c &&
+              r.isFieldsValid === l &&
+              r.isFormValid === L &&
+              r.isValid === E &&
+              r.canSubmit === V &&
+              r.isTouched === h &&
+              r.isBlurred === u &&
+              r.isPristine === g &&
+              r.isDefaultValue === p &&
+              r.isDirty === x &&
+              ge(a, d))
+          )
+            return r;
+          let I = {
+            ...d,
+            errorMap: k,
+            fieldMeta: this.fieldMetaDerived.state,
+            errors: M,
+            isFieldsValidating: c,
+            isFieldsValid: l,
+            isFormValid: L,
+            isValid: E,
+            canSubmit: V,
+            isTouched: h,
+            isBlurred: u,
+            isPristine: g,
+            isDefaultValue: p,
+            isDirty: x,
+          };
+          const G = this.options.transform?.deps ?? [];
+          if (
+            G.length !== this.prevTransformArray.length ||
+            G.some((w, P) => w !== this.prevTransformArray[P])
+          ) {
+            const w = Object.assign({}, this, { state: I });
+            (this.options.transform?.fn(w),
+              (I = w.state),
+              (this.prevTransformArray = G));
+          }
+          return I;
+        },
+      })),
+      (this.handleSubmit = this.handleSubmit.bind(this)),
+      this.update(e || {}));
+  }
+  get state() {
+    return this.store.state;
+  }
+  get formId() {
+    return this._formId;
+  }
+  runValidator(e) {
+    return Ut(e.validate)
+      ? Le[e.type](e.value, e.validate)
+      : e.validate(e.value);
+  }
+  handleSubmit(e) {
+    return this._handleSubmit(e);
+  }
+}
+function He(t) {
+  if (t) {
+    if (mt(t)) {
+      const e = He(t.form).formError,
+        s = t.fields;
+      return { formError: e, fieldErrors: s };
+    }
+    return { formError: t };
+  }
+  return { formError: void 0 };
+}
+function Te(t) {
+  switch (t) {
+    case "submit":
+      return "onSubmit";
+    case "blur":
+      return "onBlur";
+    case "mount":
+      return "onMount";
+    case "server":
+      return "onServer";
+    case "dynamic":
+      return "onDynamic";
+    case "change":
+    default:
+      return "onChange";
+  }
+}
+class Et {
+  constructor(e) {
+    ((this.options = {}),
+      (this.mount = () => {
+        const s = this.store.mount();
+        this.options.defaultValue !== void 0 &&
+          !this.getMeta().isTouched &&
+          this.form.setFieldValue(this.name, this.options.defaultValue, {
+            dontUpdateMeta: !0,
+          });
+        const i = this.getInfo();
+        ((i.instance = this), this.update(this.options));
+        const { onMount: o } = this.options.validators || {};
+        if (o) {
+          const r = this.runValidator({
+            validate: o,
+            value: {
+              value: this.state.value,
+              fieldApi: this,
+              validationSource: "field",
+            },
+            type: "validate",
+          });
+          r &&
+            this.setMeta((a) => ({
+              ...a,
+              errorMap: { ...a?.errorMap, onMount: r },
+              errorSourceMap: { ...a?.errorSourceMap, onMount: "field" },
+            }));
+        }
+        return (
+          this.options.listeners?.onMount?.({
+            value: this.state.value,
+            fieldApi: this,
+          }),
+          s
+        );
+      }),
+      (this.update = (s) => {
+        if (
+          ((this.options = s),
+          (this.name = s.name),
+          !this.state.meta.isTouched && this.options.defaultValue !== void 0)
+        ) {
+          const i = this.form.getFieldValue(this.name);
+          ge(i, s.defaultValue) ||
+            this.form.setFieldValue(this.name, s.defaultValue, {
+              dontUpdateMeta: !0,
+              dontValidate: !0,
+              dontRunListeners: !0,
+            });
+        }
+        this.form.getFieldMeta(this.name) ||
+          this.form.setFieldMeta(this.name, this.state.meta);
+      }),
+      (this.getValue = () => this.form.getFieldValue(this.name)),
+      (this.setValue = (s, i) => {
+        (this.form.setFieldValue(
+          this.name,
+          s,
+          Z(i, { dontRunListeners: !0, dontValidate: !0 }),
+        ),
+          i?.dontRunListeners || this.triggerOnChangeListener(),
+          i?.dontValidate || this.validate("change"));
+      }),
+      (this.getMeta = () => this.store.state.meta),
+      (this.setMeta = (s) => this.form.setFieldMeta(this.name, s)),
+      (this.getInfo = () => this.form.getFieldInfo(this.name)),
+      (this.pushValue = (s, i) => {
+        (this.form.pushFieldValue(this.name, s, Z(i, { dontRunListeners: !0 })),
+          i?.dontRunListeners || this.triggerOnChangeListener());
+      }),
+      (this.insertValue = (s, i, o) => {
+        (this.form.insertFieldValue(
+          this.name,
+          s,
+          i,
+          Z(o, { dontRunListeners: !0 }),
+        ),
+          o?.dontRunListeners || this.triggerOnChangeListener());
+      }),
+      (this.replaceValue = (s, i, o) => {
+        (this.form.replaceFieldValue(
+          this.name,
+          s,
+          i,
+          Z(o, { dontRunListeners: !0 }),
+        ),
+          o?.dontRunListeners || this.triggerOnChangeListener());
+      }),
+      (this.removeValue = (s, i) => {
+        (this.form.removeFieldValue(
+          this.name,
+          s,
+          Z(i, { dontRunListeners: !0 }),
+        ),
+          i?.dontRunListeners || this.triggerOnChangeListener());
+      }),
+      (this.swapValues = (s, i, o) => {
+        (this.form.swapFieldValues(
+          this.name,
+          s,
+          i,
+          Z(o, { dontRunListeners: !0 }),
+        ),
+          o?.dontRunListeners || this.triggerOnChangeListener());
+      }),
+      (this.moveValue = (s, i, o) => {
+        (this.form.moveFieldValues(
+          this.name,
+          s,
+          i,
+          Z(o, { dontRunListeners: !0 }),
+        ),
+          o?.dontRunListeners || this.triggerOnChangeListener());
+      }),
+      (this.clearValues = (s) => {
+        (this.form.clearFieldValues(this.name, Z(s, { dontRunListeners: !0 })),
+          s?.dontRunListeners || this.triggerOnChangeListener());
+      }),
+      (this.getLinkedFields = (s) => {
+        const i = Object.values(this.form.fieldInfo),
+          o = [];
+        for (const r of i) {
+          if (!r.instance) continue;
+          const { onChangeListenTo: a, onBlurListenTo: d } =
+            r.instance.options.validators || {};
+          (s === "change" && a?.includes(this.name) && o.push(r.instance),
+            s === "blur" && d?.includes(this.name) && o.push(r.instance));
+        }
+        return o;
+      }),
+      (this.validateSync = (s, i) => {
+        const o = ut(s, {
+            ...this.options,
+            form: this.form,
+            validationLogic: this.form.options.validationLogic || ke,
+          }),
+          a = this.getLinkedFields(s).reduce((m, c) => {
+            const l = ut(s, {
+              ...c.options,
+              form: c.form,
+              validationLogic: c.form.options.validationLogic || ke,
+            });
+            return (
+              l.forEach((h) => {
+                h.field = c;
+              }),
+              m.concat(l)
+            );
+          }, []);
+        let d = !1;
+        le(() => {
+          const m = (c, l) => {
+            const h = Ue(l.cause),
+              u = l.validate
+                ? wt(
+                    c.runValidator({
+                      validate: l.validate,
+                      value: {
+                        value: c.store.state.value,
+                        validationSource: "field",
+                        fieldApi: c,
+                      },
+                      type: "validate",
+                    }),
+                  )
+                : void 0,
+              p = i[h],
+              { newErrorValue: v, newSource: x } = yt({
+                formLevelError: p,
+                fieldLevelError: u,
+              });
+            (c.state.meta.errorMap?.[h] !== v &&
+              c.setMeta((g) => ({
+                ...g,
+                errorMap: { ...g.errorMap, [h]: v },
+                errorSourceMap: { ...g.errorSourceMap, [h]: x },
+              })),
+              v && (d = !0));
+          };
+          for (const c of o) m(this, c);
+          for (const c of a) c.validate && m(c.field, c);
+        });
+        const f = Ue("submit");
+        return (
+          this.state.meta.errorMap?.[f] &&
+            s !== "submit" &&
+            !d &&
+            this.setMeta((m) => ({
+              ...m,
+              errorMap: { ...m.errorMap, [f]: void 0 },
+              errorSourceMap: { ...m.errorSourceMap, [f]: void 0 },
+            })),
+          { hasErrored: d }
+        );
+      }),
+      (this.validateAsync = async (s, i) => {
+        const o = ft(s, {
+            ...this.options,
+            form: this.form,
+            validationLogic: this.form.options.validationLogic || ke,
+          }),
+          r = await i,
+          a = this.getLinkedFields(s),
+          d = a.reduce((u, p) => {
+            const v = ft(s, {
+              ...p.options,
+              form: p.form,
+              validationLogic: p.form.options.validationLogic || ke,
+            });
+            return (
+              v.forEach((x) => {
+                x.field = p;
+              }),
+              u.concat(v)
+            );
+          }, []),
+          f = [],
+          m = [],
+          c = o.some((u) => u.validate) || d.some((u) => u.validate);
+        if (c) {
+          this.state.meta.isValidating ||
+            this.setMeta((u) => ({ ...u, isValidating: !0 }));
+          for (const u of a) u.setMeta((p) => ({ ...p, isValidating: !0 }));
+        }
+        const l = (u, p, v) => {
+          const x = Ue(p.cause);
+          u.getInfo().validationMetaMap[x]?.lastAbortController.abort();
+          const S = new AbortController();
+          ((this.getInfo().validationMetaMap[x] = { lastAbortController: S }),
+            v.push(
+              new Promise(async (j) => {
+                let M;
+                try {
+                  M = await new Promise((k, I) => {
+                    (this.timeoutIds.validations[p.cause] &&
+                      clearTimeout(this.timeoutIds.validations[p.cause]),
+                      (this.timeoutIds.validations[p.cause] = setTimeout(
+                        async () => {
+                          if (S.signal.aborted) return k(void 0);
+                          try {
+                            k(
+                              await this.runValidator({
+                                validate: p.validate,
+                                value: {
+                                  value: u.store.state.value,
+                                  fieldApi: u,
+                                  signal: S.signal,
+                                  validationSource: "field",
+                                },
+                                type: "validateAsync",
+                              }),
+                            );
+                          } catch (G) {
+                            I(G);
+                          }
+                        },
+                        p.debounceMs,
+                      )));
+                  });
+                } catch (k) {
+                  M = k;
+                }
+                if (S.signal.aborted) return j(void 0);
+                const L = wt(M),
+                  E = r[this.name]?.[x],
+                  { newErrorValue: N, newSource: V } = yt({
+                    formLevelError: E,
+                    fieldLevelError: L,
+                  });
+                (u.setMeta((k) => ({
+                  ...k,
+                  errorMap: { ...k?.errorMap, [x]: N },
+                  errorSourceMap: { ...k.errorSourceMap, [x]: V },
+                })),
+                  j(N));
+              }),
+            ));
+        };
+        for (const u of o) u.validate && l(this, u, f);
+        for (const u of d) u.validate && l(u.field, u, m);
+        let h = [];
+        if (
+          ((f.length || m.length) &&
+            ((h = await Promise.all(f)), await Promise.all(m)),
+          c)
+        ) {
+          this.setMeta((u) => ({ ...u, isValidating: !1 }));
+          for (const u of a) u.setMeta((p) => ({ ...p, isValidating: !1 }));
+        }
+        return h.filter(Boolean);
+      }),
+      (this.validate = (s, i) => {
+        if (!this.state.meta.isTouched) return [];
+        const { fieldsErrorMap: o } = i?.skipFormValidation
+            ? { fieldsErrorMap: {} }
+            : this.form.validateSync(s),
+          { hasErrored: r } = this.validateSync(s, o[this.name] ?? {});
+        if (r && !this.options.asyncAlways)
+          return (
+            this.getInfo().validationMetaMap[
+              Ue(s)
+            ]?.lastAbortController.abort(),
+            this.state.meta.errors
+          );
+        const a = i?.skipFormValidation
+          ? Promise.resolve({})
+          : this.form.validateAsync(s);
+        return this.validateAsync(s, a);
+      }),
+      (this.handleChange = (s) => {
+        this.setValue(s);
+      }),
+      (this.handleBlur = () => {
+        (this.state.meta.isTouched ||
+          this.setMeta((i) => ({ ...i, isTouched: !0 })),
+          this.state.meta.isBlurred ||
+            this.setMeta((i) => ({ ...i, isBlurred: !0 })),
+          this.validate("blur"),
+          this.triggerOnBlurListener());
+      }),
+      (this.setErrorMap = (s) => {
+        this.setMeta((i) => ({ ...i, errorMap: { ...i.errorMap, ...s } }));
+      }),
+      (this.parseValueWithSchema = (s) =>
+        Le.validate({ value: this.state.value, validationSource: "field" }, s)),
+      (this.parseValueWithSchemaAsync = (s) =>
+        Le.validateAsync(
+          { value: this.state.value, validationSource: "field" },
+          s,
+        )),
+      (this.triggerOnChangeListener = () => {
+        const s = this.form.options.listeners?.onChangeDebounceMs;
+        s && s > 0
+          ? (this.timeoutIds.formListeners.change &&
+              clearTimeout(this.timeoutIds.formListeners.change),
+            (this.timeoutIds.formListeners.change = setTimeout(() => {
+              this.form.options.listeners?.onChange?.({
+                formApi: this.form,
+                fieldApi: this,
+              });
+            }, s)))
+          : this.form.options.listeners?.onChange?.({
+              formApi: this.form,
+              fieldApi: this,
+            });
+        const i = this.options.listeners?.onChangeDebounceMs;
+        i && i > 0
+          ? (this.timeoutIds.listeners.change &&
+              clearTimeout(this.timeoutIds.listeners.change),
+            (this.timeoutIds.listeners.change = setTimeout(() => {
+              this.options.listeners?.onChange?.({
+                value: this.state.value,
+                fieldApi: this,
+              });
+            }, i)))
+          : this.options.listeners?.onChange?.({
+              value: this.state.value,
+              fieldApi: this,
+            });
+      }),
+      (this.form = e.form),
+      (this.name = e.name),
+      (this.options = e),
+      (this.timeoutIds = { validations: {}, listeners: {}, formListeners: {} }),
+      (this.store = new fe({
+        deps: [this.form.store],
+        fn: ({ prevVal: s }) => {
+          const i = s,
+            o = this.form.getFieldMeta(this.name) ?? {
+              ...Ve,
+              ...e.defaultMeta,
+            };
+          let r = this.form.getFieldValue(this.name);
+          return (
+            !o.isTouched &&
+              r === void 0 &&
+              this.options.defaultValue !== void 0 &&
+              !ge(r, this.options.defaultValue) &&
+              (r = this.options.defaultValue),
+            i && i.value === r && i.meta === o ? i : { value: r, meta: o }
+          );
+        },
+      })));
+  }
+  get state() {
+    return this.store.state;
+  }
+  runValidator(e) {
+    return Ut(e.validate)
+      ? Le[e.type](e.value, e.validate)
+      : e.validate(e.value);
+  }
+  triggerOnBlurListener() {
+    const e = this.form.options.listeners?.onBlurDebounceMs;
+    e && e > 0
+      ? (this.timeoutIds.formListeners.blur &&
+          clearTimeout(this.timeoutIds.formListeners.blur),
+        (this.timeoutIds.formListeners.blur = setTimeout(() => {
+          this.form.options.listeners?.onBlur?.({
+            formApi: this.form,
+            fieldApi: this,
+          });
+        }, e)))
+      : this.form.options.listeners?.onBlur?.({
+          formApi: this.form,
+          fieldApi: this,
+        });
+    const s = this.options.listeners?.onBlurDebounceMs;
+    s && s > 0
+      ? (this.timeoutIds.listeners.blur &&
+          clearTimeout(this.timeoutIds.listeners.blur),
+        (this.timeoutIds.listeners.blur = setTimeout(() => {
+          this.options.listeners?.onBlur?.({
+            value: this.state.value,
+            fieldApi: this,
+          });
+        }, s)))
+      : this.options.listeners?.onBlur?.({
+          value: this.state.value,
+          fieldApi: this,
+        });
+  }
+}
+function wt(t) {
+  if (t) return t;
+}
+function Ue(t) {
+  switch (t) {
+    case "submit":
+      return "onSubmit";
+    case "blur":
+      return "onBlur";
+    case "mount":
+      return "onMount";
+    case "server":
+      return "onServer";
+    case "dynamic":
+      return "onDynamic";
+    case "change":
+    default:
+      return "onChange";
+  }
+}
+var nt = { exports: {} },
+  rt = {},
+  ot = { exports: {} },
+  at = {};
+/**
+ * @license React
+ * use-sync-external-store-shim.production.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ var jt;
+function Ws() {
+  if (jt) return at;
+  jt = 1;
+  var t = Tt();
+  function e(l, h) {
+    return (l === h && (l !== 0 || 1 / l === 1 / h)) || (l !== l && h !== h);
+  }
+  var s = typeof Object.is == "function" ? Object.is : e,
+    i = t.useState,
+    o = t.useEffect,
+    r = t.useLayoutEffect,
+    a = t.useDebugValue;
+  function d(l, h) {
+    var u = h(),
+      p = i({ inst: { value: u, getSnapshot: h } }),
+      v = p[0].inst,
+      x = p[1];
+    return (
+      r(
+        function () {
+          ((v.value = u), (v.getSnapshot = h), f(v) && x({ inst: v }));
+        },
+        [l, u, h],
+      ),
+      o(
+        function () {
+          return (
+            f(v) && x({ inst: v }),
+            l(function () {
+              f(v) && x({ inst: v });
+            })
+          );
+        },
+        [l],
+      ),
+      a(u),
+      u
+    );
+  }
+  function f(l) {
+    var h = l.getSnapshot;
+    l = l.value;
+    try {
+      var u = h();
+      return !s(l, u);
+    } catch {
+      return !0;
+    }
+  }
+  function m(l, h) {
+    return h();
+  }
+  var c =
+    typeof window > "u" ||
+    typeof window.document > "u" ||
+    typeof window.document.createElement > "u"
+      ? m
+      : d;
+  return (
+    (at.useSyncExternalStore =
+      t.useSyncExternalStore !== void 0 ? t.useSyncExternalStore : c),
+    at
+  );
+}
+var kt;
+function zs() {
+  return (kt || ((kt = 1), (ot.exports = Ws())), ot.exports);
+}
+/**
+ * @license React
+ * use-sync-external-store-shim/with-selector.production.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ var Vt;
+function Gs() {
+  if (Vt) return rt;
+  Vt = 1;
+  var t = Tt(),
+    e = zs();
+  function s(m, c) {
+    return (m === c && (m !== 0 || 1 / m === 1 / c)) || (m !== m && c !== c);
+  }
+  var i = typeof Object.is == "function" ? Object.is : s,
+    o = e.useSyncExternalStore,
+    r = t.useRef,
+    a = t.useEffect,
+    d = t.useMemo,
+    f = t.useDebugValue;
+  return (
+    (rt.useSyncExternalStoreWithSelector = function (m, c, l, h, u) {
+      var p = r(null);
+      if (p.current === null) {
+        var v = { hasValue: !1, value: null };
+        p.current = v;
+      } else v = p.current;
+      p = d(
+        function () {
+          function g(E) {
+            if (!S) {
+              if (((S = !0), (j = E), (E = h(E)), u !== void 0 && v.hasValue)) {
+                var N = v.value;
+                if (u(N, E)) return (M = N);
+              }
+              return (M = E);
+            }
+            if (((N = M), i(j, E))) return N;
+            var V = h(E);
+            return u !== void 0 && u(N, V) ? ((j = E), N) : ((j = E), (M = V));
+          }
+          var S = !1,
+            j,
+            M,
+            L = l === void 0 ? null : l;
+          return [
+            function () {
+              return g(c());
+            },
+            L === null
+              ? void 0
+              : function () {
+                  return g(L());
+                },
+          ];
+        },
+        [c, l, h, u],
+      );
+      var x = o(m, p[0], p[1]);
+      return (
+        a(
+          function () {
+            ((v.hasValue = !0), (v.value = x));
+          },
+          [x],
+        ),
+        f(x),
+        x
+      );
+    }),
+    rt
+  );
+}
+var Ft;
+function Us() {
+  return (Ft || ((Ft = 1), (nt.exports = Gs())), nt.exports);
+}
+var Ks = Us();
+function ve(t, e = (i) => i, s = {}) {
+  const i = s.equal ?? qs;
+  return Ks.useSyncExternalStoreWithSelector(
+    t.subscribe,
+    () => t.state,
+    () => t.state,
+    e,
+    i,
+  );
+}
+function qs(t, e) {
+  if (Object.is(t, e)) return !0;
+  if (typeof t != "object" || t === null || typeof e != "object" || e === null)
+    return !1;
+  if (t instanceof Map && e instanceof Map) {
+    if (t.size !== e.size) return !1;
+    for (const [i, o] of t) if (!e.has(i) || !Object.is(o, e.get(i))) return !1;
+    return !0;
+  }
+  if (t instanceof Set && e instanceof Set) {
+    if (t.size !== e.size) return !1;
+    for (const i of t) if (!e.has(i)) return !1;
+    return !0;
+  }
+  if (t instanceof Date && e instanceof Date)
+    return t.getTime() === e.getTime();
+  const s = Lt(t);
+  if (s.length !== Lt(e).length) return !1;
+  for (let i = 0; i < s.length; i++)
+    if (
+      !Object.prototype.hasOwnProperty.call(e, s[i]) ||
+      !Object.is(t[s[i]], e[s[i]])
+    )
+      return !1;
+  return !0;
+}
+function Lt(t) {
+  return Object.keys(t).concat(Object.getOwnPropertySymbols(t));
+}
+const Xe = typeof window < "u" ? J.useLayoutEffect : J.useEffect;
+function Hs(t) {
+  const [e, s] = J.useState(() => ({ form: t.form, name: t.name })),
+    [i, o] = J.useState(() => new Et({ ...t }));
+  (e.form !== t.form || e.name !== t.name) &&
+    (o(new Et({ ...t })), s({ form: t.form, name: t.name }));
+  const r = ve(
+      i.store,
+      t.mode === "array"
+        ? (u) => Object.keys(u.value ?? []).length
+        : (u) => u.value,
+    ),
+    a = ve(i.store, (u) => u.meta.isTouched),
+    d = ve(i.store, (u) => u.meta.isBlurred),
+    f = ve(i.store, (u) => u.meta.isDirty),
+    m = ve(i.store, (u) => u.meta.errorMap),
+    c = ve(i.store, (u) => u.meta.errorSourceMap),
+    l = ve(i.store, (u) => u.meta.isValidating),
+    h = J.useMemo(() => {
+      const p = {
+        ...i,
+        get state() {
+          return {
+            value: t.mode === "array" ? i.state.value : r,
+            get meta() {
+              return {
+                ...i.state.meta,
+                isTouched: a,
+                isBlurred: d,
+                isDirty: f,
+                errorMap: m,
+                errorSourceMap: c,
+                isValidating: l,
+              };
+            },
+          };
+        },
+      };
+      return ((p.Field = Kt), p);
+    }, [i, t.mode, r, a, d, f, m, c, l]);
+  return (
+    Xe(i.mount, [i]),
+    Xe(() => {
+      i.update(t);
+    }),
+    h
+  );
+}
+const Kt = ({ children: t, ...e }) => {
+  const s = Hs(e),
+    i = J.useMemo(() => Ye(t, s), [t, s]);
+  return n.jsx(n.Fragment, { children: i });
+};
+function Qs() {
+  return J.useState(() => Gt())[0];
+}
+const Xs = J.version.split(".")[0] === "17" ? Qs : J.useId;
+function Js({ form: t, selector: e, children: s }) {
+  const i = ve(t.store, e);
+  return n.jsx(n.Fragment, { children: Ye(s, i) });
+}
+function Ys(t) {
+  const e = Xs(),
+    [s, i] = J.useState(t?.formId),
+    [o, r] = J.useState(() => new Mt({ ...t, formId: t?.formId ?? e }));
+  if (s !== t?.formId) {
+    const d = t?.formId ?? e;
+    (r(new Mt({ ...t, formId: d })), i(d));
+  }
+  const a = J.useMemo(() => {
+    const d = {
+      ...o,
+      handleSubmit: (...f) => o._handleSubmit(...f),
+      get formId() {
+        return o._formId;
+      },
+      get state() {
+        return o.store.state;
+      },
+    };
+    return (
+      (d.Field = function (m) {
+        return n.jsx(Kt, { ...m, form: o });
+      }),
+      (d.Subscribe = function (m) {
+        return n.jsx(Js, {
+          form: o,
+          selector: m.selector,
+          children: m.children,
+        });
+      }),
+      d
+    );
+  }, [o]);
+  return (
+    Xe(o.mount, []),
+    Xe(() => {
+      o.update(t);
+    }),
+    a
+  );
+}
+function qt(t) {
+  const e = me.c(20),
+    { workspaceRoot: s, workspaceGroup: i } = t;
+  let o;
+  e[0] !== i || e[1] !== s
+    ? ((o = Bt(s, i)), (e[0] = i), (e[1] = s), (e[2] = o))
+    : (o = e[2]);
+  const r = o,
+    a = i?.repositoryData?.rootFolder,
+    d = a && a !== r ? `(${a})` : null,
+    f = i?.isCodexWorktree ? It : Dt;
+  let m;
+  e[3] !== f
+    ? ((m = n.jsx(f, {
+        className: "icon-sm text-token-text-secondary shrink-0",
+      })),
+      (e[3] = f),
+      (e[4] = m))
+    : (m = e[4]);
+  let c;
+  e[5] !== r
+    ? ((c = n.jsx("span", { className: "truncate", children: r })),
+      (e[5] = r),
+      (e[6] = c))
+    : (c = e[6]);
+  let l;
+  e[7] !== d
+    ? ((l =
+        d &&
+        n.jsx("span", {
+          className: "text-token-description-foreground truncate text-xs",
+          children: d,
+        })),
+      (e[7] = d),
+      (e[8] = l))
+    : (l = e[8]);
+  let h;
+  e[9] !== c || e[10] !== l
+    ? ((h = n.jsxs("div", {
+        className:
+          "flex min-w-0 items-center gap-1 text-sm text-token-text-primary",
+        children: [c, l],
+      })),
+      (e[9] = c),
+      (e[10] = l),
+      (e[11] = h))
+    : (h = e[11]);
+  let u;
+  e[12] !== s
+    ? ((u = n.jsx("span", {
+        className: "text-token-text-secondary truncate text-xs",
+        children: s,
+      })),
+      (e[12] = s),
+      (e[13] = u))
+    : (u = e[13]);
+  let p;
+  e[14] !== h || e[15] !== u
+    ? ((p = n.jsxs("div", {
+        className: "flex min-w-0 flex-col gap-1",
+        children: [h, u],
+      })),
+      (e[14] = h),
+      (e[15] = u),
+      (e[16] = p))
+    : (p = e[16]);
+  let v;
+  return (
+    e[17] !== m || e[18] !== p
+      ? ((v = n.jsxs("div", {
+          className: "flex items-center gap-3 p-3",
+          children: [m, p],
+        })),
+        (e[17] = m),
+        (e[18] = p),
+        (e[19] = v))
+      : (v = e[19]),
+    v
+  );
+}
+const Je = ["darwin", "linux", "win32"];
+function Zs(t) {
+  const e = me.c(57),
+    {
+      workspaceRoot: s,
+      workspaceGroup: i,
+      configPath: o,
+      configExists: r,
+      initialEnvironment: a,
+      parseErrorMessage: d,
+      readErrorMessage: f,
+      onExitEdit: m,
+    } = t,
+    c = ht(),
+    l = Zt(),
+    h = es(),
+    { data: u } = ts();
+  let p;
+  e[0] === Symbol.for("react.memo_cache_sentinel")
+    ? ((p = { select: ti }), (e[0] = p))
+    : (p = e[0]);
+  const { data: v } = je("codex-home", p);
+  let x;
+  e[1] !== v || e[2] !== s
+    ? ((x = ss(s, v)), (e[1] = v), (e[2] = s), (e[3] = x))
+    : (x = e[3]);
+  const g = x,
+    { data: S } = is(s),
+    j = ns();
+  let M;
+  e[4] !== j ? ((M = rs(j)), (e[4] = j), (e[5] = M)) : (M = e[5]);
+  const L = M;
+  let E;
+  e[6] !== S || e[7] !== L || e[8] !== l
+    ? ((E = {
+        onSuccess: () => {
+          S &&
+            l.invalidateQueries({
+              queryKey: cs({
+                metadata: S,
+                method: "config-value",
+                params: { root: S.root, key: gt, scope: "worktree" },
+                hostKey: L,
+              }),
+            });
+        },
+      }),
+      (e[6] = S),
+      (e[7] = L),
+      (e[8] = l),
+      (e[9] = E))
+    : (E = e[9]);
+  const N = os("set-config-value", E);
+  let V, k;
+  if (
+    e[10] !== a?.actions ||
+    e[11] !== a?.name ||
+    e[12] !== a?.setup ||
+    e[13] !== a?.version ||
+    e[14] !== c ||
+    e[15] !== s
+  ) {
+    const K =
+        Ct(s) ??
+        c.formatMessage({
+          id: "settings.localEnvironments.environment.defaultName",
+          defaultMessage: "local",
+          description: "Fallback name for the local environment",
+        }),
+      A = a?.actions ?? [],
+      W = a?.name ?? K,
+      q = a?.setup?.script ?? "",
+      H = ri(a?.setup),
+      ce = as(A);
+    ((k = a?.version ?? 1),
+      (V = si({
+        name: W,
+        setupScript: q,
+        setupPlatformScripts: H,
+        actions: ce,
+      })),
+      (e[10] = a?.actions),
+      (e[11] = a?.name),
+      (e[12] = a?.setup),
+      (e[13] = a?.version),
+      (e[14] = c),
+      (e[15] = s),
+      (e[16] = V),
+      (e[17] = k));
+  } else ((V = e[16]), (k = e[17]));
+  const I = V;
+  let G;
+  e[18] !== g ||
+  e[19] !== r ||
+  e[20] !== o ||
+  e[21] !== S ||
+  e[22] !== c ||
+  e[23] !== m ||
+  e[24] !== l ||
+  e[25] !== N ||
+  e[26] !== h ||
+  e[27] !== s
+    ? ((G = {
+        onSuccess: () => {
+          (l.invalidateQueries({
+            queryKey: et("local-environment-config", { configPath: o }),
+          }),
+            l.invalidateQueries({
+              queryKey: et("local-environment", { configPath: o }),
+            }),
+            l.invalidateQueries({
+              queryKey: et("local-environments", { workspaceRoot: s }),
+            }),
+            h.success(
+              c.formatMessage({
+                id: "settings.localEnvironments.save.success",
+                defaultMessage: "Saved local environment",
+                description: "Toast shown when local environment is saved",
+              }),
+            ),
+            !r &&
+              g &&
+              S?.root &&
+              N.mutate({ root: S.root, key: gt, value: o, scope: "worktree" }),
+            m());
+        },
+      }),
+      (e[18] = g),
+      (e[19] = r),
+      (e[20] = o),
+      (e[21] = S),
+      (e[22] = c),
+      (e[23] = m),
+      (e[24] = l),
+      (e[25] = N),
+      (e[26] = h),
+      (e[27] = s),
+      (e[28] = G))
+    : (G = e[28]);
+  const _ = ls("local-environment-config-save", G);
+  let w;
+  e[29] !== o || e[30] !== _ || e[31] !== k
+    ? ((w = (K) => {
+        const { value: A } = K,
+          W = Nt(A, k);
+        A.name.length !== 0 && _.mutate({ configPath: o, raw: W });
+      }),
+      (e[29] = o),
+      (e[30] = _),
+      (e[31] = k),
+      (e[32] = w))
+    : (w = e[32]);
+  let P;
+  e[33] !== I || e[34] !== w
+    ? ((P = { defaultValues: I, onSubmit: w }),
+      (e[33] = I),
+      (e[34] = w),
+      (e[35] = P))
+    : (P = e[35]);
+  const F = Ys(P);
+  let B;
+  e[36] !== F
+    ? ((B = (K) => {
+        (K.preventDefault(), F.handleSubmit());
+      }),
+      (e[36] = F),
+      (e[37] = B))
+    : (B = e[37]);
+  let O;
+  e[38] !== r ||
+  e[39] !== o ||
+  e[40] !== F ||
+  e[41] !== c ||
+  e[42] !== u?.platform ||
+  e[43] !== d ||
+  e[44] !== f ||
+  e[45] !== _.error ||
+  e[46] !== _.isPending ||
+  e[47] !== k ||
+  e[48] !== i ||
+  e[49] !== s
+    ? ((O = (K) => {
+        const { values: A, isDirty: W } = K;
+        Nt(A, k);
+        const q = ds.map((y) => ({
+            ariaLabel: c.formatMessage(y.message),
+            value: y.value,
+            icon: n.jsx(Pt, { icon: y.value }),
+          })),
+          H = oi(u?.platform),
+          ce = ai(c),
+          Q = ii({ values: A, isDirty: W, isSaving: _.isPending }),
+          ae = ni(Q),
+          se = Q != null,
+          he = (y) => {
+            F.setFieldValue("setupPlatformVisibility", {
+              ...A.setupPlatformVisibility,
+              [y]: !0,
+            });
+          },
+          ie = (y) => {
+            (F.setFieldValue("setupPlatformScripts", {
+              ...A.setupPlatformScripts,
+              [y]: "",
+            }),
+              F.setFieldValue("setupPlatformVisibility", {
+                ...A.setupPlatformVisibility,
+                [y]: !1,
+              }));
+          },
+          xe = (y, X) => {
+            F.setFieldValue("setupPlatformScripts", {
+              ...A.setupPlatformScripts,
+              [y]: X,
+            });
+          },
+          z = () => {
+            F.setFieldValue("actions", [...A.actions, gs("")]);
+          },
+          Ze = (y) => {
+            F.setFieldValue(
+              "actions",
+              A.actions.filter((X) => X.id !== y),
+            );
+          },
+          pe = (y, X) => {
+            F.setFieldValue(
+              "actions",
+              A.actions.map((te) => (te.id !== y ? te : { ...te, ...X })),
+            );
+          },
+          Ne = () => {
+            se || F.handleSubmit();
+          };
+        return n.jsxs(n.Fragment, {
+          children: [
+            n.jsxs(D, {
+              children: [
+                n.jsx(D.Header, {
+                  title: n.jsx(b, {
+                    id: "settings.localEnvironments.file.title",
+                    defaultMessage: "Local environment file",
+                    description: "Title for local environment file section",
+                  }),
+                }),
+                n.jsxs(D.Content, {
+                  children: [
+                    n.jsx(ee, {
+                      children: n.jsx(qt, {
+                        workspaceRoot: s,
+                        workspaceGroup: i,
+                      }),
+                    }),
+                    n.jsx("div", {
+                      className:
+                        "text-token-text-secondary mt-2 text-xs truncate",
+                      children: n.jsx(b, {
+                        id: "settings.localEnvironments.file.path",
+                        defaultMessage: "File: {path}",
+                        description: "Label for local environment config path",
+                        values: {
+                          path: n.jsx("span", {
+                            className: "font-mono",
+                            children: o,
+                          }),
+                        },
+                      }),
+                    }),
+                    r
+                      ? null
+                      : n.jsx("div", {
+                          className: "text-token-text-secondary mt-1 text-sm",
+                          children: n.jsx(b, {
+                            id: "settings.localEnvironments.file.missing",
+                            defaultMessage:
+                              "Save to create this file for the first time.",
+                            description:
+                              "Message shown when local environment config does not exist",
+                          }),
+                        }),
+                    d
+                      ? n.jsx("div", {
+                          className: "text-token-error-foreground mt-2 text-sm",
+                          children: n.jsx(b, {
+                            id: "settings.localEnvironments.file.parseError",
+                            defaultMessage:
+                              "Unable to parse the existing file. Saving will overwrite it. ({error})",
+                            description:
+                              "Parse error message for local environment file",
+                            values: { error: d },
+                          }),
+                        })
+                      : null,
+                    f
+                      ? n.jsx("div", {
+                          className: "text-token-error-foreground mt-2 text-sm",
+                          children: n.jsx(b, {
+                            id: "settings.localEnvironments.file.readError",
+                            defaultMessage:
+                              "Failed to load local environment data. ({error})",
+                            description:
+                              "Read error message for local environment config",
+                            values: { error: f },
+                          }),
+                        })
+                      : null,
+                  ],
+                }),
+              ],
+            }),
+            n.jsxs(D, {
+              children: [
+                n.jsx(D.Header, {
+                  title: n.jsx(b, {
+                    id: "settings.localEnvironments.environment.title",
+                    defaultMessage: "Environment details",
+                    description: "Title for local environment details section",
+                  }),
+                }),
+                n.jsxs(D.Content, {
+                  className: "gap-[var(--padding-panel)]",
+                  children: [
+                    n.jsx(ee, {
+                      children: n.jsx(_t, {
+                        label: n.jsx(b, {
+                          id: "settings.localEnvironments.environment.name",
+                          defaultMessage: "Name",
+                          description: "Label for environment name input",
+                        }),
+                        control: n.jsx("div", {
+                          className: "w-72",
+                          children: n.jsx("input", {
+                            id: "local-environment-name",
+                            className:
+                              "bg-token-input-background text-token-text-primary w-full rounded-md border border-token-border px-2.5 py-1.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-token-focus",
+                            value: A.name,
+                            onChange: (y) => {
+                              F.setFieldValue("name", y.target.value);
+                            },
+                          }),
+                        }),
+                      }),
+                    }),
+                    n.jsxs("div", {
+                      className: "flex flex-col gap-3",
+                      children: [
+                        n.jsxs("div", {
+                          className: "flex flex-col gap-1",
+                          children: [
+                            n.jsx("div", {
+                              className:
+                                "text-token-text-primary text-sm font-medium",
+                              children: n.jsx(b, {
+                                id: "settings.localEnvironments.environment.setup",
+                                defaultMessage: "Setup script",
+                                description:
+                                  "Label for environment setup script input",
+                              }),
+                            }),
+                            n.jsx("div", {
+                              className: "text-sm text-token-text-secondary",
+                              children: n.jsx(b, {
+                                id: "settings.localEnvironments.environment.setup.description",
+                                defaultMessage:
+                                  "This script will run on worktree creation.",
+                                description:
+                                  "Description for environment setup script summary",
+                              }),
+                            }),
+                          ],
+                        }),
+                        n.jsx(ee, {
+                          children: n.jsxs("div", {
+                            className: "flex flex-col gap-2 p-3",
+                            children: [
+                              n.jsx("div", {
+                                className:
+                                  "text-token-text-secondary text-xs font-medium uppercase tracking-wide",
+                                children: n.jsx(b, {
+                                  id: "settings.localEnvironments.environment.setup.script",
+                                  defaultMessage: "Script",
+                                  description: "Label for setup script input",
+                                }),
+                              }),
+                              n.jsx("div", {
+                                className: "text-sm text-token-text-secondary",
+                                children: n.jsx(b, {
+                                  id: "settings.localEnvironments.environment.setup.hint",
+                                  defaultMessage: "Runs in the project root.",
+                                  description:
+                                    "Description for setup script input",
+                                }),
+                              }),
+                              n.jsx("textarea", {
+                                id: "local-environment-setup-script",
+                                className:
+                                  "bg-token-input-background text-token-text-primary font-mono w-full rounded-md border border-token-border px-2.5 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-token-focus",
+                                value: A.setupScript,
+                                placeholder: tt,
+                                rows: 6,
+                                onChange: (y) => {
+                                  F.setFieldValue(
+                                    "setupScript",
+                                    y.target.value,
+                                  );
+                                },
+                              }),
+                            ],
+                          }),
+                        }),
+                        n.jsx(ee, {
+                          children: n.jsxs("div", {
+                            className: "flex flex-col gap-3 p-3",
+                            children: [
+                              n.jsxs("div", {
+                                className: "flex flex-col gap-1",
+                                children: [
+                                  n.jsx("div", {
+                                    className:
+                                      "text-token-text-secondary text-xs font-medium uppercase tracking-wide",
+                                    children: n.jsx(b, {
+                                      id: "settings.localEnvironments.environment.setup.platformOverrides",
+                                      defaultMessage: "Platform overrides",
+                                      description:
+                                        "Label for setup script platform overrides",
+                                    }),
+                                  }),
+                                  n.jsx("div", {
+                                    className:
+                                      "text-sm text-token-text-secondary",
+                                    children: n.jsx(b, {
+                                      id: "settings.localEnvironments.environment.setup.platformOverrides.description",
+                                      defaultMessage:
+                                        "Overrides the default script for specific OSes.",
+                                      description:
+                                        "Description for setup script platform overrides",
+                                    }),
+                                  }),
+                                ],
+                              }),
+                              n.jsx("div", {
+                                className: "flex flex-col gap-4",
+                                children: Je.map((y) =>
+                                  A.setupPlatformVisibility[y]
+                                    ? n.jsxs(
+                                        "div",
+                                        {
+                                          className: "flex flex-col gap-2",
+                                          children: [
+                                            n.jsxs("div", {
+                                              className:
+                                                "flex items-center justify-between",
+                                              children: [
+                                                n.jsx("div", {
+                                                  className:
+                                                    "text-token-text-secondary text-xs font-medium uppercase tracking-wide",
+                                                  children: At(y),
+                                                }),
+                                                n.jsx(oe, {
+                                                  color: "ghost",
+                                                  size: "toolbar",
+                                                  onClick: () => {
+                                                    ie(y);
+                                                  },
+                                                  children: n.jsx(b, {
+                                                    id: "settings.localEnvironments.environment.setup.platformOverrides.remove",
+                                                    defaultMessage: "Remove",
+                                                    description:
+                                                      "Button label to remove a setup script override",
+                                                  }),
+                                                }),
+                                              ],
+                                            }),
+                                            n.jsx("textarea", {
+                                              id: `local-environment-setup-platform-script-${y}`,
+                                              className:
+                                                "bg-token-input-background text-token-text-primary font-mono w-full rounded-md border border-token-border px-2.5 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-token-focus",
+                                              value:
+                                                A.setupPlatformScripts[y] ?? "",
+                                              placeholder: tt,
+                                              rows: 6,
+                                              onChange: (X) => {
+                                                xe(y, X.target.value);
+                                              },
+                                            }),
+                                          ],
+                                        },
+                                        y,
+                                      )
+                                    : null,
+                                ),
+                              }),
+                              n.jsx("div", {
+                                className: "flex flex-col items-start gap-2",
+                                children: Je.map((y) =>
+                                  A.setupPlatformVisibility[y]
+                                    ? null
+                                    : n.jsx(
+                                        oe,
+                                        {
+                                          color: "secondary",
+                                          size: "toolbar",
+                                          className: "w-auto",
+                                          onClick: () => {
+                                            he(y);
+                                          },
+                                          children: n.jsx(b, {
+                                            id: "settings.localEnvironments.environment.setup.platformOverrides.add",
+                                            defaultMessage:
+                                              "Add {platform} setup script",
+                                            description:
+                                              "Button label to add a platform-specific setup script",
+                                            values: { platform: At(y) },
+                                          }),
+                                        },
+                                        y,
+                                      ),
+                                ),
+                              }),
+                            ],
+                          }),
+                        }),
+                      ],
+                    }),
+                  ],
+                }),
+              ],
+            }),
+            n.jsxs(D, {
+              children: [
+                n.jsx(D.Header, {
+                  title: n.jsx(b, {
+                    id: "settings.localEnvironments.actions.title",
+                    defaultMessage: "Actions",
+                    description: "Title for local environment actions section",
+                  }),
+                  actions: n.jsx(oe, {
+                    color: "secondary",
+                    size: "toolbar",
+                    onClick: z,
+                    children: n.jsx(b, {
+                      id: "settings.localEnvironments.actions.add",
+                      defaultMessage: "Add action",
+                      description:
+                        "Button label to add a local environment action",
+                    }),
+                  }),
+                }),
+                n.jsxs(D.Content, {
+                  className: "gap-1",
+                  children: [
+                    n.jsx("div", {
+                      className: "text-sm text-token-text-secondary",
+                      children: n.jsx(b, {
+                        id: "settings.localEnvironments.environment.actions.description",
+                        defaultMessage:
+                          "These actions can run any command and will be displayed in the header.",
+                        description:
+                          "Description for local environment actions summary",
+                      }),
+                    }),
+                    A.actions.length === 0
+                      ? n.jsx(ee, {
+                          children: n.jsx("div", {
+                            className: "p-3 text-sm text-token-text-secondary",
+                            children: n.jsx(b, {
+                              id: "settings.localEnvironments.actions.empty",
+                              defaultMessage:
+                                "Add an action to run commands from the local toolbar.",
+                              description:
+                                "Empty state for local environment actions",
+                            }),
+                          }),
+                        })
+                      : n.jsx("div", {
+                          className: "flex flex-col gap-3",
+                          children: A.actions.map((y) => {
+                            const X =
+                                q.find((R) => R.value === (y.icon ?? "tool")) ??
+                                q[0],
+                              te = y.platform != null,
+                              be = y.platform ?? H;
+                            return n.jsxs(
+                              "div",
+                              {
+                                className:
+                                  "bg-token-input-background border-token-border flex flex-col gap-3 rounded-lg border p-3",
+                                children: [
+                                  n.jsxs("div", {
+                                    className: "flex flex-col gap-2",
+                                    children: [
+                                      n.jsx("label", {
+                                        className:
+                                          "text-token-text-secondary text-xs font-medium uppercase tracking-wide",
+                                        htmlFor: `local-env-action-name-${y.id}`,
+                                        children: n.jsx(b, {
+                                          id: "settings.localEnvironments.actions.item.name",
+                                          defaultMessage: "Name",
+                                          description:
+                                            "Label for local environment action name",
+                                        }),
+                                      }),
+                                      n.jsxs("div", {
+                                        className: "flex items-center gap-2",
+                                        children: [
+                                          n.jsx(us, {
+                                            align: "start",
+                                            contentWidth: "icon",
+                                            triggerButton: n.jsx(oe, {
+                                              id: `local-env-action-icon-${y.id}`,
+                                              className:
+                                                "w-12 justify-center text-sm",
+                                              color: "secondary",
+                                              size: "toolbar",
+                                              "aria-label": X.ariaLabel,
+                                              children: X.icon,
+                                            }),
+                                            children: q.map((R) =>
+                                              n.jsx(
+                                                fs.Item,
+                                                {
+                                                  tooltipText: R.ariaLabel,
+                                                  onSelect: () => {
+                                                    pe(y.id, { icon: R.value });
+                                                  },
+                                                  children: R.icon,
+                                                },
+                                                R.value,
+                                              ),
+                                            ),
+                                          }),
+                                          n.jsx("div", {
+                                            className: "flex-1",
+                                            children: n.jsx("input", {
+                                              id: `local-env-action-name-${y.id}`,
+                                              className:
+                                                "bg-token-input-background text-token-text-primary w-full rounded-md border border-token-border px-2.5 py-1.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-token-focus",
+                                              value: y.name,
+                                              onChange: (R) => {
+                                                pe(y.id, {
+                                                  name: R.target.value,
+                                                });
+                                              },
+                                            }),
+                                          }),
+                                        ],
+                                      }),
+                                    ],
+                                  }),
+                                  n.jsxs("div", {
+                                    className: "flex flex-col gap-2",
+                                    children: [
+                                      n.jsx("label", {
+                                        className:
+                                          "text-token-text-secondary text-xs font-medium uppercase tracking-wide",
+                                        htmlFor: `local-env-action-command-${y.id}`,
+                                        children: n.jsx(b, {
+                                          id: "settings.localEnvironments.actions.item.command",
+                                          defaultMessage: "Action script",
+                                          description:
+                                            "Label for local environment action script",
+                                        }),
+                                      }),
+                                      n.jsx("textarea", {
+                                        id: `local-env-action-command-${y.id}`,
+                                        className:
+                                          "bg-token-input-background text-token-text-primary font-mono w-full rounded-md border border-token-border px-2.5 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-token-focus",
+                                        value: y.command,
+                                        placeholder: tt,
+                                        rows: 4,
+                                        onChange: (R) => {
+                                          pe(y.id, { command: R.target.value });
+                                        },
+                                      }),
+                                    ],
+                                  }),
+                                  n.jsxs("div", {
+                                    className:
+                                      "flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between",
+                                    children: [
+                                      n.jsxs("div", {
+                                        className:
+                                          "flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6",
+                                        children: [
+                                          n.jsx("div", {
+                                            className: "min-w-0",
+                                            children: n.jsxs("div", {
+                                              className: "flex flex-col gap-2",
+                                              children: [
+                                                n.jsx("div", {
+                                                  className:
+                                                    "text-token-text-secondary text-xs font-medium uppercase tracking-wide",
+                                                  children: n.jsx(b, {
+                                                    id: "settings.localEnvironments.actions.item.platforms",
+                                                    defaultMessage: "Platforms",
+                                                    description:
+                                                      "Label for local environment action platforms",
+                                                  }),
+                                                }),
+                                                n.jsx("div", {
+                                                  className:
+                                                    "text-token-text-secondary text-xs",
+                                                  children: n.jsx(b, {
+                                                    id: "settings.localEnvironments.actions.item.platforms.help",
+                                                    defaultMessage:
+                                                      "Only run on a specific OS.",
+                                                    description:
+                                                      "Help text for action platforms selection",
+                                                  }),
+                                                }),
+                                                n.jsxs("div", {
+                                                  className:
+                                                    "relative flex items-center gap-2 text-sm",
+                                                  children: [
+                                                    n.jsx(ms, {
+                                                      id: `local-env-action-platform-specific-${y.id}`,
+                                                      checked: te,
+                                                      onCheckedChange: (R) => {
+                                                        if (R) {
+                                                          pe(y.id, {
+                                                            platform: be,
+                                                          });
+                                                          return;
+                                                        }
+                                                        pe(y.id, {
+                                                          platform: null,
+                                                        });
+                                                      },
+                                                    }),
+                                                    n.jsx("label", {
+                                                      className:
+                                                        "text-token-text-secondary",
+                                                      htmlFor: `local-env-action-platform-specific-${y.id}`,
+                                                      children: n.jsx(b, {
+                                                        id: "settings.localEnvironments.actions.item.platforms.specific",
+                                                        defaultMessage:
+                                                          "Platform specific",
+                                                        description:
+                                                          "Label for enabling platform-specific action selection",
+                                                      }),
+                                                    }),
+                                                  ],
+                                                }),
+                                              ],
+                                            }),
+                                          }),
+                                          te
+                                            ? n.jsx("div", {
+                                                className: "flex justify-start",
+                                                children: n.jsx(hs, {
+                                                  selectedId: be,
+                                                  onSelect: (R) => {
+                                                    pe(y.id, { platform: R });
+                                                  },
+                                                  ariaLabel: c.formatMessage({
+                                                    id: "settings.localEnvironments.actions.item.platforms.selector",
+                                                    defaultMessage:
+                                                      "Platform selection",
+                                                    description:
+                                                      "Aria label for platform selection toggle",
+                                                  }),
+                                                  options: ce,
+                                                }),
+                                              })
+                                            : null,
+                                        ],
+                                      }),
+                                      n.jsx("div", {
+                                        className:
+                                          "flex justify-end sm:justify-center",
+                                        children: n.jsx(xt, {
+                                          tooltipContent: n.jsx(b, {
+                                            id: "settings.localEnvironments.actions.item.tooltip.delete",
+                                            defaultMessage: "Delete",
+                                            description:
+                                              "Tooltip for removing a local environment action",
+                                          }),
+                                          children: n.jsx(oe, {
+                                            "aria-label": c.formatMessage({
+                                              id: "settings.localEnvironments.actions.item.button.delete",
+                                              defaultMessage: "Delete",
+                                              description:
+                                                "Label for removing a local environment action",
+                                            }),
+                                            color: "ghost",
+                                            size: "toolbar",
+                                            onClick: () => {
+                                              Ze(y.id);
+                                            },
+                                            children: n.jsx(ps, {
+                                              className: "icon-sm",
+                                            }),
+                                          }),
+                                        }),
+                                      }),
+                                    ],
+                                  }),
+                                ],
+                              },
+                              y.id,
+                            );
+                          }),
+                        }),
+                  ],
+                }),
+              ],
+            }),
+            null,
+            _.error
+              ? n.jsx("div", {
+                  className: "text-token-error-foreground text-sm",
+                  children: n.jsx(b, {
+                    id: "settings.localEnvironments.preview.saveError",
+                    defaultMessage: "Failed to save the file. ({error})",
+                    description:
+                      "Error message when saving local environment file fails",
+                    values: { error: _.error.message },
+                  }),
+                })
+              : null,
+            n.jsx("div", {
+              className: "flex justify-end",
+              children: n.jsx(xt, {
+                disabled: ae == null,
+                tooltipContent: ae,
+                children: n.jsx("span", {
+                  className: "inline-flex",
+                  children: n.jsx(oe, {
+                    color: "primary",
+                    size: "toolbar",
+                    disabled: se,
+                    onClick: Ne,
+                    children: n.jsx(b, {
+                      id: "settings.localEnvironments.preview.save",
+                      defaultMessage: "Save",
+                      description:
+                        "Save button label for local environment file",
+                    }),
+                  }),
+                }),
+              }),
+            }),
+          ],
+        });
+      }),
+      (e[38] = r),
+      (e[39] = o),
+      (e[40] = F),
+      (e[41] = c),
+      (e[42] = u?.platform),
+      (e[43] = d),
+      (e[44] = f),
+      (e[45] = _.error),
+      (e[46] = _.isPending),
+      (e[47] = k),
+      (e[48] = i),
+      (e[49] = s),
+      (e[50] = O))
+    : (O = e[50]);
+  let $;
+  e[51] !== F.Subscribe || e[52] !== O
+    ? (($ = n.jsx(F.Subscribe, { selector: ei, children: O })),
+      (e[51] = F.Subscribe),
+      (e[52] = O),
+      (e[53] = $))
+    : ($ = e[53]);
+  let U;
+  return (
+    e[54] !== $ || e[55] !== B
+      ? ((U = n.jsx("form", {
+          className: "flex flex-col gap-[var(--padding-panel)]",
+          onSubmit: B,
+          children: $,
+        })),
+        (e[54] = $),
+        (e[55] = B),
+        (e[56] = U))
+      : (U = e[56]),
+    U
+  );
+}
+function ei(t) {
+  return { values: t.values, isDirty: t.isDirty };
+}
+function ti(t) {
+  return t?.codexHome;
+}
+function si({ name: t, setupScript: e, setupPlatformScripts: s, actions: i }) {
+  return {
+    name: t,
+    setupScript: e,
+    setupPlatformScripts: s,
+    setupPlatformVisibility: ci(s),
+    actions: i,
+  };
+}
+function Nt(t, e) {
+  return vs({
+    version: e,
+    name: t.name,
+    setupScript: t.setupScript,
+    setupPlatformScripts: li(t.setupPlatformScripts),
+    actions: t.actions,
+  });
+}
+function ii({ values: t, isDirty: e, isSaving: s }) {
+  return s
+    ? "saving"
+    : t.name.length === 0
+      ? "missing-name"
+      : e
+        ? null
+        : "no-changes";
+}
+function ni(t) {
+  return t == null
+    ? null
+    : t === "missing-name"
+      ? n.jsx(b, {
+          id: "settings.localEnvironments.save.disabled.name",
+          defaultMessage: "Add an environment name to save.",
+          description:
+            "Tooltip shown when save is disabled because the name is missing",
+        })
+      : t === "no-changes"
+        ? n.jsx(b, {
+            id: "settings.localEnvironments.save.disabled.noChanges",
+            defaultMessage: "No changes to save.",
+            description:
+              "Tooltip shown when save is disabled because there are no changes",
+          })
+        : n.jsx(b, {
+            id: "settings.localEnvironments.save.disabled.saving",
+            defaultMessage: "Saving…",
+            description:
+              "Tooltip shown when save is disabled because a save is already in progress",
+          });
+}
+function ri(t) {
+  const e = { darwin: "", linux: "", win32: "" };
+  return (
+    t &&
+      (t.darwin?.script && (e.darwin = t.darwin.script),
+      t.linux?.script && (e.linux = t.linux.script),
+      t.win32?.script && (e.win32 = t.win32.script)),
+    e
+  );
+}
+function oi(t) {
+  return t === "darwin" || t === "linux" || t === "win32" ? t : "darwin";
+}
+function ai(t) {
+  return [
+    { id: "darwin", label: t.formatMessage(ue.darwin) },
+    { id: "linux", label: t.formatMessage(ue.linux) },
+    { id: "win32", label: t.formatMessage(ue.win32) },
+  ];
+}
+function li(t) {
+  const e = {};
+  for (const s of Je) {
+    const i = t[s];
+    i && i.length > 0 && (e[s] = i);
+  }
+  return e;
+}
+function ci(t) {
+  const e = { darwin: !1, linux: !1, win32: !1 };
+  for (const s of Je) {
+    const i = t[s];
+    i && i.length > 0 && (e[s] = !0);
+  }
+  return e;
+}
+function At(t) {
+  return t === "darwin"
+    ? n.jsx(b, { ...ue.darwin })
+    : t === "linux"
+      ? n.jsx(b, { ...ue.linux })
+      : n.jsx(b, { ...ue[t] });
+}
+function di(t) {
+  const e = me.c(33),
+    {
+      workspaceRoot: s,
+      workspaceGroup: i,
+      configExists: o,
+      initialEnvironment: r,
+      parseErrorMessage: a,
+      readErrorMessage: d,
+      onEdit: f,
+    } = t,
+    m = o && r != null;
+  let c;
+  e[0] !== r?.actions
+    ? ((c = r?.actions ?? []), (e[0] = r?.actions), (e[1] = c))
+    : (c = e[1]);
+  const l = c,
+    h = r?.setup.script ?? "",
+    u = r?.setup.darwin?.script ?? "",
+    p = r?.setup.linux?.script ?? "",
+    v = r?.setup.win32?.script ?? "",
+    x = u.length > 0 || p.length > 0 || v.length > 0;
+  let g;
+  e[2] === Symbol.for("react.memo_cache_sentinel")
+    ? ((g = n.jsx(D.Header, {
+        title: n.jsx(b, {
+          id: "settings.localEnvironments.workspace.title",
+          defaultMessage: "Project",
+          description: "Title for the workspace summary section",
+        }),
+      })),
+      (e[2] = g))
+    : (g = e[2]);
+  let S;
+  e[3] !== i || e[4] !== s
+    ? ((S = n.jsxs(D, {
+        children: [
+          g,
+          n.jsx(D.Content, {
+            children: n.jsx(ee, {
+              children: n.jsx(qt, { workspaceRoot: s, workspaceGroup: i }),
+            }),
+          }),
+        ],
+      })),
+      (e[3] = i),
+      (e[4] = s),
+      (e[5] = S))
+    : (S = e[5]);
+  let j;
+  e[6] === Symbol.for("react.memo_cache_sentinel")
+    ? ((j = n.jsx(D.Header, {
+        title: n.jsx(b, {
+          id: "settings.localEnvironments.environment.title",
+          defaultMessage: "Environment details",
+          description: "Title for local environment details section",
+        }),
+      })),
+      (e[6] = j))
+    : (j = e[6]);
+  let M;
+  e[7] !== l ||
+  e[8] !== m ||
+  e[9] !== x ||
+  e[10] !== r ||
+  e[11] !== u ||
+  e[12] !== p ||
+  e[13] !== h ||
+  e[14] !== v
+    ? ((M =
+        m && r
+          ? n.jsxs(n.Fragment, {
+              children: [
+                n.jsx(ee, {
+                  children: n.jsx(_t, {
+                    label: n.jsx(b, {
+                      id: "settings.localEnvironments.environment.name",
+                      defaultMessage: "Name",
+                      description: "Label for environment name input",
+                    }),
+                    control: n.jsx("span", {
+                      className: "text-token-text-secondary text-sm",
+                      children: r.name,
+                    }),
+                  }),
+                }),
+                n.jsxs("div", {
+                  className: "flex flex-col gap-3",
+                  children: [
+                    n.jsxs("div", {
+                      className: "flex flex-col gap-1",
+                      children: [
+                        n.jsx("div", {
+                          className:
+                            "text-token-text-primary text-sm font-medium",
+                          children: n.jsx(b, {
+                            id: "settings.localEnvironments.environment.setup",
+                            defaultMessage: "Setup script",
+                            description:
+                              "Label for environment setup script input",
+                          }),
+                        }),
+                        n.jsx("div", {
+                          className: "text-sm text-token-text-secondary",
+                          children: n.jsx(b, {
+                            id: "settings.localEnvironments.environment.setup.description",
+                            defaultMessage:
+                              "This script will run on worktree creation.",
+                            description:
+                              "Description for environment setup script summary",
+                          }),
+                        }),
+                      ],
+                    }),
+                    n.jsx(Ot, {
+                      language: "bash",
+                      content: h,
+                      shouldWrapCode: !0,
+                      codeContainerClassName: "max-h-40",
+                    }),
+                    x
+                      ? n.jsxs("div", {
+                          className: "flex flex-col gap-3",
+                          children: [
+                            n.jsxs("div", {
+                              className: "flex flex-col gap-1",
+                              children: [
+                                n.jsx("div", {
+                                  className:
+                                    "text-token-text-secondary text-xs font-medium uppercase tracking-wide",
+                                  children: n.jsx(b, {
+                                    id: "settings.localEnvironments.environment.setup.platformOverrides",
+                                    defaultMessage: "Platform overrides",
+                                    description:
+                                      "Label for setup script platform overrides",
+                                  }),
+                                }),
+                                n.jsx("div", {
+                                  className:
+                                    "text-sm text-token-text-secondary",
+                                  children: n.jsx(b, {
+                                    id: "settings.localEnvironments.environment.setup.platformOverrides.description",
+                                    defaultMessage:
+                                      "Overrides the default script for specific OSes.",
+                                    description:
+                                      "Description for setup script platform overrides",
+                                  }),
+                                }),
+                              ],
+                            }),
+                            u.length > 0
+                              ? n.jsx(lt, { platform: "darwin", script: u })
+                              : null,
+                            p.length > 0
+                              ? n.jsx(lt, { platform: "linux", script: p })
+                              : null,
+                            v.length > 0
+                              ? n.jsx(lt, { platform: "win32", script: v })
+                              : null,
+                          ],
+                        })
+                      : null,
+                  ],
+                }),
+                n.jsxs("div", {
+                  className: "flex flex-col gap-3",
+                  children: [
+                    n.jsxs("div", {
+                      className: "flex flex-col gap-1",
+                      children: [
+                        n.jsx("div", {
+                          className:
+                            "text-token-text-primary text-sm font-medium",
+                          children: n.jsx(b, {
+                            id: "settings.localEnvironments.environment.actionsLabel",
+                            defaultMessage: "Actions",
+                            description:
+                              "Label for actions count in local environment summary",
+                          }),
+                        }),
+                        n.jsx("div", {
+                          className: "text-sm text-token-text-secondary",
+                          children: n.jsx(b, {
+                            id: "settings.localEnvironments.environment.actions.description",
+                            defaultMessage:
+                              "These actions can run any command and will be displayed in the header.",
+                            description:
+                              "Description for local environment actions summary",
+                          }),
+                        }),
+                      ],
+                    }),
+                    n.jsx(ee, {
+                      children: n.jsx("div", {
+                        className: "flex flex-col gap-2 p-3",
+                        children:
+                          l.length > 0
+                            ? n.jsx("div", {
+                                className: "flex flex-col gap-2",
+                                children: l.map(ui),
+                              })
+                            : n.jsx("div", {
+                                className: "text-sm text-token-text-secondary",
+                                children: n.jsx(b, {
+                                  id: "settings.localEnvironments.actions.empty",
+                                  defaultMessage:
+                                    "Add an action to run commands from the local toolbar.",
+                                  description:
+                                    "Empty state for local environment actions",
+                                }),
+                              }),
+                      }),
+                    }),
+                  ],
+                }),
+              ],
+            })
+          : n.jsx(ee, {
+              children: n.jsx("div", {
+                className: "p-3 text-sm text-token-text-secondary",
+                children: n.jsx(b, {
+                  id: "settings.localEnvironments.environment.empty",
+                  defaultMessage:
+                    "No local environment is configured for this project yet.",
+                  description:
+                    "Empty state when no local environment is configured",
+                }),
+              }),
+            })),
+      (e[7] = l),
+      (e[8] = m),
+      (e[9] = x),
+      (e[10] = r),
+      (e[11] = u),
+      (e[12] = p),
+      (e[13] = h),
+      (e[14] = v),
+      (e[15] = M))
+    : (M = e[15]);
+  let L;
+  e[16] !== a
+    ? ((L = a
+        ? n.jsx("div", {
+            className: "text-token-error-foreground mt-2 text-sm",
+            children: n.jsx(b, {
+              id: "settings.localEnvironments.file.parseError",
+              defaultMessage:
+                "Unable to parse the existing file. Saving will overwrite it. ({error})",
+              description: "Parse error message for local environment file",
+              values: { error: a },
+            }),
+          })
+        : null),
+      (e[16] = a),
+      (e[17] = L))
+    : (L = e[17]);
+  let E;
+  e[18] !== d
+    ? ((E = d
+        ? n.jsx("div", {
+            className: "text-token-error-foreground mt-2 text-sm",
+            children: n.jsx(b, {
+              id: "settings.localEnvironments.file.readError",
+              defaultMessage:
+                "Failed to load local environment data. ({error})",
+              description: "Read error message for local environment config",
+              values: { error: d },
+            }),
+          })
+        : null),
+      (e[18] = d),
+      (e[19] = E))
+    : (E = e[19]);
+  let N;
+  e[20] !== M || e[21] !== L || e[22] !== E
+    ? ((N = n.jsxs(D, {
+        children: [
+          j,
+          n.jsxs(D.Content, {
+            className: "gap-[var(--padding-panel)]",
+            children: [M, L, E],
+          }),
+        ],
+      })),
+      (e[20] = M),
+      (e[21] = L),
+      (e[22] = E),
+      (e[23] = N))
+    : (N = e[23]);
+  let V;
+  e[24] !== m
+    ? ((V = m
+        ? n.jsx(b, {
+            id: "settings.localEnvironments.environment.edit",
+            defaultMessage: "Edit local environment",
+            description: "Button label to edit a local environment",
+          })
+        : n.jsx(b, {
+            id: "settings.localEnvironments.environment.create",
+            defaultMessage: "Create local environment",
+            description: "Button label to create a local environment",
+          })),
+      (e[24] = m),
+      (e[25] = V))
+    : (V = e[25]);
+  let k;
+  e[26] !== f || e[27] !== V
+    ? ((k = n.jsx("div", {
+        className: "flex justify-end",
+        children: n.jsx(oe, {
+          color: "primary",
+          size: "toolbar",
+          onClick: f,
+          children: V,
+        }),
+      })),
+      (e[26] = f),
+      (e[27] = V),
+      (e[28] = k))
+    : (k = e[28]);
+  let I;
+  return (
+    e[29] !== k || e[30] !== S || e[31] !== N
+      ? ((I = n.jsxs("div", {
+          className: "flex flex-col gap-[var(--padding-panel)]",
+          children: [S, N, k],
+        })),
+        (e[29] = k),
+        (e[30] = S),
+        (e[31] = N),
+        (e[32] = I))
+      : (I = e[32]),
+    I
+  );
+}
+function ui(t, e) {
+  return n.jsxs(
+    "div",
+    {
+      className: "text-token-text-secondary flex items-center gap-2 text-sm",
+      children: [
+        n.jsx("span", {
+          className: "text-token-text-secondary",
+          children: n.jsx(Pt, { icon: t.icon ?? "tool" }),
+        }),
+        n.jsx("span", { children: t.name }),
+      ],
+    },
+    `${t.name}-${e}`,
+  );
+}
+function fi(t) {
+  return t === "darwin"
+    ? n.jsx(b, { ...ue.darwin })
+    : t === "linux"
+      ? n.jsx(b, { ...ue.linux })
+      : n.jsx(b, { ...ue.win32 });
+}
+function lt(t) {
+  const e = me.c(9),
+    { platform: s, script: i } = t;
+  let o;
+  e[0] !== s ? ((o = fi(s)), (e[0] = s), (e[1] = o)) : (o = e[1]);
+  let r;
+  e[2] !== o
+    ? ((r = n.jsx("div", {
+        className:
+          "text-token-text-secondary text-xs font-medium uppercase tracking-wide",
+        children: o,
+      })),
+      (e[2] = o),
+      (e[3] = r))
+    : (r = e[3]);
+  let a;
+  e[4] !== i
+    ? ((a = n.jsx(Ot, {
+        language: "bash",
+        content: i,
+        shouldWrapCode: !0,
+        codeContainerClassName: "max-h-40",
+      })),
+      (e[4] = i),
+      (e[5] = a))
+    : (a = e[5]);
+  let d;
+  return (
+    e[6] !== r || e[7] !== a
+      ? ((d = n.jsxs("div", {
+          className: "flex flex-col gap-2",
+          children: [r, a],
+        })),
+        (e[6] = r),
+        (e[7] = a),
+        (e[8] = d))
+      : (d = e[8]),
+    d
+  );
+}
+function mi(t) {
+  const e = me.c(14),
+    {
+      groups: s,
+      isLoading: i,
+      onAddWorkspace: o,
+      onCreateEnvironment: r,
+      onSelectEnvironment: a,
+    } = t;
+  let d;
+  e[0] === Symbol.for("react.memo_cache_sentinel")
+    ? ((d = n.jsx(b, {
+        id: "settings.localEnvironments.workspaceSelect.title",
+        defaultMessage: "Select a project",
+        description: "Title for the workspace selection step",
+      })),
+      (e[0] = d))
+    : (d = e[0]);
+  let f;
+  e[1] === Symbol.for("react.memo_cache_sentinel")
+    ? ((f = n.jsx(b, {
+        id: "settings.localEnvironments.workspaceSelect.description",
+        defaultMessage:
+          "Local environments tell Codex how to set up worktrees for a project. {learnMore}",
+        description: "Description for the workspace selection step",
+        values: {
+          learnMore: n.jsxs("a", {
+            className:
+              "text-token-text-secondary hover:text-token-text-primary inline-flex items-center gap-1 text-base",
+            href: xs,
+            target: "_blank",
+            rel: "noreferrer",
+            children: [
+              n.jsx(b, {
+                id: "settings.localEnvironments.workspaceSelect.learnMore",
+                defaultMessage: "Learn more",
+                description: "Link label for local environments docs",
+              }),
+              n.jsx(bs, { className: "icon-xxs" }),
+            ],
+          }),
+        },
+      })),
+      (e[1] = f))
+    : (f = e[1]);
+  let m;
+  e[2] === Symbol.for("react.memo_cache_sentinel")
+    ? ((m = n.jsx(b, {
+        id: "settings.localEnvironments.workspace.add",
+        defaultMessage: "Add project",
+        description: "Button label to add a new workspace",
+      })),
+      (e[2] = m))
+    : (m = e[2]);
+  let c;
+  e[3] !== o
+    ? ((c = n.jsx(D.Header, {
+        title: d,
+        subtitle: f,
+        actions: n.jsx(oe, {
+          color: "secondary",
+          size: "toolbar",
+          onClick: o,
+          children: m,
+        }),
+      })),
+      (e[3] = o),
+      (e[4] = c))
+    : (c = e[4]);
+  let l;
+  e[5] !== s || e[6] !== i || e[7] !== o || e[8] !== r || e[9] !== a
+    ? ((l = n.jsx(D.Content, {
+        children: n.jsx("div", {
+          className: "flex flex-col gap-2",
+          children: n.jsx(hi, {
+            groups: s,
+            isLoading: i,
+            onAddWorkspace: o,
+            onCreateEnvironment: r,
+            onSelectEnvironment: a,
+          }),
+        }),
+      })),
+      (e[5] = s),
+      (e[6] = i),
+      (e[7] = o),
+      (e[8] = r),
+      (e[9] = a),
+      (e[10] = l))
+    : (l = e[10]);
+  let h;
+  return (
+    e[11] !== c || e[12] !== l
+      ? ((h = n.jsxs(D, { className: "gap-2", children: [c, l] })),
+        (e[11] = c),
+        (e[12] = l),
+        (e[13] = h))
+      : (h = e[13]),
+    h
+  );
+}
+function hi(t) {
+  const e = me.c(17),
+    {
+      groups: s,
+      isLoading: i,
+      onAddWorkspace: o,
+      onCreateEnvironment: r,
+      onSelectEnvironment: a,
+    } = t,
+    d = ht();
+  if (i) {
+    let l;
+    return (
+      e[0] === Symbol.for("react.memo_cache_sentinel")
+        ? ((l = n.jsx(ee, {
+            children: n.jsxs("div", {
+              className:
+                "flex items-center gap-2 p-3 text-sm text-token-text-secondary",
+              children: [
+                n.jsx(Rt, { className: "icon-xs" }),
+                n.jsx(b, {
+                  id: "settings.localEnvironments.workspaceSelect.loading",
+                  defaultMessage: "Loading projects.",
+                  description:
+                    "Loading message while workspace options are fetched",
+                }),
+              ],
+            }),
+          })),
+          (e[0] = l))
+        : (l = e[0]),
+      l
+    );
+  }
+  if (s.length === 0) {
+    let l;
+    e[1] === Symbol.for("react.memo_cache_sentinel")
+      ? ((l = n.jsx(b, {
+          id: "settings.localEnvironments.workspaceSelect.empty",
+          defaultMessage:
+            "No projects yet. Add one to configure local environments.",
+          description: "Empty state when no workspace roots are available",
+        })),
+        (e[1] = l))
+      : (l = e[1]);
+    let h;
+    e[2] === Symbol.for("react.memo_cache_sentinel")
+      ? ((h = n.jsx(b, {
+          id: "settings.localEnvironments.workspace.add",
+          defaultMessage: "Add project",
+          description: "Button label to add a new workspace",
+        })),
+        (e[2] = h))
+      : (h = e[2]);
+    let u;
+    return (
+      e[3] !== o
+        ? ((u = n.jsx(ee, {
+            children: n.jsxs("div", {
+              className:
+                "flex flex-col gap-3 p-3 text-sm text-token-text-secondary",
+              children: [
+                l,
+                n.jsx("div", {
+                  children: n.jsx(oe, {
+                    color: "primary",
+                    size: "toolbar",
+                    onClick: o,
+                    children: h,
+                  }),
+                }),
+              ],
+            }),
+          })),
+          (e[3] = o),
+          (e[4] = u))
+        : (u = e[4]),
+      u
+    );
+  }
+  let f;
+  e[5] !== d
+    ? ((f = d.formatMessage({
+        id: "settings.localEnvironments.workspaceSelect.listLabel",
+        defaultMessage: "Available projects",
+        description: "Aria label for the workspace selection list",
+      })),
+      (e[5] = d),
+      (e[6] = f))
+    : (f = e[6]);
+  let m;
+  if (e[7] !== s || e[8] !== r || e[9] !== a) {
+    let l;
+    (e[11] !== r || e[12] !== a
+      ? ((l = (h) =>
+          n.jsx(
+            pi,
+            { group: h, onCreateEnvironment: r, onSelectEnvironment: a },
+            h.path,
+          )),
+        (e[11] = r),
+        (e[12] = a),
+        (e[13] = l))
+      : (l = e[13]),
+      (m = s.map(l)),
+      (e[7] = s),
+      (e[8] = r),
+      (e[9] = a),
+      (e[10] = m));
+  } else m = e[10];
+  let c;
+  return (
+    e[14] !== f || e[15] !== m
+      ? ((c = n.jsx("div", {
+          className: "flex flex-col gap-3",
+          role: "list",
+          "aria-label": f,
+          children: m,
+        })),
+        (e[14] = f),
+        (e[15] = m),
+        (e[16] = c))
+      : (c = e[16]),
+    c
+  );
+}
+function pi(t) {
+  const e = me.c(58),
+    { group: s, onCreateEnvironment: i, onSelectEnvironment: o } = t,
+    r = ht();
+  let a;
+  e[0] !== s.path
+    ? ((a = { params: { workspaceRoot: s.path }, select: vi }),
+      (e[0] = s.path),
+      (e[1] = a))
+    : (a = e[1]);
+  const { data: d, isLoading: f, error: m } = je("local-environments", a);
+  let c;
+  e[2] !== d
+    ? ((c = d === void 0 ? [] : d), (e[2] = d), (e[3] = c))
+    : (c = e[3]);
+  const l = c;
+  let h;
+  e[4] !== l ? ((h = $t(l)), (e[4] = l), (e[5] = h)) : (h = e[5]);
+  const u = h,
+    v = s.isCodexWorktree ? It : Dt,
+    x = s.repositoryData?.ownerRepo?.owner ?? null,
+    g = f,
+    S = m != null,
+    j = l.length > 0;
+  let M;
+  e[6] !== r
+    ? ((M = r.formatMessage({
+        id: "settings.localEnvironments.workspaceSelect.viewAction",
+        defaultMessage: "View",
+        description: "Action label to view a local environment",
+      })),
+      (e[6] = r),
+      (e[7] = M))
+    : (M = e[7]);
+  const L = M;
+  let E;
+  e[8] !== r
+    ? ((E = r.formatMessage({
+        id: "settings.localEnvironments.workspaceSelect.addLabel",
+        defaultMessage: "Add environment",
+        description: "Aria label for add environment button",
+      })),
+      (e[8] = r),
+      (e[9] = E))
+    : (E = e[9]);
+  const N = E;
+  let V;
+  e[10] !== l || e[11] !== s.path
+    ? ((V = ys(l, s.path)), (e[10] = l), (e[11] = s.path), (e[12] = V))
+    : (V = e[12]);
+  const k = V;
+  let I;
+  e[13] !== r
+    ? ((I = r.formatMessage({
+        id: "settings.localEnvironments.workspaceSelect.loadingLabel",
+        defaultMessage: "Loading environment",
+        description: "Label for environment row while loading",
+      })),
+      (e[13] = r),
+      (e[14] = I))
+    : (I = e[14]);
+  const G = I;
+  let _;
+  e[15] !== r
+    ? ((_ = r.formatMessage({
+        id: "settings.localEnvironments.workspaceSelect.errorLabel",
+        defaultMessage: "Environment needs attention",
+        description: "Label for environment row when environment data fails",
+      })),
+      (e[15] = r),
+      (e[16] = _))
+    : (_ = e[16]);
+  const w = _;
+  let P;
+  e[17] !== u || e[18] !== s.path || e[19] !== o
+    ? ((P = () => {
+        u != null && o(s.path, u);
+      }),
+      (e[17] = u),
+      (e[18] = s.path),
+      (e[19] = o),
+      (e[20] = P))
+    : (P = e[20]);
+  let F;
+  e[21] !== v
+    ? ((F = n.jsx(v, {
+        className: "icon-sm text-token-text-secondary shrink-0",
+      })),
+      (e[21] = v),
+      (e[22] = F))
+    : (F = e[22]);
+  let B;
+  e[23] !== s.label
+    ? ((B = n.jsx("span", {
+        className: "truncate font-medium",
+        children: s.label,
+      })),
+      (e[23] = s.label),
+      (e[24] = B))
+    : (B = e[24]);
+  let O;
+  e[25] !== x
+    ? ((O = x
+        ? n.jsx("span", {
+            className: "text-token-text-secondary truncate",
+            children: x,
+          })
+        : null),
+      (e[25] = x),
+      (e[26] = O))
+    : (O = e[26]);
+  let $;
+  e[27] !== B || e[28] !== O
+    ? (($ = n.jsxs("div", {
+        className:
+          "flex min-w-0 items-center gap-2 text-sm text-token-text-primary",
+        children: [B, O],
+      })),
+      (e[27] = B),
+      (e[28] = O),
+      (e[29] = $))
+    : ($ = e[29]);
+  let U;
+  e[30] !== P || e[31] !== F || e[32] !== $
+    ? ((U = n.jsxs("button", {
+        className: "flex min-w-0 items-center gap-3 text-left",
+        type: "button",
+        onClick: P,
+        children: [F, $],
+      })),
+      (e[30] = P),
+      (e[31] = F),
+      (e[32] = $),
+      (e[33] = U))
+    : (U = e[33]);
+  let K;
+  e[34] !== s.path || e[35] !== k || e[36] !== i
+    ? ((K = () => {
+        i(s.path, k);
+      }),
+      (e[34] = s.path),
+      (e[35] = k),
+      (e[36] = i),
+      (e[37] = K))
+    : (K = e[37]);
+  let A;
+  e[38] === Symbol.for("react.memo_cache_sentinel")
+    ? ((A = n.jsx(Ms, { className: "icon-sm" })), (e[38] = A))
+    : (A = e[38]);
+  let W;
+  e[39] !== N || e[40] !== K
+    ? ((W = n.jsx(oe, {
+        className: "w-9 justify-center",
+        "aria-label": N,
+        color: "secondary",
+        size: "toolbar",
+        onClick: K,
+        children: A,
+      })),
+      (e[39] = N),
+      (e[40] = K),
+      (e[41] = W))
+    : (W = e[41]);
+  let q;
+  e[42] !== U || e[43] !== W
+    ? ((q = n.jsxs("div", {
+        className: "flex items-center justify-between gap-2 px-4 py-3",
+        children: [U, W],
+      })),
+      (e[42] = U),
+      (e[43] = W),
+      (e[44] = q))
+    : (q = e[44]);
+  let H;
+  e[45] !== L ||
+  e[46] !== l ||
+  e[47] !== w ||
+  e[48] !== s.path ||
+  e[49] !== j ||
+  e[50] !== S ||
+  e[51] !== G ||
+  e[52] !== o ||
+  e[53] !== g
+    ? ((H =
+        g || S || j
+          ? n.jsx("div", {
+              className: "border-t border-token-border",
+              children: g
+                ? n.jsx("div", {
+                    className: "px-4 py-3",
+                    children: n.jsxs("div", {
+                      className:
+                        "flex items-center gap-2 text-sm text-token-text-secondary",
+                      children: [
+                        n.jsx(Rt, { className: "icon-xs" }),
+                        n.jsx("span", { children: G }),
+                      ],
+                    }),
+                  })
+                : S
+                  ? n.jsx("div", {
+                      className: "px-4 py-3",
+                      children: n.jsx("div", {
+                        className:
+                          "flex items-center gap-2 text-sm text-token-error-foreground",
+                        children: n.jsx("span", { children: w }),
+                      }),
+                    })
+                  : n.jsx("div", {
+                      className: "flex flex-col divide-y divide-token-border",
+                      children: l.map((Q) => {
+                        const ae = gi(Q.configPath),
+                          se =
+                            Q.type === "success" &&
+                            Q.environment?.name != null &&
+                            Q.environment.name.length > 0,
+                          he = se ? Q.environment.name : ae,
+                          ie = Q.type === "error",
+                          z = ie || (se && ae !== he) ? ae : null;
+                        return n.jsxs(
+                          "div",
+                          {
+                            className:
+                              "flex items-center justify-between gap-3 px-4 py-3",
+                            children: [
+                              n.jsx("button", {
+                                className: "flex min-w-0 flex-1 text-left",
+                                type: "button",
+                                onClick: () => {
+                                  o(s.path, Q.configPath);
+                                },
+                                children: n.jsxs("div", {
+                                  className:
+                                    "flex min-w-0 flex-col gap-0.5 text-sm",
+                                  children: [
+                                    n.jsx("span", {
+                                      className: ie
+                                        ? "text-token-error-foreground"
+                                        : "text-token-text-primary",
+                                      children: ie ? w : he,
+                                    }),
+                                    z
+                                      ? n.jsx("span", {
+                                          className:
+                                            "text-token-description-foreground text-xs",
+                                          children: z,
+                                        })
+                                      : null,
+                                  ],
+                                }),
+                              }),
+                              n.jsx(oe, {
+                                color: "ghost",
+                                size: "toolbar",
+                                onClick: () => {
+                                  o(s.path, Q.configPath);
+                                },
+                                children: L,
+                              }),
+                            ],
+                          },
+                          Q.configPath,
+                        );
+                      }),
+                    }),
+            })
+          : null),
+      (e[45] = L),
+      (e[46] = l),
+      (e[47] = w),
+      (e[48] = s.path),
+      (e[49] = j),
+      (e[50] = S),
+      (e[51] = G),
+      (e[52] = o),
+      (e[53] = g),
+      (e[54] = H))
+    : (H = e[54]);
+  let ce;
+  return (
+    e[55] !== q || e[56] !== H
+      ? ((ce = n.jsxs(ee, { className: "p-0", children: [q, H] })),
+        (e[55] = q),
+        (e[56] = H),
+        (e[57] = ce))
+      : (ce = e[57]),
+    ce
+  );
+}
+function vi(t) {
+  return t.environments;
+}
+function gi(t) {
+  const e = Ss(t),
+    s = e.split("/").filter(Boolean);
+  return s[s.length - 1] ?? e;
+}
+function Si() {
+  const t = me.c(79),
+    { data: e, isLoading: s } = je("workspace-root-options");
+  let i;
+  t[0] !== e?.roots
+    ? ((i = e?.roots ?? []), (t[0] = e?.roots), (t[1] = i))
+    : (i = t[1]);
+  const o = i,
+    r = Es(),
+    [a, d] = J.useState(null),
+    [f, m] = J.useState(null),
+    [c, l] = J.useState(!1),
+    u = a ?? null;
+  let p;
+  t[2] !== u || t[3] !== o
+    ? ((p = u != null && o.includes(u) ? u : null),
+      (t[2] = u),
+      (t[3] = o),
+      (t[4] = p))
+    : (p = t[4]);
+  const v = p;
+  let x;
+  t[5] !== v || t[6] !== r
+    ? ((x = v != null ? (r.find((C) => C.path === v) ?? null) : null),
+      (t[5] = v),
+      (t[6] = r),
+      (t[7] = x))
+    : (x = t[7]);
+  const g = x,
+    S = v == null,
+    j = bi;
+  let M;
+  t[8] === Symbol.for("react.memo_cache_sentinel")
+    ? ((M = () => {
+        (d(null), m(null), l(!1));
+      }),
+      (t[8] = M))
+    : (M = t[8]);
+  const L = M;
+  let E;
+  t[9] === Symbol.for("react.memo_cache_sentinel")
+    ? ((E = () => {
+        l(!0);
+      }),
+      (t[9] = E))
+    : (E = t[9]);
+  const N = E;
+  let V;
+  t[10] === Symbol.for("react.memo_cache_sentinel")
+    ? ((V = () => {
+        l(!1);
+      }),
+      (t[10] = V))
+    : (V = t[10]);
+  const k = V;
+  let I;
+  t[11] === Symbol.for("react.memo_cache_sentinel")
+    ? ((I = (C, T) => {
+        (d(C), m(T), l(!1));
+      }),
+      (t[11] = I))
+    : (I = t[11]);
+  const G = I;
+  let _;
+  t[12] === Symbol.for("react.memo_cache_sentinel")
+    ? ((_ = (C, T) => {
+        (d(C), m(T), l(!0));
+      }),
+      (t[12] = _))
+    : (_ = t[12]);
+  const w = _,
+    P = v ?? "";
+  let F;
+  t[13] !== P
+    ? ((F = { workspaceRoot: P }), (t[13] = P), (t[14] = F))
+    : (F = t[14]);
+  const B = !S && v != null;
+  let O;
+  t[15] !== B ? ((O = { enabled: B }), (t[15] = B), (t[16] = O)) : (O = t[16]);
+  let $;
+  t[17] !== O || t[18] !== F
+    ? (($ = { params: F, queryConfig: O, select: xi }),
+      (t[17] = O),
+      (t[18] = F),
+      (t[19] = $))
+    : ($ = t[19]);
+  const { data: U, isLoading: K, error: A } = je("local-environments", $);
+  let W;
+  t[20] !== U
+    ? ((W = U === void 0 ? [] : U), (t[20] = U), (t[21] = W))
+    : (W = t[21]);
+  const q = W;
+  let H;
+  t[22] !== q ? ((H = $t(q)), (t[22] = q), (t[23] = H)) : (H = t[23]);
+  const Q = f ?? H ?? null,
+    ae = Q ?? "";
+  let se;
+  t[24] !== ae
+    ? ((se = { configPath: ae }), (t[24] = ae), (t[25] = se))
+    : (se = t[25]);
+  const he = !S && v != null && Q != null;
+  let ie;
+  t[26] !== he
+    ? ((ie = { enabled: he }), (t[26] = he), (t[27] = ie))
+    : (ie = t[27]);
+  let xe;
+  t[28] !== se || t[29] !== ie
+    ? ((xe = { params: se, queryConfig: ie }),
+      (t[28] = se),
+      (t[29] = ie),
+      (t[30] = xe))
+    : (xe = t[30]);
+  const {
+      data: z,
+      isLoading: Ze,
+      error: pe,
+    } = je("local-environment-config", xe),
+    Ne = z?.configPath ?? "";
+  let y;
+  t[31] !== Ne
+    ? ((y = { configPath: Ne }), (t[31] = Ne), (t[32] = y))
+    : (y = t[32]);
+  const X = !S && v != null && !!z?.exists;
+  let te;
+  t[33] !== X
+    ? ((te = { enabled: X }), (t[33] = X), (t[34] = te))
+    : (te = t[34]);
+  let be;
+  t[35] !== y || t[36] !== te
+    ? ((be = { params: y, queryConfig: te }),
+      (t[35] = y),
+      (t[36] = te),
+      (t[37] = be))
+    : (be = t[37]);
+  const { data: R, error: Ht, isLoading: Qt } = je("local-environment", be),
+    Se = R?.environment.type === "success" ? R.environment.environment : null,
+    Me = R?.environment.type === "error" ? R.environment.error.message : null,
+    Ee = pe?.message ?? Ht?.message ?? A?.message ?? null;
+  let Pe;
+  t[38] !== c || t[39] !== v || t[40] !== g
+    ? ((Pe =
+        v != null
+          ? n.jsx(js, {
+              workspaceRoot: v,
+              workspaceGroup: g,
+              mode: c ? "edit" : void 0,
+              onBack: c ? k : L,
+            })
+          : null),
+      (t[38] = c),
+      (t[39] = v),
+      (t[40] = g),
+      (t[41] = Pe))
+    : (Pe = t[41]);
+  const ne = Pe,
+    Xt = K || Ze || Qt;
+  if (S) {
+    let C;
+    t[42] === Symbol.for("react.memo_cache_sentinel")
+      ? ((C = n.jsx(Ae, { slug: "local-environments" })), (t[42] = C))
+      : (C = t[42]);
+    let T;
+    return (
+      t[43] !== r || t[44] !== s
+        ? ((T = n.jsx(Ce, {
+            title: C,
+            children: n.jsx(mi, {
+              groups: r,
+              isLoading: s,
+              onAddWorkspace: j,
+              onCreateEnvironment: w,
+              onSelectEnvironment: G,
+            }),
+          })),
+          (t[43] = r),
+          (t[44] = s),
+          (t[45] = T))
+        : (T = t[45]),
+      T
+    );
+  }
+  if (Xt) {
+    let C;
+    t[46] === Symbol.for("react.memo_cache_sentinel")
+      ? ((C = n.jsx(Ae, { slug: "local-environments" })), (t[46] = C))
+      : (C = t[46]);
+    let T;
+    t[47] === Symbol.for("react.memo_cache_sentinel")
+      ? ((T = n.jsx(D.Header, {
+          title: n.jsx(b, {
+            id: "settings.localEnvironments.loading.title",
+            defaultMessage: "Loading local environments",
+            description: "Loading state title for local environments settings",
+          }),
+        })),
+        (t[47] = T))
+      : (T = t[47]);
+    let Y;
+    t[48] === Symbol.for("react.memo_cache_sentinel")
+      ? ((Y = n.jsxs(D, {
+          children: [
+            T,
+            n.jsx(D.Content, {
+              children: n.jsx(ee, {
+                children: n.jsx("div", {
+                  className: "p-3 text-sm text-token-text-secondary",
+                  children: n.jsx(b, {
+                    id: "settings.localEnvironments.loading.body",
+                    defaultMessage: "Fetching your project configuration.",
+                    description:
+                      "Loading state body for local environments settings",
+                  }),
+                }),
+              }),
+            }),
+          ],
+        })),
+        (t[48] = Y))
+      : (Y = t[48]);
+    let de;
+    return (
+      t[49] !== ne
+        ? ((de = n.jsx(Ce, { title: C, backSlot: ne, children: Y })),
+          (t[49] = ne),
+          (t[50] = de))
+        : (de = t[50]),
+      de
+    );
+  }
+  if (!z || v == null) {
+    let C;
+    t[51] === Symbol.for("react.memo_cache_sentinel")
+      ? ((C = n.jsx(Ae, { slug: "local-environments" })), (t[51] = C))
+      : (C = t[51]);
+    let T;
+    t[52] === Symbol.for("react.memo_cache_sentinel")
+      ? ((T = n.jsx(D.Header, {
+          title: n.jsx(b, {
+            id: "settings.localEnvironments.unavailable.title",
+            defaultMessage: "Local environments unavailable",
+            description: "Title for missing local environment config state",
+          }),
+        })),
+        (t[52] = T))
+      : (T = t[52]);
+    let Y;
+    t[53] === Symbol.for("react.memo_cache_sentinel")
+      ? ((Y = n.jsxs(D, {
+          children: [
+            T,
+            n.jsx(D.Content, {
+              children: n.jsx(ee, {
+                children: n.jsx("div", {
+                  className: "p-3 text-sm text-token-text-secondary",
+                  children: n.jsx(b, {
+                    id: "settings.localEnvironments.unavailable.body",
+                    defaultMessage:
+                      "We could not load local environment settings for this project.",
+                    description:
+                      "Body text for missing local environment config state",
+                  }),
+                }),
+              }),
+            }),
+          ],
+        })),
+        (t[53] = Y))
+      : (Y = t[53]);
+    let de;
+    return (
+      t[54] !== ne
+        ? ((de = n.jsx(Ce, { title: C, backSlot: ne, children: Y })),
+          (t[54] = ne),
+          (t[55] = de))
+        : (de = t[55]),
+      de
+    );
+  }
+  if (c) {
+    let C;
+    t[56] === Symbol.for("react.memo_cache_sentinel")
+      ? ((C = n.jsx(Ae, { slug: "local-environments" })), (t[56] = C))
+      : (C = t[56]);
+    let T;
+    t[57] !== z.configPath ||
+    t[58] !== z.exists ||
+    t[59] !== Se ||
+    t[60] !== Me ||
+    t[61] !== Ee ||
+    t[62] !== v ||
+    t[63] !== g
+      ? ((T = n.jsx(Zs, {
+          workspaceRoot: v,
+          workspaceGroup: g,
+          configPath: z.configPath,
+          configExists: z.exists,
+          initialEnvironment: Se,
+          parseErrorMessage: Me,
+          readErrorMessage: Ee,
+          onExitEdit: k,
+        })),
+        (t[57] = z.configPath),
+        (t[58] = z.exists),
+        (t[59] = Se),
+        (t[60] = Me),
+        (t[61] = Ee),
+        (t[62] = v),
+        (t[63] = g),
+        (t[64] = T))
+      : (T = t[64]);
+    let Y;
+    return (
+      t[65] !== ne || t[66] !== T
+        ? ((Y = n.jsx(Ce, { title: C, backSlot: ne, children: T })),
+          (t[65] = ne),
+          (t[66] = T),
+          (t[67] = Y))
+        : (Y = t[67]),
+      Y
+    );
+  }
+  let _e;
+  t[68] === Symbol.for("react.memo_cache_sentinel")
+    ? ((_e = n.jsx(Ae, { slug: "local-environments" })), (t[68] = _e))
+    : (_e = t[68]);
+  let we;
+  t[69] !== z.exists ||
+  t[70] !== Se ||
+  t[71] !== Me ||
+  t[72] !== Ee ||
+  t[73] !== v ||
+  t[74] !== g
+    ? ((we = n.jsx(di, {
+        workspaceRoot: v,
+        workspaceGroup: g,
+        configExists: z.exists,
+        initialEnvironment: Se,
+        parseErrorMessage: Me,
+        readErrorMessage: Ee,
+        onEdit: N,
+      })),
+      (t[69] = z.exists),
+      (t[70] = Se),
+      (t[71] = Me),
+      (t[72] = Ee),
+      (t[73] = v),
+      (t[74] = g),
+      (t[75] = we))
+    : (we = t[75]);
+  let Oe;
+  return (
+    t[76] !== ne || t[77] !== we
+      ? ((Oe = n.jsx(Ce, { title: _e, backSlot: ne, children: we })),
+        (t[76] = ne),
+        (t[77] = we),
+        (t[78] = Oe))
+      : (Oe = t[78]),
+    Oe
+  );
+}
+function xi(t) {
+  return t.environments;
+}
+function bi() {
+  ws.dispatchMessage("electron-add-new-workspace-root-option", {});
+}
+export { Si as LocalEnvironmentsSettings };
+//# sourceMappingURL=local-environments-settings-page-fStp8N4-.js.map

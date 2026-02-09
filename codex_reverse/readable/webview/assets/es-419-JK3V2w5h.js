@@ -1,0 +1,2182 @@
+const e = {
+  "CopyButton.copyTooltip": "Copiar",
+  "app.sidebar.hide": "Ocultar barra lateral",
+  "app.sidebar.show": "Mostrar barra lateral",
+  "app.sidebar.tooltip": "Alternar barra lateral",
+  "appHeader.installUpdate": "Actualizar",
+  "appSunset.body":
+    "Esta versión de la aplicación ya no es compatible. Descarga la versión más reciente <here>aquí</here>.",
+  "appSunset.title": "Actualización obligatoria",
+  "automation.updateDirective.create": "Crear",
+  "automation.updateDirective.open": "Abrir",
+  "automation.updateDirective.untitled": "Automatización sin título",
+  "automation.updateDirective.update": "Actualizar",
+  "bestOfNIcon.attemptsTooltip":
+    "{attempts, plural, one {# intento} many {# intentos} other {# intentos}}",
+  "cloudTaskRow.archiveError": "Error al archivar la tarea",
+  "code.diff.requestChange": "Solicitar cambio",
+  "code.diffComment.cancel": "Cancelar",
+  "code.diffComment.comment": "Comentario",
+  "code.diffComment.delete": "Eliminar",
+  "code.diffComment.save": "Guardar",
+  "codeReviewAssistant.location": "{file}:{start}-{end}",
+  "codeReviewAssistant.noFindings": "No se informaron hallazgos.",
+  "codex.alert.closeAriaLabel": "Cerrar",
+  "codex.appUpsellBanner.cbpApi.message":
+    "Crea más rápido con la aplicación Codex. Descárgala ahora o en {learnMoreLink}.",
+  "codex.appUpsellBanner.download": "Descargar",
+  "codex.appUpsellBanner.freeGo.message":
+    "Codex está incluido en tu plan hasta el 2 de marzo. Prueba la aplicación Codex para crear más rápido.",
+  "codex.appUpsellBanner.later": "Más tarde",
+  "codex.appUpsellBanner.learnMoreLowercase": "obtener más información",
+  "codex.appUpsellBanner.new": "Nuevo",
+  "codex.appUpsellBanner.proPlusBusiness.message":
+    "Prueba la aplicación Codex con el doble de límites de uso hasta el 2 de abril. Descárgala ahora o en {learnMoreLink}.",
+  "codex.appUpsellBanner.title": "Aplicación Codex",
+  "codex.applyDropdown.header.changes": "Cambios",
+  "codex.applyDropdown.header.fileCount":
+    "{count, plural, one {# archivo} many {# archivos} other {# archivos}}",
+  "codex.applyDropdown.header.rows": "filas",
+  "codex.applyDropdown.header.title": "Aplicar cambios",
+  "codex.applyDropdown.header.workspace": "Proyecto",
+  "codex.applyDropdown.results.conflicted":
+    "{count, plural, one {un archivo con conflictos:} many {{count} archivos con conflictos:} other {{count} archivos con conflictos:}}",
+  "codex.applyDropdown.results.empty": "No se copiaron archivos",
+  "codex.applyDropdown.results.skipped":
+    "{count, plural, one {un archivo omitido:} many {{count} archivos omitidos:} other {{count} archivos omitidos:}}",
+  "codex.applyOrRevertBanner.apply": "Aplicar",
+  "codex.applyOrRevertBanner.applyMessage":
+    "¿Aplicar los cambios y continuar de manera local?",
+  "codex.applyOrRevertBanner.applyMessageDifferentEnvironment":
+    "Esta tarea se generó en {environment} por lo que es posible que no se aplique correctamente.",
+  "codex.applyOrRevertBanner.applyMessageDifferentEnvironment.tooltip":
+    "Los cambios realizados en {environment} podrían no aplicarse correctamente.",
+  "codex.applyOrRevertBanner.reapply": "Volver a aplicar",
+  "codex.applyOrRevertBanner.revert": "Revertir",
+  "codex.applyOrRevertBanner.revertMessage": "¿Revertir los cambios aplicados?",
+  "codex.applyResultsDialog.applied": "Aplicado correctamente ({count})",
+  "codex.applyResultsDialog.close": "Cerrar",
+  "codex.applyResultsDialog.conflicted": "Con conflictos ({count})",
+  "codex.applyResultsDialog.noDetails":
+    "No hay detalles del archivo disponibles.",
+  "codex.applyResultsDialog.skipped": "Se omitió ({count})",
+  "codex.applyResultsDialog.title": "Aplicar resultados",
+  "codex.archiveInfo": "Ver chats archivados en {dataControlsLink}.",
+  "codex.archiveInfo.dataControlsLink": "Controles de datos",
+  "codex.archiveInfo.electron": "Ver chats archivados en {settingsLink}",
+  "codex.archiveInfo.extension": "Ver chats archivados en tu carpeta de Codex.",
+  "codex.archiveInfo.settingsLink": "Configuración",
+  "codex.banner.content.description":
+    "Ejecutar tareas en paralelo, seguir el progreso desde cualquier lugar y revisar PR con IA.",
+  "codex.banner.content.headline": "Codex lo hace todo.",
+  "codex.cloudTaskRow.archiveTask": "Archivar tarea",
+  "codex.cloudTaskRow.confirmArchiveTask": "Confirmar",
+  "codex.command.feedback": "Comentarios",
+  "codex.command.findInThread": "Encontrar",
+  "codex.command.forceReloadSkills": "Forzar recarga de habilidades",
+  "codex.command.logOut": "Cerrar sesión",
+  "codex.command.manageTasks": "Administrar tareas",
+  "codex.command.navigateBack": "Atrás",
+  "codex.command.navigateForward": "Avanzar",
+  "codex.command.newThread": "Nuevo hilo",
+  "codex.command.nextThread": "Siguiente hilo",
+  "codex.command.openFolder": "Abrir carpeta",
+  "codex.command.openSkills": "Ir a habilidades",
+  "codex.command.openThreadOverlay": "Abrir hilo en ventana independiente",
+  "codex.command.previousThread": "Hilo anterior",
+  "codex.command.settings": "Configuración",
+  "codex.command.toggleDiffPanel": "Alternar panel de diff",
+  "codex.command.toggleSidebar": "Alternar barra lateral",
+  "codex.command.toggleTerminal": "Alternar terminal",
+  "codex.commandGroup.app": "Aplicación",
+  "codex.commandGroup.navigation": "Navegación",
+  "codex.commandGroup.panels": "Paneles",
+  "codex.commandGroup.skills": "Habilidades",
+  "codex.commandGroup.thread": "Hilo",
+  "codex.commandGroup.workspace": "Proyecto",
+  "codex.commandMenu.noResults": "No hay coincidencias",
+  "codex.commandMenu.searchPlaceholder": "Buscar comandos",
+  "codex.commandMenu.suggestedGroup": "Sugerido",
+  "codex.commandMenu.switchWorkspace": "Cambiar proyecto",
+  "codex.commandMenu.title": "Menú de comandos",
+  "codex.common.retry": "Reintentar",
+  "codex.composer.searchBranches": "Buscar ramas…",
+  "codex.dialog.basic.body":
+    "Este es un cuadro de diálogo modal simple que utiliza nuestro contenedor sobre Radix Dialog.",
+  "codex.dialog.basic.cancel": "Cancelar",
+  "codex.dialog.basic.confirm": "Confirmar",
+  "codex.dialog.basic.open": "Abrir diálogo",
+  "codex.dialog.basic.title": "Diálogo de ejemplo",
+  "codex.dialog.long.close": "Cerrar",
+  "codex.dialog.long.line":
+    "Línea desplazable {index} para mostrar contenido extenso dentro del diálogo.",
+  "codex.dialog.long.open": "Abrir diálogo largo",
+  "codex.dialog.long.title": "Diálogo con contenido largo",
+  "codex.dialog.unstyled.body":
+    "Esta historia muestra cómo los llamadores pueden controlar por completo el estilo del contenido del diálogo.",
+  "codex.dialog.unstyled.open": "Abrir diálogo sin estilo",
+  "codex.dialog.unstyled.title": "Contenido sin estilo",
+  "codex.diff.openInEditorPrompt.openButton": "Abrir en el editor",
+  "codex.diff.openInEditorPrompt.singleLine":
+    "Este archivo es demasiado grande para mostrarse aquí.",
+  "codex.diffView.failedToDecodeBase64Diff":
+    "Error al decodificar el diff en base64",
+  "codex.diffView.filesChanged":
+    "{fileCount, plural, one {# archivo modificado} many {# archivos modificados} other {# archivos modificados}}",
+  "codex.diffView.imagePreviewAlt": "Vista previa de imagen",
+  "codex.diffView.imagePreviewEmpty": "Sin imagen",
+  "codex.diffView.linesAdded": "+{linesAdded}",
+  "codex.diffView.linesDeleted": "-{linesDeleted}",
+  "codex.diffView.noDiffData": "No hay datos de diff",
+  "codex.diffView.richPreviewDisable": "Desactivar vista previa enriquecida",
+  "codex.diffView.richPreviewEnable": "Activar vista previa enriquecida",
+  "codex.diffView.richPreviewLoading": "Cargando vista previa…",
+  "codex.diffView.richPreviewToggle": "Alternar vista previa enriquecida",
+  "codex.diffView.switchToUnified": "Cambiar a diff unificado",
+  "codex.environmentSelector.noEnvironment": "No hay entornos",
+  "codex.environments.environmentSettings": "Configuración del entorno",
+  "codex.environments.learnMore": "Obtener más información",
+  "codex.environments.listError": "Error al cargar los entornos.",
+  "codex.environments.noEnvironmentsFound": "No se encontraron entornos",
+  "codex.environments.searchError": "Error al buscar entornos.",
+  "codex.errorBoundary.genericError": "Ocurrió un error",
+  "codex.errorBoundary.goHome": "Inténtalo nuevamente",
+  "codex.file.patch.missing": "No se pudo generar el parche para este archivo.",
+  "codex.gallery.automations.cwdLabel": "Proyectos",
+  "codex.gallery.automations.nameLabel": "Nombre",
+  "codex.gallery.automations.namePlaceholder": "Resumir una tarea",
+  "codex.gallery.automations.promptLabel": "Mensaje",
+  "codex.gallery.automations.promptPlaceholder":
+    "Describe lo que Codex debe hacer",
+  "codex.gallery.dialogs.automation.label": "Diálogo de automatización",
+  "codex.gallery.dialogs.basic.body":
+    "Usa este diseño para confirmaciones directas o formularios cortos.",
+  "codex.gallery.dialogs.basic.cancel": "Cancelar",
+  "codex.gallery.dialogs.basic.confirm": "Confirmar",
+  "codex.gallery.dialogs.basic.label": "Diálogo básico",
+  "codex.gallery.dialogs.basic.title": "Diálogo de ejemplo",
+  "codex.gallery.dialogs.feedbackSubmission.ariaLabel": "Describe el problema",
+  "codex.gallery.dialogs.feedbackSubmission.bad": "Resultado incorrecto",
+  "codex.gallery.dialogs.feedbackSubmission.bug": "Error",
+  "codex.gallery.dialogs.feedbackSubmission.good": "Resultado correcto",
+  "codex.gallery.dialogs.feedbackSubmission.includeLogs":
+    "Incluir los registros de la sesión actual de Codex",
+  "codex.gallery.dialogs.feedbackSubmission.label": "Envío de comentarios",
+  "codex.gallery.dialogs.feedbackSubmission.other": "Otra opción",
+  "codex.gallery.dialogs.feedbackSubmission.placeholder":
+    "Describe el problema aquí",
+  "codex.gallery.dialogs.feedbackSubmission.submit": "Enviar",
+  "codex.gallery.dialogs.feedbackSubmission.title": "Comentarios",
+  "codex.gallery.dialogs.feedbackSuccess.body":
+    "Comentarios cargados. Si el problema persiste, abre una incidencia de GitHub o menciona el id del hilo en una incidencia abierta existente.",
+  "codex.gallery.dialogs.feedbackSuccess.dismiss": "Descartar",
+  "codex.gallery.dialogs.feedbackSuccess.label":
+    "Comentarios enviados correctamente",
+  "codex.gallery.dialogs.feedbackSuccess.title": "Comentarios cargados",
+  "codex.gallery.dialogs.gitApplyResults.applied":
+    "Aplicado correctamente: (2)",
+  "codex.gallery.dialogs.gitApplyResults.close": "Cerrar",
+  "codex.gallery.dialogs.gitApplyResults.conflicted": "Con conflictos: (1)",
+  "codex.gallery.dialogs.gitApplyResults.label": "Aplicar resultados",
+  "codex.gallery.dialogs.gitApplyResults.title": "Aplicar resultados",
+  "codex.gallery.dialogs.gitPushError.body":
+    "Haz pull de los cambios más recientes o haz push forzado si sabes que el historial remoto es seguro de sobrescribir.",
+  "codex.gallery.dialogs.gitPushError.cancel": "Cancelar",
+  "codex.gallery.dialogs.gitPushError.force": "Forzar push",
+  "codex.gallery.dialogs.gitPushError.label": "Error de push",
+  "codex.gallery.dialogs.gitPushError.subtitle":
+    "Tu rama está detrás de origin/main.",
+  "codex.gallery.dialogs.gitPushError.title":
+    "Error al enviar los cambios de una notificación push",
+  "codex.gallery.dialogs.gitRevert.cancel": "Cancelar",
+  "codex.gallery.dialogs.gitRevert.confirm": "Revertir",
+  "codex.gallery.dialogs.gitRevert.label": "Revertir cambios",
+  "codex.gallery.dialogs.gitRevert.skip": "No me preguntes de nuevo",
+  "codex.gallery.dialogs.gitRevert.subtitle":
+    "Esta acción elimina todos estos cambios.",
+  "codex.gallery.dialogs.gitRevert.title": "¿Revertir cambios?",
+  "codex.gallery.dialogs.longForm.label": "Diálogo de formato largo",
+  "codex.gallery.dialogs.proseModal.body":
+    "Este estilo modal se usa para instrucciones más largas, incorporación o bloques de contenido enriquecido.",
+  "codex.gallery.dialogs.proseModal.close": "Cerrar",
+  "codex.gallery.dialogs.proseModal.subtitle":
+    "Comparte aquí guías de formato largo o documentación.",
+  "codex.gallery.dialogs.proseModal.title": "Modal de prosa",
+  "codex.gallery.dialogs.submitBlocked.label": "Envío bloqueado",
+  "codex.gallery.dialogs.submitBlocked.message":
+    "No se pudo enviar tu mensaje porque el proyecto no está disponible.",
+  "codex.gallery.dialogs.submitBlocked.ok": "Aceptar",
+  "codex.gallery.dialogs.submitBlocked.title": "No se puede enviar el mensaje",
+  "codex.gallery.dialogs.title": "Diálogos",
+  "codex.gallery.dropdown.filterPlaceholder": "Filtrar elementos",
+  "codex.gallery.dropdowns.actionRow": "Filas de acciones",
+  "codex.gallery.dropdowns.actionRow.disabled": "Acción deshabilitada",
+  "codex.gallery.dropdowns.actionRow.primary": "Acción principal",
+  "codex.gallery.dropdowns.actionRow.secondary": "Acción secundaria",
+  "codex.gallery.dropdowns.actionRow.trigger": "Mostrar acciones",
+  "codex.gallery.dropdowns.basic": "Menú desplegable básico",
+  "codex.gallery.dropdowns.basic.newFile": "Archivo nuevo",
+  "codex.gallery.dropdowns.basic.newFolder": "Nueva carpeta",
+  "codex.gallery.dropdowns.basic.openSettings": "Abrir configuración",
+  "codex.gallery.dropdowns.basic.title": "Acciones rápidas",
+  "codex.gallery.dropdowns.basic.trigger": "Abrir menú",
+  "codex.gallery.dropdowns.basic.upload": "Cargar",
+  "codex.gallery.dropdowns.panel": "Superficie del panel",
+  "codex.gallery.dropdowns.panel.apply": "Aplicar",
+  "codex.gallery.dropdowns.panel.body":
+    "Revisa los cambios y aplícalos a tu proyecto",
+  "codex.gallery.dropdowns.panel.preview": "Vista previa",
+  "codex.gallery.dropdowns.panel.title": "Aplicar cambios",
+  "codex.gallery.dropdowns.panel.trigger": "Abrir panel",
+  "codex.gallery.dropdowns.search": "Menú desplegable con búsqueda",
+  "codex.gallery.dropdowns.search.first": "Canal alfa",
+  "codex.gallery.dropdowns.search.second": "Rama beta",
+  "codex.gallery.dropdowns.search.third": "Candidato a versión",
+  "codex.gallery.dropdowns.search.trigger": "Filtrar elementos",
+  "codex.gallery.dropdowns.submenu": "Menú desplegable con submenú",
+  "codex.gallery.dropdowns.submenu.optionA": "Proyecto alpha",
+  "codex.gallery.dropdowns.submenu.optionB": "Proyecto beta",
+  "codex.gallery.dropdowns.submenu.optionC": "Proyecto gamma",
+  "codex.gallery.dropdowns.submenu.primary": "Asignar propietario",
+  "codex.gallery.dropdowns.submenu.secondary": "Mover a",
+  "codex.gallery.dropdowns.submenu.tertiary": "Archivar",
+  "codex.gallery.dropdowns.submenu.trigger": "Elegir acción",
+  "codex.gallery.dropdowns.title": "Menús desplegables",
+  "codex.gallery.inbox.automations.close": "Cerrar",
+  "codex.gallery.inbox.automations.popover.cardTitle":
+    "Administrar automatizaciones",
+  "codex.gallery.inbox.automations.popover.dialogTitle":
+    "Administrar automatizaciones",
+  "codex.header.settingsTooltip": "Configuración",
+  "codex.hunk.patch.error": "Error al preparar",
+  "codex.hunk.patch.missing":
+    "No se pudo generar el parche para este fragmento.",
+  "codex.hunk.patch.partialSuccess": "Éxito parcial",
+  "codex.hunk.patch.revertError": "Error al deshacer la preparación",
+  "codex.hunk.patch.revertSuccess": "Preparación deshecha correctamente",
+  "codex.hunk.patch.success": "Preparado correctamente",
+  "codex.legal.autonomy.details":
+    "Para obtener más información, consulta {link}",
+  "codex.legal.autonomy.details.link": "Documentación de Codex",
+  "codex.legal.autonomy.title": "Decide cuánta autonomía deseas otorgar",
+  "codex.legal.backButton": "Atrás",
+  "codex.legal.cloud.taskOne.meta": "openai/agi · Oct 12",
+  "codex.legal.cloud.taskOne.title":
+    "Explicar el repositorio a un diseñador nuevo",
+  "codex.legal.cloud.taskThree.meta": "openai/codex · Oct 8",
+  "codex.legal.cloud.taskThree.stats.negative": "-123",
+  "codex.legal.cloud.taskThree.stats.positive": "+249",
+  "codex.legal.cloud.taskThree.title": "Crear un tema de modo oscuro",
+  "codex.legal.cloud.taskTwo.meta": "openai/agi · Oct 9",
+  "codex.legal.cloud.taskTwo.stats.negative": "-20",
+  "codex.legal.cloud.taskTwo.stats.positive": "+2",
+  "codex.legal.cloud.taskTwo.title": "Corregir un error de incorporación",
+  "codex.legal.continue.apikey": "Continuar",
+  "codex.legal.continueButton": "Siguiente",
+  "codex.legal.copilot.details":
+    "El uso del plan Copilot se aplica a todas las llamadas al modelo, la facturación y los límites de uso. El uso de la extensión Codex está sujeto tanto a los {oaiTos} como a los {gitHubTos}.",
+  "codex.legal.copilot.gitHubTosLink": "Términos de servicio de GitHub",
+  "codex.legal.copilot.oaiTosLink": "Términos de servicio de OpenAI Codex",
+  "codex.legal.copilot.title": "Con tecnología de GitHub Copilot",
+  "codex.legal.mistakes.review":
+    "Revisar el código que escribe y los comandos que ejecuta",
+  "codex.legal.mistakes.title": "Codex puede cometer errores",
+  "codex.legal.powered.details":
+    "Utiliza los límites de uso de tu plan y las {link}",
+  "codex.legal.powered.details.link": "preferencias de datos de entrenamiento",
+  "codex.legal.powered.title": "Con tecnología de tu cuenta de ChatGPT",
+  "codex.legal.step.cloud.subtitle":
+    "Enviar tareas a Codex para que se ejecuten en segundo plano, de modo que puedas mantener la concentración y avanzar más rápido.",
+  "codex.legal.step.cloud.title": "Transferencia a Codex en la nube",
+  "codex.legal.step.intro.subtitle":
+    "Codex navega, edita, ejecuta comandos y realiza pruebas directamente en tu repositorio. Con tecnología de tu cuenta de ChatGPT.",
+  "codex.legal.step.intro.title": "Codex en tu IDE",
+  "codex.legal.step.todo.subtitle":
+    "Escribe un comentario TODO y conviértelo en una tarea de Codex con un solo clic.",
+  "codex.legal.step.todo.title": "Convertir TODO en tareas de Codex",
+  "codex.legal.todo.heading": "// TODO: implementar esquema",
+  "codex.localConversation.closeImagePreview": "Cerrar vista previa de imagen",
+  "codex.localConversation.userImageAttachment": "Archivo adjunto del usuario",
+  "codex.localTaskRow.archiveTask": "Archivar hilo",
+  "codex.localTaskRow.awaitingApproval": "En espera de aprobación",
+  "codex.localTaskRow.awaitingResponse": "En espera de respuesta",
+  "codex.localTaskRow.confirmArchiveTask": "Confirmar",
+  "codex.loggedOut.apiKeyPrompt.cancel": "Cancelar",
+  "codex.loggedOut.apiKeyPrompt.confirm": "Aceptar",
+  "codex.loggedOut.apiKeyPrompt.getKey": "Obtener clave de API",
+  "codex.loggedOut.apiKeyPrompt.inputLabel":
+    "Ingresa tu clave de API de OpenAI",
+  "codex.loggedOut.apiKeyPrompt.placeholder": "sk-...",
+  "codex.loggedOut.cloudTasksDisabledWithApiKey":
+    "Tareas en la nube deshabilitadas con la clave de API",
+  "codex.loggedOut.cloudTasksDisabledWithCopilotAndApiKey":
+    "Tareas en la nube deshabilitadas con Copilot y la clave de API",
+  "codex.loggedOut.signIn": "Iniciar sesión con ChatGPT",
+  "codex.loggedOut.signIn.cancel": "Cancelar inicio de sesión",
+  "codex.loggedOut.signInWithCopilot": "Iniciar sesión con GitHub Copilot",
+  "codex.loggedOut.title": "Codex",
+  "codex.loggedOut.useApiKey": "Usar clave de API",
+  "codex.mcpTool.collapsedLabel": "{label} {details}",
+  "codex.mcpTool.collapsedLabel.details":
+    "{server} - MCP - herramienta - {tool}",
+  "codex.mcpTool.collapsedLabel.verb.called": "Llamado",
+  "codex.mcpTool.collapsedLabel.verb.calling": "Llamando",
+  "codex.mcpTool.embeddedResource.contentLabel": "Contenido",
+  "codex.mcpTool.embeddedResource.mimeTypeLabel": "Tipo de MIME",
+  "codex.mcpTool.embeddedResource.uriLabel": "URI",
+  "codex.mcpTool.noResult": "La herramienta no devolvió contenido",
+  "codex.mcpTool.rawPayloadHeading":
+    "Carga sin procesar de llamada a herramienta {server} {tool}",
+  "codex.menu.recent": "Reciente",
+  "codex.menu.seeAllHistory": "Ver todo el historial",
+  "codex.patch.change.contentsDeleted": "Contenido eliminado",
+  "codex.patch.change.created": "Creado",
+  "codex.patch.change.creating": "Creando",
+  "codex.patch.change.deleted": "Eliminado",
+  "codex.patch.change.deleting": "Eliminando",
+  "codex.patch.change.edited": "Editado",
+  "codex.patch.change.edited-file": "Archivo editado",
+  "codex.patch.change.editing": "Editando",
+  "codex.patch.change.noChanges": "Sin cambios",
+  "codex.patch.change.rejected-add": "Rechazado",
+  "codex.patch.change.rejected-delete": "Rechazado",
+  "codex.patch.change.rejected-edit": "Rechazado",
+  "codex.plan.stepIndexPrefix": "{index}.",
+  "codex.plan.tasksCompletedSummary":
+    "{completed} de {total} tareas completadas",
+  "codex.plan.todoListCreated": "Lista de pendientes creada con {total} tareas",
+  "codex.profileDropdown.apiKeyAuth": "Sesión iniciada con clave de API",
+  "codex.profileDropdown.codexSettings": "Configuración de Codex",
+  "codex.profileDropdown.copilotAuth": "Sesión iniciada con Copilot",
+  "codex.profileDropdown.defaultAccountTitle": "Cuenta predeterminada",
+  "codex.profileDropdown.enterBehavior":
+    "{modifierSymbol} + enter para enviar mensajes largos",
+  "codex.profileDropdown.enterBehaviorError":
+    "Error al actualizar la configuración",
+  "codex.profileDropdown.getPlus":
+    "Mejora tu plan para obtener límites más altos",
+  "codex.profileDropdown.keyboardShortcuts": "Atajos del teclado",
+  "codex.profileDropdown.language": "Idioma",
+  "codex.profileDropdown.languageDefault": "Detectar automáticamente",
+  "codex.profileDropdown.languageSearchPlaceholder": "Buscar idiomas",
+  "codex.profileDropdown.languageUpdateError": "Error al actualizar el idioma",
+  "codex.profileDropdown.logOut": "Cerrar sesión",
+  "codex.profileDropdown.mcp": "Configuración de MCP",
+  "codex.profileDropdown.openConfigToml": "Abrir config.toml",
+  "codex.profileDropdown.openConfigToml.wsl":
+    "Abrir config.toml en el entorno WSL",
+  "codex.profileDropdown.openExtensionSettings": "Abrir configuración",
+  "codex.profileDropdown.openMcpSettings": "Abrir configuración de MCP",
+  "codex.profileDropdown.openOnStartup": "Abrir al iniciar",
+  "codex.profileDropdown.openOnStartupError":
+    "Error al actualizar la configuración",
+  "codex.profileDropdown.openSkillsSettings":
+    "Abrir configuración de habilidades",
+  "codex.profileDropdown.personalAccountTitle": "Cuenta personal",
+  "codex.profileDropdown.queueFollowUps": "Activar seguimientos en cola",
+  "codex.profileDropdown.queueFollowUpsError":
+    "Error al actualizar la configuración",
+  "codex.profileDropdown.readDocs": "Leer documentación",
+  "codex.profileDropdown.readSkillsDocs": "Leer documentación",
+  "codex.profileDropdown.runInWsl": "Ejecutar en WSL",
+  "codex.profileDropdown.runInWslError": "Error al actualizar la configuración",
+  "codex.profileDropdown.runInWslTooltip":
+    "Codex se ejecuta dentro de WSL. Recomendado para mejorar la seguridad del entorno aislado y el rendimiento.",
+  "codex.profileDropdown.settings": "Configuración del IDE",
+  "codex.profileDropdown.settingsPage": "Configuración",
+  "codex.profileDropdown.signInWithOpenAI": "Iniciar sesión con ChatGPT",
+  "codex.profileDropdown.skills": "Configuración de habilidades",
+  "codex.profileDropdown.switchToCopilotAccount": "Usar cuenta de Copilot",
+  "codex.profileDropdown.switchToOpenAIAccount": "Usar cuenta de OpenAI",
+  "codex.profileDropdown.todoCodelens": "Corregir comentarios TODO",
+  "codex.profileDropdown.todoCodelensError":
+    "Error al actualizar la configuración",
+  "codex.profileDropdown.windowsDocumentation": "Documentación de Windows",
+  "codex.profileFooter.signedInFallback": "Sesión iniciada",
+  "codex.profileFooter.upgrade": "Mejorar el plan",
+  "codex.recentTasksMenu.clearSearch": "Borrar búsqueda",
+  "codex.recentTasksMenu.cloud": "Tareas en la nube",
+  "codex.recentTasksMenu.count":
+    "{count, plural, =0 {Sin tareas en curso} one {# tarea en curso} many {# tareas en curso} other {# tareas en curso}}",
+  "codex.recentTasksMenu.empty": "Aún no hay hilos",
+  "codex.recentTasksMenu.errorCloud": "Error al cargar las tareas.",
+  "codex.recentTasksMenu.errorCloud.inline":
+    "Error al cargar las tareas en la nube.",
+  "codex.recentTasksMenu.filterAll": "Todo",
+  "codex.recentTasksMenu.filterCloudTasks": "Filtrar tareas en la nube",
+  "codex.recentTasksMenu.filterTooltip": "Filtrar tareas por entorno",
+  "codex.recentTasksMenu.local": "Tareas locales",
+  "codex.recentTasksMenu.recent": "Todas las tareas",
+  "codex.recentTasksMenu.search": "Buscar tareas recientes",
+  "codex.recentTasksMenu.searchEmpty": "Sin resultado",
+  "codex.recentTasksMenu.tooltip": "Historial de tareas",
+  "codex.recentTasksMenu.trigger":
+    "Tareas recientes. {count, plural, one {# en curso} many {# en curso} other {# en curso}}",
+  "codex.remoteConversation.applyDiff.applyCta": "Aplicar cambios",
+  "codex.remoteConversation.applyDiff.dropdownTitle":
+    "Aplicar cambios a una rama local",
+  "codex.remoteConversation.applyDiff.revertCta": "Revertir cambios",
+  "codex.remoteConversation.closeImagePreview": "Cerrar vista previa de imagen",
+  "codex.remoteConversation.codexCloudTask":
+    "Estás viendo una tarea en la <u>nube de Codex</u>",
+  "codex.remoteConversation.errorWithMessage": "Error: {message}",
+  "codex.remoteConversation.loadingImage": "Cargando imagen",
+  "codex.remoteConversation.openInWeb": "Abrir en la web",
+  "codex.remoteConversation.streaming": "Comenzando",
+  "codex.remoteConversation.turnFailed": "Ocurrió un error durante esta tarea.",
+  "codex.remoteConversation.turnTab.loading": "Intento {number}",
+  "codex.remoteConversation.turnTab.title": "Intento {number}",
+  "codex.remoteConversation.userImageAttachment": "Archivo adjunto del usuario",
+  "codex.remoteConversation.viewPreviousTurns": "Abrir en la web",
+  "codex.remoteConversation.viewPreviousTurns.buttonText": "Abrir",
+  "codex.remoteConversation.viewPreviousTurns.buttonTooltip": "Abrir en la web",
+  "codex.review.copyGitApplyCommand": "Copiar comando git apply",
+  "codex.review.copyGitApplyCommand.toast":
+    "El comando git apply se copió al portapapeles",
+  "codex.review.diffTooLarge.description":
+    "Esta diferencia es demasiado grande para mostrarse en Revisión.",
+  "codex.review.diffTooLarge.title":
+    "La diferencia es demasiado grande para mostrar",
+  "codex.review.expandOrCollapseDiffButton.collapse":
+    "Contraer todas las diferencias",
+  "codex.review.expandOrCollapseDiffButton.expand":
+    "Expandir todas las diferencias",
+  "codex.review.expandOrCollapseDiffMenu.collapse":
+    "Contraer todas las diferencias",
+  "codex.review.expandOrCollapseDiffMenu.expand":
+    "Expandir todas las diferencias",
+  "codex.review.fileSearch.clear": "Borrar filtro de archivos",
+  "codex.review.fileSearch.empty":
+    "Ningún archivo coincide con el filtro actual.",
+  "codex.review.fileSearch.label": "Filtrar archivos",
+  "codex.review.fileSearch.placeholder": "Filtrar archivos...",
+  "codex.review.filesChanged":
+    "{num, plural, =0 {No se modificó ningún archivo.} one {# archivo modificado} many {# archivos modificados} other {# archivos modificados}}",
+  "codex.review.find.loadMore": "Cargar más coincidencias",
+  "codex.review.fullReview.hideFileTree": "Ocultar árbol de archivos",
+  "codex.review.fullReview.showFileTree": "Mostrar árbol de archivos",
+  "codex.review.header.moreOptions": "Opciones de revisión",
+  "codex.review.largeDiff.banner":
+    "Se detectó una diferencia grande. Se muestra un archivo a la vez.",
+  "codex.review.loadFullFiles.disable": "No cargar archivos completos",
+  "codex.review.loadFullFiles.enable": "Cargar archivos completos",
+  "codex.review.noDiff": "Los cambios de archivo aparecerán aquí",
+  "codex.review.noDiff.gitInit.createRepository": "Crear repositorio git",
+  "codex.review.noDiff.gitInit.creating": "Creando…",
+  "codex.review.noDiff.gitInit.error": "Error al inicializar Git: {message}",
+  "codex.review.noDiff.gitInit.success": "Repositorio de Git creado",
+  "codex.review.noDiff.gitRepoRequired.description":
+    "Rastrear y deshacer cambios en este proyecto",
+  "codex.review.noDiff.gitRepoRequired.title": "Crear un repositorio de Git",
+  "codex.review.noDiff.orNoLongerAvailable":
+    "o las diferencias más recientes ya no están disponibles",
+  "codex.review.noDiff.reverted": "La última tarea se revirtió.",
+  "codex.review.noDiff.revertedOrCommitted":
+    "La última tarea se revirtió o se confirmó.",
+  "codex.review.refreshGitQueries": "Actualizar",
+  "codex.review.revert.file.error": "Error al revertir {path}",
+  "codex.review.revert.file.partialSuccess": "Reversión parcial de {path}",
+  "codex.review.revert.file.success": "Revertido {path}",
+  "codex.review.revert.hunk.error":
+    "Error al revertir el fragmento {hunkNumber} en {path}",
+  "codex.review.revert.hunk.partialSuccess":
+    "Fragmento {hunkNumber} parcialmente revertido en {path}",
+  "codex.review.revert.hunk.success":
+    "Fragmento {hunkNumber} revertido en {path}",
+  "codex.review.revert.section.error": "Error al revertir la sección",
+  "codex.review.revert.section.partialSuccess":
+    "Sección revertida parcialmente",
+  "codex.review.revert.section.success": "Sección revertida",
+  "codex.review.revertDialog.cancel": "Cancelar",
+  "codex.review.revertDialog.confirm": "Confirmar",
+  "codex.review.revertDialog.message":
+    "Esta acción elimina todos estos cambios.",
+  "codex.review.revertDialog.skip": "No me preguntes de nuevo",
+  "codex.review.revertDialog.title": "¿Revertir cambios?",
+  "codex.review.richPreview.disable": "Desactivar vista previa enriquecida",
+  "codex.review.richPreview.enable": "Activar vista previa enriquecida",
+  "codex.review.source.cloud": "Cambios en la nube",
+  "codex.review.source.local.all": "Todos los cambios de la rama",
+  "codex.review.source.local.lastTurn": "Cambios del último turno",
+  "codex.review.source.local.uncommitted": "Cambios sin confirmar",
+  "codex.review.source.worktree": "Cambios de worktree sin confirmar",
+  "codex.review.stageFilter.empty.staged.description":
+    "Aceptar ediciones para prepararlas",
+  "codex.review.stageFilter.empty.staged.title": "No hay cambios preparados",
+  "codex.review.stageFilter.empty.unstaged.description":
+    "Los cambios de código aparecerán aquí",
+  "codex.review.stageFilter.empty.unstaged.title":
+    "No hay cambios sin preparar",
+  "codex.review.stageFilter.staged": "Preparado",
+  "codex.review.stageFilter.staged.count": "Preparado · {count}",
+  "codex.review.stageFilter.unstaged": "Sin preparar",
+  "codex.review.stageFilter.unstaged.count": "Sin preparar · {count}",
+  "codex.review.switchToSplit": "Cambiar a diff dividido",
+  "codex.review.switchToUnified": "Cambiar a diff unificado",
+  "codex.review.toggleDiffView": "Alternar vista de diff",
+  "codex.review.wordDiffs.disable": "Deshabilitar diferencias de palabras",
+  "codex.review.wordDiffs.enable": "Habilitar diferencias de palabras",
+  "codex.review.wrap.disable": "Deshabilitar ajuste de texto",
+  "codex.review.wrap.enable": "Habilitar ajuste de texto",
+  "codex.section.patch.missing":
+    "No se pudo generar el parche para esta sección.",
+  "codex.shell.collapse": "Contraer shell",
+  "codex.shell.commandLine": "$ {command}",
+  "codex.shell.copy.copiedTooltip": "Contenido del shell copiado",
+  "codex.shell.copy.copyTooltip": "Copiar contenido del shell",
+  "codex.shell.copyCommand": "Copiar comando",
+  "codex.shell.copyOutput": "Copiar salida",
+  "codex.shell.cwdLabel": "cwd",
+  "codex.shell.embeddedHeader.bash": "bash",
+  "codex.shell.expand": "Expandir shell",
+  "codex.shell.name": "Shell",
+  "codex.shell.noOutput": "Sin salida",
+  "codex.signInFailed.message": "Error al iniciar sesión: {rawMessage}",
+  "codex.stories.toast.show": "Mostrar Toast",
+  "codex.stories.tooltip.basic": "Esta es información emergente",
+  "codex.stories.tooltip.hoverMe": "Pasa el cursor por encima",
+  "codex.stories.tooltip.largerOffset":
+    "Esta información emergente tiene un mayor desplazamiento",
+  "codex.stories.tooltip.offsetButton": "Mayor desplazamiento",
+  "codex.stories.tooltip.shortcutButton": "Con atajo",
+  "codex.stories.tooltip.withShortcut": "Alternar terminal",
+  "codex.taskRow.title": "Nuevo hilo",
+  "codex.taskRowLayout.confirm": "Confirmar",
+  "codex.threadFindBar.chatFilter": "Buscar chat",
+  "codex.threadFindBar.close": "Cerrar búsqueda",
+  "codex.threadFindBar.diffFilter": "Buscar diferencias",
+  "codex.threadFindBar.label": "Buscar en el hilo",
+  "codex.threadFindBar.nextResult": "Siguiente resultado",
+  "codex.threadFindBar.noResults": "0 resultados",
+  "codex.threadFindBar.placeholder": "Buscar hilo…",
+  "codex.threadFindBar.placeholder.extension": "Buscar hilo…",
+  "codex.threadFindBar.placeholder.review": "Buscar diferencia...",
+  "codex.threadFindBar.placeholder.review.extension": "Buscar diferencia...",
+  "codex.threadFindBar.previousResult": "Siguiente resultado",
+  "codex.todoPlan.stepIndexPrefix": "{index}.",
+  "codex.ui.bulletSeparator": "·",
+  "codex.unifiedDiff.filesChanged":
+    "{fileCount, plural, one {# archivo modificado} many {# archivos modificados} other {# archivos modificados}}",
+  "codex.unifiedDiff.inlineLargeFile":
+    "Demasiado grande para mostrarse en linea",
+  "codex.unifiedDiff.linesAdded": "+{linesAdded}",
+  "codex.unifiedDiff.linesDeleted": "-{linesDeleted}",
+  "codex.unifiedDiff.revertChangesTooltip": "Deshacer",
+  "codex.unifiedDiff.revertPatchError": "Error al revertir cambios",
+  "codex.unifiedDiff.revertPatchSuccess": "Cambios revertidos",
+  "codex.unifiedDiff.reviewChangesSuffix": "cambios",
+  "codex.unifiedDiff.reviewShort": "Revisar",
+  "codex.unifiedDiff.viewDiffTooltip": "Revisar",
+  "codex.upsellBanner.business.headline":
+    "Para obtener más acceso ahora, envía una solicitud a tu administrador o espera hasta {resetDate}.",
+  "codex.upsellBanner.cbp.headline":
+    "Para obtener más acceso ahora, envía una solicitud a tu administrador.",
+  "codex.upsellBanner.cta.addCredits": "Agregar créditos",
+  "codex.upsellBanner.cta.upgradeAccount": "Mejorar el plan",
+  "codex.upsellBanner.cta.viewUsage": "Ver uso",
+  "codex.upsellBanner.freeOrGo.headline":
+    "Tu límite de uso se restablece el {resetDate}. Para seguir usando Codex, mejora tu plan a Plus hoy.",
+  "codex.upsellBanner.general.headline":
+    "Tu límite de uso se restablece el {resetDate}.",
+  "codex.upsellBanner.general.title": "No te quedan mensajes de Codex",
+  "codex.upsellBanner.plus.headline":
+    "Tu límite de uso se restablece el {resetDate}. Para seguir usando Codex, agrega créditos o mejora tu plan a Pro hoy.",
+  "codex.upsellBanner.pro.headline":
+    "Tu límite de uso se restablece el {resetDate}. Agrega créditos para seguir usando Codex ahora.",
+  "codex.userMessage.autoResolveSync": "Resolver conflictos automáticamente",
+  "codex.userMessage.commentCount":
+    "{count, plural, one {# comentario} many {# comentarios} other {# comentarios}}",
+  "codex.userMessage.copiedAriaLabel": "Copiado",
+  "codex.userMessage.copiedTooltip": "Copiado",
+  "codex.userMessage.copyAriaLabel": "Copiar mensaje",
+  "codex.userMessage.copyTooltip": "Copiar",
+  "codex.userMessage.implementPlan": "Implementar plan",
+  "codex.userMessage.noContent": "(Sin contenido)",
+  "codex.userMessage.priorConversation":
+    "Hace referencia a una conversación anterior",
+  "codex.userMessage.reviewMode": "Modo de revisión",
+  "codex.webSearch.summary": "{label}{details}",
+  "codex.webSearch.summary.details": "para {query}",
+  "codex.webSearch.summary.verb.completed": "Búsqueda en la web",
+  "codex.webSearch.summary.verb.inProgress": "Búsqueda en la web",
+  "codex.windowsInstallWslBanner.dismiss": "Descartar",
+  "codex.windowsInstallWslBanner.installWslCta": "Habilitar entorno aislado",
+  "codex.windowsInstallWslBanner.learnMore": "Obtener más información",
+  "codex.windowsSandboxBanner.content":
+    "El Modo Agente usa un entorno aislado experimental en Windows para limitar el acceso al sistema de archivos y a la red. {sandboxLink}",
+  "codex.windowsSandboxBanner.title":
+    "Habilitar entorno aislado para el Modo Agente",
+  "codex.windowsSubDropdown.windowsSandbox": "Entorno aislado de Windows",
+  "codex.windowsSubDropdown.windowsSettings": "Configuración de Windows",
+  "codexUpgradeModal.body":
+    "Codex ahora incorpora la tecnología de GPT-5.2-Codex, nuestro nuevo modelo avanzado de programación con capacidades agénticas. En tareas de programación {link}; mejora aún más el rendimiento de GPT-5.2.",
+  "codexUpgradeModal.close": "Cerrar",
+  "codexUpgradeModal.image.altText": "GPT-5.2-Codex",
+  "codexUpgradeModal.smarterAndFaster": "más inteligente y rápido",
+  "codexUpgradeModal.title": "Codex acaba de mejorar",
+  "codexUpgradeModal.tryNewModel": "Prueba GPT-5.2-Codex ahora",
+  "codexUpgradeModal.useExistingModel": "Continuar con el modelo actual",
+  "commentAttachments.numComments":
+    "{count, plural, one {# comentario} many {# comentarios} other {# comentarios}}",
+  "commentAttachments.removeAriaLabel":
+    "Eliminar archivo adjunto de comentarios",
+  "common.close": "Cerrar",
+  "composer.addContextDropdown.ariaLabel": "Agregar archivos y más",
+  "composer.addContextDropdown.tooltipSlash": "/",
+  "composer.addContextDropdown.tooltipText": "Agregar archivos y más",
+  "composer.addPhotosAndFiles": "Agregar fotos y archivos",
+  "composer.atMentionList.emptyQuery": "Escribir para buscar archivos",
+  "composer.atMentionList.noResults": "Sin resultados",
+  "composer.attemptsSelector.option":
+    "{count, plural, one {# versión} many {# versiones} other {# versiones}}",
+  "composer.attemptsSelector.tooltip":
+    "Cantidad de intentos paralelos que Codex puede realizar",
+  "composer.attemptsSelector.trigger": "{count} veces",
+  "composer.cloudFollowUp.cloud": "Nube",
+  "composer.cloudFollowUp.local": "Local",
+  "composer.cloudFollowUp.whereRun":
+    "¿Dónde debería ejecutarse este seguimiento?",
+  "composer.cloudTaskCreationError": "Error al crear la tarea en la nube",
+  "composer.cloudTaskError": "Error al crear la tarea",
+  "composer.collaborationMode.code": "Código",
+  "composer.collaborationMode.modelReasoning.editLabel":
+    "Editar modelo y razonamiento",
+  "composer.collaborationMode.modelReasoning.title":
+    "Model y razonamiento para {mode}",
+  "composer.collaborationMode.plan": "Plan",
+  "composer.collaborationMode.reasoning.default": "Predeterminada",
+  "composer.collaborationMode.tooltip.line1": "{mode} usa {model}",
+  "composer.collaborationMode.tooltip.line2": "con {reasoningEffort}",
+  "composer.contextWindow.autoCompactionTooltipLine1":
+    "Codex compacta automáticamente su contexto",
+  "composer.contextWindow.usagePercent": "{usage} %",
+  "composer.contextWindowUsageLabel": "Ventana de contexto:",
+  "composer.contextWindowUsageStatusFull": "{usage} % completo",
+  "composer.contextWindowUsageStatusLeft":
+    "{usage} % usado ({remaining} % restante)",
+  "composer.contextWindowUsageTooltip":
+    "{usedTokens} mil / {contextWindow} mil tokens usados",
+  "composer.customCliTooltip": "Usando un ejecutable de CLI personalizado",
+  "composer.dictation.aria": "Dictar",
+  "composer.dictation.cancel.aria": "Detener dictado",
+  "composer.dictation.cancel.tooltip": "Detener dictado",
+  "composer.dictation.startError": "No se puede iniciar el dictado",
+  "composer.dictation.submit.aria": "Transcribir y enviar",
+  "composer.dictation.submit.tooltip": "Transcribir y enviar",
+  "composer.dictation.tooltip": "Arrastra para dictar",
+  "composer.dictation.transcribeError": "No se puede transcribir el audio",
+  "composer.dictation.unsupported":
+    "El dictado no está disponible en este dispositivo",
+  "composer.dropOverlay.holdShift": "Mantén {key} para soltar",
+  "composer.dropOverlay.shiftKey": "Tecla Mayús",
+  "composer.environmentSelector.createNew": "Crear nuevo",
+  "composer.environmentSelector.error": "Error al cargar el entorno",
+  "composer.environmentSelector.goBack": "Volver al editor",
+  "composer.environmentSelector.title": "Seleccionar entorno",
+  "composer.environmentSelector.tooltip": "Selecciona un entorno en la nube",
+  "composer.feedbackSlashCommand.title": "Comentarios",
+  "composer.followerTooltip":
+    "Para continuar, regresa a la ventana en la que comenzó esta conversación.",
+  "composer.footer.branchSwitch.createDialog.ariaLabel": "Nombre de la rama",
+  "composer.footer.branchSwitch.createDialog.branchName": "Nombre de la rama",
+  "composer.footer.branchSwitch.createDialog.close": "Cerrar",
+  "composer.footer.branchSwitch.uncommittedDialog.cancel": "Cancelar",
+  "composer.footer.branchSwitch.uncommittedDialog.separator": "·",
+  "composer.footer.branchSwitch.uncommittedDialog.title":
+    "Cambios sin confirmar",
+  "composer.ideContextIndicator.tooltipToggle": "para alternar",
+  "composer.imageUploadFailed": "Error al cargar la imagen",
+  "composer.includeIdeContextDropdown": "Incluir contexto de IDE",
+  "composer.includeIdeContextDropdown.ariaLabel": "Incluir contexto de IDE",
+  "composer.localCwdDropdown.addWorkspaceRoot": "Agregar nuevo proyecto",
+  "composer.localCwdDropdown.noActiveRoot": "Selecciona tu proyecto",
+  "composer.localCwdDropdown.noResults": "No se encontraron carpetas",
+  "composer.localCwdDropdown.title": "Selecciona tu proyecto",
+  "composer.localTaskError": "Error al iniciar la conversación",
+  "composer.mcpSlashCommand.description": "Mostrar estado del servidor MCP",
+  "composer.mcpSlashCommand.title": "MCP",
+  "composer.mcpStatus.authLoggedOut": "No autenticado",
+  "composer.mcpStatus.authOauth": "Autenticado (OAuth)",
+  "composer.mcpStatus.authToken": "Autenticado (clave de API)",
+  "composer.mcpStatus.authUnsupported": "STDIO",
+  "composer.mcpStatus.close": "Cerrar",
+  "composer.mcpStatus.disabled": "Deshabilitado",
+  "composer.mcpStatus.emptyLabel": "Servidores:",
+  "composer.mcpStatus.emptyValue": "No hay servidores MCP configurados",
+  "composer.mcpStatus.enabled": "Habilitado",
+  "composer.mcpStatus.errorLabel": "Estado:",
+  "composer.mcpStatus.errorValue": "No se puede cargar el estado de MCP",
+  "composer.mcpStatus.heading": "MCP",
+  "composer.mode.agentMode.auto": "Agente",
+  "composer.mode.agentMode.auto.dropdownLabel": "Agente",
+  "composer.mode.agentMode.auto.optionLabel": "Agente",
+  "composer.mode.agentMode.changePermission": "Cambiar modo",
+  "composer.mode.agentMode.custom": "Personalizado",
+  "composer.mode.agentMode.custom.dropdownLabel": "Personalizado",
+  "composer.mode.agentMode.custom.option": "Personalizado (config.toml)",
+  "composer.mode.agentMode.custom.optionLabel": "Personalizado (config.toml)",
+  "composer.mode.agentMode.customInfo.cancel": "Cancelar",
+  "composer.mode.agentMode.customInfo.cli":
+    "Puedes ajustar esos valores desde la CLI o editando el archivo directamente.",
+  "composer.mode.agentMode.customInfo.confirm": "Usar modo personalizado",
+  "composer.mode.agentMode.customInfo.description":
+    "El modo personalizado aplica las políticas de aprobación y aislamiento definidas en tu archivo <link>config.toml</link>.",
+  "composer.mode.agentMode.customInfo.docs":
+    "Obtén más información sobre cómo configurar las políticas de aprobación y aislamiento en la <link>documentación del entorno de ejecución</link>.",
+  "composer.mode.agentMode.customInfo.refresh":
+    "Cualquier cambio tendrá efecto la próxima vez que se ejecute el agente.",
+  "composer.mode.agentMode.customInfo.title":
+    "Cómo funciona el modo personalizado",
+  "composer.mode.agentMode.fullAccess": "Agente (acceso total)",
+  "composer.mode.agentMode.fullAccess.dropdownLabel": "Agente (acceso total)",
+  "composer.mode.agentMode.fullAccess.optionLabel": "Agente (acceso total)",
+  "composer.mode.agentMode.fullAccessConfirm.caution":
+    "Actúa con precaución al habilitar el acceso total. Esto incrementa significativamente el riesgo de pérdida de datos, filtraciones o comportamientos inesperados.",
+  "composer.mode.agentMode.fullAccessConfirm.confirm":
+    "Sí, continuar de todos modos",
+  "composer.mode.agentMode.fullAccessConfirm.description":
+    "Cuando Codex se ejecuta con acceso total, puede editar cualquier archivo en tu computadora y ejecutar comandos con red, sin tu aprobación.",
+  "composer.mode.agentMode.fullAccessConfirm.goBack": "Cancelar",
+  "composer.mode.agentMode.fullAccessConfirm.title":
+    "¿Habilitar el acceso total?",
+  "composer.mode.agentMode.readOnly": "Chat",
+  "composer.mode.agentMode.readOnly.dropdownLabel": "Chat",
+  "composer.mode.agentMode.readOnly.optionLabel": "Chat",
+  "composer.mode.agentMode.tooltip": "Cambiar modo",
+  "composer.mode.agentMode.tooltip.auto":
+    "Leer archivos, editarlos y ejecutar comandos.",
+  "composer.mode.agentMode.tooltip.custom":
+    "Usar las políticas más recientes de aprobación y aislamiento definidas en config.toml.",
+  "composer.mode.agentMode.tooltip.fullAccess":
+    "Codex puede editar archivos fuera del proyecto y ejecutar comandos con acceso a la red. Usa esta función con precaución.",
+  "composer.mode.agentMode.tooltip.readOnly":
+    "Requiere aprobación para editar archivos y ejecutar comandos",
+  "composer.mode.cloud.tooltip": "Trabaja en un entorno en la nube",
+  "composer.mode.contactAdmin":
+    "Para obtener más acceso, comunícate con tu administrador",
+  "composer.mode.local": "Local",
+  "composer.mode.local.gpt5_1_codex_max_reasoning.model": "GPT-5.1-Codex-Max",
+  "composer.mode.local.gpt5_1_codex_mini_reasoning.model": "GPT-5.1-Codex-Mini",
+  "composer.mode.local.gpt5_1_codex_reasoning.model": "GPT-5.1-Codex",
+  "composer.mode.local.gpt5_2_codex_reasoning.model": "GPT-5.2-Codex",
+  "composer.mode.local.gpt5_2_reasoning.model": "GPT-5.2",
+  "composer.mode.local.gpt5_codex_mini_reasoning.model": "GPT-5-Codex-Mini",
+  "composer.mode.local.learnMore": "Obtener más información",
+  "composer.mode.local.model.custom": "Personalizado",
+  "composer.mode.local.model.loadingModel": "Cargando modelo",
+  "composer.mode.local.model.selecrReasoningEffort": "Seleccionar razonamiento",
+  "composer.mode.local.model.selectModel": "Seleccionar modelo",
+  "composer.mode.local.model.tooltip": "Elegir modelo",
+  "composer.mode.local.ratePercent": "{usage} %",
+  "composer.mode.local.reasoning.high.label": "Alto",
+  "composer.mode.local.reasoning.low.label": "Bajo",
+  "composer.mode.local.reasoning.medium.label": "Medio",
+  "composer.mode.local.reasoning.minimal.label": "Mínimo",
+  "composer.mode.local.reasoning.none.label": "Ninguno",
+  "composer.mode.local.reasoning.xhigh.label": "Extremadamente alto",
+  "composer.mode.localRemoteWhereRun": "Selecciona dónde ejecutar la tarea",
+  "composer.mode.newTask.header": "Continuar en",
+  "composer.mode.rateLimit.day": "{days} d",
+  "composer.mode.rateLimit.heading": "Límites de uso restantes",
+  "composer.mode.rateLimit.hour": "{hours} h",
+  "composer.mode.rateLimit.minute": "{minutes} m",
+  "composer.mode.rateLimit.weeklyDynamicSentence":
+    "{weeks, plural, one {límite semanal} many {límite de {weeks} semanas} other {límite de {weeks} semanas}}",
+  "composer.mode.rateLimit.weeklyDynamicTitle":
+    "{weeks, plural, one {Semanal} many {{weeks} semanas} other {{weeks} semanas}}",
+  "composer.mode.remote.connectToCloud": "Conectar Codex web",
+  "composer.mode.remote.connectToCloudDisabledTooltip":
+    "Configurar un entorno mediante Codex web para permitir enviar tareas a la nube",
+  "composer.mode.remote.selectEnvironment": "Seleccionar entorno",
+  "composer.mode.remote.sendToCloud": "Enviar a la nube",
+  "composer.mode.remote.setupViaWeb":
+    "Configurar un entorno mediante Codex web",
+  "composer.mode.runInCloud": "Nube",
+  "composer.mode.runInCloudWithEnvironment": "Nube: {environment}",
+  "composer.mode.segmentedToggle.cloud.tooltip":
+    "Trabajar en entorno en la nube",
+  "composer.mode.segmentedToggle.local.tooltip": "Trabaja en tu proyecto local",
+  "composer.mode.segmentedToggle.worktree.tooltip":
+    "Trabajar en un worktree en paralelo",
+  "composer.mode.upgradeToPlus": "Mejorar el plan a Plus",
+  "composer.mode.upgradeToPro": "Mejorar el plan a Pro",
+  "composer.mode.workLocally": "Proyecto local",
+  "composer.mode.workLocally.currentBranchFallback": "tu rama",
+  "composer.mode.workLocally.tooltip": "Trabajar en {branchName}",
+  "composer.mode.worktree": "Nuevo worktree",
+  "composer.mode.worktree.submoduleWarning":
+    "Este repositorio tiene submódulos de git. La creación del worktree puede fallar.",
+  "composer.mode.worktree.tooltip":
+    "Crea una copia de tu proyecto local para trabajar en paralelo",
+  "composer.mode.worktreeSegment": "Worktree",
+  "composer.newChat.heading.browser": "¿Qué debemos programar ahora?",
+  "composer.permissionsDropdown.custom.label": "Personalizado (config.toml)",
+  "composer.permissionsDropdown.custom.optionLabel":
+    "Personalizado (config.toml)",
+  "composer.permissionsDropdown.fullAccess.disabled":
+    "El acceso completo está deshabilitado por requirements.toml",
+  "composer.personalitySlashCommand.description.friendly":
+    "Cálido, colaborativo y útil",
+  "composer.personalitySlashCommand.description.pragmatic":
+    "Conciso, enfocado en tareas y directo",
+  "composer.personalitySlashCommand.label.friendly": "Amigable",
+  "composer.personalitySlashCommand.label.pragmatic": "Pragmático",
+  "composer.personalitySlashCommand.notApplicableSuffix":
+    "(No se aplica al modelo actual)",
+  "composer.personalitySlashCommand.title": "Personalidad",
+  "composer.placeholder.cloudFollowUp.directFollowUp":
+    "Seguimiento de esta tarea en la nube",
+  "composer.placeholder.cloudFollowUp.local":
+    "Crear una nueva tarea local que haga referencia a esta tarea en la nube",
+  "composer.placeholder.cloudFollowUp.workingTree":
+    "Crear una nueva tarea en la nube que incluya tu código actual y haga referencia a esta tarea",
+  "composer.placeholder.localFollowUp.cloud":
+    "Seguimiento en una nueva tarea en la nube",
+  "composer.placeholder.localFollowUp.locally":
+    "Solicitar cambios de seguimiento",
+  "composer.placeholder.newTask.cloud":
+    "Pedir a Codex que haga cualquier cosa en la nube",
+  "composer.placeholder.newTask.doAnything":
+    "Pedir a Codex que haga cualquier cosa",
+  "composer.placeholder.newTask.locally":
+    "Pregúntale a Codex lo que quieras; @ para agregar archivos, / para comandos",
+  "composer.planModeDropdown": "Modo plan",
+  "composer.planModeDropdown.ariaLabel": "Modo plan",
+  "composer.planModeIndicator": "Plan",
+  "composer.planModeIndicator.tooltipShortcut": "Mayús+Tab",
+  "composer.planModeIndicator.tooltipText": "para alternar",
+  "composer.planModeIndicator.tooltipToggle": "para alternar",
+  "composer.planSlashCommand.disableDescription": "Desactivar modo plan",
+  "composer.planSlashCommand.enableDescription": "Activar modo plan",
+  "composer.planSlashCommand.title": "Modo plan",
+  "composer.priorContext.label": "Contexto anterior",
+  "composer.priorContext.removeAriaLabel": "Eliminar el contexto anterior",
+  "composer.queuedMessage.delete": "Eliminar mensaje en cola",
+  "composer.queuedMessage.edit": "Editar mensaje",
+  "composer.queuedMessage.more": "Acciones del mensaje en cola",
+  "composer.queuedMessage.sendNow": "Enviar ahora",
+  "composer.queuedMessage.sendNowTooltip": "enviar ahora",
+  "composer.queuedMessage.turnOff": "Desactivar la cola",
+  "composer.reasoningEffort.local.reasoning.tooltip":
+    "Seleccionar esfuerzo de razonamiento",
+  "composer.remote.branchStartingPoint":
+    "¿Desde qué rama debería comenzar esta tarea?",
+  "composer.remote.branchesSectionHeading": "Ramas",
+  "composer.remote.currentEditsSuffix.followUp":
+    "Crear una nueva tarea que haga referencia a esta tarea en la nube.",
+  "composer.remote.currentEditsSuffix.useLocal":
+    "con cambios de código locales",
+  "composer.remote.directFollowUp": "No usar cambios locales",
+  "composer.remote.errorLoadingBranches": "Error al cargar ramas",
+  "composer.remote.fromBranch": "Estado anterior: {branch}",
+  "composer.remote.fromCurrentBranch": "Desde {branch} (actual)",
+  "composer.remote.loadingMoreBranches": "Cargando…",
+  "composer.remote.localFileStateHeading": "Estado del archivo local",
+  "composer.remote.localWorkingTree": "Usar cambios locales",
+  "composer.remote.startingPoint":
+    "¿Desde qué código debería iniciarse esta tarea?",
+  "composer.reviewMode.branches.error": "No es posible cargar las ramas",
+  "composer.reviewMode.branches.retry": "Reintentar",
+  "composer.reviewMode.gitRoot.error": "Raíz de Git no encontrada",
+  "composer.reviewMode.option.baseBranch.simple":
+    "Revisar respecto a una rama base",
+  "composer.reviewMode.option.unstaged.simple": "Revisar cambios sin confirmar",
+  "composer.reviewMode.option.unsynced.simple":
+    "Revisar cambios no sincronizados",
+  "composer.reviewMode.quickReviewError":
+    "Error al iniciar la revisión de código.",
+  "composer.reviewMode.title": "Revisión de código",
+  "composer.sandboxButton.unlock.disabled.tooltip":
+    "El acceso completo está deshabilitado por requirements.toml",
+  "composer.sandboxButton.windowsSandboxDialog.content":
+    "Codex puede usar un entorno aislado experimental en Windows para limitar el acceso al sistema de archivos y a la red. {sandboxLink}",
+  "composer.sandboxButton.windowsSandboxDialog.title":
+    "¿Habilitar entorno aislado de Windows?",
+  "composer.sandboxButton.windowsSandboxDialog.useReadOnly":
+    "Usar solo lectura",
+  "composer.searchEnvironments": "Buscar entornos",
+  "composer.skillMentionList.app": "Aplicación",
+  "composer.skillMentionList.loading": "Cargando habilidades…",
+  "composer.skillMentionList.noResults": "No se encontraron habilidades",
+  "composer.slashCommands.cloudEnvironment.title": "Entorno en la nube",
+  "composer.slashCommands.dialogLabel": "Menú de comandos slash",
+  "composer.slashCommands.dialogTitle": "Comandos slash",
+  "composer.slashCommands.disabledTooltip":
+    "Inicia una conversación nueva para usar comandos slash",
+  "composer.slashCommands.inputPlaceholder": "Buscar",
+  "composer.slashCommands.noResults": "Sin comandos",
+  "composer.slashCommands.skillsGroup": "Habilidades",
+  "composer.slashCommands.tooltip": "Explorar comandos slash",
+  "composer.status.close": "Cerrar",
+  "composer.statusPlain.alertLabel": "Alerta:",
+  "composer.statusPlain.alertValue": "{remaining} % restante en {window}",
+  "composer.statusPlain.contextLabel": "Contexto:",
+  "composer.statusPlain.contextTotal": "{count} K",
+  "composer.statusPlain.contextValueMetadata": "({used} usado / {total})",
+  "composer.statusPlain.contextValueRemaining": "{remaining} % restante",
+  "composer.statusPlain.heading": "Estado",
+  "composer.statusPlain.rateLimitDays": "Límite: {count} d",
+  "composer.statusPlain.rateLimitFallbackLabel": "Límite de uso:",
+  "composer.statusPlain.rateLimitHours": "Límite: {count} h",
+  "composer.statusPlain.rateLimitLabelBase": "Límite de uso",
+  "composer.statusPlain.rateLimitMinutes": "Límite: {count} min",
+  "composer.statusPlain.rateLimitPercent": "{remaining} % restante",
+  "composer.statusPlain.rateLimitReset": "Se restablecerá {time}",
+  "composer.statusPlain.rateLimitResetMetadata": "({phrase})",
+  "composer.statusPlain.rateLimitResetUnknown":
+    "hora de restablecimiento no disponible",
+  "composer.statusPlain.rateLimitUnavailable": "No disponible",
+  "composer.statusPlain.sessionCopiedAriaLabel": "ID de sesión copiado",
+  "composer.statusPlain.sessionCopiedTooltip": "ID copiado",
+  "composer.statusPlain.sessionCopyAriaLabel": "Copiar ID de sesión",
+  "composer.statusPlain.sessionCopyTooltip": "Copiar ID",
+  "composer.statusPlain.sessionLabel": "Sesión:",
+  "composer.statusSlashCommand.description":
+    "Mostrar el ID del hilo, el uso de contexto y los límites de uso",
+  "composer.statusSlashCommand.title": "Estado",
+  "composer.submit.blockedDialogOk": "Aceptar",
+  "composer.submit.blockedDialogTitle": "No se puede enviar el mensaje",
+  "composer.submit.emptyMessage": "Ingresa un mensaje para comenzar",
+  "composer.submit.loadingLocalConfig": "Cargando…",
+  "composer.submit.missingCloudConfig": "Debes elegir un entorno de nube",
+  "composer.submit.missingCloudTurn":
+    "No es posible hacer el seguimiento de esta tarea",
+  "composer.submit.noWorkspace": "Agrega un proyecto para usar Codex",
+  "composer.submit.unsavedComments":
+    "Guarda o cancela {count, plural, one {edición de tu comentario} many {ediciones de tu comentario} other {ediciones de tu comentario}} antes de enviar.",
+  "composer.submit.waitForImageUploads": "Cargando imágenes…",
+  "composer.worktreeEnvironment.create": "Crear entorno local",
+  "composer.worktreeEnvironment.default": "Entorno predeterminado",
+  "composer.worktreeEnvironment.error": "Error al cargar el entorno",
+  "composer.worktreeEnvironment.loading": "Cargando entornos...",
+  "composer.worktreeEnvironment.title": "Entorno local",
+  "composer.worktreeEnvironment.tooltip": "Seleccionar un entorno local",
+  "composer.worktreeSetupFailed":
+    "Error en la configuración del worktree. Comprueba .codex/environments para encontrar un script de configuración.",
+  "compoundButton.secondaryAction": "Acción secundaria",
+  "copyButton.copied": "Copiado",
+  "copyButton.copiedAriaLabel": "Copiado",
+  "copyButton.copy": "Copiar",
+  "copyButton.copyAriaLabel": "Copiar",
+  "copyButton.copyCode": "Copiar código",
+  "debug.childProcesses.age": "Edad:{age}",
+  "debug.childProcesses.empty": "No se encontraron procesos git secundarios.",
+  "debug.childProcesses.loading": "Cargando procesos git secundarios…",
+  "debug.childProcesses.meta": "PID: {pid} | Principal: {parentPid}",
+  "debug.childProcesses.missingCommand": "(comando no disponible)",
+  "debug.childProcesses.title": "Procesos git secundarios ({count})",
+  "debug.childProcesses.titleClosed": "Procesos git secundarios",
+  "debug.entries.fallbackTitle": "Entrada de depuración",
+  "debug.onboarding.override.app": "Aplicación",
+  "debug.onboarding.override.auto": "Automático",
+  "debug.onboarding.override.login": "Iniciar sesión",
+  "debug.onboarding.override.welcome": "Te damos la bienvenida",
+  "debug.onboarding.override.workspace": "Proyecto",
+  "debug.onboarding.state": "Autenticación: {auth}. Proyectos: {workspaces}",
+  "debug.onboarding.title": "Incorporación",
+  "debug.roots.empty": "No hay raíces de proyecto",
+  "debug.roots.title": "Raíces del proyecto",
+  "debug.sentry.appSessionId": "ID de sesión de la aplicación",
+  "debug.sentry.logs.export": "Exportar",
+  "debug.sentry.logs.export.scope.last7days": "Los últimos 7 días",
+  "debug.sentry.logs.export.scope.session": "Esta sesión",
+  "debug.sentry.logs.export.scope.today": "Registros de hoy",
+  "debug.sentry.logs.section.title": "Registros",
+  "debug.sentry.section.title": "Diagnósticos",
+  "debug.sentry.testing.section.title": "Informe de errores",
+  "debug.triggerSentryTestError": "Enviar error de prueba",
+  "debug.user.accountId": "ID de cuenta",
+  "debug.user.authMethod": "Método de autenticación",
+  "debug.user.email": "Correo electrónico",
+  "debug.user.section.title": "Usuario",
+  "debug.user.userId": "ID de usuario",
+  "debug.window.title": "Depurar",
+  "diff.actionButton.revertFile": "Revertir archivo",
+  "diff.actionButton.revertHunk": "Revertir",
+  "diff.actionButton.revertSection": "Revertir todo",
+  "diff.actionButton.revertSectionLabel": "Revertir todo",
+  "diff.actionButton.stageFile": "Preparar archivo",
+  "diff.actionButton.stageHunk": "Preparar",
+  "diff.actionButton.stageSection": "Preparar todo",
+  "diff.actionButton.stageSectionLabel": "Preparar todo",
+  "diff.actionButton.unstageFile": "Deshacer la preparación del archivo",
+  "diff.actionButton.unstageHunk": "Deshacer la preparación",
+  "diff.actionButton.unstageSection": "Deshacer la preparación de todo",
+  "diff.actionButton.unstageSectionLabel": "Deshacer la preparación de todo",
+  "diff.fileHeader.toggle": "Alternar diferencias de archivos",
+  "electron.onboarding.login.apikey.cancel": "Cancelar",
+  "electron.onboarding.login.apikey.continue": "Continuar",
+  "electron.onboarding.login.apikey.label": "Clave de API de OpenAI",
+  "electron.onboarding.login.apikey.open": "Ingresar clave de API",
+  "electron.onboarding.login.apikey.placeholder": "sk-...",
+  "electron.onboarding.login.chatgpt.cancel": "Cancelar inicio de sesión",
+  "electron.onboarding.login.chatgpt.continue": "Continuar con ChatGPT",
+  "electron.onboarding.login.devbox": "Conectarse a un SSH remoto",
+  "electron.onboarding.login.error": "Error al iniciar sesión: {rawMessage}",
+  "electron.onboarding.login.snake.start": "Jugar Snake",
+  "electron.onboarding.login.sshConfig.cancel": "Cancelar",
+  "electron.onboarding.login.sshConfig.continue": "Continuar",
+  "electron.onboarding.login.sshConfig.hostnameLabel": "Nombre de host SSH",
+  "electron.onboarding.login.sshConfig.hostnamePlaceholder":
+    "devbox.openai.com",
+  "electron.onboarding.login.subtitle": "La mejor forma de crear con agentes",
+  "electron.onboarding.login.title": "Te damos la bienvenida a Codex",
+  "electron.onboarding.shell.title": "Codex",
+  "electron.onboarding.welcome.continue": "Continuar",
+  "electron.onboarding.welcome.doubleLimits.description":
+    "Para celebrar el lanzamiento de la aplicación Codex, tendrás el doble de límites de uso hasta el 2 de abril.",
+  "electron.onboarding.welcome.freego.description":
+    "Codex está incluido en tu plan de forma gratuita hasta el 2 de marzo. Empecemos a construir juntos.",
+  "electron.onboarding.welcome.new.title.anon": "¡Te damos la bienvenida!",
+  "electron.onboarding.workspace.continue": "Continuar",
+  "electron.onboarding.workspace.empty": "Agrega un proyecto para continuar.",
+  "electron.onboarding.workspace.listLabel": "Proyectos disponibles",
+  "electron.onboarding.workspace.loading": "Cargando proyectos...",
+  "electron.onboarding.workspace.openFolder": "Agregar proyecto",
+  "electron.onboarding.workspace.selectAll": "Seleccionar todo",
+  "electron.onboarding.workspace.skip": "Omitir",
+  "electron.onboarding.workspace.skip.error":
+    "No se pudo crear un nuevo proyecto. {message}",
+  "electron.onboarding.workspace.skip.error.unknown": "Error desconocido",
+  "electron.onboarding.workspace.skipping": "Creando un nuevo proyecto...",
+  "electron.onboarding.workspace.subtitle":
+    "Codex podrá editar archivos y ejecutar comandos en carpetas seleccionadas.",
+  "electron.onboarding.workspace.title": "Selecciona un proyecto",
+  "errorPage.list.checkSettings":
+    "Prueba actualizar la configuración de tu IDE",
+  "errorPage.list.configToml":
+    "Comprueba tu config.toml para verificar si hay configuraciones no válidas",
+  "errorPage.list.downloadExtension":
+    "Intenta descargar otra versión de la extensión",
+  "errorPage.list.runInWsl":
+    "Comprueba tu configuración para deshabilitar la ejecución en WSL si ves problemas de compatibilidad",
+  "execApprovalRequest.menu.runAlways":
+    "Sí y no volver a preguntar en esta sesión",
+  "execApprovalRequest.menu.runAlwaysWithAmendment":
+    "Sí, y no volver a preguntar para comandos que comiencen con {command}",
+  "execApprovalRequest.menu.runAlwaysWithAmendment.prefix":
+    "Sí, y no volver a preguntar para comandos que comiencen con",
+  "execApprovalRequest.menu.runOnce": "Sí",
+  "execApprovalRequest.prompt": "¿Quieres ejecutar este comando?",
+  "execApprovalRequest.reject": "No",
+  "execFooter.exitCode": "Código de salida: {code}",
+  "execFooter.exitCode.unknown": "desconocido",
+  "execFooter.success": "Correcto",
+  "feedback.dialog.category.badResult": "Resultado incorrecto",
+  "feedback.dialog.category.bug": "Error",
+  "feedback.dialog.category.goodResult": "Resultado correcto",
+  "feedback.dialog.category.other": "Otra opción",
+  "feedback.dialog.descriptionPlaceholder": "Describe el problema aquí",
+  "feedback.dialog.dismiss": "Descartar",
+  "feedback.dialog.includeLogsLabel":
+    "Incluir los registros de la sesión actual de Codex",
+  "feedback.dialog.submit": "Enviar",
+  "feedback.dialog.submitError":
+    "No se pudieron enviar tus comentarios. Inténtalo nuevamente en un momento.",
+  "feedback.dialog.title": "Comentarios",
+  "feedback.dialog.uploadedMessage.existingIssue":
+    "incidencia abierta existente",
+  "feedback.dialog.uploadedMessage.noThread":
+    "Comentarios cargados. Si el problema persiste, {openIssueLink} o comenta en una {existingIssueLink}.",
+  "feedback.dialog.uploadedMessage.openIssue": "abre una incidencia en GitHub",
+  "feedback.dialog.uploadedMessage.withThread":
+    "Comentarios cargados. Si el problema persiste, {openIssueLink} o menciona el ID del hilo en una {existingIssueLink}:",
+  "feedback.dialog.uploadedTitle": "Comentarios cargados",
+  "fileAttachment.lineInfo": "{lineInfo}",
+  "fileAttachment.removeAriaLabel": "Quitar {filename}",
+  "header.back": "Atrás",
+  "header.recentChats": "Tareas",
+  "header.recentTasks.seeAll": "Ver todas ({total})",
+  "home.header.getPlus": "Obtener Plus",
+  "home.hero.letsBuild": "Construyamos",
+  "homePage.mainContent": "Contenido principal",
+  "imageAttachment.defaultName": "imagen",
+  "imageAttachment.preview.close": "Cerrar vista previa de imagen",
+  "imageAttachment.removeAriaLabel": "Quitar {filename}",
+  "implementPlanRequest.option.implement": "Sí, implementar este plan",
+  "implementPlanRequest.prompt": "¿Implementar este plan?",
+  "inbox.archived.deleteError": "No se pudo eliminar la ejecución archivada",
+  "inbox.archived.deleteRun": "Eliminar ejecución archivada",
+  "inbox.archived.inlineLabel.auto":
+    "Este hilo se archivó automáticamente. <learnMoreLink>Obtener más información</learnMoreLink>.",
+  "inbox.archived.inlineLabel.manual": "Este hilo se archivó.",
+  "inbox.archived.noMessageFound": "No se encontró ningún mensaje",
+  "inbox.automations.createError": "No se pudo crear la automatización",
+  "inbox.automations.deleteConfirm.cancel": "Cancelar",
+  "inbox.automations.deleteConfirm.confirm": "Eliminar la automatización",
+  "inbox.automations.deleteConfirm.description":
+    "Esto eliminará permanentemente la automatización y detendrá cualquier ejecución futura.",
+  "inbox.automations.deleteConfirm.title": "¿Deseas eliminar {name}?",
+  "inbox.automations.deleteError": "No se pudo eliminar la automatización",
+  "inbox.automations.editTooltip": "Editar automatización",
+  "inbox.automations.inProgress": "En curso",
+  "inbox.automations.new": "Nuevo",
+  "inbox.automations.newToolbar": "Nueva automatización",
+  "inbox.automations.pauseTooltip": "Pausar automatización",
+  "inbox.automations.resumeTooltip": "Reanudar automatización",
+  "inbox.automations.startingNow": "Comenzando ahora",
+  "inbox.automations.startsIn": "Comienza en {startTime}",
+  "inbox.automations.status.active": "Activo",
+  "inbox.automations.status.paused": "Pausada",
+  "inbox.automations.status.runs": "{count} ejecuciones",
+  "inbox.automations.status.started": "Iniciada: {date}",
+  "inbox.automations.updateError": "No se pudo actualizar la automatización",
+  "inbox.automations.workspaceFallback": "-",
+  "inbox.filter.all": "Todo",
+  "inbox.filter.ariaLabel": "Filtrar elementos de la bandeja de entrada",
+  "inbox.filter.unread": "No leídos",
+  "inbox.list.archived": "Archivado",
+  "inbox.list.inProgress": "En curso",
+  "inbox.list.recent": "Reciente",
+  "inbox.list.upNext": "A continuación",
+  "inbox.mode.automations": "Automatizaciones",
+  "inbox.mode.automations.beta": "Beta",
+  "inbox.noDescription": "No se proporcionó una descripción.",
+  "inbox.openThread": "Abrir hilo",
+  "inbox.rightPanel.emptySubtitle":
+    "Automatiza el trabajo configurando tareas programadas",
+  "inbox.rightPanel.emptyTasksTitle.activeCount":
+    "{count, plural, one {# automatización activa} many {# automatizaciones activas} other {# automatizaciones activas}}",
+  "inbox.rightPanel.emptyTasksTitle.noneUnread": "No hay automatizaciones",
+  "inbox.rightPanel.emptyTasksTitle.unreadCount":
+    "{count, plural, one {# automatización sin leer} many {# automatizaciones sin leer} other {# automatizaciones sin leer}}",
+  "inbox.rightPanel.emptyTitle": "No hay ningún elemento seleccionado",
+  "inbox.rightPanel.noThread": "No hay ningún hilo para este elemento.",
+  "inbox.untitled": "Elemento sin título de la bandeja de entrada",
+  "loadingPage.documentationLink": "documentación",
+  "loadingPage.errorDescription": "Codex se cerró con el siguiente error:",
+  "loadingPage.errorDescription.documentation":
+    "Haz clic en “Volver a cargar” para reiniciar la extensión de Codex o consulta nuestra {documentationLink} para obtener ayuda adicional.",
+  "loadingPage.errorSignal": "Algunas cosas para probar:",
+  "loadingPage.errorTitle": "Ocurrió un error",
+  "loadingPage.openConfigToml": "Abrir config.toml",
+  "loadingPage.reload": "Volver a cargar",
+  "localConversation.contextCompacted":
+    "El contexto se compactó automáticamente",
+  "localConversation.contextCompacting":
+    "Compactando automáticamente el contexto",
+  "localConversation.merge.autoResolve.failed":
+    "Error al solicitar resolución automática: {error}",
+  "localConversation.merge.autoResolve.sent":
+    "Solicitud de resolución automática enviada",
+  "localConversation.merge.autoResolveMerge.missingConversation":
+    "No se puede resolver automáticamente sin una conversación activa.",
+  "localConversation.merge.autoResolveMerge.request":
+    "Resolver automáticamente los conflictos de fusión",
+  "localConversation.personalityChanged":
+    "Se cambió a la personalidad {personality}",
+  "localConversation.planSummary.collapse": "Contraer resumen del plan",
+  "localConversation.planSummary.collapseTooltip": "Contraer",
+  "localConversation.planSummary.expand": "Expandir resumen del plan",
+  "localConversation.planSummary.expandTooltip": "Expandir",
+  "localConversation.planSummary.openInNewWindow": "Abrir",
+  "localConversation.planSummary.openInNewWindow.tooltip":
+    "Abrir en una nueva ventana",
+  "localConversation.planSummary.title": "Plan",
+  "localConversation.planSummary.viewPlan": "Expandir plan",
+  "localConversation.remoteTaskCreated":
+    "Se creó una {taskLink} en Codex Cloud",
+  "localConversation.remoteTaskCreated.task": "tarea",
+  "localConversation.scrollToBottomButton": "Ir al final",
+  "localConversation.sync.buttonLabel": "Transferir a local",
+  "localConversation.sync.modal.loading.title": "Transfiriendo cambios...",
+  "localConversation.sync.modal.noChanges": "Sin cambios",
+  "localConversation.syncSetup.branchAriaLabel": "Nombre de la rama",
+  "localConversation.syncSetup.branchName": "Nombre de la rama",
+  "localConversation.syncSetup.branchPlaceholder.existing":
+    "Selecciona una rama existente",
+  "localConversation.syncSetup.branchPlaceholder.new": "codex/new-feature",
+  "localConversation.syncSetup.branchesLoading": "Cargando ramas…",
+  "localConversation.syncSetup.checkoutAlreadyCheckedOut":
+    "Ya se hizo checkout",
+  "localConversation.syncSetup.checkoutClean": "Actualmente en {branchName}",
+  "localConversation.syncSetup.checkoutDirty":
+    "Actualmente en {branchName} con cambios sin confirmar",
+  "localConversation.syncSetup.checkoutError":
+    "Error al hacer checkout de la rama: {message}",
+  "localConversation.syncSetup.checkoutLabel": "Hacer checkout local ahora",
+  "localConversation.syncSetup.checkoutOnLocal": "Transferir a local",
+  "localConversation.syncSetup.checkoutPending": "Verificando estado local…",
+  "localConversation.syncSetup.checkoutUnavailable":
+    "Espacio de trabajo local no disponible",
+  "localConversation.syncSetup.checkoutUnknown": "Rama local no disponible",
+  "localConversation.syncSetup.continue": "Continuar",
+  "localConversation.syncSetup.createBranchError":
+    "Error al establecer la rama de transferencia: {message}",
+  "localConversation.syncSetup.error": "Algo salió mal: {message}",
+  "localConversation.syncSetup.error.workingTreeMissing":
+    "No se puede crear una instantánea del worktree. Vuelve a intentar la transferencia.",
+  "localConversation.syncSetup.mode.ariaLabel": "Selecciona el modo de rama",
+  "localConversation.syncSetup.mode.existing": "Rama existente",
+  "localConversation.syncSetup.mode.new": "Nueva rama",
+  "localConversation.syncSetup.noBranches": "No se encontraron ramas",
+  "localConversation.syncSetup.overwriteError":
+    "La rama se creó, pero no se transfirió por completo. Transfiere manualmente antes de hacer checkout en local.",
+  "localConversation.syncSetup.setPrefix": "Establecer prefijo",
+  "localConversation.syncSetup.success.checkedOut":
+    "La rama se creó y se hizo checkout local",
+  "localConversation.syncSetup.success.notCheckedOut": "Rama creada",
+  "localConversation.syncSetup.title": "Transferir a una rama local",
+  "localConversation.syncWorktreeError.branchAriaLabel": "Nombre de la rama",
+  "localConversation.syncWorktreeError.branchPlaceholder.new":
+    "codex/new-feature",
+  "localConversation.syncWorktreeError.branchSetup.subtitle":
+    "Elige una rama para transferir y luego vuelve a intentar cargar los cambios.",
+  "localConversation.syncWorktreeError.branchSetup.title": "Actualizar rama",
+  "localConversation.syncWorktreeError.branchUpdate.cta":
+    "Actualizar y reintentar",
+  "localConversation.syncWorktreeError.branchUpdate.error":
+    "No se pudo actualizar la rama: {message}",
+  "localConversation.syncWorktreeError.branchUpdate.unknown":
+    "Algo salió mal: {message}",
+  "localConversation.syncWorktreeV2.apply.disabled.noCheckout":
+    "La rama no está en checkout en ningún worktree.",
+  "localConversation.syncWorktreeV2.applyUncommitted": "Aplicar",
+  "localConversation.syncWorktreeV2.applyUncommitted.disabled":
+    "Debes hacer checkout de la rama de forma local para aplicar los cambios sin confirmar",
+  "localConversation.syncWorktreeV2.branches.empty": "No se encontraron ramas",
+  "localConversation.syncWorktreeV2.branches.loading": "Cargando ramas…",
+  "localConversation.syncWorktreeV2.changeBranch.ariaLabel":
+    "Cambiar rama de transferencia",
+  "localConversation.syncWorktreeV2.changeBranch.error":
+    "Error al cambiar la rama de transferencia: {message}",
+  "localConversation.syncWorktreeV2.commandError.action.apply":
+    "Error en la aplicación",
+  "localConversation.syncWorktreeV2.commandError.action.overwrite-local-to-worktree":
+    "Error al sobrescribir el worktree",
+  "localConversation.syncWorktreeV2.commandError.action.overwrite-worktree-to-local":
+    "Error en la sobrescritura local",
+  "localConversation.syncWorktreeV2.commandError.back": "Atrás",
+  "localConversation.syncWorktreeV2.commandError.body":
+    "Un comando de git falló durante la transferencia. Revisa la salida e inténtalo nuevamente.",
+  "localConversation.syncWorktreeV2.commandError.retry": "Reintentar",
+  "localConversation.syncWorktreeV2.description":
+    "Transferir cambios entre local y este worktree: <a>Obtener más información</a>.",
+  "localConversation.syncWorktreeV2.direction.ariaLabel":
+    "Seleccionar dirección de transferencia",
+  "localConversation.syncWorktreeV2.error.generic":
+    "Algo salió mal durante la transferencia. Inténtalo nuevamente.",
+  "localConversation.syncWorktreeV2.localBranchLabel": "Local",
+  "localConversation.syncWorktreeV2.noChanges": "Calculando cambios",
+  "localConversation.syncWorktreeV2.noChanges.summary": "Sin cambios",
+  "localConversation.syncWorktreeV2.overwrite.local": "Sobrescritura local",
+  "localConversation.syncWorktreeV2.overwrite.worktree":
+    "Sobrescribir el worktree",
+  "localConversation.syncWorktreeV2.partial.action.applyFailed":
+    "No se pudieron aplicar los cambios",
+  "localConversation.syncWorktreeV2.partial.action.overwriteLocalFailed":
+    "No se pudieron sobrescribir los cambios locales",
+  "localConversation.syncWorktreeV2.partial.action.overwriteWorktreeFailed":
+    "No se pudieron sobrescribir los cambios del worktree",
+  "localConversation.syncWorktreeV2.partial.appliedLabel": "Aplicado",
+  "localConversation.syncWorktreeV2.partial.back": "Atrás",
+  "localConversation.syncWorktreeV2.partial.body.resolveConflicts":
+    "Resuelve los conflictos e inténtalo nuevamente.",
+  "localConversation.syncWorktreeV2.partial.conflictsLabel": "Conflictos",
+  "localConversation.syncWorktreeV2.partial.fileCount":
+    "{count, plural, one {# archivo} many {# archivos} other {# archivos}}",
+  "localConversation.syncWorktreeV2.partial.retry": "Reintentar",
+  "localConversation.syncWorktreeV2.partial.skippedLabel": "Se omitió",
+  "localConversation.syncWorktreeV2.stateFailed.generic":
+    "Algo salió mal al obtener los cambios del worktree para transferir. Inténtalo nuevamente.",
+  "localConversation.syncWorktreeV2.stateFailed.title":
+    "Error al cargar los cambios del worktree",
+  "localConversation.syncWorktreeV2.statusError.diffUnknown":
+    "Error al cargar los cambios del worktree.",
+  "localConversation.syncWorktreeV2.statusError.retry": "Reintentar",
+  "localConversation.syncWorktreeV2.statusError.title":
+    "No se pueden cargar los cambios de la rama local",
+  "localConversation.syncWorktreeV2.statusError.unknown":
+    "El estado de la rama no está disponible en este momento. Inténtalo nuevamente.",
+  "localConversation.syncWorktreeV2.success.apply":
+    "Cambios aplicados correctamente",
+  "localConversation.syncWorktreeV2.success.overwrite":
+    "Transferencia completada",
+  "localConversation.syncWorktreeV2.title": "Transferir cambios",
+  "localConversation.syncWorktreeV2.worktreeLabel": "Worktree",
+  "localConversation.userInputRequest.inProgress":
+    "Preguntando {count, plural, one {pregunta} many {preguntas} other {preguntas}}",
+  "localConversation.userInputRequest.noAnswer":
+    "No se proporcionó la respuesta.",
+  "localConversation.userInputRequest.summary": "{label} {counts}",
+  "localConversation.userInputRequest.summary.asked": "Preguntado",
+  "localConversation.userInputRequest.summary.count":
+    "{count, plural, one {# pregunta} many {# preguntas} other {# preguntas}}",
+  "localConversation.worktreeBranchSetup.action.create": "Crear",
+  "localConversation.worktreeBranchSetup.branchAriaLabel": "Nombre de la rama",
+  "localConversation.worktreeBranchSetup.branchPlaceholder.new":
+    "Crear una nueva rama",
+  "localConversation.worktreeBranchSetup.checkoutDisabled":
+    "Esta rama ya está activa en: {location}",
+  "localConversation.worktreeBranchSetup.checkoutError":
+    "Error al hacer checkout de la rama: {message}",
+  "localConversation.worktreeBranchSetup.createBranchError":
+    "Error al establecer la rama: {message}",
+  "localConversation.worktreeBranchSetup.error": "Algo salió mal: {message}",
+  "localConversation.worktreeBranchSetup.title": "Crear rama",
+  "localConversationPage.addWorktreeToSidebar.tooltip":
+    "Guarda como proyecto para poder iniciar nuevos hilos desde este worktree",
+  "localConversationPage.addWorktreeToSidebarError":
+    "Error al agregar el proyecto",
+  "localConversationPage.commitAndCreatePrModal.errorTitle":
+    "Error al confirmar y crear la PR",
+  "localConversationPage.commitAndCreatePrModal.successTitle":
+    "Confirmado y se creó la PR",
+  "localConversationPage.commitAndPushModal.errorTitle":
+    "Error al confirmar y enviar",
+  "localConversationPage.commitAndPushModal.successTitle":
+    "Cambios confirmados y enviados",
+  "localConversationPage.commitCreatePr.open":
+    "Abrir la solicitud de extracción",
+  "localConversationPage.commitCreatePr.successTitle":
+    "Se creó una PR con tus cambios más recientes",
+  "localConversationPage.createBranchButtonLabel": "Crear rama",
+  "localConversationPage.createPrModal.baseBranch": "Base",
+  "localConversationPage.createPrModal.baseBranchUnknown": "-",
+  "localConversationPage.createPrModal.confirm": "Crear PR",
+  "localConversationPage.createPrModal.createDescription":
+    "Abre una solicitud de extracción para tus cambios más recientes.",
+  "localConversationPage.createPrModal.errorTitle":
+    "Error en la solicitud de extracción",
+  "localConversationPage.createPrModal.headBranch": "Head",
+  "localConversationPage.createPrModal.headBranchUnknown": "-",
+  "localConversationPage.createPrModal.open": "Abrir PR",
+  "localConversationPage.createPrModal.successTitle":
+    "Solicitud de extracción creada",
+  "localConversationPage.createPrModal.title": "Crear solicitud de extracción",
+  "localConversationPage.createPrModal.viewDescription":
+    "Ya existe una solicitud de extracción para esta rama.",
+  "localConversationPage.createPrModal.viewTitle":
+    "La solicitud de extracción está lista",
+  "localConversationPage.createPullRequestAuthGh":
+    "Autenticar GitHub CLI: ejecutar `gh auth login`",
+  "localConversationPage.createPullRequestBranchMissing":
+    "Información de la rama no disponible",
+  "localConversationPage.createPullRequestButtonLabel": "Crear PR",
+  "localConversationPage.createPullRequestButtonLabel.loading": "Creando PR...",
+  "localConversationPage.createPullRequestDefaultBranchMissing":
+    "Información de la rama predeterminada no disponible",
+  "localConversationPage.createPullRequestError":
+    "Error al crear la solicitud de extracción",
+  "localConversationPage.createPullRequestExistingPullRequest":
+    "Ya existe una solicitud de extracción para esta rama",
+  "localConversationPage.createPullRequestGhStatusMissing":
+    "Cargando estado de GitHub CLI…",
+  "localConversationPage.createPullRequestInstallGh":
+    "Instalar GitHub CLI (gh) para crear PR",
+  "localConversationPage.createPullRequestNoRepo":
+    "No se encontró ningún repositorio Git",
+  "localConversationPage.createPullRequestPushStatusMissing":
+    "Cargando estado de push…",
+  "localConversationPage.createPullRequestSetUpstream":
+    "Envía push de esta rama antes de crear una PR",
+  "localConversationPage.createPullRequestSuccessToast":
+    "Solicitud de extracción creada",
+  "localConversationPage.createPullRequestSwitchBranch":
+    "Cambia a una rama de característica antes de crear una PR",
+  "localConversationPage.error.render":
+    "Error al representar la conversación local",
+  "localConversationPage.error.toast": "No se encontró la conversación",
+  "localConversationPage.forcePushError": "Error al forzar el push",
+  "localConversationPage.generatePullRequestMessageError":
+    "Error al generar el título y el cuerpo de la solicitud de extracción",
+  "localConversationPage.generatePullRequestMessageFailed":
+    "Error al generar el título y el cuerpo de la solicitud de extracción.",
+  "localConversationPage.gitActionResult.branch": "Rama",
+  "localConversationPage.gitActionResult.cancel": "Cancelar",
+  "localConversationPage.gitActionResult.close": "Cerrar",
+  "localConversationPage.gitActionResult.tryAgain": "Inténtalo nuevamente",
+  "localConversationPage.gitActions": "Acciones de Git",
+  "localConversationPage.newChat": "Nuevo chat",
+  "localConversationPage.openInTarget": "Abrir en",
+  "localConversationPage.openPrimaryTarget": "Abrir",
+  "localConversationPage.planItemsCompleted":
+    "{completedItems} de {totalItems, plural, one {# tarea completada} many {# tareas completadas} other {# tareas completadas}}",
+  "localConversationPage.pushAuthError":
+    "Error al enviar: se requiere autenticación",
+  "localConversationPage.pushBranchMissing":
+    "Información de la rama no disponible",
+  "localConversationPage.pushButtonLabel": "Push",
+  "localConversationPage.pushButtonLabel.loading": "Haciendo push...",
+  "localConversationPage.pushError":
+    "Error al enviar los cambios de una notificación push",
+  "localConversationPage.pushModal.branchLabel": "Rama",
+  "localConversationPage.pushModal.branchUnknown": "-",
+  "localConversationPage.pushModal.cancel": "Cancelar",
+  "localConversationPage.pushModal.confirm": "Push",
+  "localConversationPage.pushModal.description":
+    "Haz push de tus últimas confirmaciones al repositorio remoto.",
+  "localConversationPage.pushModal.errorTitle": "Error en el push",
+  "localConversationPage.pushModal.forcePush": "Forzar push",
+  "localConversationPage.pushModal.successTitle": "Push completado",
+  "localConversationPage.pushModal.title": "Hacer push de cambios",
+  "localConversationPage.pushModal.tryAgain": "Inténtalo nuevamente",
+  "localConversationPage.pushNoUpstream":
+    "Configura el repositorio de destino antes de enviar esta rama",
+  "localConversationPage.pushNoUpstreamError":
+    "Error al enviar: no hay repositorio de destino configurado",
+  "localConversationPage.pushNothingToPush":
+    "No hay nuevas confirmaciones para enviar",
+  "localConversationPage.pushRemoteChangedError":
+    "Error al enviar: el repositorio remoto tiene nuevas confirmaciones",
+  "localConversationPage.pushRemoteRejectedError":
+    "Push rechazada por el repositorio remoto",
+  "localConversationPage.pushStatusMissing": "Cargando estado de push…",
+  "localConversationPage.pushSuccessToast": "Cambios enviados",
+  "localConversationPage.viewPullRequestButtonLabel": "Ver PR",
+  "localConversationPage.viewPullRequestButtonLabel.loading":
+    "Cargando solicitud de extracción...",
+  "localConversationTurn.exploration.accordion.count.files":
+    "<countText>{count, plural, one {# archivo} many {# archivos} other {# archivos}}</countText>",
+  "localConversationTurn.exploration.accordion.count.lists":
+    "<countText>{count, plural, one {# lista} many {# listas} other {# listas}}</countText>",
+  "localConversationTurn.exploration.accordion.count.searches":
+    "<countText>{count, plural, one {# búsqueda} many {# búsquedas} other {# búsquedas}}</countText>",
+  "localConversationTurn.exploration.accordion.count.separator": ",",
+  "localConversationTurn.exploration.accordion.header.active": "Explorando",
+  "localConversationTurn.exploration.accordion.header.active.withCounts":
+    "{counts}",
+  "localConversationTurn.exploration.accordion.header.complete": "Explorado",
+  "localConversationTurn.exploration.accordion.header.complete.withCounts":
+    "Explorado(s) {counts}",
+  "localConversationTurnStory.showContent": "Permitir contenido",
+  "localConversationTurnStory.streamContent": "Transmitir contenido",
+  "localConversationTurnStory.toggleReasoning": "Mostrar razonamiento",
+  "localTaskRow.archiveError": "Error al archivar la conversación",
+  "localTaskRow.resumeError": "Error al reanudar la tarea",
+  "mermaidDiagram.ariaLabel": "Diagrama Mermaid",
+  "mermaidDiagram.copySource": "Copiar Mermaid",
+  "mermaidDiagram.originalCode": "Código fuente Mermaid",
+  "notifications.permissions.description":
+    "Mostrar alertas cuando se requieren permisos de notificaciones",
+  "notifications.permissions.label": "Habilitar notificaciones de permisos",
+  "notifications.turnMode.always": "Siempre",
+  "notifications.turnMode.description":
+    "Configura el momento en que Codex te avisa que terminó",
+  "notifications.turnMode.label": "Notificaciones de finalización de la tarea",
+  "notifications.turnMode.off": "Nunca",
+  "notifications.turnMode.unfocused": "Solo cuando no está en foco",
+  "patchApprovalRequest.approve": "Aprobar",
+  "patchApprovalRequest.menu.allowAlways":
+    "Sí y no volver a preguntar en esta sesión",
+  "patchApprovalRequest.menu.allowOnce": "Sí",
+  "patchApprovalRequest.prompt": "¿Quieres realizar estos cambios?",
+  "patchApprovalRequest.reject": "No",
+  "patchApprovalRequest.waitingForApproval":
+    "Esperando aprobación para editar archivos",
+  "pendingRequest.approvalExec.collapse": "Contraer",
+  "pendingRequest.approvalExec.expand": "Expandir",
+  "pendingRequestStory.toastAnswer": "Respuesta: {answer}",
+  "pendingRequestStory.toastApprovalTitle": "Respuesta de aprobación",
+  "pendingRequestStory.toastNoAnswers": "No se proporcionaron respuestas",
+  "pendingRequestStory.toastQuestion": "Pregunta: {question}",
+  "pendingRequestStory.toastUnknownDecision": "Desconocido",
+  "pendingRequestStory.toastUserInputTitle": "Respuestas enviadas",
+  "quickAction.request.codeReview.branches.new":
+    "Revisa los cambios en {from} con respecto a {to}",
+  "quickAction.request.codeReview.uncommitted.new":
+    "Revisa mis cambios sin confirmar",
+  "reasoningItem.thinking": "Pensando",
+  "reasoningItem.thought": "Pensado",
+  "reasoningItem.thoughtWithElapsed": "Pensado durante {elapsed}",
+  "recentConversations.title": "Conversaciones recientes",
+  "recentTasks.worktreeInitFailedTitle": "Error al inicializar el worktree",
+  "recentTasks.worktreeSettingUpTitle": "Configurando el worktree",
+  "requestInputPanel.continue": "Continuar",
+  "requestInputPanel.dismiss": "Descartar",
+  "requestInputPanel.escapeKey": "ESC",
+  "requestInputPanel.freeFormPlaceholder": "Escribe aquí",
+  "requestInputPanel.optionIndex": "{index}.",
+  "requestInputPanel.otherPlaceholder":
+    "No y dile a Codex qué hacer de manera diferente",
+  "requestInputPanel.selectedBadge": "Seleccionado",
+  "requestInputPanel.submit": "Enviar",
+  "review.commit.ariaLabel.includeUnstaged": "Incluir cambios sin preparar",
+  "review.commit.buttonLabel": "Confirmación",
+  "review.commit.disabled.committing": "Confirmando…",
+  "review.commit.disabled.loadingDiff": "Cargando diferencias…",
+  "review.commit.disabled.missingContext":
+    "Agrega contexto para generar un mensaje de confirmación",
+  "review.commit.disabled.noChanges": "Sin cambios para confirmar",
+  "review.commit.disabled.noSelection": "Seleccionar cambios para confirmar",
+  "review.commit.disabled.unavailable":
+    "La confirmación no está disponible en este momento",
+  "review.commit.error": "Error al confirmar los cambios",
+  "review.commit.form.changesToBeCommitted": "Cambios",
+  "review.commit.form.commitTo": "Rama",
+  "review.commit.form.commitTo.none": "-",
+  "review.commit.form.continue": "Continuar",
+  "review.commit.form.title": "Confirma tus cambios",
+  "review.commit.generate.emptyResponse":
+    "No se pudo generar un mensaje de confirmación.",
+  "review.commit.generate.failed":
+    "Error al generar el mensaje de confirmación: {error}",
+  "review.commit.generate.missingPrompt":
+    "Agrega contexto para generar un mensaje de confirmación.",
+  "review.commit.includeUnstaged": "Incluir cambios sin preparar",
+  "review.commit.loading.description":
+    "Espera un momento, esto puede tardar unos instantes",
+  "review.commit.loading.step.commit.done": "Cambios confirmados",
+  "review.commit.loading.step.commit.pending": "Confirmando cambios",
+  "review.commit.loading.step.createPr.done":
+    "Se creó una solicitud de extracción",
+  "review.commit.loading.step.createPr.pending":
+    "Creando una solicitud de extracción",
+  "review.commit.loading.step.push.done": "Se hizo push a la rama {branch}",
+  "review.commit.loading.step.push.pending": "Haciendo push a la rama {branch}",
+  "review.commit.loading.title.commit": "Confirmando cambios",
+  "review.commit.loading.title.createPr": "Creando una PR",
+  "review.commit.loading.title.push": "Haciendo push de cambios",
+  "review.commit.messageLabel": "Mensaje de confirmación",
+  "review.commit.messagePlaceholder":
+    "Deja el campo en blanco para generar automáticamente un mensaje de confirmación",
+  "review.commit.nextSteps": "Pasos siguientes",
+  "review.commit.nextSteps.commit": "Confirmación",
+  "review.commit.nextSteps.commitAndCreate": "Confirmar y crear la PR",
+  "review.commit.nextSteps.commitAndPush": "Confirmar y hacer push",
+  "review.commit.nextSteps.prRequiresGh": "Requiere GitHub CLI: {command}",
+  "review.commit.rows.changes": "Cambios",
+  "review.commit.rows.commitCount":
+    "{count, plural, one {# confirmación} many {# confirmaciones} other {# confirmaciones}}",
+  "review.commit.rows.commitCount.withUncommitted":
+    "{count, plural, one {# confirmación} many {# confirmaciones} other {# confirmaciones}} y {stats}",
+  "review.commit.rows.fileCount":
+    "{count, plural, one {# archivo} many {# archivos} other {# archivos}}",
+  "review.commit.state.error.body":
+    "Algo salió mal al confirmar. Comprueba el estado de Git e inténtalo nuevamente.",
+  "review.commit.state.error.title": "Error al confirmar",
+  "review.commit.state.success.title": "Cambios confirmados",
+  "review.commit.untracked.loadingStats":
+    "Cargando estadísticas de diferencias sin seguimiento...",
+  "reviewFindingAttachments.count":
+    "{count, plural, one {# hallazgo} many {# hallazgos} other {# hallazgos}}",
+  "settings.agent.configuration.configToml": "config.toml",
+  "settings.agent.configuration.configToml.description":
+    "Edita tu configuración para personalizar el comportamiento del agente",
+  "settings.agent.configuration.configToml.docs": "Documentos",
+  "settings.agent.configuration.subtitle":
+    "Esta configuración se aplica en cualquier lugar donde se use Codex",
+  "settings.automations.banner.danger":
+    "Las automatizaciones se ejecutan con la configuración predeterminada de entorno aislado, que actualmente está establecida en Acceso completo. Ejecutar automatizaciones en segundo plano con Acceso completo implica un riesgo elevado, ya que Codex puede modificar archivos, ejecutar comandos y acceder a la red sin preguntar. Considera actualizar la configuración del entorno aislado a escritura en el espacio de trabajo y seguir <rulesDocsLink>reglas</rulesDocsLink> para definir de forma selectiva qué comandos puede ejecutar el agente con acceso completo.",
+  "settings.automations.banner.defaultHowTo.default":
+    "Las automatizaciones se ejecutan con la configuración predeterminada de entorno aislado. Las llamadas a herramientas fallarán si requieren modificar archivos fuera del espacio de trabajo, acceder a la red o trabajar con aplicaciones en tu computadora. Puedes permitir de forma selectiva que ciertos comandos se ejecuten fuera del entorno aislado siguiendo <rulesDocsLink>reglas</rulesDocsLink>.",
+  "settings.automations.banner.defaultHowTo.readOnly":
+    "Las automatizaciones se ejecutan con la configuración predeterminada de entorno aislado, que está establecida en solo lectura. Las llamadas a herramientas fallarán si requieren modificar archivos, acceder a la red o trabajar con aplicaciones en tu computadora. Considera actualizar la configuración del entorno aislado a escritura en el espacio de trabajo.",
+  "settings.automations.cancel": "Cancelar",
+  "settings.automations.create": "Crear",
+  "settings.automations.cwdEmpty": "No hay carpetas de proyecto disponibles",
+  "settings.automations.cwdLabel": "Proyectos",
+  "settings.automations.cwdPlaceholder": "Elige una carpeta",
+  "settings.automations.cwdSubtitle":
+    "Si quieres que una automatización se ejecute en una rama específica, puedes indicarlo en tu mensaje.",
+  "settings.automations.delete": "Eliminar",
+  "settings.automations.dialog.editTitle": "Editar automatización",
+  "settings.automations.dialog.newTitle": "Nueva automatización",
+  "settings.automations.dialog.subtitle":
+    "Automatiza tareas recurrentes en segundo plano. Codex agrega los resultados a la bandeja de entrada o archiva automáticamente la tarea si no hay nada que informar. <learnMoreLink>Obtener más información</learnMoreLink>.",
+  "settings.automations.dialog.title": "Crear automatización",
+  "settings.automations.executionCopy.git":
+    "Las automatizaciones se ejecutan en segundo plano en worktrees dedicados.",
+  "settings.automations.executionCopy.nonGit":
+    "Las automatizaciones en proyectos sin control de versiones se ejecutan directamente en el directorio del proyecto. Considera usar Git para habilitar la ejecución en worktrees en segundo plano.",
+  "settings.automations.loading": "Cargando…",
+  "settings.automations.nameLabel": "Nombre",
+  "settings.automations.namePlaceholder": "Comprueba problemas de Sentry",
+  "settings.automations.pause": "Pausar",
+  "settings.automations.promptLabel": "Mensaje",
+  "settings.automations.promptPlaceholder": "Buscar errores en $Sentry",
+  "settings.automations.resume": "Reanudar",
+  "settings.automations.rruleSummaryFallback": "Cronograma personalizado",
+  "settings.automations.runNow": "Prueba",
+  "settings.automations.save": "Guardar",
+  "settings.automations.scheduleBadge.dayCount": "{count} d",
+  "settings.automations.scheduleBadge.interval": "{count} h",
+  "settings.automations.scheduleBadge.weekdays": "Días hábiles",
+  "settings.automations.scheduleBadge.weekends": "Fines de semana",
+  "settings.automations.scheduleHeader": "Cronograma",
+  "settings.automations.scheduleHours": "horas",
+  "settings.automations.scheduleLabel": "Ejecutar cada",
+  "settings.automations.scheduleMode.daily": "Diariamente",
+  "settings.automations.scheduleMode.interval": "Intervalo",
+  "settings.automations.scheduleModeLabel": "Tipo de programación",
+  "settings.automations.scheduleSummary.daily": "Diariamente a la(s) {time}",
+  "settings.automations.scheduleSummary.interval": "Cada {count} h",
+  "settings.automations.scheduleSummary.intervalDayCount":
+    "{count, plural, one {# día} many {# días} other {# días}}",
+  "settings.automations.scheduleSummary.intervalDays": "{interval} el {days}",
+  "settings.automations.scheduleSummary.intervalHourly": "Cada hora",
+  "settings.automations.scheduleSummary.singleDay": "{day} a la(s) {time}",
+  "settings.automations.scheduleSummary.weekdays": "Días hábiles a las {time}",
+  "settings.automations.scheduleSummary.weekdaysLabel": "días hábiles",
+  "settings.automations.scheduleSummary.weekends":
+    "Fines de semana a las {time}",
+  "settings.automations.scheduleSummary.weekendsLabel": "fines de semana",
+  "settings.automations.scheduleSummary.weekly": "{days} a la(s) {time}",
+  "settings.automations.scheduleWeekdays": "Activado",
+  "settings.automations.weekdayState.excluded": "Excluido",
+  "settings.automations.weekdayState.included": "Incluido",
+  "settings.conversationDetail.steps": "Pasos",
+  "settings.conversationDetail.steps.description": "Ocultar comandos y salidas",
+  "settings.conversationDetail.stepsWithCommands":
+    "Pasos con comandos de código",
+  "settings.conversationDetail.stepsWithCommands.description":
+    "Mostrar comandos, contraer salidas",
+  "settings.conversationDetail.stepsWithOutput": "Pasos con salida de código",
+  "settings.conversationDetail.stepsWithOutput.description":
+    "Mostrar comandos y expandir salidas",
+  "settings.dataControls.archivedChats.dateTime": "{date}, {time}",
+  "settings.dataControls.archivedChats.dateTimeWithRepo":
+    "{date}, {time} • {repo}",
+  "settings.dataControls.archivedChats.empty": "No hay chats archivados.",
+  "settings.dataControls.archivedChats.error":
+    "No se pudieron cargar los chats archivados.",
+  "settings.dataControls.archivedChats.loading": "Cargando chats archivados…",
+  "settings.dataControls.archivedChats.unarchive": "Desarchivar",
+  "settings.dataControls.archivedChats.unarchiveError":
+    "No se pudo desarchivar el chat",
+  "settings.dataControls.archivedChats.unarchiveSuccess":
+    "Hilo desarchivado: <viewNowLink>Ver ahora</viewNowLink>",
+  "settings.dataControls.archivedChats.untitled": "Chat sin título",
+  "settings.editRow.headerPlaceholder": "Clave",
+  "settings.editRow.removeEntry": "Eliminar la entrada",
+  "settings.editRow.valuePlaceholder": "Valor",
+  "settings.general.appearance": "Aspecto",
+  "settings.general.appearance.codeFont": "Fuente de código",
+  "settings.general.appearance.codeFont.description":
+    "Ajustar la fuente y el tamaño usados para el código en chats y diferencias",
+  "settings.general.appearance.codeFontFamily": "Familia de fuente de código",
+  "settings.general.appearance.codeFontSize": "Tamaño de fuente del código",
+  "settings.general.appearance.codeFontSize.units": "px",
+  "settings.general.appearance.opaqueWindows.description":
+    "Hacer que las ventanas usen un fondo sólido en lugar de la translucidez del sistema",
+  "settings.general.appearance.opaqueWindows.label":
+    "Usar fondo de ventana opaco",
+  "settings.general.appearance.sansFontFamily": "Familia de fuente Sans",
+  "settings.general.appearance.sansFontFamily.description":
+    "Ajusta la fuente utilizada para la interfaz de Codex",
+  "settings.general.appearance.sansFontSize": "Tamaño de fuente sans",
+  "settings.general.appearance.sansFontSize.units": "px",
+  "settings.general.appearance.theme": "Tema",
+  "settings.general.appearance.theme.dark": "Oscuro",
+  "settings.general.appearance.theme.description":
+    "Usa claro, oscuro o el tema del sistema",
+  "settings.general.appearance.theme.light": "Claro",
+  "settings.general.appearance.theme.system": "Sistema",
+  "settings.general.appearance.usePointerCursors.description":
+    "Cambia el cursor a un puntero al pasar sobre elementos interactivos",
+  "settings.general.appearance.usePointerCursors.label":
+    "Usar cursores de puntero",
+  "settings.general.enterBehavior.description":
+    "Cuando está habilitado, los mensajes multilínea requieren {modifierSymbol} + enter para enviar.",
+  "settings.general.enterBehavior.label":
+    "Requerir {modifierSymbol} + enter para enviar mensajes largos",
+  "settings.general.followUpQueueMode.description":
+    "Poner seguimientos en cola mientras Codex se ejecuta o interrumpir la ejecución actual",
+  "settings.general.followUpQueueMode.interrupt": "Interrumpir",
+  "settings.general.followUpQueueMode.label": "Comportamiento de seguimiento",
+  "settings.general.followUpQueueMode.queue": "En cola",
+  "settings.general.notifications": "Notificaciones",
+  "settings.general.power.preventSleepWhileRunning.description":
+    "Mantén tu computadora activa mientras Codex ejecuta un hilo.",
+  "settings.general.power.preventSleepWhileRunning.label":
+    "Evita que el equipo entre en reposo durante la ejecución",
+  "settings.git.branchPrefix.ariaLabel": "Prefijo de rama",
+  "settings.git.branchPrefix.description":
+    "Prefijo usado al crear nuevas ramas en Codex",
+  "settings.git.branchPrefix.label": "Prefijo de rama",
+  "settings.git.branchPrefix.placeholder": "codex/",
+  "settings.git.branchPrefix.save.error": "Error al guardar el prefijo de rama",
+  "settings.git.branchPrefix.save.success": "Prefijo de rama guardado",
+  "settings.git.commitInstructions.ariaLabel": "Instrucciones de confirmación",
+  "settings.git.commitInstructions.description":
+    "Agregado a las indicaciones de generación de mensajes de confirmación",
+  "settings.git.commitInstructions.label": "Instrucciones de confirmación",
+  "settings.git.commitInstructions.placeholder":
+    "Agrega guía para el mensaje de confirmación...",
+  "settings.git.commitInstructions.save": "Guardar",
+  "settings.git.commitInstructions.save.error":
+    "Error al guardar las instrucciones de confirmación",
+  "settings.git.commitInstructions.save.success":
+    "Instrucciones de confirmación guardadas",
+  "settings.git.forcePush.ariaLabel": "Forzar push siempre",
+  "settings.git.forcePush.description":
+    "Usa --force-with-lease al hacer push desde Codex",
+  "settings.git.forcePush.label": "Forzar push siempre",
+  "settings.git.forcePush.save.disabled": "Forzar push siempre deshabilitado",
+  "settings.git.forcePush.save.enabled": "Forzar push siempre habilitado",
+  "settings.git.forcePush.save.error":
+    "Error al guardar la configuración de forzar push",
+  "settings.git.prInstructions.ariaLabel":
+    "Instrucciones de solicitud de extracción",
+  "settings.git.prInstructions.description":
+    "Agregado a los cuerpos de solicitud de extracción creados por Codex",
+  "settings.git.prInstructions.label":
+    "Instrucciones de solicitud de extracción",
+  "settings.git.prInstructions.placeholder":
+    "Agrega guía para la solicitud de extracción...",
+  "settings.git.prInstructions.save": "Guardar",
+  "settings.git.prInstructions.save.error":
+    "Error al guardar las instrucciones de solicitud de extracción",
+  "settings.git.prInstructions.save.success":
+    "Instrucciones de solicitud de extracción guardadas",
+  "settings.ide.defaultOpenTarget.description":
+    "Dónde se abren los archivos y las carpetas de forma predeterminada",
+  "settings.ide.defaultOpenTarget.label": "Destino de apertura predeterminado",
+  "settings.ide.defaultOpenTarget.placeholder": "No se encontraron destinos",
+  "settings.ide.language.auto": "Detectar automáticamente",
+  "settings.ide.language.autoOption": "Detectar automáticamente",
+  "settings.ide.language.description": "Idioma de la interfaz de la aplicación",
+  "settings.ide.language.label": "Idioma",
+  "settings.ide.language.search": "Buscar idiomas",
+  "settings.layout.actionButton": "Reiniciar extensión",
+  "settings.layout.actionTitle": "Configuración con acción",
+  "settings.layout.fullWidthTitle": "Configuración (pantalla completa)",
+  "settings.layout.title": "Configuración",
+  "settings.localEnvironments.actions.add": "Agregar acción",
+  "settings.localEnvironments.actions.add.description":
+    "Crear un nuevo comando para ejecutar desde la barra de herramientas.",
+  "settings.localEnvironments.actions.add.save": "Guardar",
+  "settings.localEnvironments.actions.empty":
+    "Agrega una acción para ejecutar comandos desde la barra de herramientas local.",
+  "settings.localEnvironments.actions.icon.debug": "Depurar",
+  "settings.localEnvironments.actions.icon.run": "Ejecutar",
+  "settings.localEnvironments.actions.icon.test": "Prueba",
+  "settings.localEnvironments.actions.icon.tool": "Herramienta",
+  "settings.localEnvironments.actions.item.button.delete": "Eliminar",
+  "settings.localEnvironments.actions.item.command": "Script de acción",
+  "settings.localEnvironments.actions.item.name": "Nombre",
+  "settings.localEnvironments.actions.item.platforms": "Plataformas",
+  "settings.localEnvironments.actions.item.platforms.help":
+    "Ejecutar solo en un sistema operativo específico.",
+  "settings.localEnvironments.actions.item.platforms.linux": "Linux",
+  "settings.localEnvironments.actions.item.platforms.macos": "macOS",
+  "settings.localEnvironments.actions.item.platforms.selector":
+    "Selección de plataforma",
+  "settings.localEnvironments.actions.item.platforms.specific":
+    "Específico de la plataforma",
+  "settings.localEnvironments.actions.item.platforms.windows": "Windows",
+  "settings.localEnvironments.actions.item.tooltip.delete": "Eliminar",
+  "settings.localEnvironments.actions.title": "Acciones",
+  "settings.localEnvironments.breadcrumb.back": "Atrás",
+  "settings.localEnvironments.breadcrumb.edit": "editar",
+  "settings.localEnvironments.breadcrumb.root": "Entornos",
+  "settings.localEnvironments.environment.actions.description":
+    "Estas acciones pueden ejecutar cualquier comando y se mostrarán en el encabezado.",
+  "settings.localEnvironments.environment.actionsLabel": "Acciones",
+  "settings.localEnvironments.environment.create": "Crear entorno local",
+  "settings.localEnvironments.environment.defaultName": "local",
+  "settings.localEnvironments.environment.edit": "Editar entorno local",
+  "settings.localEnvironments.environment.empty":
+    "Aún no hay ningún entorno local configurado para este proyecto.",
+  "settings.localEnvironments.environment.name": "Nombre",
+  "settings.localEnvironments.environment.setup": "Script de configuración",
+  "settings.localEnvironments.environment.setup.description":
+    "Este script se ejecutará al crear el worktree.",
+  "settings.localEnvironments.environment.setup.hint":
+    "Se ejecuta en la raíz del proyecto.",
+  "settings.localEnvironments.environment.setup.platformOverrides":
+    "Anulaciones de plataforma",
+  "settings.localEnvironments.environment.setup.platformOverrides.add":
+    "Agregar script de configuración {platform}",
+  "settings.localEnvironments.environment.setup.platformOverrides.description":
+    "Anula el script predeterminado para sistemas operativos específicos.",
+  "settings.localEnvironments.environment.setup.platformOverrides.remove":
+    "Eliminar",
+  "settings.localEnvironments.environment.setup.script": "Script",
+  "settings.localEnvironments.environment.title": "Detalles del entorno",
+  "settings.localEnvironments.file.missing":
+    "Guarda para crear este archivo por primera vez.",
+  "settings.localEnvironments.file.parseError":
+    "No se puede analizar el archivo existente. Al guardar, se sobrescribirá. ({error})",
+  "settings.localEnvironments.file.path": "Archivo: {path}",
+  "settings.localEnvironments.file.readError":
+    "Error al cargar los datos del entorno local. ({error})",
+  "settings.localEnvironments.file.title": "Archivo de entorno local",
+  "settings.localEnvironments.loading.body":
+    "Obteniendo la configuración del proyecto.",
+  "settings.localEnvironments.loading.title": "Cargando entornos locales",
+  "settings.localEnvironments.preview.devOnly": "(solo DEV)",
+  "settings.localEnvironments.preview.save": "Guardar",
+  "settings.localEnvironments.preview.saveError":
+    "Error al guardar el archivo. ({error})",
+  "settings.localEnvironments.preview.title": "Vista previa",
+  "settings.localEnvironments.save.disabled.name":
+    "Agrega un nombre de entorno para guardar.",
+  "settings.localEnvironments.save.disabled.noChanges":
+    "No hay cambios para guardar.",
+  "settings.localEnvironments.save.disabled.saving": "Guardando…",
+  "settings.localEnvironments.save.success": "Entorno local guardado",
+  "settings.localEnvironments.unavailable.body":
+    "No se pudo cargar la configuración del entorno local para este proyecto.",
+  "settings.localEnvironments.unavailable.title":
+    "Entornos locales no disponibles",
+  "settings.localEnvironments.workspace.add": "Agregar proyecto",
+  "settings.localEnvironments.workspace.title": "Proyecto",
+  "settings.localEnvironments.workspaceSelect.addLabel": "Agregar entorno",
+  "settings.localEnvironments.workspaceSelect.description":
+    "Entornos locales: dile a Codex cómo configurar los worktrees para un proyecto: {learnMore}",
+  "settings.localEnvironments.workspaceSelect.empty":
+    "Aún no hay proyectos. Agrega uno para configurar entornos locales.",
+  "settings.localEnvironments.workspaceSelect.errorLabel":
+    "El entorno requiere atención",
+  "settings.localEnvironments.workspaceSelect.learnMore":
+    "Obtener más información",
+  "settings.localEnvironments.workspaceSelect.listLabel":
+    "Proyectos disponibles",
+  "settings.localEnvironments.workspaceSelect.loading": "Cargando proyectos.",
+  "settings.localEnvironments.workspaceSelect.loadingLabel": "Cargando entorno",
+  "settings.localEnvironments.workspaceSelect.title": "Selecciona un proyecto",
+  "settings.localEnvironments.workspaceSelect.viewAction": "Ver",
+  "settings.mcp.addServer": "Agregar servidor",
+  "settings.mcp.detail.addArgument": "Agregar argumento",
+  "settings.mcp.detail.addEnvVar": "Agregar variable de entorno",
+  "settings.mcp.detail.addEnvVarPassthrough": "Agregar variable",
+  "settings.mcp.detail.args": "Argumentos",
+  "settings.mcp.detail.back": "Atrás",
+  "settings.mcp.detail.command": "Comando para iniciar",
+  "settings.mcp.detail.cwd": "Directorio de trabajo",
+  "settings.mcp.detail.docs": "Abrir la documentación de MCP",
+  "settings.mcp.detail.docs.link": "Documentos",
+  "settings.mcp.detail.envVarPassthrough": "Paso de variables de entorno",
+  "settings.mcp.detail.envVars": "Variables de entorno",
+  "settings.mcp.detail.http.addEnvHeader": "Agregar variable",
+  "settings.mcp.detail.http.addHeader": "Agregar encabezado",
+  "settings.mcp.detail.http.bearerToken":
+    "Variable de entorno del token portador",
+  "settings.mcp.detail.http.envHeaders":
+    "Encabezados desde variables de entorno",
+  "settings.mcp.detail.http.headers": "Encabezados",
+  "settings.mcp.detail.http.url": "URL",
+  "settings.mcp.detail.name": "Nombre",
+  "settings.mcp.detail.save": "Guardar",
+  "settings.mcp.detail.switchTransportNotice":
+    "Si deseas cambiar el tipo de servidor MCP, debers desinstalarlo primero.",
+  "settings.mcp.detail.titleExisting": "Actualizar el MCP {name}",
+  "settings.mcp.detail.titleNew": "Conectar con un MCP personalizado",
+  "settings.mcp.detail.transport.http": "HTTP secuenciable",
+  "settings.mcp.detail.transport.stdio": "STDIO",
+  "settings.mcp.detail.uninstall": "Desinstalar",
+  "settings.mcp.empty": "No hay servidores MCP personalizados conectados",
+  "settings.mcp.myServers": "Servidores personalizados",
+  "settings.mcp.partnerServer.description.figma":
+    "Genera un código mejor al traer todo el contexto Figma",
+  "settings.mcp.partnerServer.description.github":
+    "Haz la integración con las API de GitHub para automatizar los flujos de trabajos y extraer datos",
+  "settings.mcp.partnerServer.description.linear":
+    "Haz la integración con el seguimiento de problemas y la gestión de proyectos de Linear",
+  "settings.mcp.partnerServer.description.notion":
+    "Lee documentos, actualiza páginas, gestiona tareas",
+  "settings.mcp.partnerServer.description.playwright":
+    "Integra la automatización del navegador para implementar el diseño y probar la IU.",
+  "settings.mcp.partnerServer.install": "Instalar",
+  "settings.mcp.partnerServer.installAndAuthenticate":
+    "Instalar y autenticarse",
+  "settings.mcp.partnerServer.logoAlt": "Logotipo de {label}",
+  "settings.mcp.partnerServer.vendor": "por {vendor}",
+  "settings.mcp.recommendedServers": "Servidores recomendados",
+  "settings.mcp.restartApp": "Reiniciar",
+  "settings.mcp.restartExtension": "Reiniciar extensión",
+  "settings.mcp.server.enable": "Habilitar",
+  "settings.mcp.server.login": "Autenticarse",
+  "settings.mcp.server.settings": "Configuración",
+  "settings.multiselect.createOption": 'Crear: "{value}"',
+  "settings.multiselect.removeOption": "Eliminar",
+  "settings.nav.account": "Cuenta",
+  "settings.nav.agent": "Configuración",
+  "settings.nav.ariaLabel": "Configuración",
+  "settings.nav.back": "Volver a la aplicación",
+  "settings.nav.data-controls": "Hilos archivados",
+  "settings.nav.environments": "Entornos en la nube",
+  "settings.nav.externalTooltip": "[alpha] Abrir en el navegador",
+  "settings.nav.general-settings": "General",
+  "settings.nav.git-settings": "Git",
+  "settings.nav.local-environments": "Entornos",
+  "settings.nav.mcp-settings": "Servidores MCP",
+  "settings.nav.notImplemented": "[alpha] No está disponible en Alpha",
+  "settings.nav.personalization": "Personalización",
+  "settings.nav.skills-settings": "Habilidades",
+  "settings.nav.usage-analytics": "Uso y análisis",
+  "settings.nav.worktrees": "Worktrees",
+  "settings.openSourceLicenses.back": "Atrás",
+  "settings.openSourceLicenses.loading": "Cargando…",
+  "settings.openSourceLicenses.missing":
+    "No se encontraron avisos de terceros.",
+  "settings.openSourceLicenses.notSupported": "No disponible en este host.",
+  "settings.openSourceLicenses.rowDescription":
+    "Avisos de terceros para dependencias incluidas",
+  "settings.openSourceLicenses.rowLabel": "Licencia de código abierto",
+  "settings.openSourceLicenses.subtitle":
+    "Avisos de terceros para dependencias incluidas en esta aplicación",
+  "settings.openSourceLicenses.title": "Licencia de código abierto",
+  "settings.openSourceLicenses.view": "Ver",
+  "settings.personalization.agents.description":
+    "Editar instrucciones para personalizar Codex a tu medida. {learnMore}",
+  "settings.personalization.agents.learnMore": "Obtener más información",
+  "settings.personalization.agents.loadError":
+    "No es posible cargar agents.md.",
+  "settings.personalization.agents.loading": "Cargando agents.md…",
+  "settings.personalization.agents.placeholder":
+    "Agregar tus instrucciones personalizadas…",
+  "settings.personalization.agents.retry": "Reintentar",
+  "settings.personalization.agents.save": "Guardar",
+  "settings.personalization.agents.save.error":
+    "No es posible guardar agents.md",
+  "settings.personalization.agents.save.success": "Se guardaron agents.md",
+  "settings.personalization.agents.title": "Instrucciones personalizadas",
+  "settings.personalization.personality.description":
+    "Elige un tono predeterminado para las respuestas de Codex",
+  "settings.personalization.personality.label": "Personalidad",
+  "settings.sample.contentBody":
+    "Usa este diseño para crear tus paneles de configuración con un espaciado uniforme.",
+  "settings.sample.contentTitle": "Bloque de contenido de muestra",
+  "settings.section.account": "Cuenta",
+  "settings.section.agent": "Configuración",
+  "settings.section.data-controls": "Hilos archivados",
+  "settings.section.environments": "Entornos en la nube",
+  "settings.section.external": "Se abre en tu navegador durante la fase Alpha",
+  "settings.section.general-settings": "General",
+  "settings.section.git-settings": "Git",
+  "settings.section.local-environments": "Entornos",
+  "settings.section.mcp-settings": "Servidores MCP",
+  "settings.section.mcp-settings.docs": "Documentos",
+  "settings.section.mcp-settings.subtitle":
+    "Conecta herramientas externas y fuentes de datos.",
+  "settings.section.personalization": "Personalización",
+  "settings.section.skills-settings": "Habilidades",
+  "settings.section.unavailable": "No está disponible en Alpha aún",
+  "settings.section.usage-analytics": "Uso y análisis",
+  "settings.section.worktrees": "Worktrees",
+  "settings.threadDetail.description":
+    "Elegir cuánto resultado de comandos mostrar en los hilos",
+  "settings.threadDetail.label": "Detalle del hilo",
+  "settings.worktrees.conversation.untitled": "Conversación sin título",
+  "settings.worktrees.delete.error": "Error al eliminar el worktree",
+  "settings.worktrees.empty.body":
+    "Los worktrees creados por Codex aparecerán aquí.",
+  "settings.worktrees.empty.title": "Aún no hay worktrees",
+  "settings.worktrees.error.body": "Algo salió mal al cargar los worktrees.",
+  "settings.worktrees.error.retry": "Reintentar",
+  "settings.worktrees.error.title": "No se pueden cargar los worktrees",
+  "settings.worktrees.loading.body": "Obteniendo detalles del worktree.",
+  "settings.worktrees.loading.title": "Cargando worktrees",
+  "settings.worktrees.repository.loading":
+    "Cargando metadatos del repositorio…",
+  "settings.worktrees.repository.unknown": "Repositorio desconocido",
+  "settings.worktrees.row.conversations": "Conversaciones",
+  "settings.worktrees.row.conversations.empty":
+    "No hay conversaciones vinculadas a este worktree.",
+  "settings.worktrees.row.conversations.loading": "Cargando conversaciones…",
+  "settings.worktrees.row.delete": "Eliminar",
+  "settings.worktrees.row.title": "Worktree",
+  "sidebarElectron.addWorkspaceRoot": "Agregar nuevo proyecto",
+  "sidebarElectron.archiveThread": "Archivar hilo",
+  "sidebarElectron.archiveThreadError": "Error al archivar el hilo",
+  "sidebarElectron.collapseFolder": "Contraer carpeta",
+  "sidebarElectron.debugNavLink": "Depurar",
+  "sidebarElectron.editWorkspaceRootOptionName": "Editar nombre",
+  "sidebarElectron.expandFolder": "Expandir carpeta",
+  "sidebarElectron.groupByMenu.recency": "Lista cronológica",
+  "sidebarElectron.groupByMenu.title": "Organizar",
+  "sidebarElectron.groupByMenu.workspace": "Por proyecto",
+  "sidebarElectron.inboxRouteNavLink": "Automatizaciones",
+  "sidebarElectron.missingWorkspaceRoot":
+    "Esta carpeta del proyecto fue eliminada o se movió",
+  "sidebarElectron.newThread": "Nuevo hilo",
+  "sidebarElectron.newThreadInGroup": "Iniciar un nuevo hilo en {folder}",
+  "sidebarElectron.noRecentThreads": "No hay hilos recientes",
+  "sidebarElectron.noTasks": "No hay hilos",
+  "sidebarElectron.noTasks.start": "Agregar un nuevo proyecto",
+  "sidebarElectron.noTasksWithFilter":
+    "No hay hilos que coincidan con los filtros",
+  "sidebarElectron.pinnedThreads": "Hilos anclados",
+  "sidebarElectron.recentNavLink": "Hilos",
+  "sidebarElectron.recentThreads": "Hilos recientes",
+  "sidebarElectron.removeWorkspaceRootOption": "Eliminar",
+  "sidebarElectron.renameThread": "Cambiar el nombre del hilo",
+  "sidebarElectron.renameThreadDialogAriaLabel": "Título de hilo",
+  "sidebarElectron.renameThreadDialogCancel": "Cancelar",
+  "sidebarElectron.renameThreadDialogPlaceholder": "Agregar un título…",
+  "sidebarElectron.renameThreadDialogSave": "Guardar",
+  "sidebarElectron.renameThreadDialogSubtitle":
+    "Que sea breve y fácil de reconocer.",
+  "sidebarElectron.renameThreadDialogTitle": "Cambiar el nombre del hilo",
+  "sidebarElectron.renameThreadError": "No se pudo cambiar el nombre del hilo",
+  "sidebarElectron.renameWorkspaceRootOptionLabel": "Nombre para mostrar",
+  "sidebarElectron.showLess": "Mostrar menos",
+  "sidebarElectron.showMenu.all": "Todos los hilos",
+  "sidebarElectron.showMenu.relevant": "Relevante",
+  "sidebarElectron.showMenu.relevantHint":
+    "Mostrar solo los hilos recientes de la rama actual, worktrees u otros hilos que requieren tu atención",
+  "sidebarElectron.showMenu.title": "Mostrar",
+  "sidebarElectron.showMenu.trigger": "Filtrar hilos de la barra lateral",
+  "sidebarElectron.showMore": "Mostrar más",
+  "sidebarElectron.skillsRouteNavLink": "Habilidades",
+  "sidebarElectron.sortMenu.created": "Creado",
+  "sidebarElectron.sortMenu.title": "Ordenar por",
+  "sidebarElectron.sortMenu.updated": "Actualizado",
+  "sidebarElectron.taskNavigation": "Carpetas de automatizaciones",
+  "sidebarElectron.tasksInFolder": "Automatizaciones en {folder}",
+  "sidebarElectron.workspaceOptions": "Acciones del proyecto para {folder}",
+  "sidebarElectron.worktreeGroupTooltip": "Este es un worktree de Git",
+  "skills.card.contentsError":
+    "No se pudieron cargar los contenidos de habilidades.",
+  "skills.card.disable": "Deshabilitar",
+  "skills.card.disableSuccess": "{skillName} habilidad deshabilitada",
+  "skills.card.disabledBadge": "Deshabilitado",
+  "skills.card.enable": "Habilitar",
+  "skills.card.enableSuccess": "{skillName} habilidad habilitada",
+  "skills.card.loadingContents": "Cargando contenidos de habilidades…",
+  "skills.card.more": "Más acciones",
+  "skills.card.open": "Abrir",
+  "skills.card.removeFailed": "Error al desinstalar la habilidad",
+  "skills.card.removeSuccess": "{skillName} habilidad desinstalada",
+  "skills.card.toggleEnabledError": "Error al actualizar la habilidad",
+  "skills.card.try": "Haz una prueba",
+  "skills.card.trySkill": "Probar habilidad",
+  "skills.card.uninstall": "Desinstalar",
+  "skills.hero.dotLabel": "Ir a la diapositiva {index}",
+  "skills.hero.next": "Siguiente habilidad destacada",
+  "skills.hero.trySkill": "Probar habilidad",
+  "skills.page.createSkill": "Nueva habilidad",
+  "skills.page.empty": "No se encontraron habilidades",
+  "skills.page.filteredEmpty": "Ninguna habilidad coincide con tus filtros",
+  "skills.page.filteredEmptyDescription":
+    "Intenta ajustar tus filtros de búsqueda o alcance",
+  "skills.page.heading": "Habilidades",
+  "skills.page.loading": "Cargando habilidades…",
+  "skills.page.refreshSkills": "Actualizar",
+  "skills.page.refreshSkillsToUseNew":
+    "Actualiza para usar las nuevas habilidades",
+  "skills.page.search": "Buscar habilidades",
+  "skills.page.search.label": "Buscar habilidades",
+  "skills.page.subheading":
+    "Dale superpoderes a Codex<link>Obtener más información</link>",
+  "skills.preview.copyPrompt": "Copiar mensaje",
+  "skills.preview.examplePrompt": "Mensaje de ejemplo",
+  "skills.recommended.error":
+    "No se pudieron cargar las habilidades recomendadas",
+  "skills.recommended.install": "Instalar",
+  "skills.recommended.installSkill": "Instalar habilidad",
+  "skills.recommended.installSuccess": "{skillName} habilidad instalada",
+  "skills.recommended.installed": "Instaladas",
+  "skills.scope.admin": "Administrador",
+  "skills.scope.adminInstalled": "Instalado por el administrador",
+  "skills.scope.builtIn": "Sistema",
+  "skills.scope.personal": "Personal",
+  "skills.scope.repo": "Repositorio",
+  "skills.scope.system": "Sistema",
+  "skills.scope.team": "Team",
+  "skills.scope.user": "Usuario",
+  "skills.section.installed": "Instaladas",
+  "skills.section.recommended": "Recomendada",
+  "story.slidingToggle.existing": "Existente",
+  "story.slidingToggle.fromLocal": "Desde local",
+  "story.slidingToggle.new": "Nuevo",
+  "story.slidingToggle.toLocal": "A local",
+  "terminal.close": "Cerrar terminal",
+  "terminal.title": "Terminal",
+  "thinkingShimmer.default": "Pensando",
+  "threadEnvIcon.cloudTooltip":
+    "Esta conversación se está ejecutando en Codex Cloud.",
+  "threadEnvIcon.localTooltip":
+    "Esta conversación se está ejecutando de forma local.",
+  "threadEnvIcon.worktreeTooltip":
+    "Esta conversación se ejecuta en un worktree local de Git.",
+  "threadHeader.archiveConfirmCancel": "Cancelar",
+  "threadHeader.archiveConfirmConfirm": "Archivar",
+  "threadHeader.copyAppLink": "Copiar enlace de la aplicación",
+  "threadHeader.copySessionId": "Copiar ID de sesión",
+  "threadHeader.copyWorkingDirectory": "Copiar directorio de trabajo",
+  "threadHeader.moreActions": "Acciones del hilo",
+  "threadPage.newThread": "Nuevo hilo",
+  "threadPage.runAction.changeEnvironment": "Cambiar entorno",
+  "threadPage.runAction.dropdown.titleWithEnvironment":
+    "{environmentName} acciones",
+  "threadPage.runAction.environmentSelector.label": "Elegir entorno",
+  "threadPage.runAction.label": "Ejecutar",
+  "threadPage.runAction.missing.label": "Configurar una acción de ejecución",
+  "threadPage.runAction.setup.commandLabel": "Comando para ejecutar",
+  "threadPage.runAction.setup.description":
+    "Indica a Codex cómo instalar dependencias e iniciar tu aplicación.",
+  "threadPage.runAction.setup.editMore": "Configuración del entorno",
+  "threadPage.runAction.setup.placeholder": "Ej.: npm install npm run",
+  "threadPage.runAction.setup.submit": "Guardar y ejecutar",
+  "threadPage.runAction.setup.title": "Ejecutar",
+  "threadPage.runAction.tooltip.withEnvironment": "{environmentName} acciones",
+  "threadPage.toggleDiffPanel": "Alternar panel de diff",
+  "threadPage.toggleTerminal": "Alternar terminal",
+  "threadTitle.branchName": "({branchName})",
+  "threadTitle.openFolderInFinder": "Abrir carpeta",
+  "toolSummaryForCmd.exploredFiles": "<verb>Archivos</verb> mostrados",
+  "toolSummaryForCmd.exploredFilesInPath":
+    "<verb>Archivos</verb> mostrados en {path}",
+  "toolSummaryForCmd.exploringFiles": "<verb>Mostrando</verb> archivos",
+  "toolSummaryForCmd.exploringFilesInPath":
+    "<verb>Mostrando</verb> archivos en {path}",
+  "toolSummaryForCmd.ranGenericCommand":
+    "<status>Se ejecutó el comando</status>{timer}",
+  "toolSummaryForCmd.ranSpecificCommand":
+    "<status>Se ejecutó</status> {command}{timer}",
+  "toolSummaryForCmd.read": "<verb>Leído</verb> {path}",
+  "toolSummaryForCmd.runningGenericCommand":
+    "<status>Ejecutando el comando</status>{timer}",
+  "toolSummaryForCmd.runningTimer": "para {elapsed}",
+  "toolSummaryForCmd.searchedFor": "<verb>Se </verb> buscó {query}",
+  "toolSummaryForCmd.searchedForFiles": "<verb>S</verb> buscaron archivos",
+  "toolSummaryForCmd.searchedForInPath":
+    "<verb>Se buscó</verb> {query} en {path}",
+  "toolSummaryForCmd.searchingFor": "<verb>Buscando</verb> {query}",
+  "toolSummaryForCmd.searchingForFiles": "<verb>Buscando</verb> archivos",
+  "toolSummaryForCmd.searchingForInPath":
+    "<verb>Buscando</verb> {query} en {path}",
+  "traceRecording.startDetails.cancel": "Cancelar",
+  "wham.diff.addComment": "Agregar comentario",
+  "wham.diff.binaryFile": "No se muestra el archivo binario",
+  "wham.diff.noContent": "Sin contenido",
+  "wham.fileTag.deleted": "Eliminado",
+  "wham.fileTag.new": "Nuevo",
+  "wham.formattedRelativeDateTime.compactDaysAgo": "{value} d",
+  "wham.formattedRelativeDateTime.compactHoursAgo": "{value} h",
+  "wham.formattedRelativeDateTime.compactMinutesAgo": "{value} m",
+  "wham.formattedRelativeDateTime.compactMonthsAgo": "{value} meses",
+  "wham.formattedRelativeDateTime.compactWeeksAgo": "{value} sems.",
+  "wham.formattedRelativeDateTime.compactYearsAgo": "{value} años",
+  "wham.message.modal.repoAndDiffStats.linesAdded": "+{linesAdded}",
+  "wham.message.modal.repoAndDiffStats.linesRemoved": "-{linesRemoved}",
+  "wham.streamTurnStatus.workingOnYourTask": "Trabajando en tu tarea",
+  "wham.whamProposedTask.title": "Tarea sugerida",
+  "wham.whamProposedTask.useSuggestion": "Usar sugerencia",
+  "workspaceRootDialog.addError": "Error al agregar el proyecto",
+  "workspaceRootDialog.cancel": "Cancelar",
+  "workspaceRootDialog.confirmAdd": "Agregar proyecto",
+  "workspaceRootDialog.confirmPick": "Usar proyecto",
+  "workspaceRootDialog.description":
+    "Ingresa una ruta en {host} para usarla como proyecto.",
+  "workspaceRootDialog.pathLabel": "Ruta del proyecto",
+  "workspaceRootDialog.pathPlaceholder": "/home/you/project",
+  "workspaceRootDialog.title.add": "Agregar ruta del proyecto",
+  "workspaceRootDialog.title.pick": "Elegir ruta del proyecto",
+  "worktreeInitV2.cancel": "Cancelar",
+  "worktreeInitV2.notification.failedTitle":
+    "Error en la configuración del worktree",
+  "worktreeInitV2.output.empty": "Esperando salida…",
+  "worktreeInitV2.status.error": "Error en la configuración del worktree.",
+  "worktreeInitV2.status.running":
+    "Creando un worktree y ejecutando la configuración.",
+  "worktreeInitV2.status.success": "Worktree listo.",
+  "worktreeInitV2.title": "Creando worktree",
+  "worktreeInitV2.workLocallyInstead": "Trabajar localmente en su lugar",
+  "worktreeRestoreBanner.body":
+    "El worktree de este hilo se eliminó para ahorrar espacio en disco",
+  "worktreeRestoreBanner.missing.body":
+    "La carpeta del worktree de este hilo ya no existe.",
+  "worktreeRestoreBanner.missing.title":
+    "Falta el directorio de trabajo actual",
+  "worktreeRestoreBanner.restore.error":
+    "Error al restaurar el worktree: {message}",
+  "worktreeRestoreBanner.restore.success": "Worktree restaurado",
+  "worktreeRestoreBanner.restoreCta": "Restaurar worktree",
+  "worktreeRestoreBanner.title": "Worktree limpiado",
+};
+export { e as default };
+//# sourceMappingURL=es-419-JK3V2w5h.js.map
