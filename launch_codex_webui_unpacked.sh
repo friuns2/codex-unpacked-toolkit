@@ -115,7 +115,9 @@ write_main_injection_chunk() {
 
       socket.on("data", (chunk) => this.onData(chunk));
       socket.on("error", (err) => {
-        this.emit("error", err);
+        // Avoid unhandled EventEmitter "error" crashes on transient socket resets.
+        this.emit("ws-error", err);
+        this.finishClose(1006, String(err?.code ?? "socket-error"));
       });
       socket.on("close", () => {
         this.finishClose(1006, "");
@@ -372,10 +374,6 @@ write_main_injection_chunk() {
     res.setHeader("X-Frame-Options", "DENY");
     res.setHeader("Referrer-Policy", "no-referrer");
     res.setHeader("Cross-Origin-Resource-Policy", "same-origin");
-    res.setHeader(
-      "Content-Security-Policy",
-      "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' ws: wss:; img-src 'self' data: blob:; font-src 'self' data:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
-    );
   }
 
   function webUiInjectRuntimeScripts(html) {
@@ -628,6 +626,11 @@ write_main_injection_chunk() {
         ws.on("close", () => {
           sockets.delete(ws);
         });
+        ws.on("ws-error", (err) => {
+          Xt().warning("WebUI socket error", {
+            message: we(err),
+          });
+        });
 
         let bucketStart = Date.now();
         let count = 0;
@@ -872,6 +875,26 @@ fs.writeFileSync(mainFile, source, "utf8");
 NODE
 }
 
+patch_renderer_bundle() {
+  local renderer_file="$1"
+  node - "$renderer_file" <<'NODE'
+const fs = require("node:fs");
+const rendererFile = process.argv[2];
+let source = fs.readFileSync(rendererFile, "utf8");
+
+const find = "if(!v)return;const M=v.roots.map(A4),A=g.current;";
+const replace = "if(!v||!Array.isArray(v.roots))return;const M=v.roots.map(A4),A=g.current;";
+
+if (!source.includes(find)) {
+  console.error("Renderer guard patch anchor not found.");
+  process.exit(1);
+}
+
+source = source.replace(find, replace);
+fs.writeFileSync(rendererFile, source, "utf8");
+NODE
+}
+
 EXTRA_ARGS=()
 while (($#)); do
   case "$1" in
@@ -933,10 +956,12 @@ target_renderer_js_rel="$(sed -nE 's@.*assets/(index-[A-Za-z0-9_-]+\.js).*@\1@p'
 MAIN_CHUNK_FILE="$WORKDIR/main-webui.chunk.js"
 write_main_injection_chunk "$MAIN_CHUNK_FILE"
 apply_main_chunk "$APP_DIR/.vite/build/$target_main_js_rel" "$MAIN_CHUNK_FILE"
+patch_renderer_bundle "$APP_DIR/webview/assets/$target_renderer_js_rel"
 
 cp "$BRIDGE_PATH" "$APP_DIR/webview/webui-bridge.js"
 
 rg -q -- '__CODEX_WEBUI_RUNTIME_PATCH__' "$APP_DIR/.vite/build/$target_main_js_rel" || { echo "Patched main missing runtime marker" >&2; exit 1; }
+rg -Fq -- '!Array.isArray(v.roots)' "$APP_DIR/webview/assets/$target_renderer_js_rel" || { echo "Patched renderer missing roots guard" >&2; exit 1; }
 rg -q 'sendMessageFromView' "$APP_DIR/webview/webui-bridge.js" || { echo "Bridge file looks invalid" >&2; exit 1; }
 
 CMD=(npx electron "--user-data-dir=$USER_DATA_DIR" "$APP_DIR" --webui --port "$PORT")
@@ -963,7 +988,20 @@ echo "User data dir: $USER_DATA_DIR"
 printf 'Command:'; printf ' %q' "${CMD[@]}"; echo
 
 if [[ "$NO_OPEN" -eq 0 ]]; then
-  ( sleep 1; open "http://127.0.0.1:${PORT}/" >/dev/null 2>&1 || true ) &
+  (
+    if command -v curl >/dev/null 2>&1; then
+      for _ in {1..120}; do
+        if curl -fsS "http://127.0.0.1:${PORT}/" >/dev/null 2>&1; then
+          open "http://127.0.0.1:${PORT}/" >/dev/null 2>&1 || true
+          exit 0
+        fi
+        sleep 0.25
+      done
+    else
+      sleep 1
+      open "http://127.0.0.1:${PORT}/" >/dev/null 2>&1 || true
+    fi
+  ) &
 fi
 
 exec "${CMD[@]}"
