@@ -1,3 +1,5 @@
 .DS_Store
 
 codex_reverse/build/
+.playwright-cli/
+.playwirng
