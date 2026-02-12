@@ -6,22 +6,10 @@ set -euo pipefail
 #
 # This script patches the CodexDesktop-Rebuild source in-place (with backups)
 # and launches the app with --webui mode, serving the UI over HTTP+WebSocket.
-#
-# Architecture: each browser tab gets its own lightweight IPC proxy session.
-# Responses are unicast to the requesting tab; broadcasts go to all tabs.
-# No extra BrowserWindow instances — zero event-loop overhead per tab.
 ###############################################################################
 
 CODEX_DIR="${CODEX_DIR:-$HOME/apps/CodexDesktop-Rebuild}"
-# Derive a deterministic port from the running directory path.
-_dir_hash_port() {
-  local dir_path
-  dir_path="$(pwd -P)"
-  local hash
-  hash=$(printf '%s' "$dir_path" | cksum | awk '{print $1}')
-  echo $(( (hash % 50000) + 10000 ))
-}
-PORT="${CODEX_WEBUI_PORT:-$(_dir_hash_port)}"
+PORT="${CODEX_WEBUI_PORT:-4310}"
 REMOTE=0
 TOKEN=""
 ORIGINS=""
@@ -36,7 +24,7 @@ Usage:
 
 Options:
   --codex-dir <path>     CodexDesktop-Rebuild directory (default: ~/apps/CodexDesktop-Rebuild)
-  --port <n>             WebUI port (default: derived from directory path)
+  --port <n>             WebUI port (default: 4310)
   --remote               Bind to 0.0.0.0 instead of 127.0.0.1
   --token <value>        Auth token for remote mode
   --origins <csv>        Allowed origins CSV
@@ -124,17 +112,10 @@ else
     return Number.isFinite(parsed) && parsed >= 1 && parsed <= 65535 ? parsed : fallback;
   }
 
-  function webUiDirHashPort(dirPath) {
-    let hash = 0;
-    const buf = Buffer.from(dirPath || process.cwd());
-    for (let i = 0; i < buf.length; i++) hash = (hash + buf[i]) | 0;
-    return ((((hash % 50000) + 50000) % 50000) + 10000);
-  }
-
   function webUiParseCliOptions(argv = process.argv, env = process.env) {
     let enabled = false;
     let remote = false;
-    let port = webUiParsePortArg(env.CODEX_WEBUI_PORT, webUiDirHashPort(process.cwd()));
+    let port = webUiParsePortArg(env.CODEX_WEBUI_PORT, 3210);
     let token = (env.CODEX_WEBUI_TOKEN ?? "").trim();
     let origins = (env.CODEX_WEBUI_ORIGINS ?? "")
       .split(",")
@@ -175,6 +156,7 @@ else
   const { EventEmitter } = require("node:events");
   const electron = require("electron");
 
+  // Simple logger that works regardless of the app's internal logger
   const webUiLog = {
     info: (...args) => console.log("[WebUI]", ...args),
     warning: (...args) => console.warn("[WebUI]", ...args),
@@ -320,13 +302,16 @@ else
   }
 
   function webUiRelaxCSP(html) {
+    // Remove or relax the CSP meta tag to allow ws: connections and inline scripts for bridge
     return html.replace(
       /<meta\s+http-equiv="Content-Security-Policy"[^>]*>/gi,
       '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src \'self\' https: data: blob:; child-src \'self\' blob:; frame-src \'self\' blob:; worker-src \'self\' blob:; script-src \'self\' \'unsafe-inline\' \'wasm-unsafe-eval\'; style-src \'self\' \'unsafe-inline\'; font-src \'self\' data:; media-src \'self\' blob:; connect-src \'self\' ws: wss: https://ab.chatgpt.com https://cdn.openai.com;">'
     );
   }
 
-  // ---- Wait for the primary app window ----
+  // ---- Discover internal app references at runtime ----
+  // We hook into BrowserWindow creation to find the primary window and its context.
+
   async function waitForPrimaryWindow(timeoutMs = 30000) {
     const start = Date.now();
     while (Date.now() - start < timeoutMs) {
@@ -338,256 +323,22 @@ else
     return null;
   }
 
-  // ---- Capture the IPC handler function ----
+  // Find the message handler context by intercepting IPC
   let resolvedMessageHandler = null;
 
-  function createMessageHandler(handler) {
-    return handler;   // store the raw handler; we build fakeEvent per-call
+  function getMessageHandlerFromWindow(win) {
+    // The app registers IPC handlers. We look for the handler that processes
+    // "codex_desktop:message-from-view" channel messages.
+    // We intercept webContents.send to discover the context.
+    return resolvedMessageHandler;
   }
 
-  // =========================================================================
-  // Per-tab session manager  (lightweight — NO extra BrowserWindows)
-  //
-  // Each WebSocket connection gets a *proxy webContents* object.  When the
-  // Codex IPC handler calls `event.sender.send(channel, data)`, the proxy
-  // forwards it over the correct WebSocket — giving every browser tab its
-  // own isolated message stream without the cost of an extra renderer.
-  // =========================================================================
-  const IPC_CHANNEL  = "codex_desktop:message-for-view";
-  const WORKER_PREFIX = "codex_desktop:worker:";
-
-  // Methods whose responses are *unicast* (sent only to the requester).
-  // Anything NOT in this set is treated as a broadcast.
-  const _broadcastMethods = new Set([
-    "skills_update_available",
-    "client-status-changed",
-  ]);
-
-  // Notification throttle — prevent skills_update_available storms
-  const _notifThrottle = { last: 0, intervalMs: 2000 };
-  function shouldThrottleNotif(method) {
-    if (method !== "skills_update_available") return false;
-    const now = Date.now();
-    if (now - _notifThrottle.last < _notifThrottle.intervalMs) return true;
-    _notifThrottle.last = now;
-    return false;
-  }
-
-  class SessionManager {
-    constructor({ primaryWindow }) {
-      this._primaryWindow = primaryWindow;
-      this._sessions = new Map(); // ws -> { sessionId }
-      this._nextId = 1;
-      this._ipcHandler = null;
-
-      // requestId -> ws mapping for correlating async responses
-      this._pendingRequests = new Map();
-
-      // Also keep a stack-based fallback for messages without requestId
-      this._requestStack = [];
-
-      // Intercept the PRIMARY window's webContents.send so we can
-      // route IPC responses to the correct WebSocket client.
-      this._origPrimarySend = primaryWindow.webContents.send.bind(
-        primaryWindow.webContents
-      );
-      const self = this;
-      primaryWindow.webContents.send = function(channel, ...args) {
-        // Forward to native renderer as always
-        self._origPrimarySend(channel, ...args);
-
-        // Route to WebSocket clients ONLY if we can identify the target.
-        // Never broadcast unsolicited messages — they corrupt other tabs.
-        if (channel === IPC_CHANNEL) {
-          const payload = args[0];
-          const method = payload?.method ?? payload?.type ?? "";
-
-          // Throttle noisy notifications
-          if (shouldThrottleNotif(method)) return;
-
-          // 1. Route by requestId (most reliable — async-safe)
-          const reqId = payload?.requestId;
-          if (reqId && self._pendingRequests.has(reqId)) {
-            const targetWs = self._pendingRequests.get(reqId);
-            self._pendingRequests.delete(reqId);
-            self._sendToWs(targetWs, { kind: "message-for-view", payload });
-            return;
-          }
-
-          // 2. Explicit broadcast types go to ALL tabs
-          if (_broadcastMethods.has(method)) {
-            self._broadcastAll({ kind: "message-for-view", payload });
-            return;
-          }
-
-          // 3. ipc-broadcast type — broadcast only specific safe methods
-          if (payload?.type === "ipc-broadcast") {
-            const bcastMethod = payload?.method ?? "";
-            // Only broadcast connection status; everything else is routed
-            if (bcastMethod === "client-status-changed" ||
-                bcastMethod === "codex-app-server-connection-changed" ||
-                bcastMethod === "codex-app-server-initialized") {
-              self._broadcastAll({ kind: "message-for-view", payload });
-              return;
-            }
-          }
-
-          // 4. Route to the most recent requester on the stack
-          if (self._requestStack.length > 0) {
-            const target = self._requestStack[self._requestStack.length - 1];
-            self._sendToWs(target, { kind: "message-for-view", payload });
-            return;
-          }
-
-          // 5. No pending requests — DROP the message for WS clients.
-          // It's a background notification from the primary renderer's own
-          // activity; WS tabs don't need it and it would corrupt their state.
-        } else if (
-          channel.startsWith(WORKER_PREFIX) &&
-          channel.endsWith(":for-view")
-        ) {
-          const workerId = channel.slice(
-            WORKER_PREFIX.length,
-            -":for-view".length
-          );
-          const packet = {
-            kind: "worker-message-for-view",
-            workerId,
-            payload: args[0],
-          };
-          // Only forward worker messages if there's an active requester
-          if (self._requestStack.length > 0) {
-            const target = self._requestStack[self._requestStack.length - 1];
-            self._sendToWs(target, packet);
-          }
-        }
-      };
-    }
-
-    /* ---- helpers ---- */
-    _sendToWs(ws, packet) {
-      if (ws.readyState !== WebUiSocket.OPEN) return;
-      try { ws.send(JSON.stringify(packet)); } catch {}
-    }
-
-    _broadcastAll(packet) {
-      const serialized = JSON.stringify(packet);
-      for (const [ws] of this._sessions) {
-        if (ws.readyState === WebUiSocket.OPEN) {
-          try { ws.send(serialized); } catch {}
-        }
-      }
-    }
-
-    set ipcHandler(fn) { this._ipcHandler = fn; }
-
-    /** Register a new WebSocket client — no BrowserWindow created. */
-    createSession(ws) {
-      const sessionId = `session-${this._nextId++}`;
-      webUiLog.info(`Creating ${sessionId} (lightweight proxy)`);
-      this._sessions.set(ws, { sessionId });
-      return { sessionId };
-    }
-
-    /** Unregister a WebSocket client. */
-    destroySession(ws) {
-      const session = this._sessions.get(ws);
-      if (!session) return;
-      this._sessions.delete(ws);
-
-      // Clean up any pending requests for this ws
-      for (const [reqId, pendingWs] of this._pendingRequests) {
-        if (pendingWs === ws) this._pendingRequests.delete(reqId);
-      }
-      this._requestStack = this._requestStack.filter(w => w !== ws);
-
-      webUiLog.info(`Destroying ${session.sessionId}`);
-    }
-
-    /** Handle an IPC message from a WebSocket client. */
-    async handleMessage(ws, payload) {
-      const session = this._sessions.get(ws);
-      if (!session) {
-        webUiLog.warning("No session for WS client");
-        return;
-      }
-      if (!this._ipcHandler) {
-        webUiLog.warning("IPC handler not ready yet");
-        return;
-      }
-
-      // Register this requestId → ws mapping so the response routes back
-      const reqId = payload?.requestId;
-      if (reqId) {
-        this._pendingRequests.set(reqId, ws);
-        // Auto-expire after 30s to prevent memory leaks
-        setTimeout(() => this._pendingRequests.delete(reqId), 30000);
-      }
-
-      // Push to stack as fallback for messages without requestId
-      this._requestStack.push(ws);
-
-      const primaryWC = this._primaryWindow.webContents;
-      const fakeEvent = {
-        sender: primaryWC,
-        senderFrame: primaryWC.mainFrame ?? null,
-        ports: [],
-        processId: primaryWC.getProcessId?.() ?? 0,
-        frameId: 0,
-        returnValue: undefined,
-        reply: (...args) => primaryWC.send(...args),
-      };
-
-      try {
-        await this._ipcHandler(fakeEvent, payload);
-      } catch (e) {
-        webUiLog.warning(`IPC handler error (${session.sessionId}):`, e?.message ?? e);
-      } finally {
-        // Pop from stack after handler completes + small delay for async
-        setTimeout(() => {
-          const idx = this._requestStack.lastIndexOf(ws);
-          if (idx >= 0) this._requestStack.splice(idx, 1);
-        }, 500);
-      }
-    }
-
-    /** Handle a worker message from a WebSocket client. */
-    async handleWorkerMessage(ws, workerId, workerPayload) {
-      const session = this._sessions.get(ws);
-      if (!session) return;
-      this._requestStack.push(ws);
-      try {
-        const code = `
-          Promise.resolve().then(async () => {
-            const bridge = window.electronBridge;
-            if (!bridge || typeof bridge.sendWorkerMessageFromView !== "function") return null;
-            return await bridge.sendWorkerMessageFromView(${JSON.stringify(workerId)}, ${JSON.stringify(workerPayload)});
-          });
-        `;
-        await this._primaryWindow.webContents.executeJavaScript(code, true);
-      } catch (e) {
-        webUiLog.warning(`Worker message failed (${session.sessionId}):`, e.message);
-      } finally {
-        setTimeout(() => {
-          const idx = this._requestStack.lastIndexOf(ws);
-          if (idx >= 0) this._requestStack.splice(idx, 1);
-        }, 500);
-      }
-    }
-
-    /** Destroy all sessions. */
-    destroyAll() {
-      for (const [ws] of this._sessions) {
-        this.destroySession(ws);
-      }
-    }
-  }
-
-  // =========================================================================
-  // Bridge runtime — HTTP server + WebSocket server + session manager
-  // =========================================================================
   async function webUiStartBridgeRuntime({ bridgeWindow }) {
+    // Resolve the asset root — the webview directory
+    // In dev mode, the app source is at CODEX_DIR/src, so webview is at CODEX_DIR/src/webview
     const appPath = electron.app.getAppPath();
+    // In dev mode, webview is at src/webview relative to app root
+    // In packaged mode, it would be at webview relative to app root
     let assetRoot = path.join(appPath, "webview");
     if (!fs.existsSync(assetRoot)) {
       assetRoot = path.join(appPath, "src", "webview");
@@ -602,10 +353,11 @@ else
       ? crypto.randomBytes(24).toString("hex")
       : webUiOptions.token;
     const originAllowlist = new Set(webUiOptions.origins);
+    const sockets = new Set();
     let cachedIndexHtml = "";
 
-    const fromViewChannel = "codex_desktop:message-from-view";
-    let rawIpcHandler = null;
+    const IPC_CHANNEL = "codex_desktop:message-for-view";
+    const WORKER_PREFIX = "codex_desktop:worker:";
 
     const originAllowed = (origin, hostHeader) => {
       if (typeof origin !== "string") return false;
@@ -614,55 +366,95 @@ else
       catch { return false; }
     };
 
-    // ---- Session manager (lightweight — no extra BrowserWindows) ----
-    const sessionMgr = new SessionManager({ primaryWindow: bridgeWindow });
+    const broadcast = (packet) => {
+      if (sockets.size === 0) return;
+      let serialized;
+      try { serialized = JSON.stringify(packet); } catch { return; }
+      for (const ws of sockets) {
+        if (ws.readyState !== WebUiSocket.OPEN) continue;
+        ws.send(serialized, (err) => { if (err) webUiLog.warning("WS send failed", err.message); });
+      }
+    };
 
-    // ---- Capture IPC handler ----
+    // Intercept webContents.send to mirror IPC to WebSocket
+    const originalSend = bridgeWindow.webContents.send.bind(bridgeWindow.webContents);
+    bridgeWindow.webContents.send = (channel, ...args) => {
+      if (channel === IPC_CHANNEL) {
+        broadcast({ kind: "message-for-view", payload: args[0] });
+      } else if (channel.startsWith(WORKER_PREFIX) && channel.endsWith(":for-view")) {
+        broadcast({
+          kind: "worker-message-for-view",
+          workerId: channel.slice(WORKER_PREFIX.length, -":for-view".length),
+          payload: args[0],
+        });
+      }
+      originalSend(channel, ...args);
+    };
+
+    // Discover the message handler for codex_desktop:message-from-view
+    // The app uses ipcMain.handle() (invoke/handle pattern), not ipcMain.on()
+    const fromViewChannel = "codex_desktop:message-from-view";
+    let messageHandlerFn = null;
+
+    const createMessageHandler = (handler) => {
+      return async (webContents, payload) => {
+        const fakeEvent = {
+          sender: webContents,
+          senderFrame: webContents.mainFrame ?? null,
+          ports: [],
+          processId: webContents.getProcessId?.() ?? 0,
+          frameId: 0,
+          returnValue: undefined,
+          reply: (...args) => webContents.send(...args),
+        };
+        try { await handler(fakeEvent, payload); }
+        catch (e) { webUiLog.warning("IPC handler error:", e?.message ?? e); }
+      };
+    };
+
+    // Monkey-patch ipcMain.handle to capture the handler when registered
     const origHandle = electron.ipcMain.handle.bind(electron.ipcMain);
     electron.ipcMain.handle = function(channel, handler) {
       if (channel === fromViewChannel) {
         webUiLog.info("Captured ipcMain.handle for", channel);
-        rawIpcHandler = handler;
-        sessionMgr.ipcHandler = handler;
+        messageHandlerFn = createMessageHandler(handler);
       }
       return origHandle(channel, handler);
     };
 
+    // Check if handler already registered via Electron internals
     if (electron.ipcMain._invokeHandlers) {
       const existing = electron.ipcMain._invokeHandlers.get(fromViewChannel);
       if (existing) {
         webUiLog.info("Found existing ipcMain.handle handler for", fromViewChannel);
-        rawIpcHandler = existing;
-        sessionMgr.ipcHandler = existing;
+        messageHandlerFn = createMessageHandler(existing);
       }
     }
 
-    if (!rawIpcHandler) {
+    // Fallback: poll for handler registration
+    if (!messageHandlerFn) {
       webUiLog.info("Polling for IPC handler registration...");
       const poll = () => {
-        if (rawIpcHandler) return;
+        if (messageHandlerFn) return;
         if (electron.ipcMain._invokeHandlers) {
           const h = electron.ipcMain._invokeHandlers.get(fromViewChannel);
-          if (h) {
-            webUiLog.info("Found handler via polling");
-            rawIpcHandler = h;
-            sessionMgr.ipcHandler = h;
-            return;
-          }
+          if (h) { webUiLog.info("Found handler via polling"); messageHandlerFn = createMessageHandler(h); return; }
         }
         setTimeout(poll, 100);
       };
       poll();
     }
 
-    // ---- HTTP server ----
+    // HTTP server
     const server = http.createServer(async (req, res) => {
       const parsedUrl = new URL(req.url ?? "/", `http://${req.headers.host ?? "127.0.0.1"}`);
 
+      // Security headers
       res.setHeader("X-Content-Type-Options", "nosniff");
       res.setHeader("X-Frame-Options", "DENY");
       res.setHeader("Referrer-Policy", "no-referrer");
 
+      // Auth check
       if (authRequired) {
         const provided = webUiExtractAuthToken(req, parsedUrl);
         if (!webUiTokensEqual(provided, token)) {
@@ -673,6 +465,7 @@ else
         }
       }
 
+      // /webui-config.js — runtime config for the bridge
       if (parsedUrl.pathname === "/webui-config.js") {
         const config = JSON.stringify({
           wsPath: "/ws",
@@ -686,6 +479,7 @@ else
         return;
       }
 
+      // Resolve asset path
       let reqPath = parsedUrl.pathname;
       if (reqPath === "/" || reqPath === "/index.html") reqPath = "/index.html";
 
@@ -694,11 +488,16 @@ else
       const rel = decoded.replace(/^[/\\]+/, "") || "index.html";
       const resolved = path.resolve(assetRoot, rel);
 
+      // Security: ensure path is within assetRoot
       if (!resolved.startsWith(path.resolve(assetRoot) + path.sep) && resolved !== path.resolve(assetRoot)) {
-        if (reqPath !== "/index.html") { /* SPA fallback below */ }
-        else { res.statusCode = 403; res.end("Forbidden"); return; }
+        if (reqPath !== "/index.html") {
+          // SPA fallback
+        } else {
+          res.statusCode = 403; res.end("Forbidden"); return;
+        }
       }
 
+      // Try to serve the file
       try {
         const stat = await fs.promises.stat(resolved);
         if (stat.isFile()) {
@@ -733,10 +532,12 @@ else
         }
       } catch { /* fall through to SPA fallback */ }
 
+      // API/WS routes return 404
       if (reqPath.startsWith("/api") || reqPath.startsWith("/auth") || reqPath === "/ws") {
         res.statusCode = 404; res.setHeader("Content-Type", "text/plain"); res.end("Not Found"); return;
       }
 
+      // SPA fallback
       if (!cachedIndexHtml) {
         try {
           let raw = await fs.promises.readFile(path.join(assetRoot, "index.html"), "utf8");
@@ -749,7 +550,7 @@ else
       res.end(cachedIndexHtml);
     });
 
-    // ---- WebSocket server ----
+    // WebSocket server
     const wss = new WebUiSocketServer();
 
     server.on("upgrade", (req, socket, head) => {
@@ -763,14 +564,8 @@ else
       }
 
       wss.handleUpgrade(req, socket, head, (ws) => {
-        // Register this tab — lightweight, no extra BrowserWindow
-        const session = sessionMgr.createSession(ws);
-        webUiLog.info(`Tab connected: ${session.sessionId}`);
-
-        ws.on("close", () => {
-          sessionMgr.destroySession(ws);
-        });
-
+        sockets.add(ws);
+        ws.on("close", () => sockets.delete(ws));
         ws.on("ws-error", (err) => webUiLog.warning("WS error", err.message));
 
         let bucketStart = Date.now(), count = 0;
@@ -790,11 +585,14 @@ else
               const payload = packet.payload;
               if (!payload || typeof payload.type !== "string") return;
 
-              await sessionMgr.handleMessage(ws, payload);
+              if (messageHandlerFn) {
+                await messageHandlerFn(bridgeWindow.webContents, payload);
+              } else {
+                webUiLog.warning("No message handler available yet");
+              }
 
               if (payload.type === "ready") {
-                // Send connected status to this tab
-                const statusPacket = JSON.stringify({
+                broadcast({
                   kind: "message-for-view",
                   payload: {
                     type: "ipc-broadcast",
@@ -804,14 +602,23 @@ else
                     params: { status: "connected" },
                   },
                 });
-                ws.send(statusPacket, () => {});
               }
               return;
             }
 
             if (packet?.kind === "worker-message-from-view") {
               if (typeof packet.workerId !== "string" || !packet.workerId) return;
-              await sessionMgr.handleWorkerMessage(ws, packet.workerId, packet.payload);
+              // Forward worker messages via the bridge window
+              try {
+                const code = `
+                  Promise.resolve().then(async () => {
+                    const bridge = window.electronBridge;
+                    if (!bridge || typeof bridge.sendWorkerMessageFromView !== "function") return null;
+                    return await bridge.sendWorkerMessageFromView(${JSON.stringify(packet.workerId)}, ${JSON.stringify(packet.payload)});
+                  });
+                `;
+                await bridgeWindow.webContents.executeJavaScript(code, true);
+              } catch (e) { webUiLog.warning("Worker message forward failed", e.message); }
               return;
             }
           } catch (err) {
@@ -839,9 +646,11 @@ else
     return {
       host, port: webUiOptions.port, token: authRequired ? token : "",
       dispose: async () => {
-        sessionMgr.destroyAll();
         wss.close();
+        for (const ws of sockets) { try { ws.close(1001, "Shutting down"); } catch {} }
+        sockets.clear();
         await new Promise(r => server.close(() => r()));
+        bridgeWindow.webContents.send = originalSend;
       },
     };
   }
@@ -931,151 +740,37 @@ NODE
 fi
 
 ###############################################################################
-# Step 3: Patch renderer bundle — defensive guards
-#
-# These patches protect against crashes from undefined/non-array data that
-# can occur during initial hydration or timing gaps between tabs.
+# Step 3: Patch renderer bundle — add Array.isArray guard for roots
 ###############################################################################
-RENDERER_GUARD_MARKER="__WEBUI_RENDERER_GUARDS__"
+RENDERER_FIND="if(!v)return;const T=v.roots.map(A4),A=g.current;"
+RENDERER_REPLACE="if(!v||!Array.isArray(v.roots))return;const T=v.roots.map(A4),A=g.current;"
 
-if grep -qF "$RENDERER_GUARD_MARKER" "$RENDERER_JS"; then
+if grep -qF '!Array.isArray(v.roots)' "$RENDERER_JS"; then
   echo "Renderer already patched, skipping."
 else
-  echo "Patching renderer bundle with defensive guards..."
-
-  # First restore from backup if available (so patches are clean)
-  if [[ -f "${RENDERER_JS}.webui-backup" ]]; then
-    cp "${RENDERER_JS}.webui-backup" "$RENDERER_JS"
-  fi
-
-  node - "$RENDERER_JS" "$RENDERER_GUARD_MARKER" <<'RENDERERNODE'
+  echo "Patching renderer bundle..."
+  node - "$RENDERER_JS" <<NODE
 const fs = require("node:fs");
 const file = process.argv[2];
-const marker = process.argv[3];
-let s = fs.readFileSync(file, "utf8");
-let count = 0;
-
-// 1. Array.isArray guard for v.roots.map
-const rootsRe = /if\(!v\)return;const (\w+)=v\.roots\.map\((\w+)\),(\w+)=(\w+)\.current;/;
-const rootsMatch = s.match(rootsRe);
-if (rootsMatch) {
-  s = s.replace(rootsMatch[0],
-    rootsMatch[0].replace("if(!v)return;", "if(!v||!Array.isArray(v.roots))return;"));
-  count++;
-  console.log("  [1] v.roots.map guard applied");
-}
-
-// 2. Guard j.data.map — protect against undefined .data
-const dataMapRe = /(\w+)\.data\.map\(/g;
-let dm;
-while ((dm = dataMapRe.exec(s)) !== null) {
-  const varName = dm[1];
-  const orig = dm[0];
-  const safe = `(Array.isArray(${varName}?.data)?${varName}.data:[]).map(`;
-  if (!s.includes(safe)) {
-    s = s.replace(orig, safe);
-    count++;
-    console.log(`  [2] ${varName}.data.map guard applied`);
-    break; // re-apply after first to avoid index corruption
+let source = fs.readFileSync(file, "utf8");
+const find = $(printf '%s' "$RENDERER_FIND" | node -e "process.stdout.write(JSON.stringify(require('fs').readFileSync('/dev/stdin','utf8')))");
+const replace = $(printf '%s' "$RENDERER_REPLACE" | node -e "process.stdout.write(JSON.stringify(require('fs').readFileSync('/dev/stdin','utf8')))");
+if (!source.includes(find)) {
+  // Try to find a similar pattern
+  const altFind = source.match(/if\(!v\)return;const \w+=v\.roots\.map\(\w+\),\w+=\w+\.current;/);
+  if (altFind) {
+    const altReplace = altFind[0].replace("if(!v)return;", "if(!v||!Array.isArray(v.roots))return;");
+    source = source.replace(altFind[0], altReplace);
+    console.log("Renderer patched with alternative pattern:", altFind[0]);
+  } else {
+    console.error("Renderer guard patch anchor not found - skipping (may still work).");
+    process.exit(0);
   }
+} else {
+  source = source.replace(find, replace);
 }
-
-// 3. Guard i.turns.map / x.turns.map / s.turns.map
-const turnsMapRe = /(\w+)\.turns\.map\(/g;
-let tm;
-const turnsMapGuarded = new Set();
-while ((tm = turnsMapRe.exec(s)) !== null) {
-  const varName = tm[1];
-  const orig = tm[0];
-  const safe = `(Array.isArray(${varName}?.turns)?${varName}.turns:[]).map(`;
-  if (!turnsMapGuarded.has(orig) && !s.includes(safe)) {
-    s = s.replace(orig, safe);
-    turnsMapGuarded.add(orig);
-    count++;
-    console.log(`  [3] ${varName}.turns.map guard applied`);
-  }
-}
-
-// 4. Guard .turns.find
-const turnsFindRe = /(\w+)\.turns\.find\(/g;
-let tf;
-const turnsFindGuarded = new Set();
-while ((tf = turnsFindRe.exec(s)) !== null) {
-  const varName = tf[1];
-  const orig = tf[0];
-  const safe = `(Array.isArray(${varName}?.turns)?${varName}.turns:[]).find(`;
-  if (!turnsFindGuarded.has(orig) && !s.includes(safe)) {
-    s = s.replace(orig, safe);
-    turnsFindGuarded.add(orig);
-    count++;
-    console.log(`  [4] ${varName}.turns.find guard applied`);
-  }
-}
-
-// 5. Guard .turns.push — use optional chaining
-const turnsPushRe = /(\w+)\.turns\.push\(/g;
-let tp;
-const turnsPushGuarded = new Set();
-while ((tp = turnsPushRe.exec(s)) !== null) {
-  const varName = tp[1];
-  const orig = tp[0];
-  const safe = `${varName}.turns?.push(`;
-  if (!turnsPushGuarded.has(orig) && !s.includes(`${varName}.turns?.push(`)) {
-    s = s.replace(orig, safe);
-    turnsPushGuarded.add(orig);
-    count++;
-    console.log(`  [5] ${varName}.turns.push guard applied`);
-  }
-}
-
-// 6. Guard x.files.map
-const filesMapRe = /(\w+)\.files\.map\(/g;
-let fm;
-while ((fm = filesMapRe.exec(s)) !== null) {
-  const varName = fm[1];
-  const orig = fm[0];
-  const safe = `(Array.isArray(${varName}?.files)?${varName}.files:[]).map(`;
-  if (!s.includes(safe)) {
-    s = s.replace(orig, safe);
-    count++;
-    console.log(`  [6] ${varName}.files.map guard applied`);
-    break;
-  }
-}
-
-// 7. Patch error boundary to auto-reload on persistent errors
-const ebRe = /getDerivedStateFromError\(\w+\)\{return\{hasError:!0\}\}/;
-const ebMatch = s.match(ebRe);
-if (ebMatch) {
-  const ebOrig = ebMatch[0];
-  const ebSafe = ebOrig.replace(
-    "return{hasError:!0}",
-    "return{hasError:!0,errorCount:(this?.state?.errorCount||0)+1}"
-  );
-  s = s.replace(ebOrig, ebSafe);
-
-  // Also patch componentDidCatch to reload after retries
-  const cdcRe = /componentDidCatch\((\w+),(\w+)\)\{/;
-  const cdcMatch = s.match(cdcRe);
-  if (cdcMatch) {
-    const cdcOrig = cdcMatch[0];
-    s = s.replace(cdcOrig, cdcOrig +
-      `try{const _ec=(this.state&&this.state.errorCount)||0;` +
-      `if(_ec<=5){setTimeout(()=>{try{this.setState({hasError:false,errorCount:_ec})}catch(e){}},300*_ec);}` +
-      `else if(_ec<=8){setTimeout(()=>{try{this.setState({hasError:false,errorCount:_ec})}catch(e){}},1000);}` +
-      `else{setTimeout(()=>{try{window.location.reload()}catch(e){}},2000);}}catch(_e){}`
-    );
-    count++;
-    console.log("  [7] Error boundary auto-retry + reload applied");
-  }
-}
-
-// Add marker comment at end
-s = s + "\n//" + marker;
-console.log(`Renderer: ${count} guard(s) applied`);
-fs.writeFileSync(file, s, "utf8");
-RENDERERNODE
-
+fs.writeFileSync(file, source, "utf8");
+NODE
   echo "Renderer patched."
 fi
 

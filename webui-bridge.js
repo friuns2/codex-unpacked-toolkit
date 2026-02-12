@@ -2,37 +2,6 @@
   if (typeof window === "undefined") return;
   if (window.electronBridge?.sendMessageFromView) return;
 
-  // Suppress transient TypeErrors that bubble up from stale React renders
-  const _transientErrorPatterns = [
-    "Cannot read properties of undefined",
-    "is not iterable",
-    "is not a function",
-    "reading 'map'",
-    "reading 'find'",
-    "reading 'push'",
-    "reading 'filter'",
-    "reading 'length'",
-  ];
-  function _isTransientError(msg) {
-    if (typeof msg !== "string") return false;
-    return _transientErrorPatterns.some((p) => msg.includes(p));
-  }
-  window.addEventListener("error", (e) => {
-    if (_isTransientError(e?.message ?? "")) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      return false;
-    }
-  }, true);
-  window.addEventListener("unhandledrejection", (e) => {
-    const msg = e?.reason?.message ?? String(e?.reason ?? "");
-    if (_isTransientError(msg)) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      return false;
-    }
-  }, true);
-
   const runtimeConfig = window.__CODEX_WEBUI_CONFIG__ ?? {};
   const workerSubscribers = new Map();
   const outboundQueue = [];
