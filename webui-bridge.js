@@ -13,6 +13,7 @@
   let socket = null;
   let isOpen = false;
   let activeSocketToken = 0;
+  let terminatedByTakeover = false;
 
   const wsProtocol = window.location.protocol === "https:" ? "wss:" : "ws:";
   const wsPath =
@@ -50,6 +51,44 @@
     });
   };
 
+  const terminateSession = (reason) => {
+    if (terminatedByTakeover) return;
+    terminatedByTakeover = true;
+    isOpen = false;
+    outboundQueue.length = 0;
+    if (reconnectTimer != null) {
+      window.clearTimeout(reconnectTimer);
+      reconnectTimer = null;
+    }
+    if (socket) {
+      try {
+        socket.close(1012, reason || "Session replaced");
+      } catch {}
+      socket = null;
+    }
+    window.dispatchEvent(
+      new MessageEvent("message", {
+        data: {
+          type: "ipc-broadcast",
+          method: "client-status-changed",
+          sourceClientId: null,
+          version: 1,
+          params: { status: "disconnected" },
+        },
+      }),
+    );
+    // Best-effort hard stop for stale tabs so they don't keep trying.
+    const root = document.body || document.documentElement;
+    if (root) {
+      root.innerHTML =
+        '<div style="font-family: sans-serif; max-width: 560px; margin: 64px auto; padding: 0 16px; color: #222;">' +
+        "<h2>Session moved to another tab</h2>" +
+        "<p>This page was disconnected because a newer client took over.</p>" +
+        "<p>Refresh this page if you want to take control again.</p>" +
+        "</div>";
+    }
+  };
+
   const handleInboundPacket = (packet) => {
     if (!packet || typeof packet !== "object") return;
     if (packet.kind === "message-for-view") {
@@ -68,6 +107,10 @@
     }
     if (packet.kind === "bridge-error") {
       console.warn("Codex WebUI bridge error", packet.message ?? "unknown");
+      const message = String(packet.message ?? "");
+      if (message.includes("took over") || message.includes("Replaced by newer client")) {
+        terminateSession(message);
+      }
       return;
     }
     if (packet.kind === "open-new-instance") {
@@ -88,6 +131,7 @@
   };
 
   const scheduleReconnect = () => {
+    if (terminatedByTakeover) return;
     if (socket && socket.readyState === WebSocket.OPEN) return;
     if (reconnectTimer != null) return;
     const delay = Math.min(
@@ -102,6 +146,7 @@
   };
 
   const connect = () => {
+    if (terminatedByTakeover) return;
     if (
       socket &&
       (socket.readyState === WebSocket.CONNECTING ||
@@ -143,6 +188,7 @@
       if (currentToken !== activeSocketToken) return;
       socket = null;
       isOpen = false;
+      if (terminatedByTakeover) return;
       scheduleReconnect();
     });
     nextSocket.addEventListener("error", () => {
