@@ -453,6 +453,21 @@ write_main_injection_chunk() {
       }
     };
 
+    // ---- Per-client message routing ----
+    // With multiple WebSocket tabs we route *response* messages to the tab that
+    // initiated the request, while still broadcasting true broadcast messages
+    // (thread-stream-state-changed, thread-archived, thread-unarchived, client-status-changed).
+    const _requestingSocketStack = [];
+
+    const sendToOne = (ws, packet) => {
+      if (!ws || ws.readyState !== WebUiSocket.OPEN) return;
+      let serialized;
+      try { serialized = JSON.stringify(packet); } catch { return; }
+      ws.send(serialized, (err) => {
+        if (err) { Xt().warning("WebUI socket send failed", { message: we(err) }); }
+      });
+    };
+
     const broadcast = (packet) => {
       if (sockets.size === 0) return;
       let serialized;
@@ -473,19 +488,69 @@ write_main_injection_chunk() {
       }
     };
 
+    const _broadcastMethods = new Set([
+      "thread-stream-state-changed",
+      "thread-archived",
+      "thread-unarchived",
+      "client-status-changed",
+    ]);
+    const isBroadcastPayload = (payload) => {
+      if (!payload || typeof payload !== "object") return false;
+      if (payload.type === "ipc-broadcast" && _broadcastMethods.has(payload.method)) return true;
+      return false;
+    };
+
+    // ---- Notification throttle ----
+    // Throttle noisy notifications (skills_update_available) to prevent
+    // the skills/list → notification → skills/list infinite loop from
+    // starving the HTTP server event loop.
+    const _notifThrottleMs = 5000;
+    const _lastNotifTime = new Map();
+    const shouldThrottleNotif = (payload) => {
+      if (!payload || typeof payload !== "object") return false;
+      let method = null;
+      if (payload.type === "mcp-notification" && payload.method) method = payload.method;
+      else if (payload.type === "ipc-broadcast" && payload.method) method = payload.method;
+      if (!method) return false;
+      if (!method.includes("skills_update") && !method.includes("skills/list")) return false;
+      const now = Date.now();
+      const last = _lastNotifTime.get(method) || 0;
+      if (now - last < _notifThrottleMs) return true;
+      _lastNotifTime.set(method, now);
+      return false;
+    };
+
     const originalSend = bridgeWindow.webContents.send.bind(bridgeWindow.webContents);
     bridgeWindow.webContents.send = (channel, ...args) => {
       if (channel === bt) {
-        broadcast({
-          kind: "message-for-view",
-          payload: args[0],
-        });
+        const payload = args[0];
+
+        // Throttle noisy notifications to prevent event-loop starvation
+        if (shouldThrottleNotif(payload)) return;
+
+        const requestingWs = _requestingSocketStack.length > 0
+          ? _requestingSocketStack[_requestingSocketStack.length - 1]
+          : null;
+
+        if (isBroadcastPayload(payload) || !requestingWs) {
+          broadcast({ kind: "message-for-view", payload });
+        } else {
+          sendToOne(requestingWs, { kind: "message-for-view", payload });
+        }
       } else if (channel.startsWith("codex_desktop:worker:") && channel.endsWith(":for-view")) {
-        broadcast({
+        const packet = {
           kind: "worker-message-for-view",
           workerId: channel.slice("codex_desktop:worker:".length, -":for-view".length),
           payload: args[0],
-        });
+        };
+        const requestingWs = _requestingSocketStack.length > 0
+          ? _requestingSocketStack[_requestingSocketStack.length - 1]
+          : null;
+        if (requestingWs) {
+          sendToOne(requestingWs, packet);
+        } else {
+          broadcast(packet);
+        }
       }
       originalSend(channel, ...args);
     };
@@ -690,9 +755,17 @@ write_main_injection_chunk() {
             if (packet?.kind === "message-from-view") {
               const payload = packet.payload;
               if (!payload || typeof payload.type !== "string") return;
-              await context.handleMessage(bridgeWindow.webContents, payload);
+              // Push this WS client as the "requesting socket" so that
+              // any webContents.send calls triggered by this handler are
+              // routed back to THIS client only (not broadcast to all tabs).
+              _requestingSocketStack.push(ws);
+              try {
+                await context.handleMessage(bridgeWindow.webContents, payload);
+              } finally {
+                _requestingSocketStack.pop();
+              }
               if (payload.type === "ready") {
-                broadcast({
+                sendToOne(ws, {
                   kind: "message-for-view",
                   payload: {
                     type: "ipc-broadcast",
@@ -708,10 +781,15 @@ write_main_injection_chunk() {
 
             if (packet?.kind === "worker-message-from-view") {
               if (typeof packet.workerId !== "string" || packet.workerId.length === 0) return;
-              await webUiInvokeElectronBridgeMethod(bridgeWindow, "sendWorkerMessageFromView", [
-                packet.workerId,
-                packet.payload,
-              ]);
+              _requestingSocketStack.push(ws);
+              try {
+                await webUiInvokeElectronBridgeMethod(bridgeWindow, "sendWorkerMessageFromView", [
+                  packet.workerId,
+                  packet.payload,
+                ]);
+              } finally {
+                _requestingSocketStack.pop();
+              }
               return;
             }
 
@@ -977,6 +1055,33 @@ MAIN_CHUNK_FILE="$WORKDIR/main-webui.chunk.js"
 write_main_injection_chunk "$MAIN_CHUNK_FILE"
 apply_main_chunk "$APP_DIR/.vite/build/$target_main_js_rel" "$MAIN_CHUNK_FILE"
 patch_renderer_bundle "$APP_DIR/webview/assets/$target_renderer_js_rel"
+
+# Additional renderer guards for WebUI stability
+node - "$APP_DIR/webview/assets/$target_renderer_js_rel" <<'EXTRANODE'
+const fs = require("node:fs");
+const file = process.argv[2];
+let src = fs.readFileSync(file, "utf8");
+let applied = 0;
+const patches = [
+  { find: 'j!=null&&(S={data:j.data.map(function(X){return X.slice()})', replace: 'j!=null&&j.data&&(S={data:j.data.map(function(X){return X.slice()})' },
+  { find: 'd&&It.push(...st),s&&It.push(...vt)', replace: 'd&&st&&It.push(...st),s&&vt&&It.push(...vt)' },
+  { find: 'O=i.turns.map(P)', replace: 'O=(i.turns||[]).map(P)' },
+  { find: 'const _=x.files.map(k=>', replace: 'const _=(x.files||[]).map(k=>' },
+  { find: 's=>{const o=s.turns.find(a=>a.turnId===n)', replace: 's=>{if(!s.turns)s.turns=[];const o=s.turns.find(a=>a.turnId===n)' },
+  { find: 'const i=r.turns.find(o=>o.turnId===n)??null', replace: 'const i=(r.turns||[]).find(o=>o.turnId===n)??null' },
+  { find: 'x=>{x.turns.push(b)', replace: 'x=>{if(!x.turns)x.turns=[];x.turns.push(b)' },
+  { find: 'i.turns.push(a)}})}addPersonalityChangeSyntheticItem', replace: '(i.turns||(i.turns=[])).push(a)}})}addPersonalityChangeSyntheticItem' },
+  { find: 'i.turns.push(a)}})}upsertUserInputResponseSyntheticItem', replace: '(i.turns||(i.turns=[])).push(a)}})}upsertUserInputResponseSyntheticItem' },
+  { find: 'l.turns.push(f)}const u=d0(l.turns)', replace: 'if(!l.turns)l.turns=[];l.turns.push(f)}const u=d0(l.turns)' },
+  { find: 'this.setState({error:e,componentStack:n})}resetErrorBoundary', replace: 'const _msg=e?.message??"";const _transient=/Cannot read properties of (undefined|null)|is not iterable|is not a function|Minified React error/.test(_msg);if(_transient){this._retryCount=(this._retryCount||0)+1;if(this._retryCount<=5){const _delay=Math.min(200*this._retryCount,2000);setTimeout(()=>this.setState(T7e),_delay);return}else if(this._retryCount<=8){const _delay=3000;setTimeout(()=>{this._retryCount=0;window.location.reload()},_delay);return}}this.setState({error:e,componentStack:n})}resetErrorBoundary' },
+];
+for (const {find, replace} of patches) {
+  if (src.includes(replace)) { applied++; continue; }
+  if (src.includes(find)) { src = src.replace(find, replace); applied++; }
+}
+fs.writeFileSync(file, src, "utf8");
+console.log("Additional renderer guards: " + applied + "/" + patches.length);
+EXTRANODE
 
 cp "$BRIDGE_PATH" "$APP_DIR/webview/webui-bridge.js"
 

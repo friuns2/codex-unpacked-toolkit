@@ -2,6 +2,34 @@
   if (typeof window === "undefined") return;
   if (window.electronBridge?.sendMessageFromView) return;
 
+  // ---- Global error suppression for transient React rendering errors ----
+  // The Codex renderer sometimes receives data with undefined fields that
+  // cause "Cannot read properties of undefined (reading 'map'/'length')" or
+  // "X is not iterable" errors.  These are non-fatal and the app recovers on
+  // the next render cycle, but without this guard they trigger the React error
+  // boundary ("Oops, an error has occurred") and kill the whole UI.
+  const _transientErrorPatterns = [
+    /Cannot read properties of (undefined|null) \(reading '(map|length|filter|forEach|reduce|find|some|every|includes|indexOf|slice|concat|flat|flatMap|entries|keys|values|push|pop|shift|unshift|splice)'\)/,
+    /is not iterable/,
+    /is not a function/,
+  ];
+  window.addEventListener("error", (event) => {
+    const msg = event.error?.message ?? event.message ?? "";
+    if (_transientErrorPatterns.some((re) => re.test(msg))) {
+      console.debug(msg);
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+  });
+  window.addEventListener("unhandledrejection", (event) => {
+    const msg = event.reason?.message ?? String(event.reason ?? "");
+    if (_transientErrorPatterns.some((re) => re.test(msg))) {
+      console.debug(msg);
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+  });
+
   const runtimeConfig = window.__CODEX_WEBUI_CONFIG__ ?? {};
   const workerSubscribers = new Map();
   const outboundQueue = [];

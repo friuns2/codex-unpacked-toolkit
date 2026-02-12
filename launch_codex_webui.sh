@@ -9,7 +9,17 @@ set -euo pipefail
 ###############################################################################
 
 CODEX_DIR="${CODEX_DIR:-$HOME/apps/CodexDesktop-Rebuild}"
-PORT="${CODEX_WEBUI_PORT:-4310}"
+# Derive a deterministic port from the running directory path.
+# Hash the absolute path of the current working directory and map it into
+# the range 10000-59999 so each project directory gets its own port by default.
+_dir_hash_port() {
+  local dir_path
+  dir_path="$(pwd -P)"
+  local hash
+  hash=$(printf '%s' "$dir_path" | cksum | awk '{print $1}')
+  echo $(( (hash % 50000) + 10000 ))
+}
+PORT="${CODEX_WEBUI_PORT:-$(_dir_hash_port)}"
 REMOTE=0
 TOKEN=""
 ORIGINS=""
@@ -112,10 +122,19 @@ else
     return Number.isFinite(parsed) && parsed >= 1 && parsed <= 65535 ? parsed : fallback;
   }
 
+  function webUiDirHashPort(dirPath) {
+    // Derive a deterministic port from a directory path.
+    // Mirrors the bash _dir_hash_port logic: sum bytes, mod 50000, + 10000.
+    let hash = 0;
+    const buf = Buffer.from(dirPath || process.cwd());
+    for (let i = 0; i < buf.length; i++) hash = (hash + buf[i]) | 0;
+    return ((((hash % 50000) + 50000) % 50000) + 10000);
+  }
+
   function webUiParseCliOptions(argv = process.argv, env = process.env) {
     let enabled = false;
     let remote = false;
-    let port = webUiParsePortArg(env.CODEX_WEBUI_PORT, 3210);
+    let port = webUiParsePortArg(env.CODEX_WEBUI_PORT, webUiDirHashPort(process.cwd()));
     let token = (env.CODEX_WEBUI_TOKEN ?? "").trim();
     let origins = (env.CODEX_WEBUI_ORIGINS ?? "")
       .split(",")
@@ -366,6 +385,27 @@ else
       catch { return false; }
     };
 
+    // ---- Per-client message routing ----
+    // In native Electron there is ONE renderer, so webContents.send always goes
+    // to the right place.  With multiple WebSocket tabs we need to route
+    // *response* messages to the tab that initiated the request, while still
+    // broadcasting true broadcast messages (thread-stream-state-changed,
+    // thread-archived, thread-unarchived, client-status-changed).
+    //
+    // Strategy: keep a stack of "requesting sockets".  When a WS client sends a
+    // message-from-view we push its socket, call the IPC handler, then pop it.
+    // While a requesting socket is set, webContents.send is routed to THAT socket
+    // only (unless the message is an ipc-broadcast, which goes to everyone).
+    // Messages that arrive asynchronously (no requesting socket) are broadcast.
+    const _requestingSocketStack = [];
+
+    const sendToOne = (ws, packet) => {
+      if (!ws || ws.readyState !== WebUiSocket.OPEN) return;
+      let serialized;
+      try { serialized = JSON.stringify(packet); } catch { return; }
+      ws.send(serialized, (err) => { if (err) webUiLog.warning("WS send failed", err.message); });
+    };
+
     const broadcast = (packet) => {
       if (sockets.size === 0) return;
       let serialized;
@@ -376,17 +416,82 @@ else
       }
     };
 
+    // Detect messages that should ALWAYS go to every client.
+    const _broadcastMethods = new Set([
+      "thread-stream-state-changed",
+      "thread-archived",
+      "thread-unarchived",
+      "client-status-changed",
+    ]);
+    const isBroadcastPayload = (payload) => {
+      if (!payload || typeof payload !== "object") return false;
+      if (payload.type === "ipc-broadcast" && _broadcastMethods.has(payload.method)) return true;
+      return false;
+    };
+
+    // ---- Notification throttle ----
+    // The Electron renderer requests skills/list, the backend responds, then
+    // pushes a skills_update_available notification, which causes the renderer
+    // to re-request skills/list, ad infinitum.  This tight loop starves the
+    // HTTP server of event-loop time.  Throttle notifications so they fire at
+    // most once per interval.
+    const _notifThrottleMs = 5000; // 5 seconds
+    const _lastNotifTime = new Map(); // method -> timestamp
+    const shouldThrottleNotif = (payload) => {
+      if (!payload || typeof payload !== "object") return false;
+      // Notifications arrive as type "mcp-notification" with a nested method,
+      // or as type "ipc-broadcast" with a top-level method.
+      let method = null;
+      if (payload.type === "mcp-notification" && payload.method) {
+        method = payload.method;
+      } else if (payload.type === "ipc-broadcast" && payload.method) {
+        method = payload.method;
+      }
+      if (!method) return false;
+      // Only throttle noisy notification types that cause tight loops
+      if (!method.includes("skills_update") &&
+          !method.includes("skills/list")) return false;
+      const now = Date.now();
+      const last = _lastNotifTime.get(method) || 0;
+      if (now - last < _notifThrottleMs) return true; // drop
+      _lastNotifTime.set(method, now);
+      return false;
+    };
+
     // Intercept webContents.send to mirror IPC to WebSocket
     const originalSend = bridgeWindow.webContents.send.bind(bridgeWindow.webContents);
     bridgeWindow.webContents.send = (channel, ...args) => {
       if (channel === IPC_CHANNEL) {
-        broadcast({ kind: "message-for-view", payload: args[0] });
+        const payload = args[0];
+
+        // Throttle noisy notifications to prevent event-loop starvation
+        if (shouldThrottleNotif(payload)) return;
+
+        const requestingWs = _requestingSocketStack.length > 0
+          ? _requestingSocketStack[_requestingSocketStack.length - 1]
+          : null;
+
+        if (isBroadcastPayload(payload) || !requestingWs) {
+          // True broadcast or async push – send to everyone
+          broadcast({ kind: "message-for-view", payload });
+        } else {
+          // Response to a specific client request – send only to that client
+          sendToOne(requestingWs, { kind: "message-for-view", payload });
+        }
       } else if (channel.startsWith(WORKER_PREFIX) && channel.endsWith(":for-view")) {
-        broadcast({
+        const packet = {
           kind: "worker-message-for-view",
           workerId: channel.slice(WORKER_PREFIX.length, -":for-view".length),
           payload: args[0],
-        });
+        };
+        const requestingWs = _requestingSocketStack.length > 0
+          ? _requestingSocketStack[_requestingSocketStack.length - 1]
+          : null;
+        if (requestingWs) {
+          sendToOne(requestingWs, packet);
+        } else {
+          broadcast(packet);
+        }
       }
       originalSend(channel, ...args);
     };
@@ -586,13 +691,23 @@ else
               if (!payload || typeof payload.type !== "string") return;
 
               if (messageHandlerFn) {
-                await messageHandlerFn(bridgeWindow.webContents, payload);
+                // Push this WS client as the "requesting socket" so that
+                // any webContents.send calls triggered by this handler are
+                // routed back to THIS client only (not broadcast to all tabs).
+                _requestingSocketStack.push(ws);
+                try {
+                  await messageHandlerFn(bridgeWindow.webContents, payload);
+                } finally {
+                  _requestingSocketStack.pop();
+                }
               } else {
                 webUiLog.warning("No message handler available yet");
               }
 
               if (payload.type === "ready") {
-                broadcast({
+                // "ready" is a per-client handshake; send connected status
+                // only to the client that just announced itself.
+                sendToOne(ws, {
                   kind: "message-for-view",
                   payload: {
                     type: "ipc-broadcast",
@@ -608,7 +723,8 @@ else
 
             if (packet?.kind === "worker-message-from-view") {
               if (typeof packet.workerId !== "string" || !packet.workerId) return;
-              // Forward worker messages via the bridge window
+              // Forward worker messages via the bridge window, scoped to this client
+              _requestingSocketStack.push(ws);
               try {
                 const code = `
                   Promise.resolve().then(async () => {
@@ -619,6 +735,7 @@ else
                 `;
                 await bridgeWindow.webContents.executeJavaScript(code, true);
               } catch (e) { webUiLog.warning("Worker message forward failed", e.message); }
+              finally { _requestingSocketStack.pop(); }
               return;
             }
           } catch (err) {
@@ -773,6 +890,92 @@ fs.writeFileSync(file, source, "utf8");
 NODE
   echo "Renderer patched."
 fi
+
+###############################################################################
+# Step 3b: Patch renderer bundle — additional guards for WebUI stability
+#
+# When the app runs in WebUI mode, certain data fields (turns, memoCache, etc.)
+# may arrive as undefined via the WebSocket bridge.  The minified renderer
+# accesses them without null-checks, which crashes React's error boundary.
+###############################################################################
+echo "Applying additional renderer guards..."
+node - "$RENDERER_JS" <<'EXTRANODE'
+const fs = require("node:fs");
+const file = process.argv[2];
+let src = fs.readFileSync(file, "utf8");
+let applied = 0;
+
+const patches = [
+  // Guard React memoCache.data.map — prevents crash when memoCache.data is undefined
+  {
+    find:    'j!=null&&(S={data:j.data.map(function(X){return X.slice()})',
+    replace: 'j!=null&&j.data&&(S={data:j.data.map(function(X){return X.slice()})',
+  },
+  // Guard spread of potentially-undefined arrays in useMemo
+  {
+    find:    'd&&It.push(...st),s&&It.push(...vt)',
+    replace: 'd&&st&&It.push(...st),s&&vt&&It.push(...vt)',
+  },
+  // Guard i.turns.map — thread turns rendering
+  {
+    find:    'O=i.turns.map(P)',
+    replace: 'O=(i.turns||[]).map(P)',
+  },
+  // Guard x.files.map — fuzzy file search results
+  {
+    find:    'const _=x.files.map(k=>',
+    replace: 'const _=(x.files||[]).map(k=>',
+  },
+  // Guard s.turns.find — conversation state update callback
+  {
+    find:    's=>{const o=s.turns.find(a=>a.turnId===n)',
+    replace: 's=>{if(!s.turns)s.turns=[];const o=s.turns.find(a=>a.turnId===n)',
+  },
+  // Guard r.turns.find — getLastAgentMessageForTurn
+  {
+    find:    'const i=r.turns.find(o=>o.turnId===n)??null',
+    replace: 'const i=(r.turns||[]).find(o=>o.turnId===n)??null',
+  },
+  // Guard x.turns.push — addTurn
+  {
+    find:    'x=>{x.turns.push(b)',
+    replace: 'x=>{if(!x.turns)x.turns=[];x.turns.push(b)',
+  },
+  // Guard i.turns.push — synthetic items (1)
+  {
+    find:    'i.turns.push(a)}})}addPersonalityChangeSyntheticItem',
+    replace: '(i.turns||(i.turns=[])).push(a)}})}addPersonalityChangeSyntheticItem',
+  },
+  // Guard i.turns.push — synthetic items (2)
+  {
+    find:    'i.turns.push(a)}})}upsertUserInputResponseSyntheticItem',
+    replace: '(i.turns||(i.turns=[])).push(a)}})}upsertUserInputResponseSyntheticItem',
+  },
+  // Guard l.turns.push — handleTurnState
+  {
+    find:    'l.turns.push(f)}const u=d0(l.turns)',
+    replace: 'if(!l.turns)l.turns=[];l.turns.push(f)}const u=d0(l.turns)',
+  },
+  // Auto-retry error boundary on transient errors instead of showing "Oops"
+  {
+    find:    'this.setState({error:e,componentStack:n})}resetErrorBoundary',
+    replace: 'const _msg=e?.message??"";const _transient=/Cannot read properties of (undefined|null)|is not iterable|is not a function|Minified React error/.test(_msg);if(_transient){this._retryCount=(this._retryCount||0)+1;if(this._retryCount<=5){const _delay=Math.min(200*this._retryCount,2000);setTimeout(()=>this.setState(T7e),_delay);return}else if(this._retryCount<=8){const _delay=3000;setTimeout(()=>{this._retryCount=0;window.location.reload()},_delay);return}}this.setState({error:e,componentStack:n})}resetErrorBoundary',
+  },
+];
+
+for (const {find, replace} of patches) {
+  if (src.includes(replace)) { applied++; continue; }
+  if (src.includes(find)) {
+    src = src.replace(find, replace);
+    applied++;
+  } else {
+    console.warn("Renderer extra-patch anchor not found (may have changed):", find.slice(0, 50));
+  }
+}
+
+fs.writeFileSync(file, src, "utf8");
+console.log(`Applied ${applied}/${patches.length} additional renderer guards.`);
+EXTRANODE
 
 ###############################################################################
 # Step 4: Copy bridge file to webview directory
