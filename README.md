@@ -6,9 +6,11 @@
 
 [![Shell Script](https://img.shields.io/badge/Shell-Bash-4EAA25?logo=gnubash&logoColor=white&style=for-the-badge)](https://www.gnu.org/software/bash/)
 [![Electron](https://img.shields.io/badge/Electron-Patched-47848F?logo=electron&logoColor=white&style=for-the-badge)](https://www.electronjs.org/)
-[![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Linux%20%7C%20Windows-blue?style=for-the-badge&logo=apple)](https://github.com)
+[![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Linux%20%7C%20Windows-blue?style=for-the-badge&logo=apple)](https://github.com/friuns2/codex-unpacked-toolkit)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-🔥%20WORKS-brightgreen?style=for-the-badge)](https://github.com)
+[![Status](https://img.shields.io/badge/Status-🔥%20WORKS-brightgreen?style=for-the-badge)](https://github.com/friuns2/codex-unpacked-toolkit)
+[![GitHub stars](https://img.shields.io/github/stars/friuns2/codex-unpacked-toolkit?style=for-the-badge&logo=github&color=gold)](https://github.com/friuns2/codex-unpacked-toolkit/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/friuns2/codex-unpacked-toolkit?style=for-the-badge&logo=github&color=blue)](https://github.com/friuns2/codex-unpacked-toolkit/network)
 
 <br />
 
@@ -47,6 +49,35 @@ We reverse-engineered the minified Electron bundle, found the dormant SSH pathwa
 
 ---
 
+## 📱 See It In Action — Controlling Mac From Mobile
+
+> **Yes, that's a phone. Yes, that's Codex. Yes, it's running on a Mac across the network.**
+
+<div align="center">
+<table>
+<tr>
+<td align="center" width="50%">
+<img src="images/mobile-chat-session.jpeg" width="300" />
+<br />
+<b>💬 Live AI Chat Session</b>
+<br />
+<sub>Full Codex conversation running on a Mac, controlled from an Android phone over the network. GPT-5.3-Codex responding in real-time. The address bar says it all: <code>100.107.32.83:5999</code> — that's a remote Mac.</sub>
+</td>
+<td align="center" width="50%">
+<img src="images/mobile-skills-browser.jpeg" width="300" />
+<br />
+<b>🧩 Skills Manager — From Your Pocket</b>
+<br />
+<sub>Browsing and managing Codex skills (Playwright, Oracle Cloud CLI, Three.js, YouTube Search...) from a mobile browser. Full desktop functionality, zero compromises.</sub>
+</td>
+</tr>
+</table>
+</div>
+
+> 🤯 **This is not a mockup.** This is a real Codex Desktop instance running on macOS, patched with our scripts, accessed from a mobile phone browser over Tailscale. Every feature works — chat, skills, file editing, code execution — all from your pocket.
+
+---
+
 ## 🌍 What Can You Actually Do With This?
 
 Once SSH mode is unlocked, Codex becomes a **remote orchestration powerhouse**:
@@ -72,8 +103,8 @@ Once SSH mode is unlocked, Codex becomes a **remote orchestration powerhouse**:
 
 ```bash
 # Clone this repo
-git clone <repo-url> codex-ssh-unlocker
-cd codex-ssh-unlocker
+git clone https://github.com/friuns2/codex-unpacked-toolkit.git
+cd codex-unpacked-toolkit
 
 # 🔓 Launch Codex with SSH mode unlocked (connects to your remote host)
 ./launch_codex_unpacked.sh --ssh-host user@your-server.com
@@ -89,12 +120,15 @@ Then open `http://127.0.0.1:5999/` and you're flying. ✈️
 ## 📁 Project Structure
 
 ```
-codex-ssh-unlocker/
+codex-unpacked-toolkit/
 ├── 🔧 launch_codex_unpacked.sh          # SSH unlock & debug launcher
 ├── 🌐 launch_codex_webui_unpacked.sh     # WebUI mode launcher (browser access)
 ├── 🔌 webui-bridge.js                    # Browser-side WebSocket ↔ IPC bridge
 ├── 📖 guide.md                           # Deep-dive patching guide
 ├── 🔬 ssh codex investication spec.md    # Reverse-engineering findings
+├── 📂 images/                            # Screenshots & proof it works
+│   ├── mobile-chat-session.jpeg          # Codex chat from mobile phone
+│   └── mobile-skills-browser.jpeg        # Skills manager from mobile phone
 └── 📂 skills/
     └── launch-codex-unpacked/
         └── SKILL.md                      # Codex skill definition
@@ -312,13 +346,13 @@ We extracted the `app.asar`, deobfuscated the minified bundles, and traced the e
 
 ## 🤝 Contributing
 
-Found a new Codex version that breaks the patches? Bundle patterns change between releases — PRs to update the patch anchors are always welcome!
+Found a new Codex version that breaks the patches? Bundle patterns change between releases — [PRs](https://github.com/friuns2/codex-unpacked-toolkit/pulls) to update the patch anchors are always welcome! [Open an issue](https://github.com/friuns2/codex-unpacked-toolkit/issues) if you hit a new bundle shape.
 
 ---
 
 ## ⭐ Star This Repo
 
-If you think AI should be able to reach **any machine you own** — not just the one it's installed on — smash that star button. ⭐
+If you think AI should be able to reach **any machine you own** — not just the one it's installed on — [smash that star button](https://github.com/friuns2/codex-unpacked-toolkit). ⭐
 
 ---
 
