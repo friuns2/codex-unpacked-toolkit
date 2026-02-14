@@ -7,7 +7,6 @@ Document how Codex desktop uses SSH for remote host operations and define verifi
 - Unpacked Electron build analysis (`app.asar` extracted)
 - SSH execution path in worker runtime
 - Remote Codex home resolution behavior
-- Live connectivity + remote environment check for `ubuntu@149.118.68.145`
 
 ## Confirmed Implementation Behavior
 
@@ -45,8 +44,6 @@ For remote apply operations, implementation performs:
   - `$CODEX_HOME` if set
   - otherwise `$HOME/.codex`
 
-## Live Host Verification (Completed)
-Target: `ubuntu@149.118.68.145`
 
 Observed:
 - SSH non-interactive connection succeeded.
