@@ -16,7 +16,7 @@ AUTO_INSTALL_TOOLS="${AUTO_INSTALL_TOOLS:-1}"
 usage() {
   cat <<'USAGE'
 Usage:
-  launch_codex_webui_unpacked.sh [options] [-- <extra args>]
+  launch_codex_webui_unpacked.command [options] [-- <extra args>]
 
 Options:
   --app <path>           Codex.app path

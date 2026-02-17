@@ -428,7 +428,7 @@ This removes recurring devbox cache errors like:
 Use a free port to avoid EADDRINUSE:
 
 ```bash
-./launch_codex_webui_unpacked.sh --port 6002
+./launch_codex_webui_unpacked.command --port 6002
 ```
 
 ## 11) Auto-install Tool Bootstrap (Homebrew + required binaries)
@@ -438,7 +438,7 @@ Both launchers now attempt to auto-install missing prerequisites instead of fail
 Updated files:
 
 - `/Users/igor/.codex/worktrees/5b82/untitled folder 67/launch_codex_unpacked.sh`
-- `/Users/igor/.codex/worktrees/5b82/untitled folder 67/launch_codex_webui_unpacked.sh`
+- `/Users/igor/.codex/worktrees/5b82/untitled folder 67/launch_codex_webui_unpacked.command`
 
 ### Behavior
 
@@ -459,7 +459,7 @@ Updated files:
   - tries Homebrew `node` install if `node`/`npx` is missing
   - falls back to user-space `nvm` install (`nvm install --lts`) when Homebrew install is unavailable
   - if `nvm` install fails, downloads user-space `fnm` binary directly from GitHub Releases and runs `fnm install --lts`
-- `launch_codex_webui_unpacked.sh`:
+- `launch_codex_webui_unpacked.command`:
   - tries Homebrew `node` install if `node`/`npx` is missing
   - falls back to user-space `nvm` install (`nvm install --lts`) when Homebrew install is unavailable
   - if `nvm` install fails, downloads user-space `fnm` binary directly from GitHub Releases and runs `fnm install --lts`
@@ -531,5 +531,17 @@ Behavior:
    - `auto-${{ github.run_number }}-${{ github.sha }}`
 4. Publishes non-draft, non-prerelease release.
 5. Includes launcher instruction text in release notes:
-   - `open terminal and drag launch_codex_webui_unpacked.sh to it`
-```
+   - `open terminal and drag launch_codex_webui_unpacked.command to it`
+
+## 13) Finder launcher format (`.command`)
+
+WebUI launcher is now a single Finder-runnable file (no separate `.sh` wrapper):
+
+- `/Users/igor/.codex/worktrees/5b82/untitled folder 67/launch_codex_webui_unpacked.command`
+
+Behavior:
+
+1. Contains the full launcher logic directly.
+2. Can be run from Terminal or by double-click from Finder.
+3. Existing command examples now use:
+   - `./launch_codex_webui_unpacked.command ...`

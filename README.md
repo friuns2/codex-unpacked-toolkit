@@ -109,7 +109,7 @@ git clone https://github.com/friuns2/codex-unpacked-toolkit.git
 cd codex-unpacked-toolkit
 
 # 🌐 Launch the Web UI — access Codex from any browser
-./launch_codex_webui_unpacked.sh --port 5999
+./launch_codex_webui_unpacked.command --port 5999
 
 # 🔓 Or launch with SSH mode unlocked (connects to your remote host)
 ./launch_codex_unpacked.sh --ssh-host user@your-server.com
@@ -123,7 +123,7 @@ Open `http://127.0.0.1:5999/` and you're flying. ✈️
 
 ```
 codex-unpacked-toolkit/
-├── 🌐 launch_codex_webui_unpacked.sh     # WebUI mode launcher (browser access)
+├── 🌐 launch_codex_webui_unpacked.command     # WebUI mode launcher (browser access)
 ├── 🔧 launch_codex_unpacked.sh          # SSH unlock & debug launcher
 ├── 🔌 webui-bridge.js                    # Browser-side WebSocket ↔ IPC bridge
 ├── 📖 PROJECT_STATE.md                    # Living project state & patching reference
@@ -137,7 +137,7 @@ codex-unpacked-toolkit/
 
 ---
 
-## 🌐 `launch_codex_webui_unpacked.sh` — Browser-Based Codex
+## 🌐 `launch_codex_webui_unpacked.command` — Browser-Based Codex
 
 > **The main event.** Run Codex in your browser. No Electron window needed. Access from any device on your network.
 
@@ -180,13 +180,13 @@ codex-unpacked-toolkit/
 
 ```bash
 # Basic local access
-./launch_codex_webui_unpacked.sh
+./launch_codex_webui_unpacked.command
 
 # Secure remote access with auth
-./launch_codex_webui_unpacked.sh --port 8080 --token mysecrettoken
+./launch_codex_webui_unpacked.command --port 8080 --token mysecrettoken
 
 # Access from specific origins only
-./launch_codex_webui_unpacked.sh --origins "https://mysite.com,http://localhost:3000"
+./launch_codex_webui_unpacked.command --origins "https://mysite.com,http://localhost:3000"
 ```
 
 ---
@@ -318,7 +318,7 @@ We extracted the `app.asar`, deobfuscated the minified bundles, and traced the e
 - 🍎 **macOS** with Codex Desktop installed (or custom `--app` path)
 - 📦 **Launcher dependencies are auto-installed** when missing:
   - `node`/`npx` (both launchers)
-  - `ripgrep` (`launch_codex_webui_unpacked.sh`)
+  - `ripgrep` (`launch_codex_webui_unpacked.command`)
   - via Homebrew bootstrap when `brew` is missing
 - 🌐 Internet access and `curl` available for automatic Homebrew/tool installation
 - ⚙️ Optional: set `AUTO_INSTALL_TOOLS=0` to disable auto-install behavior

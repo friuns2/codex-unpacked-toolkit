@@ -21,6 +21,6 @@ jobs:
             Automated release created from push.
 
             Instruction:
-            open terminal and drag launch_codex_webui_unpacked.sh to it
+            open terminal and drag launch_codex_webui_unpacked.command to it
           draft: false
           prerelease: false
