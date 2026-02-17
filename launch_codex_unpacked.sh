@@ -328,7 +328,7 @@ if [[ -n "$SSH_HOST" ]]; then
   patch_main_for_ssh_autostart "$MAIN_JS_FILE"
 fi
 
-CMD=(npx electron "--user-data-dir=$USER_DATA_DIR" "$APP_DIR")
+CMD=(npx -y electron "--user-data-dir=$USER_DATA_DIR" "$APP_DIR")
 if [[ "$ENABLE_INSPECT" -eq 1 ]]; then
   CMD+=("--inspect=$INSPECT_PORT")
 fi

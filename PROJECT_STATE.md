@@ -473,6 +473,7 @@ Updated files:
 - Failure (fnm CLI mismatch): `error: unexpected argument '--lts' found` from `fnm use --lts`.
 - Fix: use OS-aware asset selection (`Darwin => fnm-macos.zip`, `Linux arm64 => fnm-arm64.zip`, `Linux x64 => fnm-linux.zip`).
 - Fix: use `fnm use lts-latest` (compatible with fnm 1.38.x) after `fnm install --lts`.
+- Fix: run Electron via `npx -y electron ...` so npm never prompts for `(y) Proceed?` during package install.
 - Success signature after fix: `[webui] WebUI bridge started { host: '0.0.0.0', port: 6011, ... }` and HTTP probe returns `<!doctype html>`.
 
 ### Injected helper pattern

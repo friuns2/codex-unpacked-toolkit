@@ -1236,7 +1236,7 @@ has_pattern '__CODEX_WEBUI_RUNTIME_PATCH__' "$APP_DIR/.vite/build/$target_main_j
 has_pattern '!Array\.isArray\([[:alnum:]_$]+\.roots\)' "$APP_DIR/webview/assets/$target_renderer_js_rel" || { echo "Patched renderer missing roots guard" >&2; exit 1; }
 has_pattern 'sendMessageFromView' "$APP_DIR/webview/webui-bridge.js" || { echo "Bridge file looks invalid" >&2; exit 1; }
 
-CMD=(npx electron "--user-data-dir=$USER_DATA_DIR" "$APP_DIR" --webui --port "$PORT")
+CMD=(npx -y electron "--user-data-dir=$USER_DATA_DIR" "$APP_DIR" --webui --port "$PORT")
 if [[ -n "$TOKEN" ]]; then
   CMD+=(--token "$TOKEN")
 fi
