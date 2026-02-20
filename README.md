@@ -104,6 +104,10 @@ With the Web UI enabled, Codex breaks free from the Electron window — and with
 ## ⚡ Quick Start
 
 ```bash
+# Option A: run directly from npm (no clone needed)
+npx -y codex-web-ui --port 5999
+
+# Option B: clone this repo
 # Clone this repo
 git clone https://github.com/friuns2/codex-unpacked-toolkit.git
 cd codex-unpacked-toolkit
@@ -179,6 +183,9 @@ codex-unpacked-toolkit/
 ### Examples
 
 ```bash
+# Run from npm package
+npx -y codex-web-ui --port 5999
+
 # Basic local access
 ./launch_codex_webui_unpacked.sh
 

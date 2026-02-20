@@ -533,3 +533,37 @@ Behavior:
 5. Includes launcher instruction text in release notes:
    - `open terminal and drag launch_codex_webui_unpacked.sh to it`
 ```
+
+## 13) npm CLI packaging + npx symlink fix
+
+Added npm wrapper files so users can run the launcher via `npx codex-web-ui`:
+
+- `/Users/igor/.codex/worktrees/5b82/untitled folder 67/package.json`
+- `/Users/igor/.codex/worktrees/5b82/untitled folder 67/bin/codex-web-ui`
+
+Initial wrapper used:
+
+```bash
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+exec "$DIR/launch_codex_webui_unpacked.sh" "$@"
+```
+
+Issue found after publish:
+
+- `npx codex-web-ui --help` failed because npm executes the command through a symlink in `node_modules/.bin`, so `BASH_SOURCE[0]` resolved to `.bin` instead of package `bin/`.
+- Error signature:
+  - `/node_modules/.bin/codex-web-ui: ... /node_modules/launch_codex_webui_unpacked.sh: No such file or directory`
+
+Fix applied in `bin/codex-web-ui`:
+
+```bash
+SOURCE="${BASH_SOURCE[0]}"
+while [ -L "$SOURCE" ]; do
+  LINK_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ "$SOURCE" != /* ]] && SOURCE="$LINK_DIR/$SOURCE"
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+exec "$DIR/launch_codex_webui_unpacked.sh" "$@"
+```

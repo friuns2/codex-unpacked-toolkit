@@ -1,0 +1,15 @@
+{
+  "name": "codex-web-ui",
+  "version": "0.1.0",
+  "description": "Launch Codex Desktop Web UI from CLI",
+  "license": "MIT",
+  "bin": {
+    "codex-web-ui": "bin/codex-web-ui"
+  },
+  "files": [
+    "bin",
+    "launch_codex_webui_unpacked.sh",
+    "webui-bridge.js",
+    "README.md"
+  ]
+}
