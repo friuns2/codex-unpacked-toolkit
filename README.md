@@ -104,19 +104,8 @@ With the Web UI enabled, Codex breaks free from the Electron window — and with
 ## ⚡ Quick Start
 
 ```bash
-# Option A: run directly from npm (no clone needed)
+# Run directly from npm (no clone needed)
 npx -y codex-web-ui --port 5999
-
-# Option B: clone this repo
-# Clone this repo
-git clone https://github.com/friuns2/codex-unpacked-toolkit.git
-cd codex-unpacked-toolkit
-
-# 🌐 Launch the Web UI — access Codex from any browser
-./launch_codex_webui_unpacked.sh --port 5999
-
-# 🔓 Or launch with SSH mode unlocked (connects to your remote host)
-./launch_codex_unpacked.sh --ssh-host user@your-server.com
 ```
 
 Open `http://127.0.0.1:5999/` and you're flying. ✈️
@@ -355,6 +344,22 @@ We extracted the `app.asar`, deobfuscated the minified bundles, and traced the e
 | `Renderer guard patch anchor not found` | Bundle version changed — open an issue |
 | `Missing app.asar` | Point `--app` to your Codex.app location |
 | Blank page in WebUI | Check console for `roots` error — renderer patch may need updating |
+
+---
+
+## 🛠️ Development
+
+```bash
+# Clone this repo
+git clone https://github.com/friuns2/codex-web-ui.git
+cd codex-web-ui
+
+# 🌐 Launch the Web UI — access Codex from any browser
+./launch_codex_webui_unpacked.sh --port 5999
+
+# 🔓 Or launch with SSH mode unlocked (connects to your remote host)
+./launch_codex_unpacked.sh --ssh-host user@your-server.com
+```
 
 ---
 
